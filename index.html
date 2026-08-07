@@ -1,517 +1,851 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KÁKO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2a170e">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>KÁKO</title>
 
-    body {
-      background: #f3eadc;
-      color: #2b1a10;
-      min-height: 100vh;
-    }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-    .app {
-      max-width: 430px;
-      margin: 0 auto;
-      min-height: 100vh;
-      background: #fff8ed;
-      padding: 28px 20px 110px;
-    }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#2a170e;
+    color:#2a170e;
+}
 
-    .logo {
-      text-align: center;
-      font-size: 64px;
-      font-weight: 900;
-      margin-top: 10px;
-    }
+.screen{
+    display:none;
+}
 
-    .subtitle {
-      text-align: center;
-      font-size: 18px;
-      margin-bottom: 28px;
-    }
+.screen.active{
+    display:block;
+}
 
-    .card {
-      background: #f1e2cd;
-      border-radius: 24px;
-      padding: 22px;
-      margin-bottom: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
+.app{
+    max-width:430px;
+    min-height:100vh;
+    margin:auto;
+    background:#fff7e9;
+    padding:24px 20px 40px;
+}
 
-    .card h3 {
-      text-align: center;
-      margin-bottom: 18px;
-      font-size: 17px;
-    }
+/* LOGO */
 
-    .row {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.12);
-      font-size: 17px;
-    }
+.logo-wrap{
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:25px;
+}
 
-    .row:last-child {
-      border-bottom: none;
-    }
+.logo-poop{
+    font-size:58px;
+    line-height:1;
+}
 
-    .money {
-      color: #2c8b3b;
-      font-weight: 800;
-    }
+.logo{
+    font-size:60px;
+    font-weight:1000;
+    letter-spacing:-3px;
+}
 
-    .rate-card {
-      background: #2b1a10;
-      color: white;
-      border-radius: 24px;
-      padding: 22px;
-      margin-bottom: 20px;
-    }
+.logo-subtitle{
+    margin-top:5px;
+    font-size:16px;
+    font-weight:600;
+}
 
-    .rate {
-      font-size: 34px;
-      font-weight: 900;
-      color: #55b85f;
-      margin-top: 8px;
-    }
+/* CARDS */
 
-    .main-button {
-      width: 100%;
-      border: none;
-      border-radius: 28px;
-      padding: 22px;
-      font-size: 27px;
-      font-weight: 900;
-      cursor: pointer;
-      background: #ffc928;
-      color: #2b1a10;
-    }
+.card{
+    background:#f1dfc7;
+    border-radius:25px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 5px 12px rgba(56,28,12,.08);
+}
 
-    .stop-button {
-      width: 100%;
-      border: none;
-      border-radius: 28px;
-      padding: 20px;
-      font-size: 25px;
-      font-weight: 900;
-      cursor: pointer;
-      background: #e63127;
-      color: white;
-      margin-top: 25px;
-    }
+.card-title{
+    text-align:center;
+    font-size:14px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:13px;
+}
 
-    .screen {
-      display: none;
-    }
+.stat-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:13px 2px;
+    border-bottom:1px solid rgba(42,23,14,.12);
+}
 
-    .screen.active {
-      display: block;
-    }
+.stat-row:last-child{
+    border-bottom:0;
+}
 
-    .timer-screen {
-      background: #27170f;
-      color: white;
-      min-height: 100vh;
-      max-width: 430px;
-      margin: 0 auto;
-      padding: 50px 22px;
-      text-align: center;
-    }
+.stat-left{
+    font-size:16px;
+    font-weight:700;
+}
 
-    .timer-title {
-      color: #ffc928;
-      font-size: 28px;
-      font-weight: 900;
-      margin-bottom: 45px;
-    }
+.stat-right{
+    font-size:18px;
+    font-weight:900;
+}
 
-    .timer {
-      font-size: 68px;
-      font-weight: 900;
-      letter-spacing: 3px;
-    }
+.green{
+    color:#318b43;
+}
 
-    .poop {
-      font-size: 110px;
-      margin: 35px 0;
-    }
+/* RATE */
 
-    .earning-title {
-      font-size: 18px;
-      color: #d8c0a8;
-    }
+.rate-card{
+    background:#2a170e;
+    color:#fff;
+    border-radius:25px;
+    padding:20px;
+    margin-bottom:18px;
+}
 
-    .earning {
-      font-size: 50px;
-      font-weight: 900;
-      color: #55b85f;
-      margin-top: 10px;
-    }
+.rate-small{
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
+    color:#eadbc8;
+}
 
-    .message {
-      color: #d8c0a8;
-      margin-top: 16px;
-      font-size: 16px;
-    }
+.rate-line{
+    margin-top:10px;
+    font-size:16px;
+}
 
-    .result-title {
-      font-size: 42px;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
+.rate-money{
+    font-size:36px;
+    font-weight:1000;
+    margin-top:3px;
+    color:#61c66a;
+}
 
-    .result-poop {
-      font-size: 90px;
-      text-align: right;
-    }
+/* BUTTONS */
 
-    .result-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin: 28px 0;
-    }
+.main-button{
+    width:100%;
+    border:0;
+    border-radius:25px;
+    padding:20px;
+    background:#ffc72c;
+    color:#2a170e;
+    font-size:26px;
+    font-weight:1000;
+    cursor:pointer;
+    box-shadow:0 6px 0 #d7a218;
+}
 
-    .result-box {
-      background: #f1e2cd;
-      padding: 20px 10px;
-      border-radius: 20px;
-      text-align: center;
-    }
+.main-button:active{
+    transform:translateY(3px);
+    box-shadow:0 3px 0 #d7a218;
+}
 
-    .result-box strong {
-      display: block;
-      font-size: 25px;
-      margin-top: 8px;
-    }
+.settings{
+    margin-top:18px;
+    text-align:center;
+}
 
-    .save-button {
-      width: 100%;
-      border: none;
-      border-radius: 20px;
-      padding: 18px;
-      background: #2b1a10;
-      color: white;
-      font-size: 18px;
-      font-weight: 800;
-      cursor: pointer;
-    }
+.settings button{
+    border:0;
+    background:none;
+    color:#765b49;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+}
 
-    .setup {
-      background: white;
-      border-radius: 24px;
-      padding: 22px;
-      margin-bottom: 20px;
-    }
+/* SETTINGS PANEL */
 
-    .setup input {
-      width: 100%;
-      padding: 14px;
-      margin-top: 10px;
-      border-radius: 14px;
-      border: 1px solid #c9b9a5;
-      font-size: 17px;
-    }
+.settings-panel{
+    display:none;
+    background:#fff;
+    border-radius:24px;
+    padding:20px;
+    margin-bottom:18px;
+    border:2px solid #eadbc8;
+}
 
-    .small-button {
-      width: 100%;
-      margin-top: 12px;
-      padding: 14px;
-      border: none;
-      border-radius: 14px;
-      background: #2b1a10;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-  </style>
+.settings-panel.show{
+    display:block;
+}
+
+.settings-panel h3{
+    margin-bottom:14px;
+}
+
+.settings-panel label{
+    font-size:13px;
+    font-weight:800;
+}
+
+.settings-panel input{
+    width:100%;
+    margin:6px 0 14px;
+    padding:14px;
+    border-radius:14px;
+    border:2px solid #ddc8ae;
+    font-size:17px;
+    background:#fffaf3;
+}
+
+.save-settings{
+    width:100%;
+    border:0;
+    border-radius:15px;
+    background:#2a170e;
+    color:#fff;
+    padding:14px;
+    font-weight:900;
+    cursor:pointer;
+}
+
+/* TIMER SCREEN */
+
+.timer-page{
+    max-width:430px;
+    min-height:100vh;
+    margin:auto;
+    padding:35px 20px;
+    background:#2a170e;
+    color:#fff;
+    text-align:center;
+}
+
+.timer-title{
+    color:#ffc72c;
+    font-size:25px;
+    font-weight:1000;
+    margin-bottom:34px;
+}
+
+.timer{
+    font-size:57px;
+    font-weight:1000;
+    letter-spacing:1px;
+}
+
+.toilet-art{
+    font-size:95px;
+    margin:25px 0;
+}
+
+.live-label{
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:1px;
+    color:#ddc9b7;
+}
+
+.live-money{
+    margin-top:8px;
+    font-size:48px;
+    color:#67cf70;
+    font-weight:1000;
+}
+
+.quote{
+    margin:17px auto 25px;
+    max-width:300px;
+    color:#d7c2af;
+    font-size:14px;
+    line-height:1.4;
+}
+
+.stop-button{
+    width:100%;
+    border:0;
+    border-radius:24px;
+    padding:19px;
+    background:#df392f;
+    color:#fff;
+    font-size:24px;
+    font-weight:1000;
+    cursor:pointer;
+    box-shadow:0 6px 0 #a8221b;
+}
+
+/* RESULT */
+
+.result-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-top:15px;
+}
+
+.result-title{
+    font-size:42px;
+    font-weight:1000;
+    line-height:.95;
+}
+
+.result-sub{
+    font-size:15px;
+    margin-top:10px;
+}
+
+.result-poop{
+    font-size:75px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:30px;
+}
+
+.result-box{
+    background:#f1dfc7;
+    border-radius:22px;
+    padding:18px 10px;
+    text-align:center;
+}
+
+.result-box small{
+    font-size:11px;
+    font-weight:900;
+}
+
+.result-box strong{
+    display:block;
+    margin-top:8px;
+    font-size:23px;
+}
+
+.history-button{
+    width:100%;
+    border:0;
+    border-radius:22px;
+    background:#2a170e;
+    color:#fff;
+    padding:18px;
+    font-size:17px;
+    font-weight:900;
+    margin-top:25px;
+    cursor:pointer;
+}
+
+.reset{
+    text-align:center;
+    margin-top:18px;
+}
+
+.reset button{
+    background:none;
+    border:0;
+    color:#9a7e6b;
+    font-size:12px;
+}
+</style>
 </head>
 
 <body>
 
-  <div id="homeScreen" class="screen active">
-    <div class="app">
+<!-- HOME -->
 
-      <div class="logo">💩<br>KÁKO</div>
-      <div class="subtitle">Každá minuta se počítá.</div>
+<div id="homeScreen" class="screen active">
 
-      <div class="setup">
-        <strong>Nastavení výdělku</strong>
+<div class="app">
 
-        <input
-          type="number"
-          id="salaryInput"
-          placeholder="Měsíční čistá mzda v Kč"
-        >
+    <div class="logo-wrap">
+        <div class="logo-poop">💩</div>
+        <div class="logo">KÁKO</div>
+        <div class="logo-subtitle">Každá minuta se počítá.</div>
+    </div>
 
-        <input
-          type="number"
-          id="hoursInput"
-          placeholder="Pracovních hodin za měsíc"
-          value="160"
-        >
+    <div id="settingsPanel" class="settings-panel">
 
-        <button class="small-button" onclick="saveSalary()">
-          ULOŽIT
+        <h3>Nastavení výdělku</h3>
+
+        <label>Měsíční čistá mzda</label>
+        <input id="salaryInput" type="number" placeholder="např. 50000">
+
+        <label>Pracovních hodin za měsíc</label>
+        <input id="hoursInput" type="number" value="160">
+
+        <button class="save-settings" onclick="saveSalary()">
+            ULOŽIT NASTAVENÍ
         </button>
-      </div>
 
-      <div class="card">
-        <h3>DNEŠNÍ VÝKON</h3>
+    </div>
 
-        <div class="row">
-          <span>🚽 Návštěv</span>
-          <strong id="visitCount">0</strong>
+    <div class="card">
+
+        <div class="card-title">
+            DNEŠNÍ VÝKON
         </div>
 
-        <div class="row">
-          <span>🕒 Čas na WC</span>
-          <strong id="totalTime">00:00</strong>
+        <div class="stat-row">
+            <div class="stat-left">🚽 Návštěv</div>
+            <div class="stat-right" id="visitCount">0</div>
         </div>
 
-        <div class="row">
-          <span>💰 Prokakáno</span>
-          <strong class="money" id="totalMoney">0,00 Kč</strong>
+        <div class="stat-row">
+            <div class="stat-left">⏱ Čas na WC</div>
+            <div class="stat-right" id="totalTime">00:00</div>
         </div>
-      </div>
 
-      <div class="rate-card">
-        <div>TVŮJ KURZ</div>
-        <div style="margin-top: 10px;">1 minuta =</div>
-        <div class="rate" id="rateDisplay">0,00 Kč</div>
-      </div>
+        <div class="stat-row">
+            <div class="stat-left">💰 Prokakáno</div>
+            <div class="stat-right green" id="totalMoney">0,00 Kč</div>
+        </div>
 
-      <button class="main-button" onclick="startKako()">
+    </div>
+
+    <div class="rate-card">
+
+        <div class="rate-small">
+            TVŮJ KÁKO KURZ
+        </div>
+
+        <div class="rate-line">
+            1 minuta na WC =
+        </div>
+
+        <div class="rate-money" id="rateDisplay">
+            0,00 Kč
+        </div>
+
+    </div>
+
+    <button class="main-button" onclick="startKako()">
         💩 JDU KÁKO
-      </button>
+    </button>
 
+    <div class="settings">
+        <button onclick="toggleSettings()">
+            ⚙️ Nastavit plat
+        </button>
     </div>
-  </div>
 
-  <div id="timerScreen" class="screen">
-    <div class="timer-screen">
+</div>
 
-      <div class="timer-title">
+</div>
+
+
+<!-- TIMER -->
+
+<div id="timerScreen" class="screen">
+
+<div class="timer-page">
+
+    <div class="timer-title">
         KÁKO PROBÍHÁ 💩
-      </div>
+    </div>
 
-      <div class="timer" id="timer">
+    <div id="timer" class="timer">
         00:00:00
-      </div>
+    </div>
 
-      <div class="poop">
+    <div class="toilet-art">
         💩🚽
-      </div>
+    </div>
 
-      <div class="earning-title">
+    <div class="live-label">
         PRÁVĚ JSI PROKADIL
-      </div>
+    </div>
 
-      <div class="earning" id="currentMoney">
+    <div id="currentMoney" class="live-money">
         0,00 Kč
-      </div>
+    </div>
 
-      <div class="message">
-        Šéf ti děkuje za tvou tvrdou práci.
-      </div>
+    <div class="quote">
+        Produktivita má mnoho podob.<br>
+        Tahle je jedna z nich.
+    </div>
 
-      <button class="stop-button" onclick="stopKako()">
-        DOKAKÁNO
-      </button>
+    <button class="stop-button" onclick="stopKako()">
+        💩 DOKAKÁNO
+    </button>
+
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div id="resultScreen" class="screen">
+
+<div class="app">
+
+    <div class="result-header">
+
+        <div>
+
+            <div class="result-title">
+                DOKAKÁNO!
+            </div>
+
+            <div class="result-sub">
+                Další úspěšný pracovní projekt.
+            </div>
+
+        </div>
+
+        <div class="result-poop">
+            😎💩
+        </div>
 
     </div>
-  </div>
 
-  <div id="resultScreen" class="screen">
-    <div class="app">
-
-      <div class="result-title">
-        DOKAKÁNO! 🎉
-      </div>
-
-      <div>
-        Zase jeden úspěšný projekt.
-      </div>
-
-      <div class="result-poop">
-        😎💩
-      </div>
-
-      <div class="result-grid">
+    <div class="result-grid">
 
         <div class="result-box">
-          ČAS NA WC
-          <strong id="resultTime">00:00</strong>
+            <small>ČAS NA WC</small>
+            <strong id="resultTime">00:00</strong>
         </div>
 
         <div class="result-box">
-          PROKAKÁNO
-          <strong class="money" id="resultMoney">0 Kč</strong>
+            <small>PROKAKÁNO</small>
+            <strong class="green" id="resultMoney">0 Kč</strong>
         </div>
 
-      </div>
+        <div class="result-box">
+            <small>DNES NÁVŠTĚV</small>
+            <strong id="resultVisits">0</strong>
+        </div>
 
-      <button class="save-button" onclick="backHome()">
-        ULOŽIT DO HISTORIE
-      </button>
+        <div class="result-box">
+            <small>DNES CELKEM</small>
+            <strong class="green" id="resultTotalMoney">0 Kč</strong>
+        </div>
 
     </div>
-  </div>
+
+    <button class="history-button" onclick="backHome()">
+        ✓ ULOŽIT A ZPĚT
+    </button>
+
+</div>
+
+</div>
+
 
 <script>
 
-  let timerInterval;
-  let startTime;
-  let ratePerMinute = 0;
+let timerInterval;
+let startTime;
+let ratePerMinute = 0;
 
-  let visits = Number(localStorage.getItem("visits")) || 0;
-  let totalSeconds = Number(localStorage.getItem("totalSeconds")) || 0;
-  let totalMoney = Number(localStorage.getItem("totalMoney")) || 0;
+let visits = Number(localStorage.getItem("visits")) || 0;
+let totalSeconds = Number(localStorage.getItem("totalSeconds")) || 0;
+let totalMoney = Number(localStorage.getItem("totalMoney")) || 0;
 
-  function saveSalary() {
-    const salary = Number(document.getElementById("salaryInput").value);
-    const hours = Number(document.getElementById("hoursInput").value);
 
-    if (!salary || !hours) {
-      alert("Vyplň mzdu i počet hodin.");
-      return;
+/* SETTINGS */
+
+function toggleSettings(){
+
+    document
+    .getElementById("settingsPanel")
+    .classList.toggle("show");
+
+}
+
+
+function saveSalary(){
+
+    const salary =
+    Number(document.getElementById("salaryInput").value);
+
+    const hours =
+    Number(document.getElementById("hoursInput").value);
+
+    if(!salary || !hours){
+
+        alert("Vyplň měsíční plat a pracovní hodiny.");
+        return;
+
     }
 
-    ratePerMinute = salary / (hours * 60);
+    ratePerMinute =
+    salary / (hours * 60);
 
-    localStorage.setItem("salary", salary);
-    localStorage.setItem("hours", hours);
+    localStorage.setItem("salary",salary);
+    localStorage.setItem("hours",hours);
 
     updateRate();
-  }
 
-  function loadSalary() {
-    const salary = Number(localStorage.getItem("salary")) || 0;
-    const hours = Number(localStorage.getItem("hours")) || 160;
+    document
+    .getElementById("settingsPanel")
+    .classList.remove("show");
 
-    document.getElementById("salaryInput").value = salary || "";
-    document.getElementById("hoursInput").value = hours;
+}
 
-    if (salary > 0) {
-      ratePerMinute = salary / (hours * 60);
+
+function loadSalary(){
+
+    const salary =
+    Number(localStorage.getItem("salary")) || 0;
+
+    const hours =
+    Number(localStorage.getItem("hours")) || 160;
+
+    document.getElementById("salaryInput").value =
+    salary || "";
+
+    document.getElementById("hoursInput").value =
+    hours;
+
+    if(salary > 0){
+
+        ratePerMinute =
+        salary / (hours * 60);
+
     }
 
     updateRate();
-  }
 
-  function updateRate() {
+}
+
+
+function updateRate(){
+
     document.getElementById("rateDisplay").innerText =
-      ratePerMinute.toFixed(2).replace(".", ",") + " Kč";
-  }
+    moneyFormat(ratePerMinute);
 
-  function startKako() {
+}
 
-    if (ratePerMinute <= 0) {
-      alert("Nejdřív nastav svůj měsíční plat.");
-      return;
+
+/* START */
+
+function startKako(){
+
+    if(ratePerMinute <= 0){
+
+        document
+        .getElementById("settingsPanel")
+        .classList.add("show");
+
+        alert("Nejdřív nastav svůj měsíční plat.");
+
+        return;
+
     }
 
-    document.getElementById("homeScreen").classList.remove("active");
-    document.getElementById("timerScreen").classList.add("active");
+    document
+    .getElementById("homeScreen")
+    .classList.remove("active");
+
+    document
+    .getElementById("timerScreen")
+    .classList.add("active");
 
     startTime = Date.now();
 
-    timerInterval = setInterval(updateTimer, 250);
-  }
+    localStorage.setItem(
+        "activeKako",
+        startTime
+    );
 
-  function updateTimer() {
+    timerInterval =
+    setInterval(updateTimer,250);
+
+}
+
+
+/* TIMER */
+
+function updateTimer(){
 
     const elapsedSeconds =
-      Math.floor((Date.now() - startTime) / 1000);
-
-    const hours = Math.floor(elapsedSeconds / 3600);
-    const minutes = Math.floor((elapsedSeconds % 3600) / 60);
-    const seconds = elapsedSeconds % 60;
+    Math.floor(
+        (Date.now() - startTime) / 1000
+    );
 
     document.getElementById("timer").innerText =
-      String(hours).padStart(2, "0") + ":" +
-      String(minutes).padStart(2, "0") + ":" +
-      String(seconds).padStart(2, "0");
+    formatClock(elapsedSeconds);
 
     const money =
-      (elapsedSeconds / 60) * ratePerMinute;
+    (elapsedSeconds / 60) *
+    ratePerMinute;
 
     document.getElementById("currentMoney").innerText =
-      money.toFixed(2).replace(".", ",") + " Kč";
-  }
+    moneyFormat(money);
 
-  function stopKako() {
+}
+
+
+/* STOP */
+
+function stopKako(){
 
     clearInterval(timerInterval);
 
     const elapsedSeconds =
-      Math.floor((Date.now() - startTime) / 1000);
+    Math.floor(
+        (Date.now() - startTime) / 1000
+    );
 
     const earned =
-      (elapsedSeconds / 60) * ratePerMinute;
+    (elapsedSeconds / 60) *
+    ratePerMinute;
 
     visits++;
     totalSeconds += elapsedSeconds;
     totalMoney += earned;
 
-    localStorage.setItem("visits", visits);
-    localStorage.setItem("totalSeconds", totalSeconds);
-    localStorage.setItem("totalMoney", totalMoney);
+    localStorage.setItem("visits",visits);
+    localStorage.setItem("totalSeconds",totalSeconds);
+    localStorage.setItem("totalMoney",totalMoney);
 
-    document.getElementById("timerScreen").classList.remove("active");
-    document.getElementById("resultScreen").classList.add("active");
+    localStorage.removeItem("activeKako");
+
+    document
+    .getElementById("timerScreen")
+    .classList.remove("active");
+
+    document
+    .getElementById("resultScreen")
+    .classList.add("active");
 
     document.getElementById("resultTime").innerText =
-      formatTime(elapsedSeconds);
+    formatMinutes(elapsedSeconds);
 
     document.getElementById("resultMoney").innerText =
-      earned.toFixed(2).replace(".", ",") + " Kč";
+    moneyFormat(earned);
+
+    document.getElementById("resultVisits").innerText =
+    visits;
+
+    document.getElementById("resultTotalMoney").innerText =
+    moneyFormat(totalMoney);
 
     updateStats();
-  }
 
-  function backHome() {
-    document.getElementById("resultScreen").classList.remove("active");
-    document.getElementById("homeScreen").classList.add("active");
-  }
+}
 
-  function updateStats() {
 
-    document.getElementById("visitCount").innerText = visits;
+/* RETURN */
+
+function backHome(){
+
+    document
+    .getElementById("resultScreen")
+    .classList.remove("active");
+
+    document
+    .getElementById("homeScreen")
+    .classList.add("active");
+
+}
+
+
+/* STATS */
+
+function updateStats(){
+
+    document.getElementById("visitCount").innerText =
+    visits;
 
     document.getElementById("totalTime").innerText =
-      formatTime(totalSeconds);
+    formatMinutes(totalSeconds);
 
     document.getElementById("totalMoney").innerText =
-      totalMoney.toFixed(2).replace(".", ",") + " Kč";
-  }
+    moneyFormat(totalMoney);
 
-  function formatTime(seconds) {
+}
 
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
+
+/* FORMAT */
+
+function moneyFormat(value){
+
+    return value
+    .toFixed(2)
+    .replace(".",",") +
+    " Kč";
+
+}
+
+
+function formatClock(seconds){
+
+    const h =
+    Math.floor(seconds / 3600);
+
+    const m =
+    Math.floor((seconds % 3600) / 60);
+
+    const s =
+    seconds % 60;
 
     return (
-      String(minutes).padStart(2, "0") +
-      ":" +
-      String(secs).padStart(2, "0")
+        String(h).padStart(2,"0") +
+        ":" +
+        String(m).padStart(2,"0") +
+        ":" +
+        String(s).padStart(2,"0")
     );
-  }
 
-  loadSalary();
-  updateStats();
+}
+
+
+function formatMinutes(seconds){
+
+    const minutes =
+    Math.floor(seconds / 60);
+
+    const secs =
+    seconds % 60;
+
+    return (
+        String(minutes).padStart(2,"0") +
+        ":" +
+        String(secs).padStart(2,"0")
+    );
+
+}
+
+
+/* RESTORE RUNNING TIMER */
+
+function restoreKako(){
+
+    const savedStart =
+    Number(localStorage.getItem("activeKako"));
+
+    if(savedStart){
+
+        startTime = savedStart;
+
+        document
+        .getElementById("homeScreen")
+        .classList.remove("active");
+
+        document
+        .getElementById("timerScreen")
+        .classList.add("active");
+
+        timerInterval =
+        setInterval(updateTimer,250);
+
+        updateTimer();
+
+    }
+
+}
+
+
+loadSalary();
+updateStats();
+restoreKako();
 
 </script>
 
