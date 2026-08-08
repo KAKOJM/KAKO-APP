@@ -2,12 +2,7 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"
->
-
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#2a170e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -31,11 +26,7 @@
   --muted:#806b5d;
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 html,body{
   touch-action:manipulation;
@@ -49,55 +40,27 @@ body{
   -webkit-text-size-adjust:100%;
 }
 
-button,input,select{
-  font-family:inherit;
-}
+button,input,select{font-family:inherit}
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 
-button{
-  -webkit-tap-highlight-color:transparent;
-  touch-action:manipulation;
-}
-
-.screen{display:none;}
-.screen.active{display:block;}
+.screen{display:none}
+.screen.active{display:block}
 
 .app{
   max-width:430px;
   min-height:100vh;
   margin:auto;
   background:var(--cream);
-  padding:
-    calc(14px + env(safe-area-inset-top))
-    18px
-    calc(105px + env(safe-area-inset-bottom));
+  padding:calc(14px + env(safe-area-inset-top)) 18px calc(105px + env(safe-area-inset-bottom));
 }
-
-.green{color:var(--green);}
 
 /* LOGO */
 
-.logo-wrap{
-  text-align:center;
-  margin-bottom:14px;
-}
-
-.logo-poop{
-  font-size:42px;
-  line-height:1;
-}
-
-.logo{
-  font-size:52px;
-  font-weight:900;
-  letter-spacing:-3px;
-}
-
-.logo-sub{
-  margin-top:3px;
-  color:var(--muted);
-  font-size:13px;
-  font-weight:700;
-}
+.logo-wrap{text-align:center;margin-bottom:14px}
+.logo-poop{font-size:42px;line-height:1}
+.logo{font-size:52px;font-weight:900;letter-spacing:-3px}
+.logo-sub{margin-top:3px;color:var(--muted);font-size:13px;font-weight:700}
+.green{color:var(--green)}
 
 /* DOMA / PRÁCE */
 
@@ -121,10 +84,7 @@ button{
   font-weight:900;
 }
 
-.mode-btn.active{
-  background:var(--brown);
-  color:white;
-}
+.mode-btn.active{background:var(--brown);color:white}
 
 .mode-info{
   text-align:center;
@@ -134,7 +94,7 @@ button{
   margin:8px 0 16px;
 }
 
-/* DNES */
+/* HOME */
 
 .today-card{
   background:var(--cream2);
@@ -158,24 +118,9 @@ button{
   text-align:center;
 }
 
-.today-box span{
-  display:block;
-  font-size:22px;
-  margin-bottom:5px;
-}
-
-.today-box strong{
-  display:block;
-  font-size:17px;
-}
-
-.today-box small{
-  display:block;
-  margin-top:3px;
-  color:var(--muted);
-  font-size:10px;
-  font-weight:800;
-}
+.today-box span{display:block;font-size:22px;margin-bottom:5px}
+.today-box strong{display:block;font-size:17px}
+.today-box small{display:block;margin-top:3px;color:var(--muted);font-size:10px;font-weight:800}
 
 .mini-rate{
   text-align:center;
@@ -185,9 +130,7 @@ button{
   color:var(--muted);
 }
 
-.mini-rate strong{
-  color:var(--green);
-}
+.mini-rate strong{color:var(--green)}
 
 .main-button{
   width:100%;
@@ -215,10 +158,7 @@ button{
   background:var(--brown);
   color:white;
   text-align:center;
-  padding:
-    calc(22px + env(safe-area-inset-top))
-    20px
-    calc(105px + env(safe-area-inset-bottom));
+  padding:calc(12px + env(safe-area-inset-top)) 20px calc(105px + env(safe-area-inset-bottom));
 }
 
 .timer-mode{
@@ -226,27 +166,27 @@ button{
   background:var(--yellow);
   color:var(--brown);
   border-radius:99px;
-  padding:8px 14px;
+  padding:7px 13px;
   font-size:12px;
   font-weight:900;
-  margin-bottom:12px;
+  margin-bottom:7px;
 }
 
 .timer-title{
   color:var(--yellow);
-  font-size:22px;
+  font-size:20px;
   font-weight:900;
-  margin-bottom:11px;
+  margin-bottom:6px;
 }
 
 .timer{
-  font-size:53px;
+  font-size:50px;
   font-weight:900;
 }
 
 .toilet-art{
-  font-size:64px;
-  margin:10px 0;
+  font-size:55px;
+  margin:4px 0;
 }
 
 .live-label{
@@ -257,15 +197,15 @@ button{
 }
 
 .live-money{
-  margin-top:5px;
+  margin-top:3px;
   color:var(--green2);
-  font-size:42px;
+  font-size:39px;
   font-weight:900;
 }
 
 .live-money.free{
   color:var(--yellow);
-  font-size:29px;
+  font-size:28px;
 }
 
 .quote-card{
@@ -275,14 +215,11 @@ button{
   border-radius:22px;
   padding:14px 16px;
   max-width:360px;
-  margin:3px auto 13px;
+  margin:5px auto 12px;
   box-shadow:0 7px 18px rgba(0,0,0,.18);
-  transform-origin:center;
 }
 
-.quote-card.home{
-  background:#f4e2cd;
-}
+.quote-card.home{background:#f4e2cd}
 
 .quote-label{
   display:block;
@@ -299,14 +236,12 @@ button{
   font-weight:900;
 }
 
-.quote-pop{
-  animation:quotePop .48s ease;
-}
+.quote-pop{animation:quotePop .48s ease}
 
 @keyframes quotePop{
-  0%{transform:scale(.88);opacity:.15;}
-  55%{transform:scale(1.06);opacity:1;}
-  100%{transform:scale(1);opacity:1;}
+  0%{transform:scale(.88);opacity:.15}
+  55%{transform:scale(1.06);opacity:1}
+  100%{transform:scale(1);opacity:1}
 }
 
 .stop-button{
@@ -320,12 +255,10 @@ button{
   font-weight:900;
 }
 
-.stop-button:disabled{
-  opacity:.65;
-}
+.stop-button:disabled{opacity:.65}
 
 .cancel-button{
-  margin-top:14px;
+  margin-top:11px;
   border:0;
   background:none;
   color:#d7c2af;
@@ -333,7 +266,7 @@ button{
   font-weight:800;
 }
 
-/* OBECNÉ */
+/* STRÁNKY */
 
 .page-title{
   font-size:30px;
@@ -358,10 +291,7 @@ button{
   font-weight:900;
 }
 
-.tab.active{
-  background:var(--brown);
-  color:white;
-}
+.tab.active{background:var(--brown);color:white}
 
 .stats-summary{
   display:grid;
@@ -373,8 +303,8 @@ button{
 .stats-main-card{
   background:var(--cream2);
   border-radius:20px;
-  min-height:112px;
-  padding:15px 6px;
+  min-height:118px;
+  padding:15px 5px;
   text-align:center;
   display:flex;
   flex-direction:column;
@@ -382,15 +312,13 @@ button{
   align-items:center;
 }
 
-.stats-main-card .icon{
-  font-size:26px;
-  margin-bottom:7px;
-}
+.stats-main-card .icon{font-size:28px;margin-bottom:8px}
 
 .stats-main-card strong{
   display:block;
   font-size:20px;
-  line-height:1.05;
+  line-height:1.1;
+  word-break:break-word;
 }
 
 .stats-main-card small{
@@ -401,15 +329,8 @@ button{
   font-weight:900;
 }
 
-.stats-section{
-  margin-top:22px;
-}
-
-.stats-section-title{
-  font-size:19px;
-  font-weight:900;
-  margin-bottom:10px;
-}
+.stats-section{margin-top:22px}
+.stats-section-title{font-size:19px;font-weight:900;margin-bottom:10px}
 
 .place-grid{
   display:grid;
@@ -424,21 +345,9 @@ button{
   text-align:center;
 }
 
-.place-icon{
-  font-size:28px;
-}
-
-.place-card strong{
-  display:block;
-  font-size:23px;
-  margin:8px 0 4px;
-}
-
-.place-card small{
-  color:var(--muted);
-  font-size:11px;
-  font-weight:800;
-}
+.place-icon{font-size:28px}
+.place-card strong{display:block;font-size:23px;margin:8px 0 4px}
+.place-card small{color:var(--muted);font-size:11px;font-weight:800}
 
 .record-card{
   background:var(--cream2);
@@ -451,20 +360,9 @@ button{
   gap:12px;
 }
 
-.record-left{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:800;
-}
-
-.record-icon{
-  font-size:22px;
-}
-
-.record-card strong{
-  font-size:19px;
-}
+.record-left{display:flex;align-items:center;gap:10px;font-weight:800}
+.record-icon{font-size:22px}
+.record-card strong{font-size:19px}
 
 /* ACHIEVEMENTY */
 
@@ -500,26 +398,10 @@ button{
   opacity:.4;
 }
 
-.achievement.unlocked{
-  opacity:1;
-}
-
-.achievement-icon{
-  width:42px;
-  text-align:center;
-  font-size:29px;
-}
-
-.achievement strong{
-  display:block;
-  font-size:15px;
-}
-
-.achievement small{
-  display:block;
-  margin-top:3px;
-  color:var(--muted);
-}
+.achievement.unlocked{opacity:1}
+.achievement-icon{width:42px;text-align:center;font-size:29px}
+.achievement strong{display:block;font-size:15px}
+.achievement small{display:block;margin-top:3px;color:var(--muted)}
 
 /* HISTORIE */
 
@@ -530,21 +412,14 @@ button{
   margin-bottom:10px;
 }
 
-.history-top,
-.history-bottom{
+.history-top,.history-bottom{
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-.history-top{
-  font-weight:900;
-  margin-bottom:9px;
-}
-
-.history-bottom{
-  gap:8px;
-}
+.history-top{font-weight:900;margin-bottom:9px}
+.history-bottom{gap:8px}
 
 .history-place{
   display:inline-block;
@@ -566,11 +441,7 @@ button{
   font-weight:900;
 }
 
-.empty{
-  text-align:center;
-  padding:35px 10px;
-  color:var(--muted);
-}
+.empty{text-align:center;padding:35px 10px;color:var(--muted)}
 
 .danger{
   width:100%;
@@ -593,19 +464,10 @@ button{
   margin-bottom:12px;
 }
 
-.settings-card h3{
-  margin-bottom:15px;
-}
+.settings-card h3{margin-bottom:15px}
+.settings-card label{display:block;font-size:12px;font-weight:900;margin-bottom:5px}
 
-.settings-card label{
-  display:block;
-  font-size:12px;
-  font-weight:900;
-  margin-bottom:5px;
-}
-
-.settings-card input,
-.settings-card select{
+.settings-card input,.settings-card select{
   width:100%;
   border:2px solid #ddc8ae;
   border-radius:13px;
@@ -630,10 +492,7 @@ button{
   font-weight:900;
 }
 
-.pay-btn.active{
-  background:var(--brown);
-  color:white;
-}
+.pay-btn.active{background:var(--brown);color:white}
 
 .setting-row{
   display:flex;
@@ -642,21 +501,9 @@ button{
   gap:15px;
 }
 
-.setting-info{
-  flex:1;
-}
-
-.setting-info strong{
-  display:block;
-  font-size:15px;
-}
-
-.setting-info small{
-  display:block;
-  color:var(--muted);
-  margin-top:4px;
-  line-height:1.3;
-}
+.setting-info{flex:1}
+.setting-info strong{display:block;font-size:15px}
+.setting-info small{display:block;color:var(--muted);margin-top:4px;line-height:1.3}
 
 .setting-toggle{
   min-width:88px;
@@ -668,10 +515,7 @@ button{
   font-weight:900;
 }
 
-.setting-toggle.on{
-  background:var(--green);
-  color:white;
-}
+.setting-toggle.on{background:var(--green);color:white}
 
 .sound-tests{
   display:grid;
@@ -690,9 +534,7 @@ button{
   font-weight:900;
 }
 
-.reminder-time{
-  margin-top:16px;
-}
+.reminder-time{margin-top:16px}
 
 .save-btn{
   width:100%;
@@ -704,24 +546,11 @@ button{
   font-weight:900;
 }
 
-/* VÝSLEDEK */
+/* RESULT */
 
-.result-title{
-  font-size:39px;
-  font-weight:900;
-  margin-top:12px;
-}
-
-.result-sub{
-  color:var(--muted);
-  margin-top:5px;
-}
-
-.result-poop{
-  text-align:center;
-  font-size:75px;
-  margin:20px 0;
-}
+.result-title{font-size:39px;font-weight:900;margin-top:12px}
+.result-sub{color:var(--muted);margin-top:5px}
+.result-poop{text-align:center;font-size:75px;margin:20px 0}
 
 .rating{
   background:var(--yellow);
@@ -731,16 +560,8 @@ button{
   margin-bottom:12px;
 }
 
-.rating small{
-  font-size:10px;
-  font-weight:900;
-}
-
-.rating strong{
-  display:block;
-  margin-top:5px;
-  font-size:20px;
-}
+.rating small{font-size:10px;font-weight:900}
+.rating strong{display:block;margin-top:5px;font-size:20px}
 
 .result-grid{
   display:grid;
@@ -755,16 +576,8 @@ button{
   text-align:center;
 }
 
-.result-box small{
-  font-size:10px;
-  font-weight:900;
-}
-
-.result-box strong{
-  display:block;
-  margin-top:6px;
-  font-size:20px;
-}
+.result-box small{font-size:10px;font-weight:900}
+.result-box strong{display:block;margin-top:6px;font-size:20px}
 
 .action-btn{
   width:100%;
@@ -778,10 +591,7 @@ button{
   font-size:15px;
 }
 
-.share-btn{
-  background:var(--yellow);
-  color:var(--brown);
-}
+.share-btn{background:var(--yellow);color:var(--brown)}
 
 /* MENU */
 
@@ -808,16 +618,8 @@ button{
   padding:2px 1px;
 }
 
-.nav-icon{
-  display:block;
-  font-size:18px;
-  margin-bottom:2px;
-}
-
-.nav-btn.active,
-.nav-btn.running{
-  color:var(--yellow);
-}
+.nav-icon{display:block;font-size:18px;margin-bottom:2px}
+.nav-btn.active,.nav-btn.running{color:var(--yellow)}
 
 .running-dot{
   display:none;
@@ -836,9 +638,9 @@ button{
 }
 
 @keyframes pulseDot{
-  0%{transform:scale(.8);opacity:.55;}
-  50%{transform:scale(1.35);opacity:1;}
-  100%{transform:scale(.8);opacity:.55;}
+  0%{transform:scale(.8);opacity:.55}
+  50%{transform:scale(1.35);opacity:1}
+  100%{transform:scale(.8);opacity:.55}
 }
 
 /* TOAST */
@@ -864,9 +666,7 @@ button{
   z-index:1200;
 }
 
-.toast.show{
-  opacity:1;
-}
+.toast.show{opacity:1}
 
 /* REMINDER */
 
@@ -882,9 +682,7 @@ button{
   padding:20px;
 }
 
-.reminder-overlay.show{
-  display:flex;
-}
+.reminder-overlay.show{display:flex}
 
 .reminder-modal{
   width:100%;
@@ -895,15 +693,8 @@ button{
   text-align:center;
 }
 
-.reminder-icon{
-  font-size:58px;
-}
-
-.reminder-title{
-  font-size:29px;
-  font-weight:900;
-  margin-top:7px;
-}
+.reminder-icon{font-size:58px}
+.reminder-title{font-size:29px;font-weight:900;margin-top:7px}
 
 .reminder-text{
   color:var(--muted);
@@ -920,8 +711,7 @@ button{
   margin-top:7px;
 }
 
-.reminder-continue,
-.reminder-stop{
+.reminder-continue,.reminder-stop{
   width:100%;
   border:0;
   border-radius:19px;
@@ -930,185 +720,103 @@ button{
   font-weight:900;
 }
 
-.reminder-continue{
-  background:var(--yellow);
-  color:var(--brown);
-}
-
-.reminder-stop{
-  margin-top:10px;
-  background:var(--red);
-  color:white;
-}
-
+.reminder-continue{background:var(--yellow);color:var(--brown)}
+.reminder-stop{margin-top:10px;background:var(--red);color:white}
 </style>
 </head>
 
 <body>
 
-<!-- ZVUKY -->
-<audio
-  id="startBellSound"
-  preload="auto"
-  playsinline
->
-  <source
-    src="Boxing-bell-sound-effect.mp3"
-    type="audio/mpeg"
-  >
+<!-- ZVUKY - NÁZVY ODPOVÍDAJÍ SOUBORŮM NA GITHUBU -->
+<audio id="startBellSound" preload="auto" playsinline>
+  <source src="Boxing-bell-sound-effect.mp3" type="audio/mpeg">
 </audio>
 
-<audio
-  id="flushSound"
-  preload="auto"
-  playsinline
->
-  <source
-    src="mixkit-hard-toilet-flush-1872.wav"
-    type="audio/wav"
-  >
+<audio id="flushSound" preload="auto" playsinline>
+  <source src="flush.wav" type="audio/wav">
 </audio>
-
 
 <!-- DOMŮ -->
-
 <div id="homeScreen" class="screen active">
 <div class="app">
 
 <div class="logo-wrap">
   <div class="logo-poop">💩</div>
   <div class="logo">KÁKO</div>
-  <div id="helloText" class="logo-sub">
-    Každá minuta se počítá.
-  </div>
+  <div id="helloText" class="logo-sub">Každá minuta se počítá.</div>
 </div>
 
 <div class="mode-switch">
-  <button id="homeModeBtn" class="mode-btn" onclick="setLocationMode('home')">
-    🏠 DOMA
-  </button>
-
-  <button id="workModeBtn" class="mode-btn active" onclick="setLocationMode('work')">
-    💼 V PRÁCI
-  </button>
+  <button id="homeModeBtn" class="mode-btn" onclick="setLocationMode('home')">🏠 DOMA</button>
+  <button id="workModeBtn" class="mode-btn active" onclick="setLocationMode('work')">💼 V PRÁCI</button>
 </div>
 
-<div id="modeInfo" class="mode-info">
-  V práci se každá minuta mění na peníze.
-</div>
+<div id="modeInfo" class="mode-info">V práci se každá minuta mění na peníze.</div>
 
 <div class="today-card">
+  <div class="today-title">DNES</div>
 
-<div class="today-title">DNES</div>
+  <div class="today-grid">
+    <div class="today-box">
+      <span>🚽</span>
+      <strong id="todayVisits">0</strong>
+      <small>NÁVŠTĚV</small>
+    </div>
 
-<div class="today-grid">
+    <div class="today-box">
+      <span>⏱</span>
+      <strong id="todayTime">0 min</strong>
+      <small>NA WC</small>
+    </div>
 
-<div class="today-box">
-  <span>🚽</span>
-  <strong id="todayVisits">0</strong>
-  <small>NÁVŠTĚV</small>
-</div>
-
-<div class="today-box">
-  <span>⏱</span>
-  <strong id="todayTime">0 min</strong>
-  <small>NA WC</small>
-</div>
-
-<div class="today-box">
-  <span>💰</span>
-  <strong id="todayMoney" class="green">0 Kč</strong>
-  <small>V PRÁCI</small>
-</div>
-
-</div>
+    <div class="today-box">
+      <span>💰</span>
+      <strong id="todayMoney" class="green">0 Kč</strong>
+      <small>V PRÁCI</small>
+    </div>
+  </div>
 </div>
 
 <div id="miniRate" class="mini-rate">
   KÁKO kurz: <strong>0 Kč/min</strong>
 </div>
 
-<button class="main-button" onclick="startKako()">
-  💩 JDU KÁKO
-</button>
+<button class="main-button" onclick="startKako()">💩 JDU KÁKO</button>
 
 </div>
 </div>
-
 
 <!-- TIMER -->
-
 <div id="timerScreen" class="screen">
 <div class="timer-page">
 
-<div id="timerMode" class="timer-mode">
-  💼 V PRÁCI
-</div>
+<div id="timerMode" class="timer-mode">💼 V PRÁCI</div>
+<div class="timer-title">KÁKO PROBÍHÁ 💩</div>
+<div id="timer" class="timer">00:00:00</div>
 
-<div class="timer-title">
-  KÁKO PROBÍHÁ 💩
-</div>
+<div class="toilet-art">💩🚽</div>
 
-<div id="timer" class="timer">
-  00:00:00
-</div>
-
-<div class="toilet-art">
-  💩🚽
-</div>
-
-<div id="liveLabel" class="live-label">
-  PRÁVĚ JSI PROKADIL
-</div>
-
-<div id="currentMoney" class="live-money">
-  0,00 Kč
-</div>
+<div id="liveLabel" class="live-label">PRÁVĚ JSI PROKADIL</div>
+<div id="currentMoney" class="live-money">0,00 Kč</div>
 
 <div id="quoteCard" class="quote-card">
-
-<span id="quoteLabel" class="quote-label">
-  FIREMNÍ HLÁŠENÍ
-</span>
-
-<div id="quoteText" class="quote-text">
-  Firma právě financuje tvé trávení.
+  <span id="quoteLabel" class="quote-label">FIREMNÍ HLÁŠENÍ</span>
+  <div id="quoteText" class="quote-text">Firma právě financuje tvé trávení.</div>
 </div>
 
-</div>
-
-<button
-  id="stopKakoButton"
-  class="stop-button"
-  onclick="stopKako()"
->
-  💩 DOKAKÁNO
-</button>
-
-<button class="cancel-button" onclick="cancelKako()">
-  ✕ ZRUŠIT BEZ ULOŽENÍ
-</button>
+<button id="stopKakoButton" class="stop-button" onclick="stopKako()">💩 DOKAKÁNO</button>
+<button class="cancel-button" onclick="cancelKako()">✕ ZRUŠIT BEZ ULOŽENÍ</button>
 
 </div>
 </div>
-
 
 <!-- VÝSLEDEK -->
-
 <div id="resultScreen" class="screen">
 <div class="app">
 
-<div class="result-title">
-  DOKAKÁNO!
-</div>
-
-<div id="resultSub" class="result-sub">
-  Další úspěšný projekt.
-</div>
-
-<div class="result-poop">
-  😎💩
-</div>
+<div class="result-title">DOKAKÁNO!</div>
+<div id="resultSub" class="result-sub">Další úspěšný projekt.</div>
+<div class="result-poop">😎💩</div>
 
 <div class="rating">
   <small>HODNOCENÍ</small>
@@ -1116,39 +824,28 @@ button{
 </div>
 
 <div class="result-grid">
+  <div class="result-box">
+    <small>ČAS</small>
+    <strong id="resultTime">00:00</strong>
+  </div>
 
-<div class="result-box">
-  <small>ČAS</small>
-  <strong id="resultTime">00:00</strong>
+  <div class="result-box">
+    <small id="resultMoneyLabel">VYDĚLÁNO</small>
+    <strong id="resultMoney" class="green">0 Kč</strong>
+  </div>
 </div>
 
-<div class="result-box">
-  <small id="resultMoneyLabel">VYDĚLÁNO</small>
-  <strong id="resultMoney" class="green">0 Kč</strong>
-</div>
-
-</div>
-
-<button class="action-btn share-btn" onclick="shareResult()">
-  📤 SDÍLET
-</button>
-
-<button class="action-btn" onclick="showScreen('homeScreen')">
-  ✓ ZPĚT DOMŮ
-</button>
+<button class="action-btn share-btn" onclick="shareResult()">📤 SDÍLET</button>
+<button class="action-btn" onclick="showScreen('homeScreen')">✓ ZPĚT DOMŮ</button>
 
 </div>
 </div>
-
 
 <!-- STATISTIKY -->
-
 <div id="statsScreen" class="screen">
 <div class="app">
 
-<div class="page-title">
-  Statistiky
-</div>
+<div class="page-title">Statistiky</div>
 
 <div class="tabs">
   <button id="todayTab" class="tab active" onclick="setStatsMode('today')">Dnes</button>
@@ -1157,93 +854,70 @@ button{
 </div>
 
 <div class="stats-summary">
+  <div class="stats-main-card">
+    <div class="icon">🚽</div>
+    <strong id="statsVisits">0</strong>
+    <small>NÁVŠTĚV</small>
+  </div>
 
-<div class="stats-main-card">
-  <div class="icon">🚽</div>
-  <strong id="statsVisits">0</strong>
-  <small>NÁVŠTĚV</small>
-</div>
+  <div class="stats-main-card">
+    <div class="icon">⏱</div>
+    <strong id="statsTime">0 min</strong>
+    <small>ČAS NA WC</small>
+  </div>
 
-<div class="stats-main-card">
-  <div class="icon">⏱</div>
-  <strong id="statsTime">0 min</strong>
-  <small>ČAS NA WC</small>
-</div>
-
-<div class="stats-main-card">
-  <div class="icon">💰</div>
-  <strong id="statsMoney" class="green">0 Kč</strong>
-  <small>VYDĚLÁNO</small>
-</div>
-
+  <div class="stats-main-card">
+    <div class="icon">💰</div>
+    <strong id="statsMoney" class="green">0 Kč</strong>
+    <small>VYDĚLÁNO</small>
+  </div>
 </div>
 
 <div class="stats-section">
+  <div class="stats-section-title">Doma vs. práce</div>
 
-<div class="stats-section-title">
-  Doma vs. práce
-</div>
+  <div class="place-grid">
+    <div class="place-card">
+      <div class="place-icon">🏠</div>
+      <strong id="homeVisits">0×</strong>
+      <small id="homeTime">0 min</small>
+    </div>
 
-<div class="place-grid">
-
-<div class="place-card">
-  <div class="place-icon">🏠</div>
-  <strong id="homeVisits">0×</strong>
-  <small id="homeTime">0 min</small>
-</div>
-
-<div class="place-card">
-  <div class="place-icon">💼</div>
-  <strong id="workVisits">0×</strong>
-  <small id="workTime">0 min</small>
-</div>
-
-</div>
+    <div class="place-card">
+      <div class="place-icon">💼</div>
+      <strong id="workVisits">0×</strong>
+      <small id="workTime">0 min</small>
+    </div>
+  </div>
 </div>
 
 <div class="stats-section">
+  <div class="stats-section-title">🏆 Rekordy</div>
 
-<div class="stats-section-title">
-  🏆 Rekordy
-</div>
-
-<div class="record-card">
-  <div class="record-left">
-    <span class="record-icon">⏱</span>
-    <span>Nejdelší KÁKO</span>
+  <div class="record-card">
+    <div class="record-left"><span class="record-icon">⏱</span><span>Nejdelší KÁKO</span></div>
+    <strong id="longestKako">00:00</strong>
   </div>
-  <strong id="longestKako">00:00</strong>
-</div>
 
-<div class="record-card">
-  <div class="record-left">
-    <span class="record-icon">💵</span>
-    <span>Nejdražší KÁKO</span>
+  <div class="record-card">
+    <div class="record-left"><span class="record-icon">💵</span><span>Nejdražší KÁKO</span></div>
+    <strong id="mostExpensive" class="green">0 Kč</strong>
   </div>
-  <strong id="mostExpensive" class="green">0 Kč</strong>
-</div>
 
-<div class="record-card">
-  <div class="record-left">
-    <span class="record-icon">🚽</span>
-    <span>Nejvíc za den</span>
+  <div class="record-card">
+    <div class="record-left"><span class="record-icon">🚽</span><span>Nejvíc za den</span></div>
+    <strong id="mostVisitsDay">0</strong>
   </div>
-  <strong id="mostVisitsDay">0</strong>
 </div>
 
 </div>
 </div>
-</div>
-
 
 <!-- ACHIEVEMENTY -->
-
 <div id="achievementsScreen" class="screen">
 <div class="app">
 
-<div class="page-title">
-  Achievementy
-</div>
+<div class="page-title">Achievementy</div>
 
 <div class="achievement-progress-card">
   <small>TVŮJ KÁKO PROGRES</small>
@@ -1255,223 +929,106 @@ button{
 </div>
 </div>
 
-
 <!-- HISTORIE -->
-
 <div id="historyScreen" class="screen">
 <div class="app">
 
-<div class="page-title">
-  Historie
-</div>
-
+<div class="page-title">Historie</div>
 <div id="historyList"></div>
 
-<button class="danger" onclick="clearHistory()">
-  SMAZAT CELOU HISTORII
-</button>
+<button class="danger" onclick="clearHistory()">SMAZAT CELOU HISTORII</button>
 
 </div>
 </div>
-
 
 <!-- NASTAVENÍ -->
-
 <div id="settingsScreen" class="screen">
 <div class="app">
 
-<div class="page-title">
-  Nastavení
+<div class="page-title">Nastavení</div>
+
+<div class="settings-card">
+  <h3>Profil</h3>
+
+  <label>Přezdívka</label>
+  <input id="nicknameInput" type="text" maxlength="25" placeholder="např. Milan">
 </div>
 
 <div class="settings-card">
+  <h3>Výdělek</h3>
 
-<h3>Profil</h3>
+  <div class="pay-switch">
+    <button id="monthlyBtn" class="pay-btn active" onclick="setPayMode('monthly')">Měsíční plat</button>
+    <button id="hourlyBtn" class="pay-btn" onclick="setPayMode('hourly')">Hodinovka</button>
+  </div>
 
-<label>Přezdívka</label>
+  <div id="monthlySettings">
+    <label>Měsíční čistá mzda</label>
+    <input id="salaryInput" type="number" inputmode="decimal" placeholder="např. 50000">
 
-<input
-  id="nicknameInput"
-  type="text"
-  maxlength="25"
-  placeholder="např. Milan"
->
+    <label>Pracovních hodin za měsíc</label>
+    <input id="hoursInput" type="number" inputmode="decimal" value="160">
+  </div>
 
+  <div id="hourlySettings" style="display:none">
+    <label>Čistá hodinovka</label>
+    <input id="hourlyInput" type="number" inputmode="decimal" placeholder="např. 250">
+  </div>
 </div>
-
 
 <div class="settings-card">
+  <h3>Zvuk</h3>
 
-<h3>Výdělek</h3>
+  <div class="setting-row">
+    <div class="setting-info">
+      <strong>🔊 Zvuky KÁKO</strong>
+      <small>Gong při startu a spláchnutí při ukončení.</small>
+    </div>
 
-<div class="pay-switch">
+    <button id="soundToggle" class="setting-toggle" onclick="toggleSound()">ZAP</button>
+  </div>
 
-<button
-  id="monthlyBtn"
-  class="pay-btn active"
-  onclick="setPayMode('monthly')"
->
-  Měsíční plat
-</button>
-
-<button
-  id="hourlyBtn"
-  class="pay-btn"
-  onclick="setPayMode('hourly')"
->
-  Hodinovka
-</button>
-
+  <div class="sound-tests">
+    <button class="sound-test-btn" onclick="testStartBell()">🥊 TEST GONG</button>
+    <button class="sound-test-btn" onclick="testFlush()">🚽 TEST SPLÁCHNUTÍ</button>
+  </div>
 </div>
-
-<div id="monthlySettings">
-
-<label>Měsíční čistá mzda</label>
-
-<input
-  id="salaryInput"
-  type="number"
-  inputmode="decimal"
-  placeholder="např. 50000"
->
-
-<label>Pracovních hodin za měsíc</label>
-
-<input
-  id="hoursInput"
-  type="number"
-  inputmode="decimal"
-  value="160"
->
-
-</div>
-
-<div id="hourlySettings" style="display:none">
-
-<label>Čistá hodinovka</label>
-
-<input
-  id="hourlyInput"
-  type="number"
-  inputmode="decimal"
-  placeholder="např. 250"
->
-
-</div>
-
-</div>
-
-
-<!-- ZVUK -->
 
 <div class="settings-card">
+  <h3>Hlídání KÁKO</h3>
 
-<h3>Zvuk</h3>
+  <div class="setting-row">
+    <div class="setting-info">
+      <strong>🚨 Nezapomněl jsem dokakat?</strong>
+      <small>Aplikace tě upozorní, když KÁKO běží podezřele dlouho.</small>
+    </div>
 
-<div class="setting-row">
+    <button id="reminderToggle" class="setting-toggle" onclick="toggleReminder()">ZAP</button>
+  </div>
 
-<div class="setting-info">
-  <strong>🔊 Zvuky KÁKO</strong>
-  <small>
-    Gong, hlášky, upozornění a spláchnutí.
-  </small>
+  <div id="reminderTimeBox" class="reminder-time">
+    <label>První upozornění po</label>
+
+    <select id="reminderMinutesSelect">
+      <option value="15">15 minutách</option>
+      <option value="20">20 minutách</option>
+      <option value="30">30 minutách</option>
+    </select>
+  </div>
 </div>
 
-<button
-  id="soundToggle"
-  class="setting-toggle"
-  onclick="toggleSound()"
->
-  ZAP
-</button>
-
-</div>
-
-<div class="sound-tests">
-
-<button
-  class="sound-test-btn"
-  onclick="testStartBell()"
->
-  🥊 TEST GONG
-</button>
-
-<button
-  class="sound-test-btn"
-  onclick="testFlush()"
->
-  🚽 TEST SPLÁCHNUTÍ
-</button>
-
-</div>
-
-</div>
-
-
-<!-- REMINDER -->
-
-<div class="settings-card">
-
-<h3>Hlídání KÁKO</h3>
-
-<div class="setting-row">
-
-<div class="setting-info">
-  <strong>🚨 Nezapomněl jsem dokakat?</strong>
-  <small>
-    Aplikace tě upozorní, když KÁKO běží podezřele dlouho.
-  </small>
-</div>
-
-<button
-  id="reminderToggle"
-  class="setting-toggle"
-  onclick="toggleReminder()"
->
-  ZAP
-</button>
-
-</div>
-
-<div id="reminderTimeBox" class="reminder-time">
-
-<label>První upozornění po</label>
-
-<select id="reminderMinutesSelect">
-  <option value="15">15 minutách</option>
-  <option value="20">20 minutách</option>
-  <option value="30">30 minutách</option>
-</select>
-
-</div>
-
-</div>
-
-
-<button class="save-btn" onclick="saveSettings()">
-  ULOŽIT A ZPĚT
-</button>
+<button class="save-btn" onclick="saveSettings()">ULOŽIT A ZPĚT</button>
 
 </div>
 </div>
 
-
-<!-- MENU -->
-
+<!-- SPODNÍ MENU -->
 <div id="bottomNav" class="bottom-nav">
 
 <button id="navPrimary" class="nav-btn active" onclick="openPrimaryScreen()">
-
   <span class="running-dot"></span>
-
-  <span id="navPrimaryIcon" class="nav-icon">
-    🏠
-  </span>
-
-  <span id="navPrimaryText">
-    Domů
-  </span>
-
+  <span id="navPrimaryIcon" class="nav-icon">🏠</span>
+  <span id="navPrimaryText">Domů</span>
 </button>
 
 <button id="navStats" class="nav-btn" onclick="showScreen('statsScreen')">
@@ -1496,141 +1053,70 @@ button{
 
 </div>
 
-
 <div id="toast" class="toast"></div>
 
-
-<!-- REMINDER OKNO -->
-
+<!-- UPOZORNĚNÍ -->
 <div id="reminderOverlay" class="reminder-overlay">
-
 <div class="reminder-modal">
 
-<div class="reminder-icon">
-  🚨💩
-</div>
-
-<div class="reminder-title">
-  JEŠTĚ KAKÁŠ?
-</div>
+<div class="reminder-icon">🚨💩</div>
+<div class="reminder-title">JEŠTĚ KAKÁŠ?</div>
 
 <div class="reminder-text">
-
-KÁKO už běží nějak podezřele dlouho.
-
-<span
-  id="reminderRunningTime"
-  class="reminder-time-value"
->
-  20:00
-</span>
-
-Nezapomněl jsi ho ukončit?
-
+  KÁKO už běží nějak podezřele dlouho.
+  <span id="reminderRunningTime" class="reminder-time-value">20:00</span>
+  Nezapomněl jsi ho ukončit?
 </div>
 
-<button class="reminder-continue" onclick="continueKako()">
-  💩 JO, JEŠTĚ KAKÁM
-</button>
-
-<button class="reminder-stop" onclick="finishFromReminder()">
-  🚽 DOKAKÁNO
-</button>
+<button class="reminder-continue" onclick="continueKako()">💩 JO, JEŠTĚ KAKÁM</button>
+<button class="reminder-stop" onclick="finishFromReminder()">🚽 DOKAKÁNO</button>
 
 </div>
 </div>
-
 
 <script>
+let timerInterval=null;
+let quoteInterval=null;
+let startTime=null;
+let activeLocationMode=null;
+let nextReminderAt=null;
+let lastResult=null;
+let isFinishing=false;
 
-/* =========================
-   DATA
-========================= */
+let locationMode=localStorage.getItem("locationMode")||"work";
+let payMode=localStorage.getItem("payMode")||"monthly";
+let soundEnabled=localStorage.getItem("soundEnabled")!=="false";
+let reminderEnabled=localStorage.getItem("reminderEnabled")!=="false";
+let reminderMinutes=Number(localStorage.getItem("reminderMinutes"))||20;
+let ratePerMinute=0;
+let statsMode="today";
 
-let timerInterval = null;
-let quoteInterval = null;
+let workDeck=[];
+let homeDeck=[];
+let workDeckPosition=0;
+let homeDeckPosition=0;
 
-let startTime = null;
-let activeLocationMode = null;
-let nextReminderAt = null;
-
-let lastResult = null;
-let isFinishing = false;
-
-let locationMode =
-  localStorage.getItem("locationMode") || "work";
-
-let payMode =
-  localStorage.getItem("payMode") || "monthly";
-
-let soundEnabled =
-  localStorage.getItem("soundEnabled") !== "false";
-
-let reminderEnabled =
-  localStorage.getItem("reminderEnabled") !== "false";
-
-let reminderMinutes =
-  Number(localStorage.getItem("reminderMinutes")) || 20;
-
-let ratePerMinute = 0;
-let statsMode = "today";
-
-let workDeck = [];
-let homeDeck = [];
-
-let workDeckPosition = 0;
-let homeDeckPosition = 0;
-
-
-/* HISTORIE */
-
-let history = [];
+let history=[];
 
 try{
-  history =
-    JSON.parse(
-      localStorage.getItem("kakoHistory")
-    ) || [];
-}
-catch(e){
-  history = [];
+  history=JSON.parse(localStorage.getItem("kakoHistory"))||[];
+}catch(e){
+  history=[];
 }
 
-history =
-  history.map(item => ({
-
-    start:
-      Number(item.start),
-
-    end:
-      Number(item.end)
-      ||
-      (
-        Number(item.start)
-        +
-        (Number(item.seconds) || 0) * 1000
-      ),
-
-    seconds:
-      Number(item.seconds) || 0,
-
-    money:
-      Number(item.money) || 0,
-
-    location:
-      item.location || "work"
-
-  }));
+history=history.map(item=>({
+  start:Number(item.start),
+  end:Number(item.end)||(Number(item.start)+(Number(item.seconds)||0)*1000),
+  seconds:Number(item.seconds)||0,
+  money:Number(item.money)||0,
+  location:item.location||"work"
+}));
 
 saveHistory();
 
+/* HLÁŠKY - PRÁCE */
 
-/* =========================
-   HLÁŠKY PRÁCE
-========================= */
-
-const workQuotes = [
-
+const workQuotes=[
 "Firma právě financuje tvé trávení.",
 "Výplata běží. Ty sedíš. Ideální stav.",
 "Každá další minuta jde na účet zaměstnavatele.",
@@ -1688,19 +1174,13 @@ const workQuotes = [
 "Management zatím netuší, kde vznikají skutečné náklady.",
 "Dnes máš nejlépe placenou židli ve firmě.",
 "Tohle se do timesheetu píše jen velmi těžko.",
-"Zaměstnavatel právě dostává svoje peníze zpět. Bohužel jinou cestou.",
 "Další firemní investice právě míří do kanalizace.",
 "KÁKO oddělení hlásí: mise pokračuje."
-
 ];
 
+/* HLÁŠKY - DOMA */
 
-/* =========================
-   HLÁŠKY DOMA
-========================= */
-
-const homeQuotes = [
-
+const homeQuotes=[
 "Doma sereš zdarma.",
 "Čistě soukromý projekt.",
 "Žádné peníze. Jen čest a sláva.",
@@ -1741,78 +1221,22 @@ const homeQuotes = [
 "Výkon profesionální. Plat amatérský.",
 "Kdybys byl v práci, už by z toho něco káplo.",
 "Domácí keramika děkuje za návštěvu."
-
 ];
 
+/* ACHIEVEMENTY */
 
-/* =========================
-   ACHIEVEMENTY
-========================= */
-
-const achievementsData = [
-
-{
-  icon:"💩",
-  title:"První hovínko",
-  text:"Dokonči první KÁKO",
-  test:s => s.visits >= 1
-},
-
-{
-  icon:"🔟",
-  title:"Pravidelný zákazník",
-  text:"Dokonči 10 návštěv",
-  test:s => s.visits >= 10
-},
-
-{
-  icon:"⏱",
-  title:"Hodina pravdy",
-  text:"Strav celkem 1 hodinu na WC",
-  test:s => s.seconds >= 3600
-},
-
-{
-  icon:"💵",
-  title:"Firemní investor",
-  text:"Vydělej na WC 500 Kč",
-  test:s => s.money >= 500
-},
-
-{
-  icon:"🤑",
-  title:"Keramický magnát",
-  text:"Vydělej na WC 1 000 Kč",
-  test:s => s.money >= 1000
-},
-
-{
-  icon:"🏆",
-  title:"Dlouhá porada",
-  text:"Jedno KÁKO minimálně 20 minut",
-  test:s => s.longest >= 1200
-},
-
-{
-  icon:"🏠",
-  title:"Domácí patriot",
-  text:"Dokonči 5 návštěv doma",
-  test:s => s.homeVisits >= 5
-},
-
-{
-  icon:"💼",
-  title:"Firemní specialista",
-  text:"Dokonči 5 návštěv v práci",
-  test:s => s.workVisits >= 5
-}
-
+const achievementsData=[
+{icon:"💩",title:"První hovínko",text:"Dokonči první KÁKO",test:s=>s.visits>=1},
+{icon:"🔟",title:"Pravidelný zákazník",text:"Dokonči 10 návštěv",test:s=>s.visits>=10},
+{icon:"⏱",title:"Hodina pravdy",text:"Strav celkem 1 hodinu na WC",test:s=>s.seconds>=3600},
+{icon:"💵",title:"Firemní investor",text:"Vydělej na WC 500 Kč",test:s=>s.money>=500},
+{icon:"🤑",title:"Keramický magnát",text:"Vydělej na WC 1 000 Kč",test:s=>s.money>=1000},
+{icon:"🏆",title:"Dlouhá porada",text:"Jedno KÁKO minimálně 20 minut",test:s=>s.longest>=1200},
+{icon:"🏠",title:"Domácí patriot",text:"Dokonči 5 návštěv doma",test:s=>s.homeVisits>=5},
+{icon:"💼",title:"Firemní specialista",text:"Dokonči 5 návštěv v práci",test:s=>s.workVisits>=5}
 ];
 
-
-/* =========================
-   AUDIO
-========================= */
+/* AUDIO */
 
 function getBellAudio(){
   return document.getElementById("startBellSound");
@@ -1822,338 +1246,128 @@ function getFlushAudio(){
   return document.getElementById("flushSound");
 }
 
-
 async function playAudio(audio){
-
-  if(
-    !soundEnabled
-    ||
-    !audio
-  ){
-    return false;
-  }
+  if(!soundEnabled||!audio)return false;
 
   try{
-
     audio.pause();
-    audio.currentTime = 0;
-    audio.volume = 1;
-
+    audio.currentTime=0;
+    audio.volume=1;
     await audio.play();
-
     return true;
-
-  }
-  catch(error){
-
-    console.log(
-      "Audio chyba:",
-      error
-    );
-
+  }catch(error){
+    console.log("Audio chyba:",error);
     return false;
   }
 }
 
-
 function playStartBell(){
-  return playAudio(
-    getBellAudio()
-  );
+  return playAudio(getBellAudio());
 }
-
 
 function playFlushSound(){
-  return playAudio(
-    getFlushAudio()
-  );
+  return playAudio(getFlushAudio());
 }
 
-
-/* TESTY */
-
 function testStartBell(){
-
-  if(
-    !soundEnabled
-  ){
-
-    showToast(
-      "Nejdřív zapni zvuky."
-    );
-
+  if(!soundEnabled){
+    showToast("Nejdřív zapni zvuky.");
     return;
   }
-
   playStartBell();
 }
 
-
 function testFlush(){
-
-  if(
-    !soundEnabled
-  ){
-
-    showToast(
-      "Nejdřív zapni zvuky."
-    );
-
+  if(!soundEnabled){
+    showToast("Nejdřív zapni zvuky.");
     return;
   }
-
   playFlushSound();
 }
 
-
-/* =========================
-   BALÍČEK HLÁŠEK
-========================= */
+/* HLÁŠKY */
 
 function shuffleArray(array){
+  const copy=[...array];
 
-  const copy =
-    [...array];
-
-  for(
-    let i = copy.length - 1;
-    i > 0;
-    i--
-  ){
-
-    const j =
-      Math.floor(
-        Math.random() *
-        (i + 1)
-      );
-
-    [
-      copy[i],
-      copy[j]
-    ]
-    =
-    [
-      copy[j],
-      copy[i]
-    ];
+  for(let i=copy.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [copy[i],copy[j]]=[copy[j],copy[i]];
   }
 
   return copy;
 }
 
-
 function resetQuoteDecks(){
-
-  workDeck =
-    shuffleArray(
-      workQuotes
-    );
-
-  homeDeck =
-    shuffleArray(
-      homeQuotes
-    );
-
-  workDeckPosition =
-    0;
-
-  homeDeckPosition =
-    0;
+  workDeck=shuffleArray(workQuotes);
+  homeDeck=shuffleArray(homeQuotes);
+  workDeckPosition=0;
+  homeDeckPosition=0;
 }
-
 
 function getNextQuote(){
-
-  if(
-    activeLocationMode ===
-    "home"
-  ){
-
-    if(
-      homeDeckPosition >=
-      homeDeck.length
-    ){
-
-      homeDeck =
-        shuffleArray(
-          homeQuotes
-        );
-
-      homeDeckPosition =
-        0;
+  if(activeLocationMode==="home"){
+    if(homeDeckPosition>=homeDeck.length){
+      homeDeck=shuffleArray(homeQuotes);
+      homeDeckPosition=0;
     }
-
-    return homeDeck[
-      homeDeckPosition++
-    ];
+    return homeDeck[homeDeckPosition++];
   }
 
-
-  if(
-    workDeckPosition >=
-    workDeck.length
-  ){
-
-    workDeck =
-      shuffleArray(
-        workQuotes
-      );
-
-    workDeckPosition =
-      0;
+  if(workDeckPosition>=workDeck.length){
+    workDeck=shuffleArray(workQuotes);
+    workDeckPosition=0;
   }
 
-  return workDeck[
-    workDeckPosition++
-  ];
+  return workDeck[workDeckPosition++];
 }
 
-
-/* =========================
-   NAV
-========================= */
+/* NAV */
 
 function isKakoRunning(){
   return !!startTime;
 }
 
-
 function updatePrimaryNav(){
+  const button=document.getElementById("navPrimary");
 
-  const button =
-    document.getElementById(
-      "navPrimary"
-    );
-
-  if(
-    isKakoRunning()
-  ){
-
-    document.getElementById(
-      "navPrimaryIcon"
-    ).innerText =
-      "💩";
-
-    document.getElementById(
-      "navPrimaryText"
-    ).innerText =
-      "Probíhá";
-
-    button.classList.add(
-      "running"
-    );
-
-  }
-
-  else{
-
-    document.getElementById(
-      "navPrimaryIcon"
-    ).innerText =
-      "🏠";
-
-    document.getElementById(
-      "navPrimaryText"
-    ).innerText =
-      "Domů";
-
-    button.classList.remove(
-      "running"
-    );
+  if(isKakoRunning()){
+    document.getElementById("navPrimaryIcon").innerText="💩";
+    document.getElementById("navPrimaryText").innerText="Probíhá";
+    button.classList.add("running");
+  }else{
+    document.getElementById("navPrimaryIcon").innerText="🏠";
+    document.getElementById("navPrimaryText").innerText="Domů";
+    button.classList.remove("running");
   }
 }
-
 
 function openPrimaryScreen(){
-
-  showScreen(
-    isKakoRunning()
-    ? "timerScreen"
-    : "homeScreen"
-  );
+  showScreen(isKakoRunning()?"timerScreen":"homeScreen");
 }
 
-
-/* =========================
-   ZVUKY ZAP/VYP
-========================= */
+/* ZVUK */
 
 function updateSoundUI(){
-
-  const button =
-    document.getElementById(
-      "soundToggle"
-    );
-
-  button.innerText =
-    soundEnabled
-    ? "ZAP"
-    : "VYP";
-
-  button.classList.toggle(
-    "on",
-    soundEnabled
-  );
+  const button=document.getElementById("soundToggle");
+  button.innerText=soundEnabled?"ZAP":"VYP";
+  button.classList.toggle("on",soundEnabled);
 }
-
 
 function toggleSound(){
-
-  soundEnabled =
-    !soundEnabled;
-
-  localStorage.setItem(
-    "soundEnabled",
-    String(soundEnabled)
-  );
-
+  soundEnabled=!soundEnabled;
+  localStorage.setItem("soundEnabled",String(soundEnabled));
   updateSoundUI();
-
-  showToast(
-    soundEnabled
-    ? "🔊 Zvuky zapnuté"
-    : "🔇 Zvuky vypnuté"
-  );
+  showToast(soundEnabled?"Zvuky zapnuté":"Zvuky vypnuté");
 }
 
-
-/* =========================
-   SETTINGS
-========================= */
+/* SETTINGS */
 
 function loadSettings(){
-
-  document.getElementById(
-    "nicknameInput"
-  ).value =
-    localStorage.getItem(
-      "nickname"
-    ) || "";
-
-
-  document.getElementById(
-    "salaryInput"
-  ).value =
-    localStorage.getItem(
-      "salary"
-    ) || "";
-
-
-  document.getElementById(
-    "hoursInput"
-  ).value =
-    localStorage.getItem(
-      "hours"
-    ) || 160;
-
-
-  document.getElementById(
-    "hourlyInput"
-  ).value =
-    localStorage.getItem(
-      "hourly"
-    ) || "";
-
+  document.getElementById("nicknameInput").value=localStorage.getItem("nickname")||"";
+  document.getElementById("salaryInput").value=localStorage.getItem("salary")||"";
+  document.getElementById("hoursInput").value=localStorage.getItem("hours")||160;
+  document.getElementById("hourlyInput").value=localStorage.getItem("hourly")||"";
 
   updatePayUI();
   updateSoundUI();
@@ -2161,2133 +1375,770 @@ function loadSettings(){
   calculateRate();
 }
 
-
 function setPayMode(mode){
-
-  payMode =
-    mode;
-
-  localStorage.setItem(
-    "payMode",
-    mode
-  );
-
+  payMode=mode;
+  localStorage.setItem("payMode",mode);
   updatePayUI();
   calculateRate();
   updateHome();
 }
 
-
 function updatePayUI(){
-
-  document
-    .getElementById("monthlyBtn")
-    .classList
-    .toggle(
-      "active",
-      payMode === "monthly"
-    );
-
-  document
-    .getElementById("hourlyBtn")
-    .classList
-    .toggle(
-      "active",
-      payMode === "hourly"
-    );
-
-
-  document.getElementById(
-    "monthlySettings"
-  ).style.display =
-    payMode === "monthly"
-    ? "block"
-    : "none";
-
-
-  document.getElementById(
-    "hourlySettings"
-  ).style.display =
-    payMode === "hourly"
-    ? "block"
-    : "none";
+  document.getElementById("monthlyBtn").classList.toggle("active",payMode==="monthly");
+  document.getElementById("hourlyBtn").classList.toggle("active",payMode==="hourly");
+  document.getElementById("monthlySettings").style.display=payMode==="monthly"?"block":"none";
+  document.getElementById("hourlySettings").style.display=payMode==="hourly"?"block":"none";
 }
 
-
 function saveSettings(){
+  const nickname=document.getElementById("nicknameInput").value.trim();
+  localStorage.setItem("nickname",nickname);
 
-  const nickname =
-    document
-      .getElementById(
-        "nicknameInput"
-      )
-      .value
-      .trim();
+  reminderMinutes=Number(document.getElementById("reminderMinutesSelect").value)||20;
+  localStorage.setItem("reminderMinutes",String(reminderMinutes));
 
-  localStorage.setItem(
-    "nickname",
-    nickname
-  );
+  if(payMode==="monthly"){
+    const salary=Number(document.getElementById("salaryInput").value);
+    const hours=Number(document.getElementById("hoursInput").value);
 
-
-  reminderMinutes =
-    Number(
-      document.getElementById(
-        "reminderMinutesSelect"
-      ).value
-    ) || 20;
-
-
-  localStorage.setItem(
-    "reminderMinutes",
-    String(reminderMinutes)
-  );
-
-
-  if(
-    payMode === "monthly"
-  ){
-
-    const salary =
-      Number(
-        document.getElementById(
-          "salaryInput"
-        ).value
-      );
-
-    const hours =
-      Number(
-        document.getElementById(
-          "hoursInput"
-        ).value
-      );
-
-    if(
-      !salary ||
-      !hours
-    ){
-
-      alert(
-        "Vyplň měsíční plat a pracovní hodiny."
-      );
-
+    if(!salary||!hours){
+      alert("Vyplň měsíční plat a pracovní hodiny.");
       return;
     }
 
-    localStorage.setItem(
-      "salary",
-      salary
-    );
+    localStorage.setItem("salary",salary);
+    localStorage.setItem("hours",hours);
+  }else{
+    const hourly=Number(document.getElementById("hourlyInput").value);
 
-    localStorage.setItem(
-      "hours",
-      hours
-    );
-
-  }
-
-  else{
-
-    const hourly =
-      Number(
-        document.getElementById(
-          "hourlyInput"
-        ).value
-      );
-
-    if(
-      !hourly
-    ){
-
-      alert(
-        "Vyplň hodinovku."
-      );
-
+    if(!hourly){
+      alert("Vyplň hodinovku.");
       return;
     }
 
-    localStorage.setItem(
-      "hourly",
-      hourly
-    );
+    localStorage.setItem("hourly",hourly);
   }
-
 
   calculateRate();
   updateHome();
 
-
-  showScreen(
-    isKakoRunning()
-    ? "timerScreen"
-    : "homeScreen"
-  );
-
-
-  showToast(
-    "✓ Nastavení uloženo"
-  );
+  showScreen(isKakoRunning()?"timerScreen":"homeScreen");
+  showToast("Nastavení uloženo");
 }
-
 
 function calculateRate(){
+  if(payMode==="monthly"){
+    const salary=Number(localStorage.getItem("salary"))||0;
+    const hours=Number(localStorage.getItem("hours"))||160;
 
-  if(
-    payMode === "monthly"
-  ){
-
-    const salary =
-      Number(
-        localStorage.getItem(
-          "salary"
-        )
-      ) || 0;
-
-    const hours =
-      Number(
-        localStorage.getItem(
-          "hours"
-        )
-      ) || 160;
-
-    ratePerMinute =
-      salary > 0 &&
-      hours > 0
-      ? salary / (hours * 60)
-      : 0;
-
-  }
-
-  else{
-
-    const hourly =
-      Number(
-        localStorage.getItem(
-          "hourly"
-        )
-      ) || 0;
-
-    ratePerMinute =
-      hourly > 0
-      ? hourly / 60
-      : 0;
+    ratePerMinute=salary>0&&hours>0?salary/(hours*60):0;
+  }else{
+    const hourly=Number(localStorage.getItem("hourly"))||0;
+    ratePerMinute=hourly>0?hourly/60:0;
   }
 }
 
-
-/* =========================
-   DOMA / PRÁCE
-========================= */
+/* DOMA / PRÁCE */
 
 function setLocationMode(mode){
-
-  locationMode =
-    mode;
-
-  localStorage.setItem(
-    "locationMode",
-    mode
-  );
-
+  locationMode=mode;
+  localStorage.setItem("locationMode",mode);
   updateHome();
 }
 
-
 function updateLocation(){
+  const home=locationMode==="home";
 
-  const home =
-    locationMode === "home";
+  document.getElementById("homeModeBtn").classList.toggle("active",home);
+  document.getElementById("workModeBtn").classList.toggle("active",!home);
 
+  document.getElementById("modeInfo").innerText=
+    home?"Doma sereš zdarma.":"V práci se každá minuta mění na peníze.";
 
-  document.getElementById(
-    "homeModeBtn"
-  ).classList.toggle(
-    "active",
+  document.getElementById("miniRate").innerHTML=
     home
-  );
-
-
-  document.getElementById(
-    "workModeBtn"
-  ).classList.toggle(
-    "active",
-    !home
-  );
-
-
-  document.getElementById(
-    "modeInfo"
-  ).innerText =
-    home
-    ? "Doma sereš zdarma."
-    : "V práci se každá minuta mění na peníze.";
-
-
-  document.getElementById(
-    "miniRate"
-  ).innerHTML =
-    home
-    ? "🏠 Domácí KÁKO: <strong>0 Kč</strong>"
-    : `KÁKO kurz: <strong>${moneyFormat(ratePerMinute)}/min</strong>`;
+      ?'🏠 Domácí KÁKO: <strong>0 Kč</strong>'
+      :`KÁKO kurz: <strong>${moneyFormat(ratePerMinute)}/min</strong>`;
 }
 
-
-/* =========================
-   ACTIVE STORAGE
-========================= */
+/* ULOŽENÍ BĚŽÍCÍHO KÁKO */
 
 function saveActiveKako(){
+  if(!startTime)return;
 
-  if(
-    !startTime
-  ){
-    return;
-  }
-
-  localStorage.setItem(
-    "activeKako",
-    JSON.stringify({
-
-      start:
-        startTime,
-
-      location:
-        activeLocationMode,
-
-      nextReminderAt:
-        nextReminderAt
-
-    })
-  );
+  localStorage.setItem("activeKako",JSON.stringify({
+    start:startTime,
+    location:activeLocationMode,
+    nextReminderAt:nextReminderAt
+  }));
 }
 
-
-/* =========================
-   START KÁKO
-========================= */
+/* START */
 
 function startKako(){
-
-  if(
-    isKakoRunning()
-  ){
-
-    showScreen(
-      "timerScreen"
-    );
-
+  if(isKakoRunning()){
+    showScreen("timerScreen");
     return;
   }
 
-
-  if(
-    locationMode === "work"
-    &&
-    ratePerMinute <= 0
-  ){
-
-    alert(
-      "Nejdřív nastav plat v Nastavení."
-    );
-
-    showScreen(
-      "settingsScreen"
-    );
-
+  if(locationMode==="work"&&ratePerMinute<=0){
+    alert("Nejdřív nastav plat v Nastavení.");
+    showScreen("settingsScreen");
     return;
   }
 
-
-  /*
-    ZVUK JE PŘÍMO V KLIKNUTÍ.
-    TO JE DŮLEŽITÉ PRO iPHONE.
-  */
-
+  /* GONG PŘI STARTU */
   playStartBell();
 
+  startTime=Date.now();
+  activeLocationMode=locationMode;
 
-  startTime =
-    Date.now();
-
-  activeLocationMode =
-    locationMode;
-
-
-  if(
-    reminderEnabled
-  ){
-
-    nextReminderAt =
-      startTime
-      +
-      reminderMinutes *
-      60000;
-
+  if(reminderEnabled){
+    nextReminderAt=startTime+reminderMinutes*60000;
+  }else{
+    nextReminderAt=null;
   }
-
-  else{
-
-    nextReminderAt =
-      null;
-  }
-
 
   resetQuoteDecks();
-
   saveActiveKako();
-
   prepareTimer();
-
   updateTimer();
-
   changeQuote();
-
   startTimers();
-
   updatePrimaryNav();
-
-  showScreen(
-    "timerScreen"
-  );
+  showScreen("timerScreen");
 }
 
-
-/* =========================
-   TIMER
-========================= */
+/* TIMER */
 
 function startTimers(){
-
   stopTimers();
 
-  timerInterval =
-    setInterval(
-      updateTimer,
-      250
-    );
+  timerInterval=setInterval(updateTimer,250);
 
-  quoteInterval =
-    setInterval(
-      changeQuote,
-      10000
-    );
+  /* NOVÁ HLÁŠKA KAŽDÝCH 10 SEKUND */
+  quoteInterval=setInterval(changeQuote,10000);
 }
-
 
 function stopTimers(){
+  if(timerInterval)clearInterval(timerInterval);
+  if(quoteInterval)clearInterval(quoteInterval);
 
-  if(timerInterval){
-    clearInterval(timerInterval);
-  }
-
-  if(quoteInterval){
-    clearInterval(quoteInterval);
-  }
-
-  timerInterval = null;
-  quoteInterval = null;
+  timerInterval=null;
+  quoteInterval=null;
 }
-
 
 function prepareTimer(){
+  const home=activeLocationMode==="home";
 
-  const home =
-    activeLocationMode ===
-    "home";
+  document.getElementById("timerMode").innerText=home?"🏠 DOMA":"💼 V PRÁCI";
+  document.getElementById("liveLabel").innerText=home?"FINANČNÍ VÝSLEDEK":"PRÁVĚ JSI PROKADIL";
 
+  const money=document.getElementById("currentMoney");
+  money.classList.toggle("free",home);
+  money.innerText=home?"Dnes zadarmo":"0,00 Kč";
 
-  document.getElementById(
-    "timerMode"
-  ).innerText =
-    home
-    ? "🏠 DOMA"
-    : "💼 V PRÁCI";
-
-
-  document.getElementById(
-    "liveLabel"
-  ).innerText =
-    home
-    ? "FINANČNÍ VÝSLEDEK"
-    : "PRÁVĚ JSI PROKADIL";
-
-
-  const money =
-    document.getElementById(
-      "currentMoney"
-    );
-
-  money.classList.toggle(
-    "free",
-    home
-  );
-
-
-  money.innerText =
-    home
-    ? "Dnes zadarmo"
-    : "0,00 Kč";
-
-
-  const card =
-    document.getElementById(
-      "quoteCard"
-    );
-
-  card.classList.toggle(
-    "home",
-    home
-  );
-
-
-  document.getElementById(
-    "quoteLabel"
-  ).innerText =
-    home
-    ? "DOMÁCÍ HLÁŠENÍ"
-    : "FIREMNÍ HLÁŠENÍ";
+  document.getElementById("quoteCard").classList.toggle("home",home);
+  document.getElementById("quoteLabel").innerText=home?"DOMÁCÍ HLÁŠENÍ":"FIREMNÍ HLÁŠENÍ";
 }
 
-
 function updateTimer(){
+  if(!startTime)return;
 
-  if(
-    !startTime
-  ){
-    return;
+  const seconds=Math.max(0,Math.floor((Date.now()-startTime)/1000));
+
+  document.getElementById("timer").innerText=formatClock(seconds);
+
+  if(activeLocationMode==="work"){
+    document.getElementById("currentMoney").innerText=
+      moneyFormat(seconds/60*ratePerMinute);
   }
-
-
-  const seconds =
-    Math.max(
-      0,
-      Math.floor(
-        (
-          Date.now() -
-          startTime
-        ) / 1000
-      )
-    );
-
-
-  document.getElementById(
-    "timer"
-  ).innerText =
-    formatClock(seconds);
-
-
-  if(
-    activeLocationMode ===
-    "work"
-  ){
-
-    document.getElementById(
-      "currentMoney"
-    ).innerText =
-      moneyFormat(
-        seconds /
-        60 *
-        ratePerMinute
-      );
-  }
-
 
   checkReminder();
 }
 
-
-/* =========================
-   HLÁŠKY
-========================= */
-
 function changeQuote(){
+  if(!activeLocationMode)return;
 
-  if(
-    !activeLocationMode
-  ){
-    return;
-  }
+  const quote=getNextQuote();
+  const card=document.getElementById("quoteCard");
 
+  document.getElementById("quoteText").innerText=quote;
 
-  const quote =
-    getNextQuote();
-
-
-  const card =
-    document.getElementById(
-      "quoteCard"
-    );
-
-
-  document.getElementById(
-    "quoteText"
-  ).innerText =
-    quote;
-
-
-  card.classList.remove(
-    "quote-pop"
-  );
-
-
+  card.classList.remove("quote-pop");
   void card.offsetWidth;
-
-
-  card.classList.add(
-    "quote-pop"
-  );
+  card.classList.add("quote-pop");
 }
 
+/* UKONČENÍ */
 
-/* =========================
-   STOP
-========================= */
+function stopKako(){
+  if(!startTime||isFinishing)return;
 
-async function stopKako(){
+  isFinishing=true;
 
-  if(
-    !startTime
-    ||
-    isFinishing
-  ){
-    return;
-  }
+  const button=document.getElementById("stopKakoButton");
+  button.disabled=true;
+  button.innerText="🚽 SPLACHUJU...";
 
-
-  isFinishing =
-    true;
-
-
-  const button =
-    document.getElementById(
-      "stopKakoButton"
-    );
-
-
-  button.disabled =
-    true;
-
-  button.innerText =
-    "🚽 SPLACHUJU...";
-
-
-  /*
-    NEJDŘÍV ZVUK.
-    PŘÍMO V KLIKNUTÍ.
-  */
-
+  /* SPRÁVNÝ flush.wav */
   playFlushSound();
 
-
-  const end =
-    Date.now();
-
-
-  const currentStart =
-    startTime;
-
-
-  const currentLocation =
-    activeLocationMode;
-
+  const end=Date.now();
+  const currentStart=startTime;
+  const currentLocation=activeLocationMode;
 
   stopTimers();
   closeReminder();
 
+  const seconds=Math.max(1,Math.floor((end-currentStart)/1000));
 
-  const seconds =
-    Math.max(
-      1,
-      Math.floor(
-        (
-          end -
-          currentStart
-        ) / 1000
-      )
-    );
+  const money=
+    currentLocation==="work"
+      ?seconds/60*ratePerMinute
+      :0;
 
-
-  const money =
-    currentLocation === "work"
-    ? seconds / 60 * ratePerMinute
-    : 0;
-
-
-  const item = {
-
-    start:
-      currentStart,
-
-    end:
-      end,
-
-    seconds:
-      seconds,
-
-    money:
-      money,
-
-    location:
-      currentLocation || "work"
-
+  const item={
+    start:currentStart,
+    end:end,
+    seconds:seconds,
+    money:money,
+    location:currentLocation||"work"
   };
 
-
-  history.unshift(
-    item
-  );
-
-
+  history.unshift(item);
   saveHistory();
 
+  localStorage.removeItem("activeKako");
 
-  localStorage.removeItem(
-    "activeKako"
-  );
+  lastResult=item;
+  prepareResult(item);
 
-
-  lastResult =
-    item;
-
-
-  prepareResult(
-    item
-  );
-
-
-  startTime = null;
-  activeLocationMode = null;
-  nextReminderAt = null;
-
+  startTime=null;
+  activeLocationMode=null;
+  nextReminderAt=null;
 
   updateAll();
 
+  setTimeout(()=>{
+    showScreen("resultScreen");
 
-  /*
-    Necháme spláchnutí chvíli zaznít.
-  */
-
-  setTimeout(
-    () => {
-
-      showScreen(
-        "resultScreen"
-      );
-
-      button.disabled =
-        false;
-
-      button.innerText =
-        "💩 DOKAKÁNO";
-
-      isFinishing =
-        false;
-
-    },
-
-    soundEnabled
-    ? 900
-    : 0
-  );
+    button.disabled=false;
+    button.innerText="💩 DOKAKÁNO";
+    isFinishing=false;
+  },soundEnabled?900:0);
 }
 
-
-/* =========================
-   CANCEL
-========================= */
+/* ZRUŠENÍ */
 
 function cancelKako(){
-
-  if(
-    !confirm(
-      "Zrušit KÁKO bez uložení do historie?"
-    )
-  ){
-    return;
-  }
-
+  if(!confirm("Zrušit KÁKO bez uložení do historie?"))return;
 
   stopTimers();
   closeReminder();
+  localStorage.removeItem("activeKako");
 
-
-  localStorage.removeItem(
-    "activeKako"
-  );
-
-
-  startTime = null;
-  activeLocationMode = null;
-  nextReminderAt = null;
-
+  startTime=null;
+  activeLocationMode=null;
+  nextReminderAt=null;
 
   updatePrimaryNav();
-
-
-  showScreen(
-    "homeScreen"
-  );
-
-
-  showToast(
-    "KÁKO zrušeno. Nikdo se nic nedozví."
-  );
+  showScreen("homeScreen");
+  showToast("KÁKO zrušeno. Nikdo se nic nedozví.");
 }
 
-
-/* =========================
-   RESULT
-========================= */
+/* VÝSLEDEK */
 
 function prepareResult(item){
+  const home=item.location==="home";
 
-  const home =
-    item.location === "home";
+  document.getElementById("resultSub").innerText=
+    home?"Domácí projekt dokončen.":"Firemní projekt dokončen.";
 
-
-  document.getElementById(
-    "resultSub"
-  ).innerText =
-    home
-    ? "Domácí projekt dokončen."
-    : "Firemní projekt dokončen.";
-
-
-  document.getElementById(
-    "resultTime"
-  ).innerText =
-    formatMinutes(
-      item.seconds
-    );
-
-
-  document.getElementById(
-    "resultMoneyLabel"
-  ).innerText =
-    home
-    ? "VYDĚLÁNO"
-    : "PROKAKÁNO";
-
-
-  document.getElementById(
-    "resultMoney"
-  ).innerText =
-    home
-    ? "0 Kč"
-    : moneyFormat(
-        item.money
-      );
-
-
-  document.getElementById(
-    "ratingText"
-  ).innerText =
-    getRating(
-      item.seconds
-    );
+  document.getElementById("resultTime").innerText=formatMinutes(item.seconds);
+  document.getElementById("resultMoneyLabel").innerText=home?"VYDĚLÁNO":"PROKAKÁNO";
+  document.getElementById("resultMoney").innerText=home?"0 Kč":moneyFormat(item.money);
+  document.getElementById("ratingText").innerText=getRating(item.seconds);
 }
 
-
 function getRating(seconds){
+  const minutes=seconds/60;
 
-  const minutes =
-    seconds / 60;
-
-  if(minutes < 2)
-    return "⚡ Rychlovka";
-
-  if(minutes < 5)
-    return "👌 Efektivní vyprazdňovač";
-
-  if(minutes < 10)
-    return "💩 Solidní výkon";
-
-  if(minutes < 15)
-    return "📋 Porada vedení";
-
-  if(minutes < 25)
-    return "👔 Seniorní KÁKO manažer";
-
-  if(minutes < 40)
-    return "🏆 Ředitel keramického oddělení";
+  if(minutes<2)return "⚡ Rychlovka";
+  if(minutes<5)return "👌 Efektivní vyprazdňovač";
+  if(minutes<10)return "💩 Solidní výkon";
+  if(minutes<15)return "📋 Porada vedení";
+  if(minutes<25)return "👔 Seniorní KÁKO manažer";
+  if(minutes<40)return "🏆 Ředitel keramického oddělení";
 
   return "👑 Generální ředitel porcelánu";
 }
 
-
-/* =========================
-   SHARE
-========================= */
+/* SDÍLENÍ */
 
 async function shareResult(){
+  if(!lastResult)return;
 
-  if(
-    !lastResult
-  ){
-    return;
-  }
+  const nickname=localStorage.getItem("nickname")||"Já";
+  const home=lastResult.location==="home";
 
-
-  const nickname =
-    localStorage.getItem(
-      "nickname"
-    ) || "Já";
-
-
-  const home =
-    lastResult.location ===
-    "home";
-
-
-  const text =
-    home
-    ? `💩 KÁKO
+  const text=home
+    ?`💩 KÁKO
 ${nickname} právě dokončil domácí KÁKO.
 ⏱ ${formatMinutes(lastResult.seconds)}
 💰 Vyděláno: 0 Kč
 🏠 Doma se sere zdarma.`
-    : `💩 KÁKO
+    :`💩 KÁKO
 ${nickname} právě dokončil pracovní KÁKO.
 ⏱ ${formatMinutes(lastResult.seconds)}
 💰 Prokakáno: ${moneyFormat(lastResult.money)}
 💼 Firma děkuje za pracovní nasazení.`;
 
-
-  if(
-    navigator.share
-  ){
-
+  if(navigator.share){
     try{
-
-      await navigator.share({
-        title:"KÁKO",
-        text:text
-      });
-
-    }
-    catch(e){}
-
-  }
-
-  else{
-
+      await navigator.share({title:"KÁKO",text:text});
+    }catch(e){}
+  }else{
     try{
-
-      await navigator.clipboard.writeText(
-        text
-      );
-
-      showToast(
-        "Výsledek zkopírován"
-      );
-
-    }
-
-    catch(e){
-
+      await navigator.clipboard.writeText(text);
+      showToast("Výsledek zkopírován");
+    }catch(e){
       alert(text);
     }
   }
 }
 
-
-/* =========================
-   STATS
-========================= */
+/* STATISTIKY */
 
 function filteredHistory(mode){
+  const now=new Date();
 
-  const now =
-    new Date();
+  return history.filter(item=>{
+    const date=new Date(item.start);
 
-
-  return history.filter(
-    item => {
-
-      const date =
-        new Date(
-          item.start
-        );
-
-
-      if(
-        mode === "today"
-      ){
-
-        return (
-          date.getDate() === now.getDate()
-          &&
-          date.getMonth() === now.getMonth()
-          &&
-          date.getFullYear() === now.getFullYear()
-        );
-      }
-
-
-      if(
-        mode === "month"
-      ){
-
-        return (
-          date.getMonth() === now.getMonth()
-          &&
-          date.getFullYear() === now.getFullYear()
-        );
-      }
-
-
-      return true;
+    if(mode==="today"){
+      return date.getDate()===now.getDate()
+        &&date.getMonth()===now.getMonth()
+        &&date.getFullYear()===now.getFullYear();
     }
-  );
-}
 
+    if(mode==="month"){
+      return date.getMonth()===now.getMonth()
+        &&date.getFullYear()===now.getFullYear();
+    }
+
+    return true;
+  });
+}
 
 function sumSeconds(arr){
-
-  return arr.reduce(
-    (sum,item) =>
-      sum +
-      (Number(item.seconds) || 0),
-    0
-  );
+  return arr.reduce((sum,item)=>sum+(Number(item.seconds)||0),0);
 }
-
 
 function sumMoney(arr){
-
-  return arr.reduce(
-    (sum,item) =>
-      sum +
-      (Number(item.money) || 0),
-    0
-  );
+  return arr.reduce((sum,item)=>sum+(Number(item.money)||0),0);
 }
-
 
 function maxSeconds(arr){
-
-  return arr.reduce(
-    (max,item) =>
-      Math.max(
-        max,
-        Number(item.seconds) || 0
-      ),
-    0
-  );
+  return arr.reduce((max,item)=>Math.max(max,Number(item.seconds)||0),0);
 }
 
-
 function getStats(mode){
+  const data=filteredHistory(mode);
+  const home=data.filter(x=>x.location==="home");
+  const work=data.filter(x=>x.location==="work");
 
-  const data =
-    filteredHistory(mode);
-
-
-  const home =
-    data.filter(
-      x => x.location === "home"
-    );
-
-
-  const work =
-    data.filter(
-      x => x.location === "work"
-    );
-
-
-  return {
-
-    visits:
-      data.length,
-
-    seconds:
-      sumSeconds(data),
-
-    money:
-      sumMoney(work),
-
-    homeVisits:
-      home.length,
-
-    homeSeconds:
-      sumSeconds(home),
-
-    workVisits:
-      work.length,
-
-    workSeconds:
-      sumSeconds(work),
-
-    longest:
-      maxSeconds(data),
-
-    mostExpensive:
-      Math.max(
-        0,
-        ...work.map(
-          x =>
-            Number(x.money) || 0
-        )
-      )
-
+  return{
+    visits:data.length,
+    seconds:sumSeconds(data),
+    money:sumMoney(work),
+    homeVisits:home.length,
+    homeSeconds:sumSeconds(home),
+    workVisits:work.length,
+    workSeconds:sumSeconds(work),
+    longest:maxSeconds(data),
+    mostExpensive:Math.max(0,...work.map(x=>Number(x.money)||0))
   };
 }
 
-
 function getMostVisitsOneDay(){
+  const counts={};
 
-  const counts = {};
+  history.forEach(item=>{
+    const d=new Date(item.start);
+    const key=d.getFullYear()+"-"+d.getMonth()+"-"+d.getDate();
+    counts[key]=(counts[key]||0)+1;
+  });
 
-
-  history.forEach(
-    item => {
-
-      const d =
-        new Date(item.start);
-
-
-      const key =
-        d.getFullYear()
-        +
-        "-"
-        +
-        d.getMonth()
-        +
-        "-"
-        +
-        d.getDate();
-
-
-      counts[key] =
-        (counts[key] || 0) + 1;
-    }
-  );
-
-
-  return Math.max(
-    0,
-    ...Object.values(counts)
-  );
+  return Math.max(0,...Object.values(counts));
 }
 
-
 function setStatsMode(mode){
+  statsMode=mode;
 
-  statsMode =
-    mode;
+  document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"));
 
-
-  document
-    .querySelectorAll(".tab")
-    .forEach(
-      tab =>
-        tab.classList.remove(
-          "active"
-        )
-    );
-
-
-  const map = {
+  const map={
     today:"todayTab",
     month:"monthTab",
     all:"allTab"
   };
 
-
-  document
-    .getElementById(
-      map[mode]
-    )
-    .classList.add(
-      "active"
-    );
-
-
+  document.getElementById(map[mode]).classList.add("active");
   updateStats();
 }
 
-
 function updateStats(){
+  const s=getStats(statsMode);
 
-  const s =
-    getStats(
-      statsMode
-    );
+  document.getElementById("statsVisits").innerText=s.visits;
+  document.getElementById("statsTime").innerText=formatLongTime(s.seconds);
+  document.getElementById("statsMoney").innerText=moneyFormat(s.money);
 
+  document.getElementById("homeVisits").innerText=s.homeVisits+"×";
+  document.getElementById("homeTime").innerText=formatLongTime(s.homeSeconds);
 
-  document.getElementById(
-    "statsVisits"
-  ).innerText =
-    s.visits;
+  document.getElementById("workVisits").innerText=s.workVisits+"×";
+  document.getElementById("workTime").innerText=formatLongTime(s.workSeconds);
 
-
-  document.getElementById(
-    "statsTime"
-  ).innerText =
-    formatLongTime(
-      s.seconds
-    );
-
-
-  document.getElementById(
-    "statsMoney"
-  ).innerText =
-    moneyFormat(
-      s.money
-    );
-
-
-  document.getElementById(
-    "homeVisits"
-  ).innerText =
-    s.homeVisits + "×";
-
-
-  document.getElementById(
-    "homeTime"
-  ).innerText =
-    formatLongTime(
-      s.homeSeconds
-    );
-
-
-  document.getElementById(
-    "workVisits"
-  ).innerText =
-    s.workVisits + "×";
-
-
-  document.getElementById(
-    "workTime"
-  ).innerText =
-    formatLongTime(
-      s.workSeconds
-    );
-
-
-  document.getElementById(
-    "longestKako"
-  ).innerText =
-    formatMinutes(
-      s.longest
-    );
-
-
-  document.getElementById(
-    "mostExpensive"
-  ).innerText =
-    moneyFormat(
-      s.mostExpensive
-    );
-
-
-  document.getElementById(
-    "mostVisitsDay"
-  ).innerText =
-    getMostVisitsOneDay();
+  document.getElementById("longestKako").innerText=formatMinutes(s.longest);
+  document.getElementById("mostExpensive").innerText=moneyFormat(s.mostExpensive);
+  document.getElementById("mostVisitsDay").innerText=getMostVisitsOneDay();
 }
 
-
-/* =========================
-   ACHIEVEMENTS
-========================= */
+/* ACHIEVEMENTY */
 
 function renderAchievements(){
+  const s=getStats("all");
+  const box=document.getElementById("achievementsList");
 
-  const s =
-    getStats("all");
+  box.innerHTML="";
 
+  let unlockedCount=0;
 
-  const box =
-    document.getElementById(
-      "achievementsList"
-    );
+  achievementsData.forEach(achievement=>{
+    const unlocked=achievement.test(s);
 
+    if(unlocked)unlockedCount++;
 
-  box.innerHTML = "";
+    const div=document.createElement("div");
+    div.className="achievement"+(unlocked?" unlocked":"");
 
+    div.innerHTML=`
+      <div class="achievement-icon">
+        ${unlocked?achievement.icon:"🔒"}
+      </div>
+      <div>
+        <strong>${achievement.title}</strong>
+        <small>${achievement.text}</small>
+      </div>
+    `;
 
-  let unlockedCount = 0;
+    box.appendChild(div);
+  });
 
-
-  achievementsData.forEach(
-    achievement => {
-
-      const unlocked =
-        achievement.test(s);
-
-
-      if(unlocked){
-        unlockedCount++;
-      }
-
-
-      const div =
-        document.createElement(
-          "div"
-        );
-
-
-      div.className =
-        "achievement"
-        +
-        (
-          unlocked
-          ? " unlocked"
-          : ""
-        );
-
-
-      div.innerHTML = `
-
-        <div class="achievement-icon">
-          ${
-            unlocked
-            ? achievement.icon
-            : "🔒"
-          }
-        </div>
-
-        <div>
-          <strong>
-            ${achievement.title}
-          </strong>
-
-          <small>
-            ${achievement.text}
-          </small>
-        </div>
-
-      `;
-
-
-      box.appendChild(div);
-    }
-  );
-
-
-  document.getElementById(
-    "achievementProgress"
-  ).innerText =
-    unlockedCount
-    +
-    " / "
-    +
-    achievementsData.length;
+  document.getElementById("achievementProgress").innerText=
+    unlockedCount+" / "+achievementsData.length;
 }
 
-
-/* =========================
-   HOME
-========================= */
+/* HOME */
 
 function updateHome(){
-
   calculateRate();
-
   updateLocation();
 
+  const stats=getStats("today");
 
-  const stats =
-    getStats("today");
+  document.getElementById("todayVisits").innerText=stats.visits;
+  document.getElementById("todayTime").innerText=formatLongTime(stats.seconds);
+  document.getElementById("todayMoney").innerText=moneyFormat(stats.money);
 
+  const nickname=localStorage.getItem("nickname");
 
-  document.getElementById(
-    "todayVisits"
-  ).innerText =
-    stats.visits;
-
-
-  document.getElementById(
-    "todayTime"
-  ).innerText =
-    formatLongTime(
-      stats.seconds
-    );
-
-
-  document.getElementById(
-    "todayMoney"
-  ).innerText =
-    moneyFormat(
-      stats.money
-    );
-
-
-  const nickname =
-    localStorage.getItem(
-      "nickname"
-    );
-
-
-  document.getElementById(
-    "helloText"
-  ).innerText =
+  document.getElementById("helloText").innerText=
     nickname
-    ? nickname +
-      ", každá minuta se počítá."
-    : "Každá minuta se počítá.";
+      ?nickname+", každá minuta se počítá."
+      :"Každá minuta se počítá.";
 }
 
-
-/* =========================
-   HISTORY
-========================= */
+/* HISTORIE */
 
 function renderHistory(){
+  const box=document.getElementById("historyList");
 
-  const box =
-    document.getElementById(
-      "historyList"
-    );
-
-
-  if(
-    history.length === 0
-  ){
-
-    box.innerHTML = `
+  if(history.length===0){
+    box.innerHTML=`
       <div class="empty">
         Zatím žádné KÁKO.<br>
         To chce napravit. 💩
       </div>
     `;
-
     return;
   }
 
+  box.innerHTML="";
 
-  box.innerHTML = "";
+  history.forEach((item,index)=>{
+    const date=new Date(item.start);
 
+    const dateText=date.toLocaleDateString("cs-CZ");
+    const timeText=date.toLocaleTimeString("cs-CZ",{hour:"2-digit",minute:"2-digit"});
+    const home=item.location==="home";
 
-  history.forEach(
-    (item,index) => {
+    const div=document.createElement("div");
+    div.className="history-item";
 
-      const date =
-        new Date(
-          item.start
-        );
+    div.innerHTML=`
+      <div class="history-top">
+        <span>💩 ${dateText}</span>
+        <span>${timeText}</span>
+      </div>
 
+      <div class="history-bottom">
+        <span>⏱ ${formatMinutes(item.seconds)}</span>
 
-      const dateText =
-        date.toLocaleDateString(
-          "cs-CZ"
-        );
+        <strong class="green">
+          ${home?"0 Kč":moneyFormat(item.money)}
+        </strong>
 
+        <button class="delete-btn" onclick="deleteHistory(${index})">🗑</button>
+      </div>
 
-      const timeText =
-        date.toLocaleTimeString(
-          "cs-CZ",
-          {
-            hour:"2-digit",
-            minute:"2-digit"
-          }
-        );
+      <div class="history-place">
+        ${home?"🏠 DOMA":"💼 V PRÁCI"}
+      </div>
+    `;
 
-
-      const home =
-        item.location === "home";
-
-
-      const div =
-        document.createElement(
-          "div"
-        );
-
-
-      div.className =
-        "history-item";
-
-
-      div.innerHTML = `
-
-        <div class="history-top">
-
-          <span>
-            💩 ${dateText}
-          </span>
-
-          <span>
-            ${timeText}
-          </span>
-
-        </div>
-
-        <div class="history-bottom">
-
-          <span>
-            ⏱ ${formatMinutes(item.seconds)}
-          </span>
-
-          <strong class="green">
-            ${
-              home
-              ? "0 Kč"
-              : moneyFormat(
-                  item.money
-                )
-            }
-          </strong>
-
-          <button
-            class="delete-btn"
-            onclick="deleteHistory(${index})"
-          >
-            🗑
-          </button>
-
-        </div>
-
-        <div class="history-place">
-          ${
-            home
-            ? "🏠 DOMA"
-            : "💼 V PRÁCI"
-          }
-        </div>
-
-      `;
-
-
-      box.appendChild(div);
-    }
-  );
+    box.appendChild(div);
+  });
 }
-
 
 function deleteHistory(index){
+  if(!confirm("Smazat tento záznam?"))return;
 
-  if(
-    !confirm(
-      "Smazat tento záznam?"
-    )
-  ){
-    return;
-  }
-
-
-  history.splice(
-    index,
-    1
-  );
-
-
+  history.splice(index,1);
   saveHistory();
   updateAll();
-
-
-  showToast(
-    "Záznam smazán"
-  );
+  showToast("Záznam smazán");
 }
-
 
 function clearHistory(){
+  if(!confirm("Opravdu smazat celou historii?"))return;
+  if(!confirm("Fakt úplně všechno? Tohle nejde vrátit."))return;
 
-  if(
-    !confirm(
-      "Opravdu smazat celou historii?"
-    )
-  ){
-    return;
-  }
-
-
-  if(
-    !confirm(
-      "Fakt úplně všechno? Tohle nejde vrátit."
-    )
-  ){
-    return;
-  }
-
-
-  history = [];
-
+  history=[];
   saveHistory();
   updateAll();
-
-
-  showToast(
-    "Historie byla smazána"
-  );
+  showToast("Historie byla smazána");
 }
-
 
 function saveHistory(){
-
-  localStorage.setItem(
-    "kakoHistory",
-    JSON.stringify(history)
-  );
+  localStorage.setItem("kakoHistory",JSON.stringify(history));
 }
 
-
-/* =========================
-   REMINDER
-========================= */
+/* REMINDER */
 
 function updateReminderUI(){
+  const button=document.getElementById("reminderToggle");
 
-  const button =
-    document.getElementById(
-      "reminderToggle"
-    );
+  button.innerText=reminderEnabled?"ZAP":"VYP";
+  button.classList.toggle("on",reminderEnabled);
 
+  document.getElementById("reminderTimeBox").style.display=
+    reminderEnabled?"block":"none";
 
-  button.innerText =
-    reminderEnabled
-    ? "ZAP"
-    : "VYP";
-
-
-  button.classList.toggle(
-    "on",
-    reminderEnabled
-  );
-
-
-  document.getElementById(
-    "reminderTimeBox"
-  ).style.display =
-    reminderEnabled
-    ? "block"
-    : "none";
-
-
-  document.getElementById(
-    "reminderMinutesSelect"
-  ).value =
-    String(
-      reminderMinutes
-    );
+  document.getElementById("reminderMinutesSelect").value=
+    String(reminderMinutes);
 }
 
-
 function toggleReminder(){
+  reminderEnabled=!reminderEnabled;
 
-  reminderEnabled =
-    !reminderEnabled;
-
-
-  localStorage.setItem(
-    "reminderEnabled",
-    String(reminderEnabled)
-  );
-
+  localStorage.setItem("reminderEnabled",String(reminderEnabled));
 
   updateReminderUI();
 
-
-  if(
-    isKakoRunning()
-  ){
-
-    nextReminderAt =
+  if(isKakoRunning()){
+    nextReminderAt=
       reminderEnabled
-      ? Date.now()
-        +
-        reminderMinutes *
-        60000
-      : null;
-
+        ?Date.now()+reminderMinutes*60000
+        :null;
 
     saveActiveKako();
   }
 }
 
-
 function checkReminder(){
+  if(!startTime||!reminderEnabled||!nextReminderAt)return;
 
-  if(
-    !startTime
-    ||
-    !reminderEnabled
-    ||
-    !nextReminderAt
-  ){
-    return;
-  }
-
-
-  if(
-    Date.now() >=
-    nextReminderAt
-  ){
-
-    nextReminderAt = null;
-
+  if(Date.now()>=nextReminderAt){
+    nextReminderAt=null;
     saveActiveKako();
-
     showReminder();
   }
 }
 
-
 function showReminder(){
+  const seconds=Math.floor((Date.now()-startTime)/1000);
 
-  const seconds =
-    Math.floor(
-      (
-        Date.now() -
-        startTime
-      ) / 1000
-    );
+  document.getElementById("reminderRunningTime").innerText=
+    formatMinutes(seconds);
 
-
-  document.getElementById(
-    "reminderRunningTime"
-  ).innerText =
-    formatMinutes(
-      seconds
-    );
-
-
-  document.getElementById(
-    "reminderOverlay"
-  ).classList.add(
-    "show"
-  );
+  document.getElementById("reminderOverlay").classList.add("show");
 }
-
 
 function closeReminder(){
-
-  document.getElementById(
-    "reminderOverlay"
-  ).classList.remove(
-    "show"
-  );
+  document.getElementById("reminderOverlay").classList.remove("show");
 }
-
 
 function continueKako(){
-
   closeReminder();
 
-
-  nextReminderAt =
-    Date.now() +
-    15 * 60000;
-
-
+  nextReminderAt=Date.now()+15*60000;
   saveActiveKako();
 
-
-  showToast(
-    "💩 Kontrola zase za 15 minut."
-  );
+  showToast("Kontrola zase za 15 minut.");
 }
 
-
 function finishFromReminder(){
-
   closeReminder();
-
   stopKako();
 }
 
-
-/* =========================
-   SCREENS
-========================= */
+/* OBRAZOVKY */
 
 function showScreen(id){
+  document.querySelectorAll(".screen").forEach(screen=>screen.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
 
-  document
-    .querySelectorAll(
-      ".screen"
-    )
-    .forEach(
-      screen =>
-        screen.classList.remove(
-          "active"
-        )
-    );
+  document.querySelectorAll(".nav-btn").forEach(button=>button.classList.remove("active"));
 
-
-  document
-    .getElementById(id)
-    .classList
-    .add(
-      "active"
-    );
-
-
-  document
-    .querySelectorAll(
-      ".nav-btn"
-    )
-    .forEach(
-      button =>
-        button.classList.remove(
-          "active"
-        )
-    );
-
-
-  if(
-    id === "homeScreen"
-    ||
-    id === "timerScreen"
-  ){
-
-    document.getElementById(
-      "navPrimary"
-    ).classList.add(
-      "active"
-    );
+  if(id==="homeScreen"||id==="timerScreen"){
+    document.getElementById("navPrimary").classList.add("active");
   }
 
-
-  if(
-    id === "statsScreen"
-  ){
-
-    document.getElementById(
-      "navStats"
-    ).classList.add(
-      "active"
-    );
-
+  if(id==="statsScreen"){
+    document.getElementById("navStats").classList.add("active");
     updateStats();
   }
 
-
-  if(
-    id ===
-    "achievementsScreen"
-  ){
-
-    document.getElementById(
-      "navAchievements"
-    ).classList.add(
-      "active"
-    );
-
+  if(id==="achievementsScreen"){
+    document.getElementById("navAchievements").classList.add("active");
     renderAchievements();
   }
 
-
-  if(
-    id === "historyScreen"
-  ){
-
-    document.getElementById(
-      "navHistory"
-    ).classList.add(
-      "active"
-    );
-
+  if(id==="historyScreen"){
+    document.getElementById("navHistory").classList.add("active");
     renderHistory();
   }
 
-
-  if(
-    id === "settingsScreen"
-  ){
-
-    document.getElementById(
-      "navSettings"
-    ).classList.add(
-      "active"
-    );
-
+  if(id==="settingsScreen"){
+    document.getElementById("navSettings").classList.add("active");
     updateSoundUI();
     updateReminderUI();
   }
 
-
   updatePrimaryNav();
 }
 
-
-/* =========================
-   RESTORE
-========================= */
+/* OBNOVENÍ BĚŽÍCÍHO KÁKO */
 
 function restoreKako(){
+  const raw=localStorage.getItem("activeKako");
 
-  const raw =
-    localStorage.getItem(
-      "activeKako"
-    );
-
-
-  if(!raw){
-    return;
-  }
-
+  if(!raw)return;
 
   try{
+    const saved=JSON.parse(raw);
 
-    const saved =
-      JSON.parse(raw);
-
-
-    startTime =
-      Number(saved.start);
-
-
-    activeLocationMode =
-      saved.location || "work";
-
-
-    nextReminderAt =
-      Number(
-        saved.nextReminderAt
-      ) || null;
-
-  }
-
-  catch(e){
-
-    localStorage.removeItem(
-      "activeKako"
-    );
-
+    startTime=Number(saved.start);
+    activeLocationMode=saved.location||"work";
+    nextReminderAt=Number(saved.nextReminderAt)||null;
+  }catch(e){
+    localStorage.removeItem("activeKako");
     return;
   }
 
+  if(!startTime)return;
 
-  if(!startTime){
-    return;
+  if(reminderEnabled&&!nextReminderAt){
+    nextReminderAt=startTime+reminderMinutes*60000;
   }
-
-
-  if(
-    reminderEnabled
-    &&
-    !nextReminderAt
-  ){
-
-    nextReminderAt =
-      startTime
-      +
-      reminderMinutes *
-      60000;
-  }
-
 
   resetQuoteDecks();
-
   prepareTimer();
-
   updateTimer();
-
   changeQuote();
-
   startTimers();
-
-  showScreen(
-    "timerScreen"
-  );
+  showScreen("timerScreen");
 }
 
-
-/* =========================
-   FORMÁT
-========================= */
+/* FORMÁT */
 
 function moneyFormat(value){
-
-  return Number(
-    value || 0
-  )
-  .toLocaleString(
-    "cs-CZ",
-    {
-      minimumFractionDigits:2,
-      maximumFractionDigits:2
-    }
-  )
-  +
-  " Kč";
+  return Number(value||0).toLocaleString("cs-CZ",{
+    minimumFractionDigits:2,
+    maximumFractionDigits:2
+  })+" Kč";
 }
-
 
 function formatClock(seconds){
+  seconds=Math.max(0,Number(seconds)||0);
 
-  seconds =
-    Math.max(
-      0,
-      Number(seconds) || 0
-    );
+  const h=Math.floor(seconds/3600);
+  const m=Math.floor((seconds%3600)/60);
+  const s=Math.floor(seconds%60);
 
-
-  const h =
-    Math.floor(
-      seconds / 3600
-    );
-
-
-  const m =
-    Math.floor(
-      (
-        seconds % 3600
-      ) / 60
-    );
-
-
-  const s =
-    Math.floor(
-      seconds % 60
-    );
-
-
-  return (
-    String(h).padStart(2,"0")
-    +
-    ":"
-    +
-    String(m).padStart(2,"0")
-    +
-    ":"
-    +
-    String(s).padStart(2,"0")
-  );
+  return String(h).padStart(2,"0")+":"+
+         String(m).padStart(2,"0")+":"+
+         String(s).padStart(2,"0");
 }
-
 
 function formatMinutes(seconds){
+  seconds=Math.max(0,Number(seconds)||0);
 
-  seconds =
-    Math.max(
-      0,
-      Number(seconds) || 0
-    );
+  const h=Math.floor(seconds/3600);
+  const m=Math.floor((seconds%3600)/60);
+  const s=Math.floor(seconds%60);
 
-
-  const h =
-    Math.floor(
-      seconds / 3600
-    );
-
-
-  const m =
-    Math.floor(
-      (
-        seconds % 3600
-      ) / 60
-    );
-
-
-  const s =
-    Math.floor(
-      seconds % 60
-    );
-
-
-  if(h > 0){
-
-    return (
-      h
-      +
-      ":"
-      +
-      String(m).padStart(2,"0")
-      +
-      ":"
-      +
-      String(s).padStart(2,"0")
-    );
+  if(h>0){
+    return h+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
   }
 
-
-  return (
-    String(m).padStart(2,"0")
-    +
-    ":"
-    +
-    String(s).padStart(2,"0")
-  );
+  return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
 }
-
 
 function formatLongTime(seconds){
+  seconds=Number(seconds)||0;
 
-  seconds =
-    Number(seconds) || 0;
+  const h=Math.floor(seconds/3600);
+  const m=Math.floor((seconds%3600)/60);
 
-
-  const h =
-    Math.floor(
-      seconds / 3600
-    );
-
-
-  const m =
-    Math.floor(
-      (
-        seconds % 3600
-      ) / 60
-    );
-
-
-  if(h > 0){
-
-    return (
-      h +
-      " h " +
-      m +
-      " min"
-    );
+  if(h>0){
+    return h+" h "+m+" min";
   }
 
-
-  return (
-    m +
-    " min"
-  );
+  return m+" min";
 }
 
-
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 function showToast(text){
+  const toast=document.getElementById("toast");
 
-  const toast =
-    document.getElementById(
-      "toast"
-    );
+  toast.innerText=text;
+  toast.classList.add("show");
 
+  clearTimeout(window.toastTimer);
 
-  toast.innerText =
-    text;
-
-
-  toast.classList.add(
-    "show"
-  );
-
-
-  clearTimeout(
-    window.toastTimer
-  );
-
-
-  window.toastTimer =
-    setTimeout(
-      () => {
-
-        toast.classList.remove(
-          "show"
-        );
-
-      },
-      2200
-    );
+  window.toastTimer=setTimeout(()=>{
+    toast.classList.remove("show");
+  },2200);
 }
 
-
-/* =========================
-   UPDATE
-========================= */
+/* UPDATE */
 
 function updateAll(){
-
   updateHome();
   updateStats();
   renderAchievements();
@@ -4297,20 +2148,13 @@ function updateAll(){
   updateReminderUI();
 }
 
-
-/* =========================
-   INIT
-========================= */
+/* INIT */
 
 resetQuoteDecks();
-
 loadSettings();
-
 updateAll();
-
 restoreKako();
 
 </script>
-
 </body>
 </html>
