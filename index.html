@@ -1010,17 +1010,10 @@ button{
 
 <!-- =====================================================
      ZVUKY
-     NÁZVY ODPOVÍDAJÍ SOUBORŮM NA TVÉM GITHUBU
+     Gong a spláchnutí se přehrávají přes Web Audio API.
+     Nejsou zde žádné HTML <audio> prvky, aby iPhone
+     nevytvářel ovládací panel médií na zamčené obrazovce.
 ===================================================== -->
-
-<audio id="startBellSound" preload="auto" playsinline>
-  <source src="Boxing-bell-sound-effect.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="flushSound" preload="auto" playsinline>
-  <source src="flush.wav" type="audio/wav">
-</audio>
-
 
 <!-- =====================================================
      DOMŮ
@@ -2196,37 +2189,39 @@ const achievementsData = [
 
 
 /* =====================================================
-   AUDIO
+   AUDIO - WEB AUDIO API
+
+   DŮLEŽITÉ:
+   - žádné HTML <audio>
+   - gong: Boxing-bell-sound-effect.mp3
+   - spláchnutí: flush.wav
+   - iPhone tak nemá dostat klasický přehrávač médií
 ===================================================== */
 
-function getBellAudio(){
-
-  return document.getElementById(
-    "startBellSound"
-  );
-
-}
-
-
-function getFlushAudio(){
-
-  return document.getElementById(
-    "flushSound"
-  );
-
-}
+let audioContext = null;
+let bellBuffer = null;
+let flushBuffer = null;
+let bellBufferPromise = null;
+let flushBufferPromise = null;
+let activeSoundSources = new Set();
 
 
-function stopAudio(audio){
-
-  if(!audio){
-    return;
-  }
+function clearMediaSession(){
 
   try{
 
-    audio.pause();
-    audio.currentTime = 0;
+    if(
+      "mediaSession" in navigator
+    ){
+
+      navigator.mediaSession.metadata = null;
+
+      try{
+        navigator.mediaSession.playbackState = "none";
+      }
+      catch(error){}
+
+    }
 
   }
   catch(error){}
@@ -2234,23 +2229,346 @@ function stopAudio(audio){
 }
 
 
-async function playAudio(audio){
+function getAudioContext(){
+
+  if(
+    !audioContext
+  ){
+
+    const AudioContextClass =
+      window.AudioContext
+      ||
+      window.webkitAudioContext;
+
+
+    if(
+      !AudioContextClass
+    ){
+      return null;
+    }
+
+
+    audioContext =
+      new AudioContextClass();
+
+  }
+
+
+  return audioContext;
+
+}
+
+
+async function resumeAudioContext(){
+
+  const context =
+    getAudioContext();
+
+
+  if(
+    !context
+  ){
+    return null;
+  }
+
+
+  try{
+
+    if(
+      context.state === "suspended"
+    ){
+
+      await context.resume();
+
+    }
+
+  }
+  catch(error){
+
+    console.log(
+      "AudioContext se nepodařilo aktivovat:",
+      error
+    );
+
+  }
+
+
+  clearMediaSession();
+
+  return context;
+
+}
+
+
+async function fetchAndDecodeSound(url){
+
+  const context =
+    getAudioContext();
+
+
+  if(
+    !context
+  ){
+    return null;
+  }
+
+
+  const response =
+    await fetch(
+      url,
+      {
+        cache:"force-cache"
+      }
+    );
+
+
+  if(
+    !response.ok
+  ){
+
+    throw new Error(
+      `${url}: HTTP ${response.status}`
+    );
+
+  }
+
+
+  const arrayBuffer =
+    await response.arrayBuffer();
+
+
+  return await context.decodeAudioData(
+    arrayBuffer.slice(0)
+  );
+
+}
+
+
+function loadBellBuffer(){
+
+  if(
+    bellBuffer
+  ){
+    return Promise.resolve(
+      bellBuffer
+    );
+  }
+
+
+  if(
+    !bellBufferPromise
+  ){
+
+    bellBufferPromise =
+      fetchAndDecodeSound(
+        "Boxing-bell-sound-effect.mp3"
+      )
+      .then(buffer => {
+
+        bellBuffer = buffer;
+
+        return buffer;
+
+      })
+      .catch(error => {
+
+        bellBufferPromise = null;
+
+        console.log(
+          "Gong se nepodařilo načíst:",
+          error
+        );
+
+        return null;
+
+      });
+
+  }
+
+
+  return bellBufferPromise;
+
+}
+
+
+function loadFlushBuffer(){
+
+  if(
+    flushBuffer
+  ){
+    return Promise.resolve(
+      flushBuffer
+    );
+  }
+
+
+  if(
+    !flushBufferPromise
+  ){
+
+    flushBufferPromise =
+      fetchAndDecodeSound(
+        "flush.wav"
+      )
+      .then(buffer => {
+
+        flushBuffer = buffer;
+
+        return buffer;
+
+      })
+      .catch(error => {
+
+        flushBufferPromise = null;
+
+        console.log(
+          "Spláchnutí se nepodařilo načíst:",
+          error
+        );
+
+        return null;
+
+      });
+
+  }
+
+
+  return flushBufferPromise;
+
+}
+
+
+function preloadSounds(){
 
   if(
     !soundEnabled
-    ||
-    !audio
+  ){
+    return;
+  }
+
+
+  getAudioContext();
+
+  loadBellBuffer();
+  loadFlushBuffer();
+
+}
+
+
+function stopAllSounds(){
+
+  activeSoundSources.forEach(
+    source => {
+
+      try{
+        source.stop();
+      }
+      catch(error){}
+
+    }
+  );
+
+
+  activeSoundSources.clear();
+
+  clearMediaSession();
+
+}
+
+
+async function playAudioBuffer(bufferPromise){
+
+  if(
+    !soundEnabled
   ){
     return false;
   }
 
+
+  const context =
+    await resumeAudioContext();
+
+
+  if(
+    !context
+  ){
+    return false;
+  }
+
+
+  let buffer = null;
+
+
   try{
 
-    stopAudio(audio);
+    buffer =
+      await bufferPromise();
 
-    audio.volume = 1;
+  }
+  catch(error){
 
-    await audio.play();
+    console.log(
+      "Zvuk se nepodařilo načíst:",
+      error
+    );
+
+    return false;
+
+  }
+
+
+  if(
+    !buffer
+  ){
+    return false;
+  }
+
+
+  try{
+
+    const source =
+      context.createBufferSource();
+
+
+    const gain =
+      context.createGain();
+
+
+    source.buffer = buffer;
+
+    gain.gain.value = 1;
+
+
+    source.connect(
+      gain
+    );
+
+
+    gain.connect(
+      context.destination
+    );
+
+
+    activeSoundSources.add(
+      source
+    );
+
+
+    source.onended =
+      function(){
+
+        activeSoundSources.delete(
+          source
+        );
+
+        clearMediaSession();
+
+      };
+
+
+    source.start(0);
+
+    clearMediaSession();
 
     return true;
 
@@ -2258,11 +2576,12 @@ async function playAudio(audio){
   catch(error){
 
     console.log(
-      "Nepodařilo se přehrát zvuk:",
+      "Zvuk se nepodařilo přehrát:",
       error
     );
 
     return false;
+
   }
 
 }
@@ -2270,8 +2589,8 @@ async function playAudio(audio){
 
 function playStartBell(){
 
-  return playAudio(
-    getBellAudio()
+  return playAudioBuffer(
+    loadBellBuffer
   );
 
 }
@@ -2279,41 +2598,51 @@ function playStartBell(){
 
 function playFlushSound(){
 
-  return playAudio(
-    getFlushAudio()
+  return playAudioBuffer(
+    loadFlushBuffer
   );
 
 }
 
 
-function testStartBell(){
+async function testStartBell(){
 
-  if(!soundEnabled){
+  if(
+    !soundEnabled
+  ){
 
     showToast(
       "Nejdřív zapni zvuky."
     );
 
     return;
+
   }
 
-  playStartBell();
+
+  await resumeAudioContext();
+  await playStartBell();
 
 }
 
 
-function testFlush(){
+async function testFlush(){
 
-  if(!soundEnabled){
+  if(
+    !soundEnabled
+  ){
 
     showToast(
       "Nejdřív zapni zvuky."
     );
 
     return;
+
   }
 
-  playFlushSound();
+
+  await resumeAudioContext();
+  await playFlushSound();
 
 }
 
@@ -2546,16 +2875,18 @@ function toggleSound(){
 
 
   if(
-    !soundEnabled
+    soundEnabled
   ){
 
-    stopAudio(
-      getBellAudio()
-    );
+    resumeAudioContext();
 
-    stopAudio(
-      getFlushAudio()
-    );
+    preloadSounds();
+
+  }
+
+  else{
+
+    stopAllSounds();
 
   }
 
@@ -2962,7 +3293,7 @@ function saveActiveKako(){
    START
 ===================================================== */
 
-function startKako(){
+async function startKako(){
 
   if(
     isKakoRunning()
@@ -2999,11 +3330,20 @@ function startKako(){
 
 
   /*
-  GONG SE PŘEHRÁVÁ PŘÍMO PO KLIKNUTÍ
-  KVŮLI OMEZENÍM SAFARI / IPHONE.
+  Web Audio se aktivuje přímo po kliknutí.
+  Nepoužíváme HTML <audio>, aby iPhone nevytvářel
+  mediální panel na zamčené obrazovce.
   */
 
-  playStartBell();
+  if(
+    soundEnabled
+  ){
+
+    await resumeAudioContext();
+
+    await playStartBell();
+
+  }
 
 
   startTime =
@@ -3285,7 +3625,7 @@ function changeQuote(){
    UKONČENÍ KÁKO
 ===================================================== */
 
-function stopKako(){
+async function stopKako(){
 
   if(
     !startTime
@@ -3315,11 +3655,19 @@ function stopKako(){
 
 
   /*
-  TADY JE OPRAVENÉ SPLÁCHNUTÍ.
-  AUDIO ELEMENT POUŽÍVÁ flush.wav.
+  Spláchnutí se přehrává přes Web Audio API.
+  Soubor zůstává flush.wav.
   */
 
-  playFlushSound();
+  if(
+    soundEnabled
+  ){
+
+    await resumeAudioContext();
+
+    await playFlushSound();
+
+  }
 
 
   const end =
@@ -5184,6 +5532,8 @@ document.addEventListener(
   "visibilitychange",
   function(){
 
+    clearMediaSession();
+
     if(
       document.visibilityState === "visible"
       &&
@@ -5209,6 +5559,14 @@ resetQuoteDecks();
 loadSettings();
 
 updateAll();
+
+if(
+  soundEnabled
+){
+  preloadSounds();
+}
+
+clearMediaSession();
 
 restoreKako();
 
