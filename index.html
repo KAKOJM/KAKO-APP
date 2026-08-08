@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-
 <meta charset="UTF-8">
 
 <meta
@@ -20,7 +19,6 @@
 <link rel="icon" type="image/png" href="icon.png">
 
 <style>
-
 :root{
   --brown:#2a170e;
   --cream:#fff7e9;
@@ -39,8 +37,7 @@
   padding:0;
 }
 
-html,
-body{
+html,body{
   touch-action:manipulation;
   overscroll-behavior:none;
 }
@@ -52,9 +49,7 @@ body{
   -webkit-text-size-adjust:100%;
 }
 
-button,
-input,
-select{
+button,input,select{
   font-family:inherit;
 }
 
@@ -63,27 +58,21 @@ button{
   touch-action:manipulation;
 }
 
-.screen{
-  display:none;
-}
-
-.screen.active{
-  display:block;
-}
+.screen{display:none;}
+.screen.active{display:block;}
 
 .app{
   max-width:430px;
   min-height:100vh;
   margin:auto;
-
   background:var(--cream);
-
   padding:
     calc(14px + env(safe-area-inset-top))
     18px
     calc(105px + env(safe-area-inset-bottom));
 }
 
+.green{color:var(--green);}
 
 /* LOGO */
 
@@ -110,7 +99,6 @@ button{
   font-weight:700;
 }
 
-
 /* DOMA / PRÁCE */
 
 .mode-switch{
@@ -131,7 +119,6 @@ button{
   color:#765d4d;
   font-size:14px;
   font-weight:900;
-  cursor:pointer;
 }
 
 .mode-btn.active{
@@ -146,7 +133,6 @@ button{
   font-weight:700;
   margin:8px 0 16px;
 }
-
 
 /* DNES */
 
@@ -191,13 +177,6 @@ button{
   font-weight:800;
 }
 
-.green{
-  color:var(--green);
-}
-
-
-/* KURZ */
-
 .mini-rate{
   text-align:center;
   margin-bottom:14px;
@@ -210,9 +189,6 @@ button{
   color:var(--green);
 }
 
-
-/* HLAVNÍ TLAČÍTKO */
-
 .main-button{
   width:100%;
   border:0;
@@ -223,7 +199,6 @@ button{
   font-size:26px;
   font-weight:900;
   box-shadow:0 5px 0 #d7a218;
-  cursor:pointer;
 }
 
 .main-button:active{
@@ -231,19 +206,15 @@ button{
   box-shadow:0 2px 0 #d7a218;
 }
 
-
 /* TIMER */
 
 .timer-page{
   max-width:430px;
   min-height:100vh;
   margin:auto;
-
   background:var(--brown);
   color:white;
-
   text-align:center;
-
   padding:
     calc(22px + env(safe-area-inset-top))
     20px
@@ -252,26 +223,19 @@ button{
 
 .timer-mode{
   display:inline-block;
-
   background:var(--yellow);
   color:var(--brown);
-
   border-radius:99px;
-
   padding:8px 14px;
-
   font-size:12px;
   font-weight:900;
-
   margin-bottom:12px;
 }
 
 .timer-title{
   color:var(--yellow);
-
   font-size:22px;
   font-weight:900;
-
   margin-bottom:11px;
 }
 
@@ -304,24 +268,15 @@ button{
   font-size:29px;
 }
 
-
-/* HLÁŠKY */
-
 .quote-card{
   background:#fff0c6;
   color:var(--brown);
-
   border:3px solid var(--yellow);
   border-radius:22px;
-
   padding:14px 16px;
-
   max-width:360px;
-
   margin:3px auto 13px;
-
   box-shadow:0 7px 18px rgba(0,0,0,.18);
-
   transform-origin:center;
 }
 
@@ -331,13 +286,10 @@ button{
 
 .quote-label{
   display:block;
-
   color:#9b6d15;
-
   font-size:10px;
   font-weight:900;
   letter-spacing:1.5px;
-
   margin-bottom:6px;
 }
 
@@ -352,38 +304,20 @@ button{
 }
 
 @keyframes quotePop{
-
-  0%{
-    transform:scale(.88);
-    opacity:.15;
-  }
-
-  55%{
-    transform:scale(1.06);
-    opacity:1;
-  }
-
-  100%{
-    transform:scale(1);
-    opacity:1;
-  }
+  0%{transform:scale(.88);opacity:.15;}
+  55%{transform:scale(1.06);opacity:1;}
+  100%{transform:scale(1);opacity:1;}
 }
 
 .stop-button{
   width:100%;
-
   border:0;
   border-radius:22px;
-
   padding:17px;
-
   background:var(--red);
   color:white;
-
   font-size:22px;
   font-weight:900;
-
-  cursor:pointer;
 }
 
 .stop-button:disabled{
@@ -392,18 +326,12 @@ button{
 
 .cancel-button{
   margin-top:14px;
-
   border:0;
   background:none;
-
   color:#d7c2af;
-
   font-size:13px;
   font-weight:800;
-
-  cursor:pointer;
 }
-
 
 /* OBECNÉ */
 
@@ -413,13 +341,11 @@ button{
   margin:10px 0 18px;
 }
 
-
 /* STATISTIKY */
 
 .tabs{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-
   gap:7px;
   margin-bottom:18px;
 }
@@ -430,7 +356,6 @@ button{
   padding:11px;
   background:var(--cream3);
   font-weight:900;
-  cursor:pointer;
 }
 
 .tab.active{
@@ -441,22 +366,16 @@ button{
 .stats-summary{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-
   gap:9px;
   margin-bottom:20px;
 }
 
 .stats-main-card{
   background:var(--cream2);
-
   border-radius:20px;
-
   min-height:112px;
-
   padding:15px 6px;
-
   text-align:center;
-
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -472,7 +391,6 @@ button{
   display:block;
   font-size:20px;
   line-height:1.05;
-  overflow-wrap:anywhere;
 }
 
 .stats-main-card small{
@@ -524,17 +442,12 @@ button{
 
 .record-card{
   background:var(--cream2);
-
   border-radius:18px;
-
   padding:15px 16px;
-
   margin-bottom:9px;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   gap:12px;
 }
 
@@ -553,17 +466,13 @@ button{
   font-size:19px;
 }
 
-
 /* ACHIEVEMENTY */
 
 .achievement-progress-card{
   background:var(--brown);
   color:white;
-
   border-radius:22px;
-
   padding:18px;
-
   margin-bottom:16px;
 }
 
@@ -571,33 +480,23 @@ button{
   color:#d5bfae;
   font-size:11px;
   font-weight:900;
-  letter-spacing:1px;
 }
 
 .achievement-progress-card strong{
   display:block;
-
   margin-top:6px;
-
   color:var(--yellow);
-
   font-size:25px;
 }
 
 .achievement{
   display:flex;
   align-items:center;
-
   gap:13px;
-
   background:var(--cream2);
-
   border-radius:18px;
-
   padding:14px;
-
   margin-bottom:9px;
-
   opacity:.4;
 }
 
@@ -622,16 +521,12 @@ button{
   color:var(--muted);
 }
 
-
 /* HISTORIE */
 
 .history-item{
   background:var(--cream2);
-
   border-radius:19px;
-
   padding:15px;
-
   margin-bottom:10px;
 }
 
@@ -653,33 +548,22 @@ button{
 
 .history-place{
   display:inline-block;
-
   margin-top:9px;
-
   background:#dcc6ad;
-
   padding:5px 9px;
-
   border-radius:99px;
-
   font-size:10px;
   font-weight:900;
 }
 
 .delete-btn{
   border:0;
-
   background:#dfcbc4;
   color:#8e2c27;
-
   border-radius:10px;
-
   padding:7px 9px;
-
   font-size:11px;
   font-weight:900;
-
-  cursor:pointer;
 }
 
 .empty{
@@ -690,33 +574,22 @@ button{
 
 .danger{
   width:100%;
-
   border:0;
   border-radius:15px;
-
   padding:13px;
-
   margin-top:20px;
-
   background:#ead6d2;
   color:#9b2d27;
-
   font-weight:900;
-  cursor:pointer;
 }
-
 
 /* NASTAVENÍ */
 
 .settings-card{
   background:white;
-
   border:2px solid #eadbc8;
-
   border-radius:22px;
-
   padding:17px;
-
   margin-bottom:12px;
 }
 
@@ -726,51 +599,35 @@ button{
 
 .settings-card label{
   display:block;
-
   font-size:12px;
   font-weight:900;
-
   margin-bottom:5px;
 }
 
 .settings-card input,
 .settings-card select{
   width:100%;
-
   border:2px solid #ddc8ae;
-
   border-radius:13px;
-
   background:#fffaf3;
-
   padding:13px;
-
   font-size:16px;
-
   margin-bottom:13px;
 }
 
 .pay-switch{
   display:grid;
   grid-template-columns:1fr 1fr;
-
   gap:6px;
-
   margin-bottom:14px;
 }
 
 .pay-btn{
   border:0;
-
   border-radius:13px;
-
   padding:11px;
-
   background:#eadbc8;
-
   font-weight:900;
-
-  cursor:pointer;
 }
 
 .pay-btn.active{
@@ -780,10 +637,8 @@ button{
 
 .setting-row{
   display:flex;
-
   align-items:center;
   justify-content:space-between;
-
   gap:15px;
 }
 
@@ -798,34 +653,41 @@ button{
 
 .setting-info small{
   display:block;
-
   color:var(--muted);
-
   margin-top:4px;
-
   line-height:1.3;
 }
 
 .setting-toggle{
   min-width:88px;
-
   border:0;
-
   border-radius:99px;
-
   padding:11px 12px;
-
   background:#d9c9b5;
   color:#765d4d;
-
   font-weight:900;
-
-  cursor:pointer;
 }
 
 .setting-toggle.on{
   background:var(--green);
   color:white;
+}
+
+.sound-tests{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:16px;
+}
+
+.sound-test-btn{
+  border:0;
+  border-radius:14px;
+  padding:12px 7px;
+  background:var(--cream2);
+  color:var(--brown);
+  font-size:12px;
+  font-weight:900;
 }
 
 .reminder-time{
@@ -834,20 +696,13 @@ button{
 
 .save-btn{
   width:100%;
-
   border:0;
   border-radius:15px;
-
   padding:14px;
-
   background:var(--brown);
   color:white;
-
   font-weight:900;
-
-  cursor:pointer;
 }
-
 
 /* VÝSLEDEK */
 
@@ -870,13 +725,9 @@ button{
 
 .rating{
   background:var(--yellow);
-
   border-radius:20px;
-
   padding:16px;
-
   text-align:center;
-
   margin-bottom:12px;
 }
 
@@ -887,9 +738,7 @@ button{
 
 .rating strong{
   display:block;
-
   margin-top:5px;
-
   font-size:20px;
 }
 
@@ -901,11 +750,8 @@ button{
 
 .result-box{
   background:var(--cream2);
-
   border-radius:19px;
-
   padding:15px 8px;
-
   text-align:center;
 }
 
@@ -916,29 +762,20 @@ button{
 
 .result-box strong{
   display:block;
-
   margin-top:6px;
-
   font-size:20px;
 }
 
 .action-btn{
   width:100%;
-
   border:0;
   border-radius:19px;
-
   padding:16px;
-
   margin-top:12px;
-
   background:var(--brown);
   color:white;
-
   font-weight:900;
   font-size:15px;
-
-  cursor:pointer;
 }
 
 .share-btn{
@@ -946,138 +783,84 @@ button{
   color:var(--brown);
 }
 
-
-/* SPODNÍ MENU */
+/* MENU */
 
 .bottom-nav{
   position:fixed;
-
   left:50%;
   bottom:0;
-
   transform:translateX(-50%);
-
   width:min(430px,100%);
-
   display:grid;
   grid-template-columns:repeat(5,1fr);
-
   background:var(--brown);
-
-  padding:
-    9px
-    2px
-    calc(12px + env(safe-area-inset-bottom));
-
+  padding:9px 2px calc(12px + env(safe-area-inset-bottom));
   z-index:999;
 }
 
 .nav-btn{
   position:relative;
-
   border:0;
   background:none;
-
   color:#cbb39f;
-
   font-size:10px;
   font-weight:900;
-
-  cursor:pointer;
-
   padding:2px 1px;
 }
 
 .nav-icon{
   display:block;
-
   font-size:18px;
-
   margin-bottom:2px;
 }
 
-.nav-btn.active{
-  color:var(--yellow);
-}
-
+.nav-btn.active,
 .nav-btn.running{
   color:var(--yellow);
 }
 
 .running-dot{
   display:none;
-
   position:absolute;
-
   width:7px;
   height:7px;
-
   border-radius:50%;
-
   background:#63d36d;
-
   top:-1px;
   right:18%;
 }
 
 .nav-btn.running .running-dot{
   display:block;
-
   animation:pulseDot 1.2s infinite;
 }
 
 @keyframes pulseDot{
-
-  0%{
-    transform:scale(.8);
-    opacity:.55;
-  }
-
-  50%{
-    transform:scale(1.35);
-    opacity:1;
-  }
-
-  100%{
-    transform:scale(.8);
-    opacity:.55;
-  }
+  0%{transform:scale(.8);opacity:.55;}
+  50%{transform:scale(1.35);opacity:1;}
+  100%{transform:scale(.8);opacity:.55;}
 }
-
 
 /* TOAST */
 
 .toast{
   position:fixed;
-
   bottom:105px;
   left:50%;
-
   transform:translateX(-50%);
-
   width:calc(100% - 45px);
   max-width:360px;
-
   background:var(--brown);
   color:white;
-
   border:1px solid #765441;
-
   border-radius:16px;
-
   padding:13px;
-
   text-align:center;
-
   font-size:13px;
   font-weight:800;
-
   opacity:0;
-
   pointer-events:none;
-
   transition:.2s;
-
   z-index:1200;
 }
 
@@ -1085,25 +868,17 @@ button{
   opacity:1;
 }
 
-
-/* UPOZORNĚNÍ */
+/* REMINDER */
 
 .reminder-overlay{
   display:none;
-
   position:fixed;
-
   inset:0;
-
   background:rgba(20,10,5,.78);
-
   backdrop-filter:blur(6px);
-
   z-index:5000;
-
   align-items:center;
   justify-content:center;
-
   padding:20px;
 }
 
@@ -1114,31 +889,10 @@ button{
 .reminder-modal{
   width:100%;
   max-width:390px;
-
   background:var(--cream);
-
   border-radius:28px;
-
   padding:24px 20px 20px;
-
   text-align:center;
-
-  box-shadow:0 20px 50px rgba(0,0,0,.4);
-
-  animation:reminderPop .3s ease;
-}
-
-@keyframes reminderPop{
-
-  from{
-    transform:scale(.88);
-    opacity:0;
-  }
-
-  to{
-    transform:scale(1);
-    opacity:1;
-  }
 }
 
 .reminder-icon{
@@ -1148,669 +902,399 @@ button{
 .reminder-title{
   font-size:29px;
   font-weight:900;
-
   margin-top:7px;
 }
 
 .reminder-text{
   color:var(--muted);
-
   font-size:15px;
   line-height:1.45;
-
   margin:10px 0 20px;
 }
 
 .reminder-time-value{
   display:block;
-
   color:var(--brown);
-
   font-size:28px;
   font-weight:900;
-
   margin-top:7px;
 }
 
-.reminder-continue{
+.reminder-continue,
+.reminder-stop{
   width:100%;
-
   border:0;
   border-radius:19px;
-
   padding:16px;
-
-  background:var(--yellow);
-  color:var(--brown);
-
   font-size:17px;
   font-weight:900;
+}
 
-  cursor:pointer;
+.reminder-continue{
+  background:var(--yellow);
+  color:var(--brown);
 }
 
 .reminder-stop{
-  width:100%;
-
-  border:0;
-  border-radius:19px;
-
-  padding:16px;
-
   margin-top:10px;
-
   background:var(--red);
   color:white;
-
-  font-size:17px;
-  font-weight:900;
-
-  cursor:pointer;
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- BOXERSKÝ ZVON -->
-
+<!-- ZVUKY -->
 <audio
   id="startBellSound"
-  src="Boxing-bell-sound-effect.mp3"
   preload="auto"
-></audio>
-
-
-<!-- SPLÁCHNUTÍ -->
+  playsinline
+>
+  <source
+    src="Boxing-bell-sound-effect.mp3"
+    type="audio/mpeg"
+  >
+</audio>
 
 <audio
   id="flushSound"
-  src="mixkit-hard-toilet-flush-1872.wav"
   preload="auto"
-></audio>
-
+  playsinline
+>
+  <source
+    src="mixkit-hard-toilet-flush-1872.wav"
+    type="audio/wav"
+  >
+</audio>
 
 
 <!-- DOMŮ -->
 
 <div id="homeScreen" class="screen active">
-
 <div class="app">
 
 <div class="logo-wrap">
-
-<div class="logo-poop">
-💩
+  <div class="logo-poop">💩</div>
+  <div class="logo">KÁKO</div>
+  <div id="helloText" class="logo-sub">
+    Každá minuta se počítá.
+  </div>
 </div>
-
-<div class="logo">
-KÁKO
-</div>
-
-<div id="helloText" class="logo-sub">
-Každá minuta se počítá.
-</div>
-
-</div>
-
 
 <div class="mode-switch">
+  <button id="homeModeBtn" class="mode-btn" onclick="setLocationMode('home')">
+    🏠 DOMA
+  </button>
 
-<button
-id="homeModeBtn"
-class="mode-btn"
-onclick="setLocationMode('home')"
->
-🏠 DOMA
-</button>
-
-<button
-id="workModeBtn"
-class="mode-btn active"
-onclick="setLocationMode('work')"
->
-💼 V PRÁCI
-</button>
-
+  <button id="workModeBtn" class="mode-btn active" onclick="setLocationMode('work')">
+    💼 V PRÁCI
+  </button>
 </div>
 
-
-<div
-id="modeInfo"
-class="mode-info"
->
-V práci se každá minuta mění na peníze.
+<div id="modeInfo" class="mode-info">
+  V práci se každá minuta mění na peníze.
 </div>
-
 
 <div class="today-card">
 
-<div class="today-title">
-DNES
-</div>
-
+<div class="today-title">DNES</div>
 
 <div class="today-grid">
 
 <div class="today-box">
-<span>🚽</span>
-<strong id="todayVisits">0</strong>
-<small>NÁVŠTĚV</small>
+  <span>🚽</span>
+  <strong id="todayVisits">0</strong>
+  <small>NÁVŠTĚV</small>
 </div>
-
 
 <div class="today-box">
-<span>⏱</span>
-<strong id="todayTime">0 min</strong>
-<small>NA WC</small>
+  <span>⏱</span>
+  <strong id="todayTime">0 min</strong>
+  <small>NA WC</small>
 </div>
-
 
 <div class="today-box">
-<span>💰</span>
-<strong id="todayMoney" class="green">0 Kč</strong>
-<small>V PRÁCI</small>
+  <span>💰</span>
+  <strong id="todayMoney" class="green">0 Kč</strong>
+  <small>V PRÁCI</small>
 </div>
 
 </div>
-
 </div>
 
-
-<div
-id="miniRate"
-class="mini-rate"
->
-KÁKO kurz:
-<strong>0 Kč/min</strong>
+<div id="miniRate" class="mini-rate">
+  KÁKO kurz: <strong>0 Kč/min</strong>
 </div>
 
-
-<button
-class="main-button"
-onclick="startKako()"
->
-💩 JDU KÁKO
+<button class="main-button" onclick="startKako()">
+  💩 JDU KÁKO
 </button>
 
 </div>
-
 </div>
-
 
 
 <!-- TIMER -->
 
 <div id="timerScreen" class="screen">
-
 <div class="timer-page">
 
-
-<div
-id="timerMode"
-class="timer-mode"
->
-💼 V PRÁCI
+<div id="timerMode" class="timer-mode">
+  💼 V PRÁCI
 </div>
-
 
 <div class="timer-title">
-KÁKO PROBÍHÁ 💩
+  KÁKO PROBÍHÁ 💩
 </div>
 
-
-<div
-id="timer"
-class="timer"
->
-00:00:00
+<div id="timer" class="timer">
+  00:00:00
 </div>
-
 
 <div class="toilet-art">
-💩🚽
+  💩🚽
 </div>
 
-
-<div
-id="liveLabel"
-class="live-label"
->
-PRÁVĚ JSI PROKADIL
+<div id="liveLabel" class="live-label">
+  PRÁVĚ JSI PROKADIL
 </div>
 
-
-<div
-id="currentMoney"
-class="live-money"
->
-0,00 Kč
+<div id="currentMoney" class="live-money">
+  0,00 Kč
 </div>
 
+<div id="quoteCard" class="quote-card">
 
-<div
-id="quoteCard"
-class="quote-card"
->
-
-<span
-id="quoteLabel"
-class="quote-label"
->
-FIREMNÍ HLÁŠENÍ
+<span id="quoteLabel" class="quote-label">
+  FIREMNÍ HLÁŠENÍ
 </span>
 
-<div
-id="quoteText"
-class="quote-text"
->
-Firma právě financuje tvé trávení.
+<div id="quoteText" class="quote-text">
+  Firma právě financuje tvé trávení.
 </div>
 
 </div>
-
 
 <button
-id="stopKakoButton"
-class="stop-button"
-onclick="stopKako()"
+  id="stopKakoButton"
+  class="stop-button"
+  onclick="stopKako()"
 >
-💩 DOKAKÁNO
+  💩 DOKAKÁNO
 </button>
 
-
-<button
-class="cancel-button"
-onclick="cancelKako()"
->
-✕ ZRUŠIT BEZ ULOŽENÍ
+<button class="cancel-button" onclick="cancelKako()">
+  ✕ ZRUŠIT BEZ ULOŽENÍ
 </button>
 
 </div>
-
 </div>
-
 
 
 <!-- VÝSLEDEK -->
 
 <div id="resultScreen" class="screen">
-
 <div class="app">
 
 <div class="result-title">
-DOKAKÁNO!
+  DOKAKÁNO!
 </div>
 
-
-<div
-id="resultSub"
-class="result-sub"
->
-Další úspěšný projekt.
+<div id="resultSub" class="result-sub">
+  Další úspěšný projekt.
 </div>
-
 
 <div class="result-poop">
-😎💩
+  😎💩
 </div>
-
 
 <div class="rating">
-
-<small>
-HODNOCENÍ
-</small>
-
-<strong id="ratingText">
-Solidní výkon
-</strong>
-
+  <small>HODNOCENÍ</small>
+  <strong id="ratingText">Solidní výkon</strong>
 </div>
-
 
 <div class="result-grid">
 
 <div class="result-box">
-
-<small>
-ČAS
-</small>
-
-<strong id="resultTime">
-00:00
-</strong>
-
+  <small>ČAS</small>
+  <strong id="resultTime">00:00</strong>
 </div>
-
 
 <div class="result-box">
-
-<small id="resultMoneyLabel">
-VYDĚLÁNO
-</small>
-
-<strong
-id="resultMoney"
-class="green"
->
-0 Kč
-</strong>
-
+  <small id="resultMoneyLabel">VYDĚLÁNO</small>
+  <strong id="resultMoney" class="green">0 Kč</strong>
 </div>
 
 </div>
 
-
-<button
-class="action-btn share-btn"
-onclick="shareResult()"
->
-📤 SDÍLET
+<button class="action-btn share-btn" onclick="shareResult()">
+  📤 SDÍLET
 </button>
 
-
-<button
-class="action-btn"
-onclick="showScreen('homeScreen')"
->
-✓ ZPĚT DOMŮ
+<button class="action-btn" onclick="showScreen('homeScreen')">
+  ✓ ZPĚT DOMŮ
 </button>
 
 </div>
-
 </div>
-
 
 
 <!-- STATISTIKY -->
 
 <div id="statsScreen" class="screen">
-
 <div class="app">
 
 <div class="page-title">
-Statistiky
+  Statistiky
 </div>
-
 
 <div class="tabs">
-
-<button
-id="todayTab"
-class="tab active"
-onclick="setStatsMode('today')"
->
-Dnes
-</button>
-
-<button
-id="monthTab"
-class="tab"
-onclick="setStatsMode('month')"
->
-Měsíc
-</button>
-
-<button
-id="allTab"
-class="tab"
-onclick="setStatsMode('all')"
->
-Celkem
-</button>
-
+  <button id="todayTab" class="tab active" onclick="setStatsMode('today')">Dnes</button>
+  <button id="monthTab" class="tab" onclick="setStatsMode('month')">Měsíc</button>
+  <button id="allTab" class="tab" onclick="setStatsMode('all')">Celkem</button>
 </div>
-
 
 <div class="stats-summary">
 
 <div class="stats-main-card">
-<div class="icon">🚽</div>
-<strong id="statsVisits">0</strong>
-<small>NÁVŠTĚV</small>
+  <div class="icon">🚽</div>
+  <strong id="statsVisits">0</strong>
+  <small>NÁVŠTĚV</small>
 </div>
 
 <div class="stats-main-card">
-<div class="icon">⏱</div>
-<strong id="statsTime">0 min</strong>
-<small>ČAS NA WC</small>
+  <div class="icon">⏱</div>
+  <strong id="statsTime">0 min</strong>
+  <small>ČAS NA WC</small>
 </div>
 
 <div class="stats-main-card">
-<div class="icon">💰</div>
-<strong id="statsMoney" class="green">0 Kč</strong>
-<small>VYDĚLÁNO</small>
+  <div class="icon">💰</div>
+  <strong id="statsMoney" class="green">0 Kč</strong>
+  <small>VYDĚLÁNO</small>
 </div>
 
 </div>
-
 
 <div class="stats-section">
 
 <div class="stats-section-title">
-Doma vs. práce
+  Doma vs. práce
 </div>
-
 
 <div class="place-grid">
 
 <div class="place-card">
-
-<div class="place-icon">
-🏠
+  <div class="place-icon">🏠</div>
+  <strong id="homeVisits">0×</strong>
+  <small id="homeTime">0 min</small>
 </div>
-
-<strong id="homeVisits">
-0×
-</strong>
-
-<small id="homeTime">
-0 min
-</small>
-
-</div>
-
 
 <div class="place-card">
-
-<div class="place-icon">
-💼
-</div>
-
-<strong id="workVisits">
-0×
-</strong>
-
-<small id="workTime">
-0 min
-</small>
-
+  <div class="place-icon">💼</div>
+  <strong id="workVisits">0×</strong>
+  <small id="workTime">0 min</small>
 </div>
 
 </div>
-
 </div>
-
 
 <div class="stats-section">
 
 <div class="stats-section-title">
-🏆 Rekordy
+  🏆 Rekordy
 </div>
-
 
 <div class="record-card">
-
-<div class="record-left">
-
-<span class="record-icon">
-⏱
-</span>
-
-<span>
-Nejdelší KÁKO
-</span>
-
+  <div class="record-left">
+    <span class="record-icon">⏱</span>
+    <span>Nejdelší KÁKO</span>
+  </div>
+  <strong id="longestKako">00:00</strong>
 </div>
-
-<strong id="longestKako">
-00:00
-</strong>
-
-</div>
-
 
 <div class="record-card">
-
-<div class="record-left">
-
-<span class="record-icon">
-💵
-</span>
-
-<span>
-Nejdražší KÁKO
-</span>
-
+  <div class="record-left">
+    <span class="record-icon">💵</span>
+    <span>Nejdražší KÁKO</span>
+  </div>
+  <strong id="mostExpensive" class="green">0 Kč</strong>
 </div>
-
-<strong
-id="mostExpensive"
-class="green"
->
-0 Kč
-</strong>
-
-</div>
-
 
 <div class="record-card">
-
-<div class="record-left">
-
-<span class="record-icon">
-🚽
-</span>
-
-<span>
-Nejvíc za den
-</span>
-
-</div>
-
-<strong id="mostVisitsDay">
-0
-</strong>
-
+  <div class="record-left">
+    <span class="record-icon">🚽</span>
+    <span>Nejvíc za den</span>
+  </div>
+  <strong id="mostVisitsDay">0</strong>
 </div>
 
 </div>
-
 </div>
-
 </div>
-
 
 
 <!-- ACHIEVEMENTY -->
 
-<div
-id="achievementsScreen"
-class="screen"
->
-
+<div id="achievementsScreen" class="screen">
 <div class="app">
 
 <div class="page-title">
-Achievementy
+  Achievementy
 </div>
-
 
 <div class="achievement-progress-card">
-
-<small>
-TVŮJ KÁKO PROGRES
-</small>
-
-<strong id="achievementProgress">
-0 / 8
-</strong>
-
+  <small>TVŮJ KÁKO PROGRES</small>
+  <strong id="achievementProgress">0 / 8</strong>
 </div>
-
 
 <div id="achievementsList"></div>
 
 </div>
-
 </div>
-
 
 
 <!-- HISTORIE -->
 
-<div
-id="historyScreen"
-class="screen"
->
-
+<div id="historyScreen" class="screen">
 <div class="app">
 
 <div class="page-title">
-Historie
+  Historie
 </div>
-
 
 <div id="historyList"></div>
 
-
-<button
-class="danger"
-onclick="clearHistory()"
->
-SMAZAT CELOU HISTORII
+<button class="danger" onclick="clearHistory()">
+  SMAZAT CELOU HISTORII
 </button>
 
 </div>
-
 </div>
-
 
 
 <!-- NASTAVENÍ -->
 
-<div
-id="settingsScreen"
-class="screen"
->
-
+<div id="settingsScreen" class="screen">
 <div class="app">
 
 <div class="page-title">
-Nastavení
+  Nastavení
 </div>
-
 
 <div class="settings-card">
 
-<h3>
-Profil
-</h3>
+<h3>Profil</h3>
 
-<label>
-Přezdívka
-</label>
+<label>Přezdívka</label>
 
 <input
-id="nicknameInput"
-type="text"
-maxlength="25"
-placeholder="např. Milan"
+  id="nicknameInput"
+  type="text"
+  maxlength="25"
+  placeholder="např. Milan"
 >
 
 </div>
@@ -1818,74 +1302,59 @@ placeholder="např. Milan"
 
 <div class="settings-card">
 
-<h3>
-Výdělek
-</h3>
-
+<h3>Výdělek</h3>
 
 <div class="pay-switch">
 
 <button
-id="monthlyBtn"
-class="pay-btn active"
-onclick="setPayMode('monthly')"
+  id="monthlyBtn"
+  class="pay-btn active"
+  onclick="setPayMode('monthly')"
 >
-Měsíční plat
+  Měsíční plat
 </button>
 
 <button
-id="hourlyBtn"
-class="pay-btn"
-onclick="setPayMode('hourly')"
+  id="hourlyBtn"
+  class="pay-btn"
+  onclick="setPayMode('hourly')"
 >
-Hodinovka
+  Hodinovka
 </button>
 
 </div>
 
-
 <div id="monthlySettings">
 
-<label>
-Měsíční čistá mzda
-</label>
+<label>Měsíční čistá mzda</label>
 
 <input
-id="salaryInput"
-type="number"
-inputmode="decimal"
-placeholder="např. 50000"
+  id="salaryInput"
+  type="number"
+  inputmode="decimal"
+  placeholder="např. 50000"
 >
 
-
-<label>
-Pracovních hodin za měsíc
-</label>
+<label>Pracovních hodin za měsíc</label>
 
 <input
-id="hoursInput"
-type="number"
-inputmode="decimal"
-value="160"
+  id="hoursInput"
+  type="number"
+  inputmode="decimal"
+  value="160"
 >
 
 </div>
 
+<div id="hourlySettings" style="display:none">
 
-<div
-id="hourlySettings"
-style="display:none"
->
-
-<label>
-Čistá hodinovka
-</label>
+<label>Čistá hodinovka</label>
 
 <input
-id="hourlyInput"
-type="number"
-inputmode="decimal"
-placeholder="např. 250"
+  id="hourlyInput"
+  type="number"
+  inputmode="decimal"
+  placeholder="např. 250"
 >
 
 </div>
@@ -1897,32 +1366,41 @@ placeholder="např. 250"
 
 <div class="settings-card">
 
-<h3>
-Zvuk
-</h3>
-
+<h3>Zvuk</h3>
 
 <div class="setting-row">
 
 <div class="setting-info">
+  <strong>🔊 Zvuky KÁKO</strong>
+  <small>
+    Gong, hlášky, upozornění a spláchnutí.
+  </small>
+</div>
 
-<strong>
-🔊 Zvuky KÁKO
-</strong>
-
-<small>
-Startovací gong, hlášky, upozornění a spláchnutí.
-</small>
+<button
+  id="soundToggle"
+  class="setting-toggle"
+  onclick="toggleSound()"
+>
+  ZAP
+</button>
 
 </div>
 
+<div class="sound-tests">
 
 <button
-id="soundToggle"
-class="setting-toggle"
-onclick="toggleSound()"
+  class="sound-test-btn"
+  onclick="testStartBell()"
 >
-VYP
+  🥊 TEST GONG
+</button>
+
+<button
+  class="sound-test-btn"
+  onclick="testFlush()"
+>
+  🚽 TEST SPLÁCHNUTÍ
 </button>
 
 </div>
@@ -1930,64 +1408,39 @@ VYP
 </div>
 
 
-<!-- UPOZORNĚNÍ -->
+<!-- REMINDER -->
 
 <div class="settings-card">
 
-<h3>
-Hlídání KÁKO
-</h3>
-
+<h3>Hlídání KÁKO</h3>
 
 <div class="setting-row">
 
 <div class="setting-info">
-
-<strong>
-🚨 Nezapomněl jsem dokakat?
-</strong>
-
-<small>
-Aplikace tě upozorní, když KÁKO běží podezřele dlouho.
-</small>
-
+  <strong>🚨 Nezapomněl jsem dokakat?</strong>
+  <small>
+    Aplikace tě upozorní, když KÁKO běží podezřele dlouho.
+  </small>
 </div>
 
-
 <button
-id="reminderToggle"
-class="setting-toggle"
-onclick="toggleReminder()"
+  id="reminderToggle"
+  class="setting-toggle"
+  onclick="toggleReminder()"
 >
-ZAP
+  ZAP
 </button>
 
 </div>
 
+<div id="reminderTimeBox" class="reminder-time">
 
-<div
-id="reminderTimeBox"
-class="reminder-time"
->
-
-<label>
-První upozornění po
-</label>
+<label>První upozornění po</label>
 
 <select id="reminderMinutesSelect">
-
-<option value="15">
-15 minutách
-</option>
-
-<option value="20">
-20 minutách
-</option>
-
-<option value="30">
-30 minutách
-</option>
-
+  <option value="15">15 minutách</option>
+  <option value="20">20 minutách</option>
+  <option value="30">30 minutách</option>
 </select>
 
 </div>
@@ -1995,136 +1448,70 @@ První upozornění po
 </div>
 
 
-<button
-class="save-btn"
-onclick="saveSettings()"
->
-ULOŽIT A ZPĚT
+<button class="save-btn" onclick="saveSettings()">
+  ULOŽIT A ZPĚT
 </button>
 
 </div>
-
 </div>
 
 
+<!-- MENU -->
 
-<!-- SPODNÍ MENU -->
+<div id="bottomNav" class="bottom-nav">
 
-<div
-id="bottomNav"
-class="bottom-nav"
->
+<button id="navPrimary" class="nav-btn active" onclick="openPrimaryScreen()">
 
+  <span class="running-dot"></span>
 
-<button
-id="navPrimary"
-class="nav-btn active"
-onclick="openPrimaryScreen()"
->
+  <span id="navPrimaryIcon" class="nav-icon">
+    🏠
+  </span>
 
-<span class="running-dot"></span>
-
-<span
-id="navPrimaryIcon"
-class="nav-icon"
->
-🏠
-</span>
-
-<span id="navPrimaryText">
-Domů
-</span>
+  <span id="navPrimaryText">
+    Domů
+  </span>
 
 </button>
 
-
-<button
-id="navStats"
-class="nav-btn"
-onclick="showScreen('statsScreen')"
->
-
-<span class="nav-icon">
-📊
-</span>
-
-Statistiky
-
+<button id="navStats" class="nav-btn" onclick="showScreen('statsScreen')">
+  <span class="nav-icon">📊</span>
+  Statistiky
 </button>
 
-
-<button
-id="navAchievements"
-class="nav-btn"
-onclick="showScreen('achievementsScreen')"
->
-
-<span class="nav-icon">
-🏅
-</span>
-
-Úspěchy
-
+<button id="navAchievements" class="nav-btn" onclick="showScreen('achievementsScreen')">
+  <span class="nav-icon">🏅</span>
+  Úspěchy
 </button>
 
-
-<button
-id="navHistory"
-class="nav-btn"
-onclick="showScreen('historyScreen')"
->
-
-<span class="nav-icon">
-📜
-</span>
-
-Historie
-
+<button id="navHistory" class="nav-btn" onclick="showScreen('historyScreen')">
+  <span class="nav-icon">📜</span>
+  Historie
 </button>
 
-
-<button
-id="navSettings"
-class="nav-btn"
-onclick="showScreen('settingsScreen')"
->
-
-<span class="nav-icon">
-⚙️
-</span>
-
-Nastavení
-
+<button id="navSettings" class="nav-btn" onclick="showScreen('settingsScreen')">
+  <span class="nav-icon">⚙️</span>
+  Nastavení
 </button>
 
 </div>
 
 
-
-<!-- TOAST -->
-
-<div
-id="toast"
-class="toast"
-></div>
+<div id="toast" class="toast"></div>
 
 
+<!-- REMINDER OKNO -->
 
-<!-- UPOZORNĚNÍ -->
-
-<div
-id="reminderOverlay"
-class="reminder-overlay"
->
+<div id="reminderOverlay" class="reminder-overlay">
 
 <div class="reminder-modal">
 
 <div class="reminder-icon">
-🚨💩
+  🚨💩
 </div>
 
 <div class="reminder-title">
-JEŠTĚ KAKÁŠ?
+  JEŠTĚ KAKÁŠ?
 </div>
 
 <div class="reminder-text">
@@ -2132,75 +1519,58 @@ JEŠTĚ KAKÁŠ?
 KÁKO už běží nějak podezřele dlouho.
 
 <span
-id="reminderRunningTime"
-class="reminder-time-value"
+  id="reminderRunningTime"
+  class="reminder-time-value"
 >
-20:00
+  20:00
 </span>
 
 Nezapomněl jsi ho ukončit?
 
 </div>
 
-
-<button
-class="reminder-continue"
-onclick="continueKako()"
->
-💩 JO, JEŠTĚ KAKÁM
+<button class="reminder-continue" onclick="continueKako()">
+  💩 JO, JEŠTĚ KAKÁM
 </button>
 
-
-<button
-class="reminder-stop"
-onclick="finishFromReminder()"
->
-🚽 DOKAKÁNO
+<button class="reminder-stop" onclick="finishFromReminder()">
+  🚽 DOKAKÁNO
 </button>
 
 </div>
-
 </div>
-
 
 
 <script>
 
-/* DATA */
+/* =========================
+   DATA
+========================= */
 
 let timerInterval = null;
 let quoteInterval = null;
 
 let startTime = null;
 let activeLocationMode = null;
-
 let nextReminderAt = null;
 
 let lastResult = null;
-
 let isFinishing = false;
 
 let locationMode =
-  localStorage.getItem("locationMode")
-  || "work";
+  localStorage.getItem("locationMode") || "work";
 
 let payMode =
-  localStorage.getItem("payMode")
-  || "monthly";
+  localStorage.getItem("payMode") || "monthly";
 
 let soundEnabled =
-  localStorage.getItem("soundEnabled")
-  !== "false";
+  localStorage.getItem("soundEnabled") !== "false";
 
 let reminderEnabled =
-  localStorage.getItem("reminderEnabled")
-  !== "false";
+  localStorage.getItem("reminderEnabled") !== "false";
 
 let reminderMinutes =
-  Number(
-    localStorage.getItem("reminderMinutes")
-  )
-  || 20;
+  Number(localStorage.getItem("reminderMinutes")) || 20;
 
 let ratePerMinute = 0;
 let statsMode = "today";
@@ -2211,15 +1581,20 @@ let homeDeck = [];
 let workDeckPosition = 0;
 let homeDeckPosition = 0;
 
-let audioContext = null;
 
+/* HISTORIE */
 
-let history =
-  JSON.parse(
-    localStorage.getItem("kakoHistory")
-  )
-  || [];
+let history = [];
 
+try{
+  history =
+    JSON.parse(
+      localStorage.getItem("kakoHistory")
+    ) || [];
+}
+catch(e){
+  history = [];
+}
 
 history =
   history.map(item => ({
@@ -2233,30 +1608,26 @@ history =
       (
         Number(item.start)
         +
-        (Number(item.seconds) || 0)
-        *
-        1000
+        (Number(item.seconds) || 0) * 1000
       ),
 
     seconds:
-      Number(item.seconds)
-      || 0,
+      Number(item.seconds) || 0,
 
     money:
-      Number(item.money)
-      || 0,
+      Number(item.money) || 0,
 
     location:
-      item.location
-      || "work"
+      item.location || "work"
 
   }));
 
 saveHistory();
 
 
-
-/* HLÁŠKY V PRÁCI */
+/* =========================
+   HLÁŠKY PRÁCE
+========================= */
 
 const workQuotes = [
 
@@ -2324,8 +1695,9 @@ const workQuotes = [
 ];
 
 
-
-/* HLÁŠKY DOMA */
+/* =========================
+   HLÁŠKY DOMA
+========================= */
 
 const homeQuotes = [
 
@@ -2373,8 +1745,9 @@ const homeQuotes = [
 ];
 
 
-
-/* ACHIEVEMENTY */
+/* =========================
+   ACHIEVEMENTY
+========================= */
 
 const achievementsData = [
 
@@ -2437,14 +1810,110 @@ const achievementsData = [
 ];
 
 
+/* =========================
+   AUDIO
+========================= */
 
-/* BALÍČEK HLÁŠEK */
+function getBellAudio(){
+  return document.getElementById("startBellSound");
+}
+
+function getFlushAudio(){
+  return document.getElementById("flushSound");
+}
+
+
+async function playAudio(audio){
+
+  if(
+    !soundEnabled
+    ||
+    !audio
+  ){
+    return false;
+  }
+
+  try{
+
+    audio.pause();
+    audio.currentTime = 0;
+    audio.volume = 1;
+
+    await audio.play();
+
+    return true;
+
+  }
+  catch(error){
+
+    console.log(
+      "Audio chyba:",
+      error
+    );
+
+    return false;
+  }
+}
+
+
+function playStartBell(){
+  return playAudio(
+    getBellAudio()
+  );
+}
+
+
+function playFlushSound(){
+  return playAudio(
+    getFlushAudio()
+  );
+}
+
+
+/* TESTY */
+
+function testStartBell(){
+
+  if(
+    !soundEnabled
+  ){
+
+    showToast(
+      "Nejdřív zapni zvuky."
+    );
+
+    return;
+  }
+
+  playStartBell();
+}
+
+
+function testFlush(){
+
+  if(
+    !soundEnabled
+  ){
+
+    showToast(
+      "Nejdřív zapni zvuky."
+    );
+
+    return;
+  }
+
+  playFlushSound();
+}
+
+
+/* =========================
+   BALÍČEK HLÁŠEK
+========================= */
 
 function shuffleArray(array){
 
   const copy =
     [...array];
-
 
   for(
     let i = copy.length - 1;
@@ -2454,11 +1923,9 @@ function shuffleArray(array){
 
     const j =
       Math.floor(
-        Math.random()
-        *
+        Math.random() *
         (i + 1)
       );
-
 
     [
       copy[i],
@@ -2471,7 +1938,6 @@ function shuffleArray(array){
     ];
   }
 
-
   return copy;
 }
 
@@ -2483,16 +1949,13 @@ function resetQuoteDecks(){
       workQuotes
     );
 
-
   homeDeck =
     shuffleArray(
       homeQuotes
     );
 
-
   workDeckPosition =
     0;
-
 
   homeDeckPosition =
     0;
@@ -2507,8 +1970,6 @@ function getNextQuote(){
   ){
 
     if(
-      homeDeck.length === 0
-      ||
       homeDeckPosition >=
       homeDeck.length
     ){
@@ -2518,28 +1979,17 @@ function getNextQuote(){
           homeQuotes
         );
 
-
       homeDeckPosition =
         0;
     }
 
-
-    const quote =
-      homeDeck[
-        homeDeckPosition
-      ];
-
-
-    homeDeckPosition++;
-
-
-    return quote;
+    return homeDeck[
+      homeDeckPosition++
+    ];
   }
 
 
   if(
-    workDeck.length === 0
-    ||
     workDeckPosition >=
     workDeck.length
   ){
@@ -2549,66 +1999,45 @@ function getNextQuote(){
         workQuotes
       );
 
-
     workDeckPosition =
       0;
   }
 
-
-  const quote =
-    workDeck[
-      workDeckPosition
-    ];
-
-
-  workDeckPosition++;
-
-
-  return quote;
+  return workDeck[
+    workDeckPosition++
+  ];
 }
 
 
-
-/* BĚŽÍ KÁKO? */
+/* =========================
+   NAV
+========================= */
 
 function isKakoRunning(){
-
   return !!startTime;
 }
 
 
-
-/* SPODNÍ MENU */
-
 function updatePrimaryNav(){
-
-  const running =
-    isKakoRunning();
-
 
   const button =
     document.getElementById(
       "navPrimary"
     );
 
+  if(
+    isKakoRunning()
+  ){
 
-  if(running){
-
-    document
-      .getElementById(
-        "navPrimaryIcon"
-      )
-      .innerText =
+    document.getElementById(
+      "navPrimaryIcon"
+    ).innerText =
       "💩";
 
-
-    document
-      .getElementById(
-        "navPrimaryText"
-      )
-      .innerText =
+    document.getElementById(
+      "navPrimaryText"
+    ).innerText =
       "Probíhá";
-
 
     button.classList.add(
       "running"
@@ -2618,21 +2047,15 @@ function updatePrimaryNav(){
 
   else{
 
-    document
-      .getElementById(
-        "navPrimaryIcon"
-      )
-      .innerText =
+    document.getElementById(
+      "navPrimaryIcon"
+    ).innerText =
       "🏠";
 
-
-    document
-      .getElementById(
-        "navPrimaryText"
-      )
-      .innerText =
+    document.getElementById(
+      "navPrimaryText"
+    ).innerText =
       "Domů";
-
 
     button.classList.remove(
       "running"
@@ -2643,27 +2066,17 @@ function updatePrimaryNav(){
 
 function openPrimaryScreen(){
 
-  if(
+  showScreen(
     isKakoRunning()
-  ){
-
-    showScreen(
-      "timerScreen"
-    );
-
-  }
-
-  else{
-
-    showScreen(
-      "homeScreen"
-    );
-  }
+    ? "timerScreen"
+    : "homeScreen"
+  );
 }
 
 
-
-/* ZVUK */
+/* =========================
+   ZVUKY ZAP/VYP
+========================= */
 
 function updateSoundUI(){
 
@@ -2672,12 +2085,10 @@ function updateSoundUI(){
       "soundToggle"
     );
 
-
   button.innerText =
     soundEnabled
     ? "ZAP"
     : "VYP";
-
 
   button.classList.toggle(
     "on",
@@ -2691,689 +2102,63 @@ function toggleSound(){
   soundEnabled =
     !soundEnabled;
 
-
   localStorage.setItem(
     "soundEnabled",
-    String(
-      soundEnabled
-    )
+    String(soundEnabled)
   );
-
 
   updateSoundUI();
 
-
-  if(
-    soundEnabled
-  ){
-
-    playPopSound();
-  }
-}
-
-
-
-/* BOXERSKÝ ZVON */
-
-function playStartBell(){
-
-  if(
-    !soundEnabled
-  ){
-    return;
-  }
-
-
-  try{
-
-    const bell =
-      document.getElementById(
-        "startBellSound"
-      );
-
-
-    if(
-      !bell
-    ){
-      return;
-    }
-
-
-    bell.pause();
-
-    bell.currentTime =
-      0;
-
-
-    bell.volume =
-      1;
-
-
-    const playPromise =
-      bell.play();
-
-
-    if(
-      playPromise !==
-      undefined
-    ){
-
-      playPromise.catch(
-        () => {}
-      );
-    }
-
-  }
-
-  catch(e){}
-}
-
-
-
-/* SPLÁCHNUTÍ */
-
-function playFlushSound(){
-
-  if(
-    !soundEnabled
-  ){
-    return;
-  }
-
-
-  try{
-
-    const flush =
-      document.getElementById(
-        "flushSound"
-      );
-
-
-    if(
-      !flush
-    ){
-      return;
-    }
-
-
-    flush.pause();
-
-    flush.currentTime =
-      0;
-
-
-    flush.volume =
-      1;
-
-
-    const playPromise =
-      flush.play();
-
-
-    if(
-      playPromise !==
-      undefined
-    ){
-
-      playPromise.catch(
-        () => {}
-      );
-    }
-
-  }
-
-  catch(e){}
-}
-
-
-
-/* AUDIO CONTEXT */
-
-function getAudioContext(){
-
-  if(
-    !soundEnabled
-  ){
-    return null;
-  }
-
-
-  try{
-
-    if(
-      !audioContext
-    ){
-
-      const AudioCtx =
-        window.AudioContext
-        ||
-        window.webkitAudioContext;
-
-
-      if(
-        !AudioCtx
-      ){
-        return null;
-      }
-
-
-      audioContext =
-        new AudioCtx();
-    }
-
-
-    if(
-      audioContext.state ===
-      "suspended"
-    ){
-
-      audioContext.resume();
-    }
-
-
-    return audioContext;
-
-  }
-
-  catch(e){
-
-    return null;
-  }
-}
-
-
-function playPopSound(){
-
-  if(
-    !soundEnabled
-  ){
-    return;
-  }
-
-
-  const ctx =
-    getAudioContext();
-
-
-  if(
-    !ctx
-  ){
-    return;
-  }
-
-
-  try{
-
-    const osc =
-      ctx.createOscillator();
-
-
-    const gain =
-      ctx.createGain();
-
-
-    osc.connect(
-      gain
-    );
-
-
-    gain.connect(
-      ctx.destination
-    );
-
-
-    osc.type =
-      "sine";
-
-
-    osc.frequency
-      .setValueAtTime(
-        520,
-        ctx.currentTime
-      );
-
-
-    osc.frequency
-      .exponentialRampToValueAtTime(
-        760,
-        ctx.currentTime + .07
-      );
-
-
-    gain.gain
-      .setValueAtTime(
-        .035,
-        ctx.currentTime
-      );
-
-
-    gain.gain
-      .exponentialRampToValueAtTime(
-        .001,
-        ctx.currentTime + .1
-      );
-
-
-    osc.start();
-
-
-    osc.stop(
-      ctx.currentTime + .11
-    );
-
-  }
-
-  catch(e){}
-}
-
-
-
-function playReminderSound(){
-
-  if(
-    !soundEnabled
-  ){
-    return;
-  }
-
-
-  const ctx =
-    getAudioContext();
-
-
-  if(
-    !ctx
-  ){
-    return;
-  }
-
-
-  try{
-
-    const now =
-      ctx.currentTime;
-
-
-    [
-      700,
-      900,
-      700
-    ]
-    .forEach(
-      (freq,index) => {
-
-        const osc =
-          ctx.createOscillator();
-
-
-        const gain =
-          ctx.createGain();
-
-
-        osc.type =
-          "square";
-
-
-        osc.frequency
-          .setValueAtTime(
-            freq,
-            now + index * .16
-          );
-
-
-        gain.gain
-          .setValueAtTime(
-            .025,
-            now + index * .16
-          );
-
-
-        gain.gain
-          .exponentialRampToValueAtTime(
-            .001,
-            now + index * .16 + .12
-          );
-
-
-        osc.connect(
-          gain
-        );
-
-
-        gain.connect(
-          ctx.destination
-        );
-
-
-        osc.start(
-          now + index * .16
-        );
-
-
-        osc.stop(
-          now + index * .16 + .13
-        );
-
-      }
-    );
-
-  }
-
-  catch(e){}
-}
-
-
-
-/* UPOZORNĚNÍ */
-
-function updateReminderUI(){
-
-  const button =
-    document.getElementById(
-      "reminderToggle"
-    );
-
-
-  button.innerText =
-    reminderEnabled
-    ? "ZAP"
-    : "VYP";
-
-
-  button.classList.toggle(
-    "on",
-    reminderEnabled
-  );
-
-
-  document
-    .getElementById(
-      "reminderTimeBox"
-    )
-    .style.display =
-
-    reminderEnabled
-    ? "block"
-    : "none";
-
-
-  document
-    .getElementById(
-      "reminderMinutesSelect"
-    )
-    .value =
-    String(
-      reminderMinutes
-    );
-}
-
-
-function toggleReminder(){
-
-  reminderEnabled =
-    !reminderEnabled;
-
-
-  localStorage.setItem(
-    "reminderEnabled",
-    String(
-      reminderEnabled
-    )
-  );
-
-
-  updateReminderUI();
-
-
-  if(
-    isKakoRunning()
-  ){
-
-    if(
-      reminderEnabled
-    ){
-
-      nextReminderAt =
-        Date.now()
-        +
-        reminderMinutes *
-        60 *
-        1000;
-
-    }
-
-    else{
-
-      nextReminderAt =
-        null;
-
-
-      closeReminder();
-    }
-
-
-    saveActiveKako();
-  }
-}
-
-
-function checkReminder(){
-
-  if(
-    !startTime
-    ||
-    !reminderEnabled
-    ||
-    !nextReminderAt
-  ){
-    return;
-  }
-
-
-  if(
-    Date.now() >=
-    nextReminderAt
-  ){
-
-    nextReminderAt =
-      null;
-
-
-    saveActiveKako();
-
-
-    showReminder();
-  }
-}
-
-
-function showReminder(){
-
-  if(
-    !startTime
-  ){
-    return;
-  }
-
-
-  const seconds =
-    Math.floor(
-      (
-        Date.now()
-        -
-        startTime
-      )
-      /
-      1000
-    );
-
-
-  document
-    .getElementById(
-      "reminderRunningTime"
-    )
-    .innerText =
-    formatMinutes(
-      seconds
-    );
-
-
-  document
-    .getElementById(
-      "reminderOverlay"
-    )
-    .classList
-    .add(
-      "show"
-    );
-
-
-  playReminderSound();
-
-
-  if(
-    navigator.vibrate
-  ){
-
-    navigator.vibrate(
-      [
-        150,
-        80,
-        150
-      ]
-    );
-  }
-}
-
-
-function closeReminder(){
-
-  document
-    .getElementById(
-      "reminderOverlay"
-    )
-    .classList
-    .remove(
-      "show"
-    );
-}
-
-
-function continueKako(){
-
-  closeReminder();
-
-
-  if(
-    !startTime
-  ){
-    return;
-  }
-
-
-  nextReminderAt =
-    Date.now()
-    +
-    15 *
-    60 *
-    1000;
-
-
-  saveActiveKako();
-
-
   showToast(
-    "💩 Dobře. Kontrola zase za 15 minut."
+    soundEnabled
+    ? "🔊 Zvuky zapnuté"
+    : "🔇 Zvuky vypnuté"
   );
 }
 
 
-function finishFromReminder(){
-
-  closeReminder();
-
-  stopKako();
-}
-
-
-
-/* NASTAVENÍ */
+/* =========================
+   SETTINGS
+========================= */
 
 function loadSettings(){
 
-  const nickname =
+  document.getElementById(
+    "nicknameInput"
+  ).value =
     localStorage.getItem(
       "nickname"
-    )
-    || "";
+    ) || "";
 
 
-  const salary =
-    Number(
-      localStorage.getItem(
-        "salary"
-      )
-    )
-    || 0;
+  document.getElementById(
+    "salaryInput"
+  ).value =
+    localStorage.getItem(
+      "salary"
+    ) || "";
 
 
-  const hours =
-    Number(
-      localStorage.getItem(
-        "hours"
-      )
-    )
-    || 160;
+  document.getElementById(
+    "hoursInput"
+  ).value =
+    localStorage.getItem(
+      "hours"
+    ) || 160;
 
 
-  const hourly =
-    Number(
-      localStorage.getItem(
-        "hourly"
-      )
-    )
-    || 0;
-
-
-  document
-    .getElementById(
-      "nicknameInput"
-    )
-    .value =
-    nickname;
-
-
-  document
-    .getElementById(
-      "salaryInput"
-    )
-    .value =
-    salary || "";
-
-
-  document
-    .getElementById(
-      "hoursInput"
-    )
-    .value =
-    hours;
-
-
-  document
-    .getElementById(
-      "hourlyInput"
-    )
-    .value =
-    hourly || "";
+  document.getElementById(
+    "hourlyInput"
+  ).value =
+    localStorage.getItem(
+      "hourly"
+    ) || "";
 
 
   updatePayUI();
-
-  calculateRate();
-
   updateSoundUI();
-
   updateReminderUI();
+  calculateRate();
 }
 
 
@@ -3382,17 +2167,13 @@ function setPayMode(mode){
   payMode =
     mode;
 
-
   localStorage.setItem(
     "payMode",
     mode
   );
 
-
   updatePayUI();
-
   calculateRate();
-
   updateHome();
 }
 
@@ -3400,54 +2181,35 @@ function setPayMode(mode){
 function updatePayUI(){
 
   document
-    .getElementById(
-      "monthlyBtn"
-    )
+    .getElementById("monthlyBtn")
     .classList
     .toggle(
       "active",
-      payMode ===
-      "monthly"
+      payMode === "monthly"
     );
 
-
   document
-    .getElementById(
-      "hourlyBtn"
-    )
+    .getElementById("hourlyBtn")
     .classList
     .toggle(
       "active",
-      payMode ===
-      "hourly"
+      payMode === "hourly"
     );
 
 
-  document
-    .getElementById(
-      "monthlySettings"
-    )
-    .style.display =
-
-    payMode ===
-    "monthly"
-
+  document.getElementById(
+    "monthlySettings"
+  ).style.display =
+    payMode === "monthly"
     ? "block"
-
     : "none";
 
 
-  document
-    .getElementById(
-      "hourlySettings"
-    )
-    .style.display =
-
-    payMode ===
-    "hourly"
-
+  document.getElementById(
+    "hourlySettings"
+  ).style.display =
+    payMode === "hourly"
     ? "block"
-
     : "none";
 }
 
@@ -3462,7 +2224,6 @@ function saveSettings(){
       .value
       .trim();
 
-
   localStorage.setItem(
     "nickname",
     nickname
@@ -3471,51 +2232,38 @@ function saveSettings(){
 
   reminderMinutes =
     Number(
-      document
-        .getElementById(
-          "reminderMinutesSelect"
-        )
-        .value
-    )
-    || 20;
+      document.getElementById(
+        "reminderMinutesSelect"
+      ).value
+    ) || 20;
 
 
   localStorage.setItem(
     "reminderMinutes",
-    String(
-      reminderMinutes
-    )
+    String(reminderMinutes)
   );
 
 
   if(
-    payMode ===
-    "monthly"
+    payMode === "monthly"
   ){
 
     const salary =
       Number(
-        document
-          .getElementById(
-            "salaryInput"
-          )
-          .value
+        document.getElementById(
+          "salaryInput"
+        ).value
       );
-
 
     const hours =
       Number(
-        document
-          .getElementById(
-            "hoursInput"
-          )
-          .value
+        document.getElementById(
+          "hoursInput"
+        ).value
       );
 
-
     if(
-      !salary
-      ||
+      !salary ||
       !hours
     ){
 
@@ -3526,12 +2274,10 @@ function saveSettings(){
       return;
     }
 
-
     localStorage.setItem(
       "salary",
       salary
     );
-
 
     localStorage.setItem(
       "hours",
@@ -3544,13 +2290,10 @@ function saveSettings(){
 
     const hourly =
       Number(
-        document
-          .getElementById(
-            "hourlyInput"
-          )
-          .value
+        document.getElementById(
+          "hourlyInput"
+        ).value
       );
-
 
     if(
       !hourly
@@ -3563,7 +2306,6 @@ function saveSettings(){
       return;
     }
 
-
     localStorage.setItem(
       "hourly",
       hourly
@@ -3572,28 +2314,14 @@ function saveSettings(){
 
 
   calculateRate();
-
   updateHome();
 
-  updateReminderUI();
 
-
-  if(
+  showScreen(
     isKakoRunning()
-  ){
-
-    showScreen(
-      "timerScreen"
-    );
-
-  }
-
-  else{
-
-    showScreen(
-      "homeScreen"
-    );
-  }
+    ? "timerScreen"
+    : "homeScreen"
+  );
 
 
   showToast(
@@ -3605,8 +2333,7 @@ function saveSettings(){
 function calculateRate(){
 
   if(
-    payMode ===
-    "monthly"
+    payMode === "monthly"
   ){
 
     const salary =
@@ -3614,31 +2341,19 @@ function calculateRate(){
         localStorage.getItem(
           "salary"
         )
-      )
-      || 0;
-
+      ) || 0;
 
     const hours =
       Number(
         localStorage.getItem(
           "hours"
         )
-      )
-      || 160;
-
+      ) || 160;
 
     ratePerMinute =
-
-      salary > 0
-      &&
+      salary > 0 &&
       hours > 0
-
-      ? salary /
-        (
-          hours *
-          60
-        )
-
+      ? salary / (hours * 60)
       : 0;
 
   }
@@ -3650,36 +2365,29 @@ function calculateRate(){
         localStorage.getItem(
           "hourly"
         )
-      )
-      || 0;
-
+      ) || 0;
 
     ratePerMinute =
-
       hourly > 0
-
-      ? hourly /
-        60
-
+      ? hourly / 60
       : 0;
   }
 }
 
 
-
-/* DOMA / PRÁCE */
+/* =========================
+   DOMA / PRÁCE
+========================= */
 
 function setLocationMode(mode){
 
   locationMode =
     mode;
 
-
   localStorage.setItem(
     "locationMode",
     mode
   );
-
 
   updateHome();
 }
@@ -3688,61 +2396,45 @@ function setLocationMode(mode){
 function updateLocation(){
 
   const home =
-    locationMode ===
-    "home";
+    locationMode === "home";
 
 
-  document
-    .getElementById(
-      "homeModeBtn"
-    )
-    .classList
-    .toggle(
-      "active",
-      home
-    );
-
-
-  document
-    .getElementById(
-      "workModeBtn"
-    )
-    .classList
-    .toggle(
-      "active",
-      !home
-    );
-
-
-  document
-    .getElementById(
-      "modeInfo"
-    )
-    .innerText =
-
+  document.getElementById(
+    "homeModeBtn"
+  ).classList.toggle(
+    "active",
     home
+  );
 
+
+  document.getElementById(
+    "workModeBtn"
+  ).classList.toggle(
+    "active",
+    !home
+  );
+
+
+  document.getElementById(
+    "modeInfo"
+  ).innerText =
+    home
     ? "Doma sereš zdarma."
-
     : "V práci se každá minuta mění na peníze.";
 
 
-  document
-    .getElementById(
-      "miniRate"
-    )
-    .innerHTML =
-
+  document.getElementById(
+    "miniRate"
+  ).innerHTML =
     home
-
     ? "🏠 Domácí KÁKO: <strong>0 Kč</strong>"
-
     : `KÁKO kurz: <strong>${moneyFormat(ratePerMinute)}/min</strong>`;
 }
 
 
-
-/* AKTIVNÍ KÁKO */
+/* =========================
+   ACTIVE STORAGE
+========================= */
 
 function saveActiveKako(){
 
@@ -3752,11 +2444,8 @@ function saveActiveKako(){
     return;
   }
 
-
   localStorage.setItem(
-
     "activeKako",
-
     JSON.stringify({
 
       start:
@@ -3769,20 +2458,15 @@ function saveActiveKako(){
         nextReminderAt
 
     })
-
   );
 }
 
 
-
-/* START */
+/* =========================
+   START KÁKO
+========================= */
 
 function startKako(){
-
-  /*
-  Pokud už KÁKO běží,
-  pouze se na něj vrátíme.
-  */
 
   if(
     isKakoRunning()
@@ -3796,13 +2480,8 @@ function startKako(){
   }
 
 
-  /*
-  V práci musí být nastavený plat.
-  */
-
   if(
-    locationMode ===
-    "work"
+    locationMode === "work"
     &&
     ratePerMinute <= 0
   ){
@@ -3810,7 +2489,6 @@ function startKako(){
     alert(
       "Nejdřív nastav plat v Nastavení."
     );
-
 
     showScreen(
       "settingsScreen"
@@ -3821,18 +2499,15 @@ function startKako(){
 
 
   /*
-  DING DING DING
+    ZVUK JE PŘÍMO V KLIKNUTÍ.
+    TO JE DŮLEŽITÉ PRO iPHONE.
   */
 
   playStartBell();
 
 
-  getAudioContext();
-
-
   startTime =
     Date.now();
-
 
   activeLocationMode =
     locationMode;
@@ -3846,8 +2521,7 @@ function startKako(){
       startTime
       +
       reminderMinutes *
-      60 *
-      1000;
+      60000;
 
   }
 
@@ -3860,40 +2534,17 @@ function startKako(){
 
   resetQuoteDecks();
 
-
   saveActiveKako();
-
-
-  updatePrimaryNav();
-
 
   prepareTimer();
 
-
   updateTimer();
 
+  changeQuote();
 
-  changeQuote(
-    false
-  );
+  startTimers();
 
-
-  timerInterval =
-    setInterval(
-      updateTimer,
-      250
-    );
-
-
-  quoteInterval =
-    setInterval(
-      () =>
-      changeQuote(
-        true
-      ),
-      10000
-    );
-
+  updatePrimaryNav();
 
   showScreen(
     "timerScreen"
@@ -3901,8 +2552,42 @@ function startKako(){
 }
 
 
+/* =========================
+   TIMER
+========================= */
 
-/* TIMER */
+function startTimers(){
+
+  stopTimers();
+
+  timerInterval =
+    setInterval(
+      updateTimer,
+      250
+    );
+
+  quoteInterval =
+    setInterval(
+      changeQuote,
+      10000
+    );
+}
+
+
+function stopTimers(){
+
+  if(timerInterval){
+    clearInterval(timerInterval);
+  }
+
+  if(quoteInterval){
+    clearInterval(quoteInterval);
+  }
+
+  timerInterval = null;
+  quoteInterval = null;
+}
+
 
 function prepareTimer(){
 
@@ -3911,29 +2596,19 @@ function prepareTimer(){
     "home";
 
 
-  document
-    .getElementById(
-      "timerMode"
-    )
-    .innerText =
-
+  document.getElementById(
+    "timerMode"
+  ).innerText =
     home
-
     ? "🏠 DOMA"
-
     : "💼 V PRÁCI";
 
 
-  document
-    .getElementById(
-      "liveLabel"
-    )
-    .innerText =
-
+  document.getElementById(
+    "liveLabel"
+  ).innerText =
     home
-
     ? "FINANČNÍ VÝSLEDEK"
-
     : "PRÁVĚ JSI PROKADIL";
 
 
@@ -3942,21 +2617,15 @@ function prepareTimer(){
       "currentMoney"
     );
 
-
-  money
-    .classList
-    .toggle(
-      "free",
-      home
-    );
+  money.classList.toggle(
+    "free",
+    home
+  );
 
 
   money.innerText =
-
     home
-
     ? "Dnes zadarmo"
-
     : "0,00 Kč";
 
 
@@ -3965,25 +2634,17 @@ function prepareTimer(){
       "quoteCard"
     );
 
-
-  card
-    .classList
-    .toggle(
-      "home",
-      home
-    );
-
-
-  document
-    .getElementById(
-      "quoteLabel"
-    )
-    .innerText =
-
+  card.classList.toggle(
+    "home",
     home
+  );
 
+
+  document.getElementById(
+    "quoteLabel"
+  ).innerText =
+    home
     ? "DOMÁCÍ HLÁŠENÍ"
-
     : "FIREMNÍ HLÁŠENÍ";
 }
 
@@ -3998,25 +2659,21 @@ function updateTimer(){
 
 
   const seconds =
-    Math.floor(
-      (
-        Date.now()
-        -
-        startTime
+    Math.max(
+      0,
+      Math.floor(
+        (
+          Date.now() -
+          startTime
+        ) / 1000
       )
-      /
-      1000
     );
 
 
-  document
-    .getElementById(
-      "timer"
-    )
-    .innerText =
-    formatClock(
-      seconds
-    );
+  document.getElementById(
+    "timer"
+  ).innerText =
+    formatClock(seconds);
 
 
   if(
@@ -4024,18 +2681,13 @@ function updateTimer(){
     "work"
   ){
 
-    document
-      .getElementById(
-        "currentMoney"
-      )
-      .innerText =
-
+    document.getElementById(
+      "currentMoney"
+    ).innerText =
       moneyFormat(
-
         seconds /
         60 *
         ratePerMinute
-
       );
   }
 
@@ -4044,12 +2696,18 @@ function updateTimer(){
 }
 
 
+/* =========================
+   HLÁŠKY
+========================= */
 
-/* HLÁŠKY */
+function changeQuote(){
 
-function changeQuote(
-  playSound = true
-){
+  if(
+    !activeLocationMode
+  ){
+    return;
+  }
+
 
   const quote =
     getNextQuote();
@@ -4061,95 +2719,31 @@ function changeQuote(
     );
 
 
-  document
-    .getElementById(
-      "quoteText"
-    )
-    .innerText =
+  document.getElementById(
+    "quoteText"
+  ).innerText =
     quote;
 
 
-  card
-    .classList
-    .remove(
-      "quote-pop"
-    );
+  card.classList.remove(
+    "quote-pop"
+  );
 
 
   void card.offsetWidth;
 
 
-  card
-    .classList
-    .add(
-      "quote-pop"
-    );
-
-
-  if(
-    playSound
-  ){
-
-    playPopSound();
-  }
-}
-
-
-
-/* ZRUŠIT */
-
-function cancelKako(){
-
-  if(
-    !confirm(
-      "Zrušit KÁKO bez uložení do historie?"
-    )
-  ){
-    return;
-  }
-
-
-  closeReminder();
-
-
-  stopTimers();
-
-
-  localStorage.removeItem(
-    "activeKako"
-  );
-
-
-  startTime =
-    null;
-
-
-  activeLocationMode =
-    null;
-
-
-  nextReminderAt =
-    null;
-
-
-  updatePrimaryNav();
-
-
-  showScreen(
-    "homeScreen"
-  );
-
-
-  showToast(
-    "KÁKO zrušeno. Nikdo se nic nedozví."
+  card.classList.add(
+    "quote-pop"
   );
 }
 
 
+/* =========================
+   STOP
+========================= */
 
-/* DOKAKÁNO */
-
-function stopKako(){
+async function stopKako(){
 
   if(
     !startTime
@@ -4164,68 +2758,65 @@ function stopKako(){
     true;
 
 
-  const stopButton =
+  const button =
     document.getElementById(
       "stopKakoButton"
     );
 
 
-  if(
-    stopButton
-  ){
+  button.disabled =
+    true;
 
-    stopButton.disabled =
-      true;
-
-
-    stopButton.innerText =
-      "🚽 SPLACHUJU...";
-  }
+  button.innerText =
+    "🚽 SPLACHUJU...";
 
 
-  closeReminder();
+  /*
+    NEJDŘÍV ZVUK.
+    PŘÍMO V KLIKNUTÍ.
+  */
 
-
-  stopTimers();
+  playFlushSound();
 
 
   const end =
     Date.now();
 
 
+  const currentStart =
+    startTime;
+
+
+  const currentLocation =
+    activeLocationMode;
+
+
+  stopTimers();
+  closeReminder();
+
+
   const seconds =
     Math.max(
-
       1,
-
       Math.floor(
         (
           end -
-          startTime
-        )
-        /
-        1000
+          currentStart
+        ) / 1000
       )
-
     );
 
 
   const money =
-
-    activeLocationMode ===
-    "work"
-
-    ? seconds /
-      60 *
-      ratePerMinute
-
+    currentLocation === "work"
+    ? seconds / 60 * ratePerMinute
     : 0;
 
 
   const item = {
 
     start:
-      startTime,
+      currentStart,
 
     end:
       end,
@@ -4237,9 +2828,7 @@ function stopKako(){
       money,
 
     location:
-      activeLocationMode
-      ||
-      "work"
+      currentLocation || "work"
 
   };
 
@@ -4266,39 +2855,17 @@ function stopKako(){
   );
 
 
-  /*
-  SPLÁCHNUTÍ
-  */
-
-  playFlushSound();
-
-
-  startTime =
-    null;
-
-
-  activeLocationMode =
-    null;
-
-
-  nextReminderAt =
-    null;
-
-
-  updatePrimaryNav();
+  startTime = null;
+  activeLocationMode = null;
+  nextReminderAt = null;
 
 
   updateAll();
 
 
-  const resultDelay =
-
-    soundEnabled
-
-    ? 700
-
-    : 0;
-
+  /*
+    Necháme spláchnutí chvíli zaznít.
+  */
 
   setTimeout(
     () => {
@@ -4307,117 +2874,114 @@ function stopKako(){
         "resultScreen"
       );
 
+      button.disabled =
+        false;
 
-      if(
-        stopButton
-      ){
-
-        stopButton.disabled =
-          false;
-
-
-        stopButton.innerText =
-          "💩 DOKAKÁNO";
-      }
-
+      button.innerText =
+        "💩 DOKAKÁNO";
 
       isFinishing =
         false;
 
     },
 
-    resultDelay
+    soundEnabled
+    ? 900
+    : 0
   );
 }
 
 
-function stopTimers(){
+/* =========================
+   CANCEL
+========================= */
 
-  clearInterval(
-    timerInterval
+function cancelKako(){
+
+  if(
+    !confirm(
+      "Zrušit KÁKO bez uložení do historie?"
+    )
+  ){
+    return;
+  }
+
+
+  stopTimers();
+  closeReminder();
+
+
+  localStorage.removeItem(
+    "activeKako"
   );
 
 
-  clearInterval(
-    quoteInterval
+  startTime = null;
+  activeLocationMode = null;
+  nextReminderAt = null;
+
+
+  updatePrimaryNav();
+
+
+  showScreen(
+    "homeScreen"
   );
 
 
-  timerInterval =
-    null;
-
-
-  quoteInterval =
-    null;
+  showToast(
+    "KÁKO zrušeno. Nikdo se nic nedozví."
+  );
 }
 
 
-
-/* VÝSLEDEK */
+/* =========================
+   RESULT
+========================= */
 
 function prepareResult(item){
 
   const home =
-    item.location ===
-    "home";
+    item.location === "home";
 
 
-  document
-    .getElementById(
-      "resultSub"
-    )
-    .innerText =
-
+  document.getElementById(
+    "resultSub"
+  ).innerText =
     home
-
     ? "Domácí projekt dokončen."
-
     : "Firemní projekt dokončen.";
 
 
-  document
-    .getElementById(
-      "resultTime"
-    )
-    .innerText =
+  document.getElementById(
+    "resultTime"
+  ).innerText =
     formatMinutes(
       item.seconds
     );
 
 
-  document
-    .getElementById(
-      "resultMoneyLabel"
-    )
-    .innerText =
-
+  document.getElementById(
+    "resultMoneyLabel"
+  ).innerText =
     home
-
     ? "VYDĚLÁNO"
-
     : "PROKAKÁNO";
 
 
-  document
-    .getElementById(
-      "resultMoney"
-    )
-    .innerText =
-
+  document.getElementById(
+    "resultMoney"
+  ).innerText =
     home
-
     ? "0 Kč"
-
     : moneyFormat(
         item.money
       );
 
 
-  document
-    .getElementById(
-      "ratingText"
-    )
-    .innerText =
+  document.getElementById(
+    "ratingText"
+  ).innerText =
     getRating(
       item.seconds
     );
@@ -4427,40 +2991,33 @@ function prepareResult(item){
 function getRating(seconds){
 
   const minutes =
-    seconds /
-    60;
-
+    seconds / 60;
 
   if(minutes < 2)
     return "⚡ Rychlovka";
 
-
   if(minutes < 5)
     return "👌 Efektivní vyprazdňovač";
-
 
   if(minutes < 10)
     return "💩 Solidní výkon";
 
-
   if(minutes < 15)
     return "📋 Porada vedení";
-
 
   if(minutes < 25)
     return "👔 Seniorní KÁKO manažer";
 
-
   if(minutes < 40)
     return "🏆 Ředitel keramického oddělení";
-
 
   return "👑 Generální ředitel porcelánu";
 }
 
 
-
-/* SDÍLENÍ */
+/* =========================
+   SHARE
+========================= */
 
 async function shareResult(){
 
@@ -4474,9 +3031,7 @@ async function shareResult(){
   const nickname =
     localStorage.getItem(
       "nickname"
-    )
-    ||
-    "Já";
+    ) || "Já";
 
 
   const home =
@@ -4485,15 +3040,12 @@ async function shareResult(){
 
 
   const text =
-
     home
-
     ? `💩 KÁKO
 ${nickname} právě dokončil domácí KÁKO.
 ⏱ ${formatMinutes(lastResult.seconds)}
 💰 Vyděláno: 0 Kč
 🏠 Doma se sere zdarma.`
-
     : `💩 KÁKO
 ${nickname} právě dokončil pracovní KÁKO.
 ⏱ ${formatMinutes(lastResult.seconds)}
@@ -4508,17 +3060,11 @@ ${nickname} právě dokončil pracovní KÁKO.
     try{
 
       await navigator.share({
-
-        title:
-          "KÁKO",
-
-        text:
-          text
-
+        title:"KÁKO",
+        text:text
       });
 
     }
-
     catch(e){}
 
   }
@@ -4527,12 +3073,9 @@ ${nickname} právě dokončil pracovní KÁKO.
 
     try{
 
-      await navigator
-        .clipboard
-        .writeText(
-          text
-        );
-
+      await navigator.clipboard.writeText(
+        text
+      );
 
       showToast(
         "Výsledek zkopírován"
@@ -4542,16 +3085,15 @@ ${nickname} právě dokončil pracovní KÁKO.
 
     catch(e){
 
-      alert(
-        text
-      );
+      alert(text);
     }
   }
 }
 
 
-
-/* STATISTIKY */
+/* =========================
+   STATS
+========================= */
 
 function filteredHistory(mode){
 
@@ -4569,44 +3111,27 @@ function filteredHistory(mode){
 
 
       if(
-        mode ===
-        "today"
+        mode === "today"
       ){
 
         return (
-
-          date.getDate() ===
-          now.getDate()
-
+          date.getDate() === now.getDate()
           &&
-
-          date.getMonth() ===
-          now.getMonth()
-
+          date.getMonth() === now.getMonth()
           &&
-
-          date.getFullYear() ===
-          now.getFullYear()
-
+          date.getFullYear() === now.getFullYear()
         );
       }
 
 
       if(
-        mode ===
-        "month"
+        mode === "month"
       ){
 
         return (
-
-          date.getMonth() ===
-          now.getMonth()
-
+          date.getMonth() === now.getMonth()
           &&
-
-          date.getFullYear() ===
-          now.getFullYear()
-
+          date.getFullYear() === now.getFullYear()
         );
       }
 
@@ -4617,27 +3142,56 @@ function filteredHistory(mode){
 }
 
 
+function sumSeconds(arr){
+
+  return arr.reduce(
+    (sum,item) =>
+      sum +
+      (Number(item.seconds) || 0),
+    0
+  );
+}
+
+
+function sumMoney(arr){
+
+  return arr.reduce(
+    (sum,item) =>
+      sum +
+      (Number(item.money) || 0),
+    0
+  );
+}
+
+
+function maxSeconds(arr){
+
+  return arr.reduce(
+    (max,item) =>
+      Math.max(
+        max,
+        Number(item.seconds) || 0
+      ),
+    0
+  );
+}
+
+
 function getStats(mode){
 
   const data =
-    filteredHistory(
-      mode
-    );
+    filteredHistory(mode);
 
 
   const home =
     data.filter(
-      x =>
-      x.location ===
-      "home"
+      x => x.location === "home"
     );
 
 
   const work =
     data.filter(
-      x =>
-      x.location ===
-      "work"
+      x => x.location === "work"
     );
 
 
@@ -4647,135 +3201,52 @@ function getStats(mode){
       data.length,
 
     seconds:
-      sumSeconds(
-        data
-      ),
+      sumSeconds(data),
 
     money:
-      sumMoney(
-        work
-      ),
+      sumMoney(work),
 
     homeVisits:
       home.length,
 
     homeSeconds:
-      sumSeconds(
-        home
-      ),
+      sumSeconds(home),
 
     workVisits:
       work.length,
 
     workSeconds:
-      sumSeconds(
-        work
-      ),
+      sumSeconds(work),
 
     longest:
-      maxSeconds(
-        data
-      ),
+      maxSeconds(data),
 
     mostExpensive:
       Math.max(
-
         0,
-
         ...work.map(
           x =>
-          Number(x.money)
-          || 0
+            Number(x.money) || 0
         )
-
       )
 
   };
 }
 
 
-function sumSeconds(arr){
-
-  return arr.reduce(
-
-    (sum,item) =>
-
-    sum
-    +
-    (
-      Number(
-        item.seconds
-      )
-      ||
-      0
-    ),
-
-    0
-
-  );
-}
-
-
-function sumMoney(arr){
-
-  return arr.reduce(
-
-    (sum,item) =>
-
-    sum
-    +
-    (
-      Number(
-        item.money
-      )
-      ||
-      0
-    ),
-
-    0
-
-  );
-}
-
-
-function maxSeconds(arr){
-
-  return arr.reduce(
-
-    (max,item) =>
-
-    Math.max(
-      max,
-      Number(
-        item.seconds
-      )
-      ||
-      0
-    ),
-
-    0
-
-  );
-}
-
-
 function getMostVisitsOneDay(){
 
-  const counts =
-    {};
+  const counts = {};
 
 
   history.forEach(
     item => {
 
       const d =
-        new Date(
-          item.start
-        );
+        new Date(item.start);
 
 
       const key =
-
         d.getFullYear()
         +
         "-"
@@ -4788,26 +3259,14 @@ function getMostVisitsOneDay(){
 
 
       counts[key] =
-        (
-          counts[key]
-          ||
-          0
-        )
-        +
-        1;
-
+        (counts[key] || 0) + 1;
     }
   );
 
 
   return Math.max(
-
     0,
-
-    ...Object.values(
-      counts
-    )
-
+    ...Object.values(counts)
   );
 }
 
@@ -4819,28 +3278,19 @@ function setStatsMode(mode){
 
 
   document
-    .querySelectorAll(
-      ".tab"
-    )
+    .querySelectorAll(".tab")
     .forEach(
-      x =>
-      x.classList.remove(
-        "active"
-      )
+      tab =>
+        tab.classList.remove(
+          "active"
+        )
     );
 
 
   const map = {
-
-    today:
-      "todayTab",
-
-    month:
-      "monthTab",
-
-    all:
-      "allTab"
-
+    today:"todayTab",
+    month:"monthTab",
+    all:"allTab"
   };
 
 
@@ -4848,8 +3298,7 @@ function setStatsMode(mode){
     .getElementById(
       map[mode]
     )
-    .classList
-    .add(
+    .classList.add(
       "active"
     );
 
@@ -4866,112 +3315,87 @@ function updateStats(){
     );
 
 
-  document
-    .getElementById(
-      "statsVisits"
-    )
-    .innerText =
+  document.getElementById(
+    "statsVisits"
+  ).innerText =
     s.visits;
 
 
-  document
-    .getElementById(
-      "statsTime"
-    )
-    .innerText =
+  document.getElementById(
+    "statsTime"
+  ).innerText =
     formatLongTime(
       s.seconds
     );
 
 
-  document
-    .getElementById(
-      "statsMoney"
-    )
-    .innerText =
+  document.getElementById(
+    "statsMoney"
+  ).innerText =
     moneyFormat(
       s.money
     );
 
 
-  document
-    .getElementById(
-      "homeVisits"
-    )
-    .innerText =
-    s.homeVisits
-    +
-    "×";
+  document.getElementById(
+    "homeVisits"
+  ).innerText =
+    s.homeVisits + "×";
 
 
-  document
-    .getElementById(
-      "homeTime"
-    )
-    .innerText =
+  document.getElementById(
+    "homeTime"
+  ).innerText =
     formatLongTime(
       s.homeSeconds
     );
 
 
-  document
-    .getElementById(
-      "workVisits"
-    )
-    .innerText =
-    s.workVisits
-    +
-    "×";
+  document.getElementById(
+    "workVisits"
+  ).innerText =
+    s.workVisits + "×";
 
 
-  document
-    .getElementById(
-      "workTime"
-    )
-    .innerText =
+  document.getElementById(
+    "workTime"
+  ).innerText =
     formatLongTime(
       s.workSeconds
     );
 
 
-  document
-    .getElementById(
-      "longestKako"
-    )
-    .innerText =
+  document.getElementById(
+    "longestKako"
+  ).innerText =
     formatMinutes(
       s.longest
     );
 
 
-  document
-    .getElementById(
-      "mostExpensive"
-    )
-    .innerText =
+  document.getElementById(
+    "mostExpensive"
+  ).innerText =
     moneyFormat(
       s.mostExpensive
     );
 
 
-  document
-    .getElementById(
-      "mostVisitsDay"
-    )
-    .innerText =
+  document.getElementById(
+    "mostVisitsDay"
+  ).innerText =
     getMostVisitsOneDay();
 }
 
 
-
-/* ACHIEVEMENTY */
+/* =========================
+   ACHIEVEMENTS
+========================= */
 
 function renderAchievements(){
 
   const s =
-    getStats(
-      "all"
-    );
+    getStats("all");
 
 
   const box =
@@ -4980,27 +3404,20 @@ function renderAchievements(){
     );
 
 
-  box.innerHTML =
-    "";
+  box.innerHTML = "";
 
 
-  let unlockedCount =
-    0;
+  let unlockedCount = 0;
 
 
   achievementsData.forEach(
     achievement => {
 
       const unlocked =
-        achievement.test(
-          s
-        );
+        achievement.test(s);
 
 
-      if(
-        unlocked
-      ){
-
+      if(unlocked){
         unlockedCount++;
       }
 
@@ -5012,16 +3429,11 @@ function renderAchievements(){
 
 
       div.className =
-
         "achievement"
-
         +
-
         (
           unlocked
-
           ? " unlocked"
-
           : ""
         );
 
@@ -5029,17 +3441,14 @@ function renderAchievements(){
       div.innerHTML = `
 
         <div class="achievement-icon">
-
           ${
             unlocked
             ? achievement.icon
             : "🔒"
           }
-
         </div>
 
         <div>
-
           <strong>
             ${achievement.title}
           </strong>
@@ -5047,25 +3456,19 @@ function renderAchievements(){
           <small>
             ${achievement.text}
           </small>
-
         </div>
 
       `;
 
 
-      box.appendChild(
-        div
-      );
+      box.appendChild(div);
     }
   );
 
 
-  document
-    .getElementById(
-      "achievementProgress"
-    )
-    .innerText =
-
+  document.getElementById(
+    "achievementProgress"
+  ).innerText =
     unlockedCount
     +
     " / "
@@ -5074,46 +3477,38 @@ function renderAchievements(){
 }
 
 
-
-/* DOMŮ */
+/* =========================
+   HOME
+========================= */
 
 function updateHome(){
 
   calculateRate();
 
-
   updateLocation();
 
 
   const stats =
-    getStats(
-      "today"
-    );
+    getStats("today");
 
 
-  document
-    .getElementById(
-      "todayVisits"
-    )
-    .innerText =
+  document.getElementById(
+    "todayVisits"
+  ).innerText =
     stats.visits;
 
 
-  document
-    .getElementById(
-      "todayTime"
-    )
-    .innerText =
+  document.getElementById(
+    "todayTime"
+  ).innerText =
     formatLongTime(
       stats.seconds
     );
 
 
-  document
-    .getElementById(
-      "todayMoney"
-    )
-    .innerText =
+  document.getElementById(
+    "todayMoney"
+  ).innerText =
     moneyFormat(
       stats.money
     );
@@ -5125,24 +3520,19 @@ function updateHome(){
     );
 
 
-  document
-    .getElementById(
-      "helloText"
-    )
-    .innerText =
-
+  document.getElementById(
+    "helloText"
+  ).innerText =
     nickname
-
-    ? nickname
-      +
+    ? nickname +
       ", každá minuta se počítá."
-
     : "Každá minuta se počítá.";
 }
 
 
-
-/* HISTORIE */
+/* =========================
+   HISTORY
+========================= */
 
 function renderHistory(){
 
@@ -5153,28 +3543,21 @@ function renderHistory(){
 
 
   if(
-    history.length ===
-    0
+    history.length === 0
   ){
 
     box.innerHTML = `
-
       <div class="empty">
-
-        Zatím žádné KÁKO.
-        <br>
+        Zatím žádné KÁKO.<br>
         To chce napravit. 💩
-
       </div>
-
     `;
 
     return;
   }
 
 
-  box.innerHTML =
-    "";
+  box.innerHTML = "";
 
 
   history.forEach(
@@ -5196,18 +3579,14 @@ function renderHistory(){
         date.toLocaleTimeString(
           "cs-CZ",
           {
-            hour:
-              "2-digit",
-
-            minute:
-              "2-digit"
+            hour:"2-digit",
+            minute:"2-digit"
           }
         );
 
 
       const home =
-        item.location ===
-        "home";
+        item.location === "home";
 
 
       const div =
@@ -5234,7 +3613,6 @@ function renderHistory(){
 
         </div>
 
-
         <div class="history-bottom">
 
           <span>
@@ -5242,19 +3620,14 @@ function renderHistory(){
           </span>
 
           <strong class="green">
-
             ${
               home
-
               ? "0 Kč"
-
               : moneyFormat(
                   item.money
                 )
             }
-
           </strong>
-
 
           <button
             class="delete-btn"
@@ -5265,25 +3638,18 @@ function renderHistory(){
 
         </div>
 
-
         <div class="history-place">
-
           ${
             home
-
             ? "🏠 DOMA"
-
             : "💼 V PRÁCI"
           }
-
         </div>
 
       `;
 
 
-      box.appendChild(
-        div
-      );
+      box.appendChild(div);
     }
   );
 }
@@ -5307,8 +3673,6 @@ function deleteHistory(index){
 
 
   saveHistory();
-
-
   updateAll();
 
 
@@ -5338,13 +3702,9 @@ function clearHistory(){
   }
 
 
-  history =
-    [];
-
+  history = [];
 
   saveHistory();
-
-
   updateAll();
 
 
@@ -5357,19 +3717,180 @@ function clearHistory(){
 function saveHistory(){
 
   localStorage.setItem(
-
     "kakoHistory",
-
-    JSON.stringify(
-      history
-    )
-
+    JSON.stringify(history)
   );
 }
 
 
+/* =========================
+   REMINDER
+========================= */
 
-/* OBRAZOVKY */
+function updateReminderUI(){
+
+  const button =
+    document.getElementById(
+      "reminderToggle"
+    );
+
+
+  button.innerText =
+    reminderEnabled
+    ? "ZAP"
+    : "VYP";
+
+
+  button.classList.toggle(
+    "on",
+    reminderEnabled
+  );
+
+
+  document.getElementById(
+    "reminderTimeBox"
+  ).style.display =
+    reminderEnabled
+    ? "block"
+    : "none";
+
+
+  document.getElementById(
+    "reminderMinutesSelect"
+  ).value =
+    String(
+      reminderMinutes
+    );
+}
+
+
+function toggleReminder(){
+
+  reminderEnabled =
+    !reminderEnabled;
+
+
+  localStorage.setItem(
+    "reminderEnabled",
+    String(reminderEnabled)
+  );
+
+
+  updateReminderUI();
+
+
+  if(
+    isKakoRunning()
+  ){
+
+    nextReminderAt =
+      reminderEnabled
+      ? Date.now()
+        +
+        reminderMinutes *
+        60000
+      : null;
+
+
+    saveActiveKako();
+  }
+}
+
+
+function checkReminder(){
+
+  if(
+    !startTime
+    ||
+    !reminderEnabled
+    ||
+    !nextReminderAt
+  ){
+    return;
+  }
+
+
+  if(
+    Date.now() >=
+    nextReminderAt
+  ){
+
+    nextReminderAt = null;
+
+    saveActiveKako();
+
+    showReminder();
+  }
+}
+
+
+function showReminder(){
+
+  const seconds =
+    Math.floor(
+      (
+        Date.now() -
+        startTime
+      ) / 1000
+    );
+
+
+  document.getElementById(
+    "reminderRunningTime"
+  ).innerText =
+    formatMinutes(
+      seconds
+    );
+
+
+  document.getElementById(
+    "reminderOverlay"
+  ).classList.add(
+    "show"
+  );
+}
+
+
+function closeReminder(){
+
+  document.getElementById(
+    "reminderOverlay"
+  ).classList.remove(
+    "show"
+  );
+}
+
+
+function continueKako(){
+
+  closeReminder();
+
+
+  nextReminderAt =
+    Date.now() +
+    15 * 60000;
+
+
+  saveActiveKako();
+
+
+  showToast(
+    "💩 Kontrola zase za 15 minut."
+  );
+}
+
+
+function finishFromReminder(){
+
+  closeReminder();
+
+  stopKako();
+}
+
+
+/* =========================
+   SCREENS
+========================= */
 
 function showScreen(id){
 
@@ -5379,16 +3900,14 @@ function showScreen(id){
     )
     .forEach(
       screen =>
-      screen.classList.remove(
-        "active"
-      )
+        screen.classList.remove(
+          "active"
+        )
     );
 
 
   document
-    .getElementById(
-      id
-    )
+    .getElementById(id)
     .classList
     .add(
       "active"
@@ -5400,46 +3919,36 @@ function showScreen(id){
       ".nav-btn"
     )
     .forEach(
-      btn =>
-      btn.classList.remove(
-        "active"
-      )
+      button =>
+        button.classList.remove(
+          "active"
+        )
     );
 
 
   if(
-    id ===
-    "homeScreen"
+    id === "homeScreen"
     ||
-    id ===
-    "timerScreen"
+    id === "timerScreen"
   ){
 
-    document
-      .getElementById(
-        "navPrimary"
-      )
-      .classList
-      .add(
-        "active"
-      );
+    document.getElementById(
+      "navPrimary"
+    ).classList.add(
+      "active"
+    );
   }
 
 
   if(
-    id ===
-    "statsScreen"
+    id === "statsScreen"
   ){
 
-    document
-      .getElementById(
-        "navStats"
-      )
-      .classList
-      .add(
-        "active"
-      );
-
+    document.getElementById(
+      "navStats"
+    ).classList.add(
+      "active"
+    );
 
     updateStats();
   }
@@ -5450,75 +3959,52 @@ function showScreen(id){
     "achievementsScreen"
   ){
 
-    document
-      .getElementById(
-        "navAchievements"
-      )
-      .classList
-      .add(
-        "active"
-      );
-
+    document.getElementById(
+      "navAchievements"
+    ).classList.add(
+      "active"
+    );
 
     renderAchievements();
   }
 
 
   if(
-    id ===
-    "historyScreen"
+    id === "historyScreen"
   ){
 
-    document
-      .getElementById(
-        "navHistory"
-      )
-      .classList
-      .add(
-        "active"
-      );
-
+    document.getElementById(
+      "navHistory"
+    ).classList.add(
+      "active"
+    );
 
     renderHistory();
   }
 
 
   if(
-    id ===
-    "settingsScreen"
+    id === "settingsScreen"
   ){
 
-    document
-      .getElementById(
-        "navSettings"
-      )
-      .classList
-      .add(
-        "active"
-      );
-
-
-    updateReminderUI();
-
+    document.getElementById(
+      "navSettings"
+    ).classList.add(
+      "active"
+    );
 
     updateSoundUI();
+    updateReminderUI();
   }
-
-
-  document
-    .getElementById(
-      "bottomNav"
-    )
-    .style.display =
-    "grid";
 
 
   updatePrimaryNav();
 }
 
 
-
-/* OBNOVA KÁKO */
+/* =========================
+   RESTORE
+========================= */
 
 function restoreKako(){
 
@@ -5528,9 +4014,7 @@ function restoreKako(){
     );
 
 
-  if(
-    !raw
-  ){
+  if(!raw){
     return;
   }
 
@@ -5538,52 +4022,35 @@ function restoreKako(){
   try{
 
     const saved =
-      JSON.parse(
-        raw
-      );
+      JSON.parse(raw);
 
 
     startTime =
-      Number(
-        saved.start
-      );
+      Number(saved.start);
 
 
     activeLocationMode =
-      saved.location
-      ||
-      "work";
+      saved.location || "work";
 
 
     nextReminderAt =
       Number(
         saved.nextReminderAt
-      )
-      ||
-      null;
+      ) || null;
 
   }
 
   catch(e){
 
-    startTime =
-      Number(
-        raw
-      );
+    localStorage.removeItem(
+      "activeKako"
+    );
 
-
-    activeLocationMode =
-      "work";
-
-
-    nextReminderAt =
-      null;
+    return;
   }
 
 
-  if(
-    !startTime
-  ){
+  if(!startTime){
     return;
   }
 
@@ -5598,59 +4065,29 @@ function restoreKako(){
       startTime
       +
       reminderMinutes *
-      60 *
-      1000;
-
-
-    saveActiveKako();
+      60000;
   }
 
 
   resetQuoteDecks();
 
-
-  updatePrimaryNav();
-
-
   prepareTimer();
-
 
   updateTimer();
 
+  changeQuote();
 
-  changeQuote(
-    false
-  );
-
-
-  timerInterval =
-    setInterval(
-      updateTimer,
-      250
-    );
-
-
-  quoteInterval =
-    setInterval(
-      () =>
-      changeQuote(
-        true
-      ),
-      10000
-    );
-
+  startTimers();
 
   showScreen(
     "timerScreen"
   );
-
-
-  checkReminder();
 }
 
 
-
-/* FORMÁT */
+/* =========================
+   FORMÁT
+========================= */
 
 function moneyFormat(value){
 
@@ -5660,11 +4097,8 @@ function moneyFormat(value){
   .toLocaleString(
     "cs-CZ",
     {
-      minimumFractionDigits:
-        2,
-
-      maximumFractionDigits:
-        2
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
     }
   )
   +
@@ -5677,69 +4111,40 @@ function formatClock(seconds){
   seconds =
     Math.max(
       0,
-      Number(seconds)
-      ||
-      0
+      Number(seconds) || 0
     );
 
 
   const h =
     Math.floor(
-      seconds /
-      3600
+      seconds / 3600
     );
 
 
   const m =
     Math.floor(
       (
-        seconds %
-        3600
-      )
-      /
-      60
+        seconds % 3600
+      ) / 60
     );
 
 
   const s =
     Math.floor(
-      seconds %
-      60
+      seconds % 60
     );
 
 
   return (
-
-    String(h)
-      .padStart(
-        2,
-        "0"
-      )
-
+    String(h).padStart(2,"0")
     +
-
     ":"
-
     +
-
-    String(m)
-      .padStart(
-        2,
-        "0"
-      )
-
+    String(m).padStart(2,"0")
     +
-
     ":"
-
     +
-
-    String(s)
-      .padStart(
-        2,
-        "0"
-      )
-
+    String(s).padStart(2,"0")
   );
 }
 
@@ -5749,94 +4154,52 @@ function formatMinutes(seconds){
   seconds =
     Math.max(
       0,
-      Number(seconds)
-      ||
-      0
+      Number(seconds) || 0
     );
 
 
   const h =
     Math.floor(
-      seconds /
-      3600
+      seconds / 3600
     );
 
 
   const m =
     Math.floor(
       (
-        seconds %
-        3600
-      )
-      /
-      60
+        seconds % 3600
+      ) / 60
     );
 
 
   const s =
     Math.floor(
-      seconds %
-      60
+      seconds % 60
     );
 
 
-  if(
-    h >
-    0
-  ){
+  if(h > 0){
 
     return (
-
       h
-
       +
-
       ":"
-
       +
-
-      String(m)
-        .padStart(
-          2,
-          "0"
-        )
-
+      String(m).padStart(2,"0")
       +
-
       ":"
-
       +
-
-      String(s)
-        .padStart(
-          2,
-          "0"
-        )
-
+      String(s).padStart(2,"0")
     );
   }
 
 
   return (
-
-    String(m)
-      .padStart(
-        2,
-        "0"
-      )
-
+    String(m).padStart(2,"0")
     +
-
     ":"
-
     +
-
-    String(s)
-      .padStart(
-        2,
-        "0"
-      )
-
+    String(s).padStart(2,"0")
   );
 }
 
@@ -5844,56 +4207,44 @@ function formatMinutes(seconds){
 function formatLongTime(seconds){
 
   seconds =
-    Number(seconds)
-    ||
-    0;
+    Number(seconds) || 0;
 
 
   const h =
     Math.floor(
-      seconds /
-      3600
+      seconds / 3600
     );
 
 
   const m =
     Math.floor(
       (
-        seconds %
-        3600
-      )
-      /
-      60
+        seconds % 3600
+      ) / 60
     );
 
 
-  if(
-    h >
-    0
-  ){
+  if(h > 0){
 
     return (
-      h
-      +
-      " h "
-      +
-      m
-      +
+      h +
+      " h " +
+      m +
       " min"
     );
   }
 
 
   return (
-    m
-    +
+    m +
     " min"
   );
 }
 
 
-
-/* TOAST */
+/* =========================
+   TOAST
+========================= */
 
 function showToast(text){
 
@@ -5921,11 +4272,9 @@ function showToast(text){
     setTimeout(
       () => {
 
-        toast
-          .classList
-          .remove(
-            "show"
-          );
+        toast.classList.remove(
+          "show"
+        );
 
       },
       2200
@@ -5933,29 +4282,25 @@ function showToast(text){
 }
 
 
-
-/* UPDATE */
+/* =========================
+   UPDATE
+========================= */
 
 function updateAll(){
 
   updateHome();
-
   updateStats();
-
   renderAchievements();
-
   renderHistory();
-
   updatePrimaryNav();
-
   updateSoundUI();
-
   updateReminderUI();
 }
 
 
-
-/* INIT */
+/* =========================
+   INIT
+========================= */
 
 resetQuoteDecks();
 
