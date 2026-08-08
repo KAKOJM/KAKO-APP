@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta
+  name="viewport"
+  content="width=device-width,
+  initial-scale=1,
+  maximum-scale=1,
+  minimum-scale=1,
+  user-scalable=no,
+  viewport-fit=cover"
+>
+
 <meta name="theme-color" content="#2a170e">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
@@ -14,6 +27,7 @@
 <link rel="icon" type="image/png" href="icon.png">
 
 <style>
+
 :root{
   --brown:#2a170e;
   --cream:#fff7e9;
@@ -31,18 +45,27 @@
   padding:0;
 }
 
+html,
+body{
+  touch-action:manipulation;
+  overscroll-behavior:none;
+}
+
 body{
   font-family:Arial,Helvetica,sans-serif;
   background:var(--brown);
   color:var(--brown);
+  -webkit-text-size-adjust:100%;
 }
 
-button,input{
+button,
+input{
   font-family:inherit;
 }
 
 button{
   -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
 }
 
 .screen{
@@ -57,18 +80,23 @@ button{
   max-width:430px;
   min-height:100vh;
   margin:auto;
+
   background:var(--cream);
+
   padding:
-    calc(15px + env(safe-area-inset-top))
+    calc(14px + env(safe-area-inset-top))
     18px
     calc(100px + env(safe-area-inset-bottom));
 }
 
-/* HEADER */
+
+/* =========================
+   LOGO
+========================= */
 
 .logo-wrap{
   text-align:center;
-  margin-bottom:15px;
+  margin-bottom:14px;
 }
 
 .logo-poop{
@@ -89,26 +117,39 @@ button{
   font-weight:700;
 }
 
-/* HOME / WORK */
+
+/* =========================
+   DOMA / PRÁCE
+========================= */
 
 .mode-switch{
-  background:#ead9c2;
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:5px;
+
+  background:#ead9c2;
+
   padding:5px;
+
   border-radius:19px;
+
   margin-bottom:7px;
 }
 
 .mode-btn{
   border:0;
+
   border-radius:15px;
+
   padding:13px;
+
   background:none;
+
   color:#765d4d;
+
   font-size:14px;
   font-weight:900;
+
   cursor:pointer;
 }
 
@@ -119,33 +160,47 @@ button{
 
 .mode-info{
   text-align:center;
+
   color:var(--muted);
+
   font-size:12px;
   font-weight:700;
-  margin:8px 0 17px;
+
+  margin:8px 0 16px;
 }
 
-/* TODAY */
+
+/* =========================
+   DNES
+========================= */
 
 .today-card{
   background:var(--cream2);
+
   border-radius:24px;
+
   padding:18px;
-  margin-bottom:15px;
+
+  margin-bottom:14px;
 }
 
 .today-title{
   text-align:center;
+
   font-weight:900;
   font-size:12px;
+
   letter-spacing:1px;
-  margin-bottom:15px;
+
+  margin-bottom:14px;
 }
 
 .today-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   text-align:center;
+
   gap:5px;
 }
 
@@ -162,19 +217,28 @@ button{
 
 .today-box small{
   display:block;
+
   margin-top:3px;
+
   color:var(--muted);
+
   font-size:10px;
   font-weight:800;
 }
 
-/* RATE */
+
+/* =========================
+   KURZ
+========================= */
 
 .mini-rate{
   text-align:center;
+
   margin-bottom:14px;
+
   font-size:13px;
   font-weight:800;
+
   color:var(--muted);
 }
 
@@ -182,18 +246,29 @@ button{
   color:var(--green);
 }
 
-/* MAIN BUTTON */
+
+/* =========================
+   HLAVNÍ TLAČÍTKO
+========================= */
 
 .main-button{
   width:100%;
+
   border:0;
+
   border-radius:24px;
+
   padding:21px;
+
   background:var(--yellow);
+
   color:var(--brown);
+
   font-size:26px;
   font-weight:900;
+
   box-shadow:0 5px 0 #d7a218;
+
   cursor:pointer;
 }
 
@@ -202,15 +277,23 @@ button{
   box-shadow:0 2px 0 #d7a218;
 }
 
-/* TIMER */
+
+/* =========================
+   TIMER
+========================= */
 
 .timer-page{
   max-width:430px;
   min-height:100vh;
+
   margin:auto;
+
   background:var(--brown);
+
   color:white;
+
   text-align:center;
+
   padding:
     calc(35px + env(safe-area-inset-top))
     20px
@@ -219,19 +302,27 @@ button{
 
 .timer-mode{
   display:inline-block;
+
   background:var(--yellow);
+
   color:var(--brown);
+
   border-radius:99px;
+
   padding:8px 14px;
+
   font-size:12px;
   font-weight:900;
+
   margin-bottom:20px;
 }
 
 .timer-title{
   color:var(--yellow);
+
   font-size:24px;
   font-weight:900;
+
   margin-bottom:20px;
 }
 
@@ -247,14 +338,18 @@ button{
 
 .live-label{
   color:#dcc6b4;
+
   font-size:12px;
   font-weight:900;
+
   letter-spacing:1px;
 }
 
 .live-money{
   margin-top:7px;
+
   color:var(--green2);
+
   font-size:46px;
   font-weight:900;
 }
@@ -265,55 +360,81 @@ button{
 }
 
 .quote{
-  min-height:42px;
+  min-height:45px;
+
   max-width:310px;
+
   margin:15px auto 22px;
+
   color:#d8c4b2;
+
   line-height:1.4;
+
   font-size:14px;
 }
 
 .stop-button{
   width:100%;
+
   border:0;
+
   border-radius:22px;
+
   padding:18px;
+
   background:var(--red);
+
   color:white;
+
   font-size:23px;
   font-weight:900;
+
   cursor:pointer;
 }
 
 .cancel-button{
   margin-top:18px;
+
   border:0;
+
   background:none;
+
   color:#d7c2af;
+
   font-size:14px;
   font-weight:800;
+
   cursor:pointer;
 }
 
-/* GENERAL */
+
+/* =========================
+   OBECNÉ
+========================= */
 
 .page-title{
   font-size:28px;
   font-weight:900;
+
   margin:10px 0 17px;
 }
 
 .card{
   background:var(--cream2);
+
   border-radius:20px;
+
   padding:16px;
+
   margin-bottom:10px;
 }
 
 .row{
   display:flex;
+
   justify-content:space-between;
   align-items:center;
+
   gap:10px;
 }
 
@@ -325,21 +446,31 @@ button{
   color:var(--green);
 }
 
-/* STATS */
+
+/* =========================
+   STATISTIKY
+========================= */
 
 .tabs{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   gap:7px;
+
   margin-bottom:14px;
 }
 
 .tab{
   border:0;
+
   border-radius:13px;
+
   padding:10px;
+
   background:#ead8c1;
+
   font-weight:900;
+
   cursor:pointer;
 }
 
@@ -350,6 +481,7 @@ button{
 
 .section-heading{
   margin:23px 0 10px;
+
   font-size:18px;
   font-weight:900;
 }
@@ -357,38 +489,55 @@ button{
 .split{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 }
 
 .split-box{
   background:var(--cream2);
+
   border-radius:20px;
+
   padding:15px;
+
   text-align:center;
 }
 
 .split-box strong{
   display:block;
+
   margin:7px 0;
+
   font-size:19px;
 }
 
 .split-box span{
   font-size:12px;
   font-weight:800;
+
   color:var(--muted);
 }
 
-/* ACHIEVEMENTS */
+
+/* =========================
+   ACHIEVEMENTY
+========================= */
 
 .achievement{
   display:flex;
+
   gap:12px;
+
   align-items:center;
+
   background:var(--cream2);
+
   border-radius:18px;
+
   padding:13px;
+
   margin-bottom:8px;
+
   opacity:.4;
 }
 
@@ -409,71 +558,113 @@ button{
   color:var(--muted);
 }
 
-/* HISTORY */
+
+/* =========================
+   HISTORIE
+========================= */
 
 .history-item{
   background:var(--cream2);
+
   border-radius:19px;
+
   padding:15px;
+
   margin-bottom:10px;
 }
 
 .history-top,
 .history-bottom{
   display:flex;
+
   justify-content:space-between;
   align-items:center;
 }
 
 .history-top{
   font-weight:900;
+
   margin-bottom:9px;
+}
+
+.history-bottom{
+  gap:8px;
 }
 
 .history-place{
   display:inline-block;
+
   margin-top:9px;
+
   background:#dcc6ad;
+
   padding:5px 9px;
+
   border-radius:99px;
+
   font-size:10px;
   font-weight:900;
 }
 
 .delete-btn{
   border:0;
+
   background:#dfcbc4;
+
   color:#8e2c27;
+
   border-radius:10px;
+
   padding:7px 9px;
+
   font-size:11px;
   font-weight:900;
+
+  cursor:pointer;
 }
 
 .empty{
   text-align:center;
+
   padding:35px 10px;
+
   color:var(--muted);
 }
 
 .danger{
   width:100%;
+
   border:0;
+
   border-radius:15px;
+
   padding:13px;
+
   margin-top:20px;
+
   background:#ead6d2;
+
   color:#9b2d27;
+
   font-weight:900;
+
+  cursor:pointer;
 }
 
-/* SETTINGS */
+
+/* =========================
+   NASTAVENÍ
+========================= */
 
 .settings-card{
   background:white;
+
   border:2px solid #eadbc8;
+
   border-radius:22px;
+
   padding:17px;
+
   margin-bottom:12px;
 }
 
@@ -483,34 +674,50 @@ button{
 
 .settings-card label{
   display:block;
+
   font-size:12px;
   font-weight:900;
+
   margin-bottom:5px;
 }
 
 .settings-card input{
   width:100%;
+
   border:2px solid #ddc8ae;
+
   border-radius:13px;
+
   background:#fffaf3;
+
   padding:13px;
+
   font-size:16px;
+
   margin-bottom:13px;
 }
 
 .pay-switch{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:6px;
+
   margin-bottom:14px;
 }
 
 .pay-btn{
   border:0;
+
   border-radius:13px;
+
   padding:11px;
+
   background:#eadbc8;
+
   font-weight:900;
+
+  cursor:pointer;
 }
 
 .pay-btn.active{
@@ -520,38 +727,57 @@ button{
 
 .save-btn{
   width:100%;
+
   border:0;
+
   border-radius:15px;
+
   padding:14px;
+
   background:var(--brown);
+
   color:white;
+
   font-weight:900;
+
+  cursor:pointer;
 }
 
-/* RESULT */
+
+/* =========================
+   VÝSLEDEK
+========================= */
 
 .result-title{
   font-size:39px;
   font-weight:900;
+
   margin-top:12px;
 }
 
 .result-sub{
   color:var(--muted);
+
   margin-top:5px;
 }
 
 .result-poop{
   text-align:center;
+
   font-size:75px;
+
   margin:20px 0;
 }
 
 .rating{
   background:var(--yellow);
+
   border-radius:20px;
+
   padding:16px;
+
   text-align:center;
+
   margin-bottom:12px;
 }
 
@@ -562,20 +788,26 @@ button{
 
 .rating strong{
   display:block;
+
   margin-top:5px;
+
   font-size:20px;
 }
 
 .result-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 }
 
 .result-box{
   background:var(--cream2);
+
   border-radius:19px;
+
   padding:15px 8px;
+
   text-align:center;
 }
 
@@ -586,20 +818,32 @@ button{
 
 .result-box strong{
   display:block;
+
   margin-top:6px;
+
   font-size:20px;
 }
 
 .action-btn{
   width:100%;
+
   border:0;
+
   border-radius:19px;
+
   padding:16px;
+
   margin-top:12px;
+
   background:var(--brown);
+
   color:white;
+
   font-weight:900;
+
   font-size:15px;
+
+  cursor:pointer;
 }
 
 .share-btn{
@@ -607,376 +851,875 @@ button{
   color:var(--brown);
 }
 
-/* NAV */
+
+/* =========================
+   NAVIGACE
+========================= */
 
 .bottom-nav{
   position:fixed;
+
   left:50%;
   bottom:0;
+
   transform:translateX(-50%);
+
   width:min(430px,100%);
+
   display:grid;
   grid-template-columns:repeat(4,1fr);
+
   background:var(--brown);
+
   padding:
     10px
     5px
     calc(12px + env(safe-area-inset-bottom));
+
   z-index:50;
 }
 
 .nav-btn{
   border:0;
+
   background:none;
+
   color:#cbb39f;
+
   font-size:11px;
   font-weight:900;
+
+  cursor:pointer;
 }
 
 .nav-btn.active{
   color:var(--yellow);
 }
 
+
+/* =========================
+   TOAST
+========================= */
+
 .toast{
   position:fixed;
+
   bottom:105px;
   left:50%;
+
   transform:translateX(-50%);
+
   width:calc(100% - 45px);
   max-width:360px;
+
   background:var(--brown);
+
   color:white;
+
   border-radius:16px;
+
   padding:13px;
+
   text-align:center;
+
   font-size:13px;
   font-weight:800;
+
   opacity:0;
+
   pointer-events:none;
+
   transition:.2s;
+
   z-index:100;
 }
 
 .toast.show{
   opacity:1;
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- DOMŮ -->
 
-<div id="homeScreen" class="screen active">
+<!-- =========================
+     DOMŮ
+========================= -->
+
+<div
+  id="homeScreen"
+  class="screen active"
+>
+
 <div class="app">
 
-  <div class="logo-wrap">
-    <div class="logo-poop">💩</div>
-    <div class="logo">KÁKO</div>
-    <div id="helloText" class="logo-sub">
-      Každá minuta se počítá.
-    </div>
+
+<div class="logo-wrap">
+
+  <div class="logo-poop">
+    💩
   </div>
 
-  <div class="mode-switch">
-    <button id="homeModeBtn" class="mode-btn" onclick="setLocationMode('home')">
-      🏠 DOMA
-    </button>
-
-    <button id="workModeBtn" class="mode-btn active" onclick="setLocationMode('work')">
-      💼 V PRÁCI
-    </button>
+  <div class="logo">
+    KÁKO
   </div>
 
-  <div id="modeInfo" class="mode-info">
-    V práci se každá minuta mění na peníze.
+  <div
+    id="helloText"
+    class="logo-sub"
+  >
+    Každá minuta se počítá.
   </div>
 
-  <div class="today-card">
+</div>
 
-    <div class="today-title">
-      DNES
-    </div>
 
-    <div class="today-grid">
+<div class="mode-switch">
 
-      <div class="today-box">
-        <span>🚽</span>
-        <strong id="todayVisits">0</strong>
-        <small>NÁVŠTĚV</small>
-      </div>
+  <button
+    id="homeModeBtn"
+    class="mode-btn"
+    onclick="setLocationMode('home')"
+  >
+    🏠 DOMA
+  </button>
 
-      <div class="today-box">
-        <span>⏱</span>
-        <strong id="todayTime">0 min</strong>
-        <small>NA WC</small>
-      </div>
 
-      <div class="today-box">
-        <span>💰</span>
-        <strong id="todayMoney" class="green">0 Kč</strong>
-        <small>V PRÁCI</small>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div id="miniRate" class="mini-rate">
-    KÁKO kurz: <strong>0 Kč/min</strong>
-  </div>
-
-  <button class="main-button" onclick="startKako()">
-    💩 JDU KÁKO
+  <button
+    id="workModeBtn"
+    class="mode-btn active"
+    onclick="setLocationMode('work')"
+  >
+    💼 V PRÁCI
   </button>
 
 </div>
+
+
+<div
+  id="modeInfo"
+  class="mode-info"
+>
+  V práci se každá minuta mění na peníze.
 </div>
 
-<!-- TIMER -->
 
-<div id="timerScreen" class="screen">
+<div class="today-card">
+
+  <div class="today-title">
+    DNES
+  </div>
+
+
+  <div class="today-grid">
+
+
+    <div class="today-box">
+
+      <span>
+        🚽
+      </span>
+
+      <strong id="todayVisits">
+        0
+      </strong>
+
+      <small>
+        NÁVŠTĚV
+      </small>
+
+    </div>
+
+
+    <div class="today-box">
+
+      <span>
+        ⏱
+      </span>
+
+      <strong id="todayTime">
+        0 min
+      </strong>
+
+      <small>
+        NA WC
+      </small>
+
+    </div>
+
+
+    <div class="today-box">
+
+      <span>
+        💰
+      </span>
+
+      <strong
+        id="todayMoney"
+        class="green"
+      >
+        0 Kč
+      </strong>
+
+      <small>
+        V PRÁCI
+      </small>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<div
+  id="miniRate"
+  class="mini-rate"
+>
+  KÁKO kurz:
+  <strong>
+    0 Kč/min
+  </strong>
+</div>
+
+
+<button
+  class="main-button"
+  onclick="startKako()"
+>
+  💩 JDU KÁKO
+</button>
+
+
+</div>
+</div>
+
+
+
+<!-- =========================
+     TIMER
+========================= -->
+
+<div
+  id="timerScreen"
+  class="screen"
+>
+
 <div class="timer-page">
 
-  <div id="timerMode" class="timer-mode">💼 V PRÁCI</div>
 
-  <div class="timer-title">KÁKO PROBÍHÁ 💩</div>
+<div
+  id="timerMode"
+  class="timer-mode"
+>
+  💼 V PRÁCI
+</div>
 
-  <div id="timer" class="timer">00:00:00</div>
 
-  <div class="toilet-art">💩🚽</div>
+<div class="timer-title">
+  KÁKO PROBÍHÁ 💩
+</div>
 
-  <div id="liveLabel" class="live-label">
-    PRÁVĚ JSI PROKADIL
-  </div>
 
-  <div id="currentMoney" class="live-money">
-    0,00 Kč
-  </div>
+<div
+  id="timer"
+  class="timer"
+>
+  00:00:00
+</div>
 
-  <div id="quote" class="quote">
-    Produktivita má mnoho podob.
-  </div>
 
-  <button class="stop-button" onclick="stopKako()">
-    💩 DOKAKÁNO
-  </button>
+<div class="toilet-art">
+  💩🚽
+</div>
 
-  <button class="cancel-button" onclick="cancelKako()">
-    ✕ ZRUŠIT BEZ ULOŽENÍ
-  </button>
+
+<div
+  id="liveLabel"
+  class="live-label"
+>
+  PRÁVĚ JSI PROKADIL
+</div>
+
+
+<div
+  id="currentMoney"
+  class="live-money"
+>
+  0,00 Kč
+</div>
+
+
+<div
+  id="quote"
+  class="quote"
+>
+  Produktivita má mnoho podob.
+</div>
+
+
+<button
+  class="stop-button"
+  onclick="stopKako()"
+>
+  💩 DOKAKÁNO
+</button>
+
+
+<button
+  class="cancel-button"
+  onclick="cancelKako()"
+>
+  ✕ ZRUŠIT BEZ ULOŽENÍ
+</button>
+
 
 </div>
 </div>
 
-<!-- VÝSLEDEK -->
 
-<div id="resultScreen" class="screen">
+
+<!-- =========================
+     VÝSLEDEK
+========================= -->
+
+<div
+  id="resultScreen"
+  class="screen"
+>
+
 <div class="app">
 
-  <div class="result-title">DOKAKÁNO!</div>
-  <div id="resultSub" class="result-sub">
-    Další úspěšný projekt.
-  </div>
 
-  <div class="result-poop">😎💩</div>
+<div class="result-title">
+  DOKAKÁNO!
+</div>
 
-  <div class="rating">
-    <small>HODNOCENÍ</small>
-    <strong id="ratingText">Solidní výkon</strong>
-  </div>
 
-  <div class="result-grid">
+<div
+  id="resultSub"
+  class="result-sub"
+>
+  Další úspěšný projekt.
+</div>
 
-    <div class="result-box">
-      <small>ČAS</small>
-      <strong id="resultTime">00:00</strong>
-    </div>
 
-    <div class="result-box">
-      <small>VYDĚLÁNO</small>
-      <strong id="resultMoney" class="green">0 Kč</strong>
-    </div>
+<div class="result-poop">
+  😎💩
+</div>
 
-  </div>
 
-  <button class="action-btn share-btn" onclick="shareResult()">
-    📤 SDÍLET
-  </button>
+<div class="rating">
 
-  <button class="action-btn" onclick="showScreen('homeScreen')">
-    ✓ ZPĚT DOMŮ
-  </button>
+  <small>
+    HODNOCENÍ
+  </small>
+
+  <strong id="ratingText">
+    Solidní výkon
+  </strong>
+
+</div>
+
+
+<div class="result-grid">
+
+
+<div class="result-box">
+
+  <small>
+    ČAS
+  </small>
+
+  <strong id="resultTime">
+    00:00
+  </strong>
+
+</div>
+
+
+<div class="result-box">
+
+  <small id="resultMoneyLabel">
+    VYDĚLÁNO
+  </small>
+
+  <strong
+    id="resultMoney"
+    class="green"
+  >
+    0 Kč
+  </strong>
+
+</div>
+
+
+</div>
+
+
+<button
+  class="action-btn share-btn"
+  onclick="shareResult()"
+>
+  📤 SDÍLET
+</button>
+
+
+<button
+  class="action-btn"
+  onclick="showScreen('homeScreen')"
+>
+  ✓ ZPĚT DOMŮ
+</button>
+
 
 </div>
 </div>
 
-<!-- STATISTIKY -->
 
-<div id="statsScreen" class="screen">
+
+<!-- =========================
+     STATISTIKY
+========================= -->
+
+<div
+  id="statsScreen"
+  class="screen"
+>
+
 <div class="app">
 
-  <div class="page-title">Statistiky</div>
 
-  <div class="tabs">
-    <button id="todayTab" class="tab active" onclick="setStatsMode('today')">Dnes</button>
-    <button id="monthTab" class="tab" onclick="setStatsMode('month')">Měsíc</button>
-    <button id="allTab" class="tab" onclick="setStatsMode('all')">Celkem</button>
-  </div>
+<div class="page-title">
+  Statistiky
+</div>
 
-  <div class="card row">
-    <span>🚽 Návštěv</span>
-    <strong id="statsVisits">0</strong>
-  </div>
 
-  <div class="card row">
-    <span>⏱ Čas na WC</span>
-    <strong id="statsTime">0 min</strong>
-  </div>
+<div class="tabs">
 
-  <div class="card row">
-    <span>💰 Vyděláno v práci</span>
-    <strong id="statsMoney" class="green">0 Kč</strong>
-  </div>
+  <button
+    id="todayTab"
+    class="tab active"
+    onclick="setStatsMode('today')"
+  >
+    Dnes
+  </button>
 
-  <div class="section-heading">Doma vs. práce</div>
 
-  <div class="split">
+  <button
+    id="monthTab"
+    class="tab"
+    onclick="setStatsMode('month')"
+  >
+    Měsíc
+  </button>
 
-    <div class="split-box">
-      <span>🏠 DOMA</span>
-      <strong id="homeVisits">0×</strong>
-      <span id="homeTime">0 min</span>
-    </div>
 
-    <div class="split-box">
-      <span>💼 V PRÁCI</span>
-      <strong id="workVisits">0×</strong>
-      <span id="workTime">0 min</span>
-    </div>
+  <button
+    id="allTab"
+    class="tab"
+    onclick="setStatsMode('all')"
+  >
+    Celkem
+  </button>
 
-  </div>
+</div>
 
-  <div class="section-heading">🏆 Rekordy</div>
 
-  <div class="card row">
-    <span>Nejdelší KÁKO</span>
-    <strong id="longestKako">00:00</strong>
-  </div>
+<div class="card row">
 
-  <div class="card row">
-    <span>Nejdražší KÁKO</span>
-    <strong id="mostExpensive" class="green">0 Kč</strong>
-  </div>
+  <span>
+    🚽 Návštěv
+  </span>
 
-  <div class="section-heading">🏅 Achievementy</div>
+  <strong id="statsVisits">
+    0
+  </strong>
 
-  <div id="achievements"></div>
+</div>
+
+
+<div class="card row">
+
+  <span>
+    ⏱ Čas na WC
+  </span>
+
+  <strong id="statsTime">
+    0 min
+  </strong>
+
+</div>
+
+
+<div class="card row">
+
+  <span>
+    💰 Vyděláno v práci
+  </span>
+
+  <strong
+    id="statsMoney"
+    class="green"
+  >
+    0 Kč
+  </strong>
+
+</div>
+
+
+<div class="section-heading">
+  Doma vs. práce
+</div>
+
+
+<div class="split">
+
+
+<div class="split-box">
+
+  <span>
+    🏠 DOMA
+  </span>
+
+  <strong id="homeVisits">
+    0×
+  </strong>
+
+  <span id="homeTime">
+    0 min
+  </span>
+
+</div>
+
+
+<div class="split-box">
+
+  <span>
+    💼 V PRÁCI
+  </span>
+
+  <strong id="workVisits">
+    0×
+  </strong>
+
+  <span id="workTime">
+    0 min
+  </span>
+
+</div>
+
+
+</div>
+
+
+<div class="section-heading">
+  🏆 Rekordy
+</div>
+
+
+<div class="card row">
+
+  <span>
+    Nejdelší KÁKO
+  </span>
+
+  <strong id="longestKako">
+    00:00
+  </strong>
+
+</div>
+
+
+<div class="card row">
+
+  <span>
+    Nejdražší KÁKO
+  </span>
+
+  <strong
+    id="mostExpensive"
+    class="green"
+  >
+    0 Kč
+  </strong>
+
+</div>
+
+
+<div class="card row">
+
+  <span>
+    Nejvíc návštěv za den
+  </span>
+
+  <strong id="mostVisitsDay">
+    0
+  </strong>
+
+</div>
+
+
+<div class="section-heading">
+  🏅 Achievementy
+</div>
+
+
+<div id="achievementsList"></div>
+
 
 </div>
 </div>
 
-<!-- HISTORIE -->
 
-<div id="historyScreen" class="screen">
+
+<!-- =========================
+     HISTORIE
+========================= -->
+
+<div
+  id="historyScreen"
+  class="screen"
+>
+
 <div class="app">
 
-  <div class="page-title">Historie</div>
 
-  <div id="historyList"></div>
+<div class="page-title">
+  Historie
+</div>
 
-  <button class="danger" onclick="clearHistory()">
-    SMAZAT CELOU HISTORII
-  </button>
+
+<div id="historyList"></div>
+
+
+<button
+  class="danger"
+  onclick="clearHistory()"
+>
+  SMAZAT CELOU HISTORII
+</button>
+
 
 </div>
 </div>
 
-<!-- NASTAVENÍ -->
 
-<div id="settingsScreen" class="screen">
+
+<!-- =========================
+     NASTAVENÍ
+========================= -->
+
+<div
+  id="settingsScreen"
+  class="screen"
+>
+
 <div class="app">
 
-  <div class="page-title">Nastavení</div>
 
-  <div class="settings-card">
+<div class="page-title">
+  Nastavení
+</div>
 
-    <h3>Profil</h3>
 
-    <label>Přezdívka</label>
-    <input id="nicknameInput" type="text" placeholder="např. Milan">
+<div class="settings-card">
+
+  <h3>
+    Profil
+  </h3>
+
+
+  <label>
+    Přezdívka
+  </label>
+
+
+  <input
+    id="nicknameInput"
+    type="text"
+    maxlength="25"
+    placeholder="např. Milan"
+  >
+
+</div>
+
+
+<div class="settings-card">
+
+  <h3>
+    Výdělek
+  </h3>
+
+
+  <div class="pay-switch">
+
+
+  <button
+    id="monthlyBtn"
+    class="pay-btn active"
+    onclick="setPayMode('monthly')"
+  >
+    Měsíční plat
+  </button>
+
+
+  <button
+    id="hourlyBtn"
+    class="pay-btn"
+    onclick="setPayMode('hourly')"
+  >
+    Hodinovka
+  </button>
+
 
   </div>
 
-  <div class="settings-card">
 
-    <h3>Výdělek</h3>
+  <div id="monthlySettings">
 
-    <div class="pay-switch">
-      <button id="monthlyBtn" class="pay-btn active" onclick="setPayMode('monthly')">
-        Měsíční plat
-      </button>
+    <label>
+      Měsíční čistá mzda
+    </label>
 
-      <button id="hourlyBtn" class="pay-btn" onclick="setPayMode('hourly')">
-        Hodinovka
-      </button>
-    </div>
+    <input
+      id="salaryInput"
+      type="number"
+      inputmode="decimal"
+      placeholder="např. 50000"
+    >
 
-    <div id="monthlySettings">
 
-      <label>Měsíční čistá mzda</label>
-      <input id="salaryInput" type="number" placeholder="např. 50000">
+    <label>
+      Pracovních hodin za měsíc
+    </label>
 
-      <label>Pracovních hodin za měsíc</label>
-      <input id="hoursInput" type="number" value="160">
-
-    </div>
-
-    <div id="hourlySettings" style="display:none">
-
-      <label>Čistá hodinovka</label>
-      <input id="hourlyInput" type="number" placeholder="např. 250">
-
-    </div>
-
-    <button class="save-btn" onclick="saveSettings()">
-      ULOŽIT
-    </button>
+    <input
+      id="hoursInput"
+      type="number"
+      inputmode="decimal"
+      value="160"
+    >
 
   </div>
 
+
+  <div
+    id="hourlySettings"
+    style="display:none"
+  >
+
+    <label>
+      Čistá hodinovka
+    </label>
+
+    <input
+      id="hourlyInput"
+      type="number"
+      inputmode="decimal"
+      placeholder="např. 250"
+    >
+
+  </div>
+
+
+  <button
+    class="save-btn"
+    onclick="saveSettings()"
+  >
+    ULOŽIT
+  </button>
+
+
+</div>
+
+
 </div>
 </div>
 
-<!-- NAV -->
 
-<div id="bottomNav" class="bottom-nav">
 
-  <button id="navHome" class="nav-btn active" onclick="showScreen('homeScreen')">
-    🏠<br>Domů
-  </button>
+<!-- =========================
+     SPODNÍ MENU
+========================= -->
 
-  <button id="navStats" class="nav-btn" onclick="showScreen('statsScreen')">
-    📊<br>Statistiky
-  </button>
+<div
+  id="bottomNav"
+  class="bottom-nav"
+>
 
-  <button id="navHistory" class="nav-btn" onclick="showScreen('historyScreen')">
-    📜<br>Historie
-  </button>
 
-  <button id="navSettings" class="nav-btn" onclick="showScreen('settingsScreen')">
-    ⚙️<br>Nastavení
-  </button>
+<button
+  id="navHome"
+  class="nav-btn active"
+  onclick="showScreen('homeScreen')"
+>
+  🏠
+  <br>
+  Domů
+</button>
+
+
+<button
+  id="navStats"
+  class="nav-btn"
+  onclick="showScreen('statsScreen')"
+>
+  📊
+  <br>
+  Statistiky
+</button>
+
+
+<button
+  id="navHistory"
+  class="nav-btn"
+  onclick="showScreen('historyScreen')"
+>
+  📜
+  <br>
+  Historie
+</button>
+
+
+<button
+  id="navSettings"
+  class="nav-btn"
+  onclick="showScreen('settingsScreen')"
+>
+  ⚙️
+  <br>
+  Nastavení
+</button>
+
 
 </div>
 
-<div id="toast" class="toast"></div>
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
 
 <script>
 
+/* =========================
+   STAV A DATA
+========================= */
+
 let timerInterval = null;
 let quoteInterval = null;
+
 let startTime = null;
+let activeLocationMode = null;
+
 let lastResult = null;
 
 let locationMode =
@@ -986,73 +1729,181 @@ let payMode =
   localStorage.getItem("payMode") || "monthly";
 
 let ratePerMinute = 0;
+
 let statsMode = "today";
 
 let history =
-  JSON.parse(localStorage.getItem("kakoHistory")) || [];
+  JSON.parse(
+    localStorage.getItem("kakoHistory")
+  ) || [];
+
+
+/* starší historie zůstane funkční */
 
 history = history.map(item => ({
-  start:item.start,
-  end:item.end || item.start + (Number(item.seconds)||0)*1000,
-  seconds:Number(item.seconds)||0,
-  money:Number(item.money)||0,
-  location:item.location || "work"
+
+  start:
+    Number(item.start),
+
+  end:
+    Number(item.end) ||
+    (
+      Number(item.start) +
+      (Number(item.seconds) || 0) * 1000
+    ),
+
+  seconds:
+    Number(item.seconds) || 0,
+
+  money:
+    Number(item.money) || 0,
+
+  location:
+    item.location || "work"
+
 }));
 
 saveHistory();
 
+
+/* =========================
+   HLÁŠKY
+========================= */
+
 const workQuotes = [
+
   "Firma právě financuje tvé trávení.",
-  "Každá minuta jde na účet zaměstnavatele.",
+
+  "Každá další minuta jde na účet zaměstnavatele.",
+
   "Porada keramického oddělení pokračuje.",
+
   "Šéf netuší, jak tvrdě právě pracuješ.",
+
   "Tohle je skutečný pasivní příjem.",
+
+  "Firemní rozpočet dostává zabrat.",
+
   "Ještě chvíli a máš na kafe.",
-  "Firemní rozpočet dostává zabrat."
+
+  "Produktivita dnes dostala nový význam.",
+
+  "Pracovní výkon právě nabírá na hodnotě.",
+
+  "Firma investuje do tvého vnitřního rozvoje.",
+
+  "Tahle pracovní schůzka nemohla být e-mail.",
+
+  "HR oddělení o tomhle benefitu zatím neví.",
+
+  "Výplata běží. Ty sedíš. Ideální stav.",
+
+  "Dnes pracuje hlavně tlusté střevo.",
+
+  "Další minuta, další peníze.",
+
+  "Keramické oddělení hlásí plný provoz."
+
 ];
+
 
 const homeQuotes = [
+
   "Doma sereš zdarma.",
+
   "Čistě soukromý projekt.",
+
   "Žádné peníze. Jen čest a sláva.",
+
   "Domácí směna bez příplatků.",
-  "Výkon dobrý, odměna nulová."
+
+  "Výkon dobrý, odměna nulová.",
+
+  "Tentokrát náklady neseš ty.",
+
+  "Volnočasová aktivita v plném proudu.",
+
+  "Keramika pracuje, peněženka nikoliv.",
+
+  "Doma ti za to bohužel nikdo nezaplatí.",
+
+  "Soukromá porada byla zahájena.",
+
+  "Nula korun. Stoprocentní nasazení.",
+
+  "Domácí produktivita bez finančního efektu."
+
 ];
 
-const achievements = [
+
+/* =========================
+   ACHIEVEMENTY
+========================= */
+
+const achievementsData = [
+
   {
     icon:"💩",
     title:"První hovínko",
     text:"Dokonči první KÁKO",
-    test:s=>s.visits>=1
+    test:s => s.visits >= 1
   },
+
   {
     icon:"🔟",
     title:"Pravidelný zákazník",
     text:"Dokonči 10 návštěv",
-    test:s=>s.visits>=10
+    test:s => s.visits >= 10
   },
+
   {
     icon:"⏱",
     title:"Hodina pravdy",
-    text:"Celkem 1 hodina na WC",
-    test:s=>s.seconds>=3600
+    text:"Strav celkem 1 hodinu na WC",
+    test:s => s.seconds >= 3600
   },
+
   {
     icon:"💵",
     title:"Firemní investor",
     text:"Vydělej na WC 500 Kč",
-    test:s=>s.money>=500
+    test:s => s.money >= 500
   },
+
+  {
+    icon:"🤑",
+    title:"Keramický magnát",
+    text:"Vydělej na WC 1 000 Kč",
+    test:s => s.money >= 1000
+  },
+
   {
     icon:"🏆",
     title:"Dlouhá porada",
     text:"Jedno KÁKO minimálně 20 minut",
-    test:s=>s.longest>=1200
+    test:s => s.longest >= 1200
+  },
+
+  {
+    icon:"🏠",
+    title:"Domácí patriot",
+    text:"Dokonči 5 návštěv doma",
+    test:s => s.homeVisits >= 5
+  },
+
+  {
+    icon:"💼",
+    title:"Firemní specialista",
+    text:"Dokonči 5 návštěv v práci",
+    test:s => s.workVisits >= 5
   }
+
 ];
 
-/* SETTINGS */
+
+/* =========================
+   NASTAVENÍ
+========================= */
 
 function loadSettings(){
 
@@ -1060,861 +1911,2010 @@ function loadSettings(){
     localStorage.getItem("nickname") || "";
 
   const salary =
-    Number(localStorage.getItem("salary")) || 0;
+    Number(
+      localStorage.getItem("salary")
+    ) || 0;
 
   const hours =
-    Number(localStorage.getItem("hours")) || 160;
+    Number(
+      localStorage.getItem("hours")
+    ) || 160;
 
   const hourly =
-    Number(localStorage.getItem("hourly")) || 0;
+    Number(
+      localStorage.getItem("hourly")
+    ) || 0;
 
-  nicknameInput.value = nickname;
-  salaryInput.value = salary || "";
-  hoursInput.value = hours;
-  hourlyInput.value = hourly || "";
+
+  document
+    .getElementById("nicknameInput")
+    .value =
+    nickname;
+
+
+  document
+    .getElementById("salaryInput")
+    .value =
+    salary || "";
+
+
+  document
+    .getElementById("hoursInput")
+    .value =
+    hours;
+
+
+  document
+    .getElementById("hourlyInput")
+    .value =
+    hourly || "";
+
 
   updatePayUI();
+
   calculateRate();
 }
+
 
 function setPayMode(mode){
 
   payMode = mode;
 
-  localStorage.setItem("payMode",mode);
+  localStorage.setItem(
+    "payMode",
+    mode
+  );
 
   updatePayUI();
+
+  calculateRate();
+
+  updateHome();
 }
+
 
 function updatePayUI(){
 
-  monthlyBtn.classList.toggle("active",payMode==="monthly");
-  hourlyBtn.classList.toggle("active",payMode==="hourly");
+  document
+    .getElementById("monthlyBtn")
+    .classList
+    .toggle(
+      "active",
+      payMode === "monthly"
+    );
 
-  monthlySettings.style.display =
-    payMode==="monthly" ? "block" : "none";
 
-  hourlySettings.style.display =
-    payMode==="hourly" ? "block" : "none";
+  document
+    .getElementById("hourlyBtn")
+    .classList
+    .toggle(
+      "active",
+      payMode === "hourly"
+    );
+
+
+  document
+    .getElementById("monthlySettings")
+    .style.display =
+    payMode === "monthly"
+      ? "block"
+      : "none";
+
+
+  document
+    .getElementById("hourlySettings")
+    .style.display =
+    payMode === "hourly"
+      ? "block"
+      : "none";
 }
+
 
 function saveSettings(){
 
+  const nickname =
+    document
+      .getElementById("nicknameInput")
+      .value
+      .trim();
+
+
   localStorage.setItem(
     "nickname",
-    nicknameInput.value.trim()
+    nickname
   );
 
-  if(payMode==="monthly"){
 
-    const salary = Number(salaryInput.value);
-    const hours = Number(hoursInput.value);
+  if(payMode === "monthly"){
+
+    const salary =
+      Number(
+        document
+          .getElementById("salaryInput")
+          .value
+      );
+
+
+    const hours =
+      Number(
+        document
+          .getElementById("hoursInput")
+          .value
+      );
+
 
     if(!salary || !hours){
-      alert("Vyplň plat a pracovní hodiny.");
+
+      alert(
+        "Vyplň měsíční plat a pracovní hodiny."
+      );
+
       return;
     }
 
-    localStorage.setItem("salary",salary);
-    localStorage.setItem("hours",hours);
 
-  }else{
+    localStorage.setItem(
+      "salary",
+      salary
+    );
 
-    const hourly = Number(hourlyInput.value);
 
-    if(!hourly){
-      alert("Vyplň hodinovku.");
-      return;
-    }
+    localStorage.setItem(
+      "hours",
+      hours
+    );
 
-    localStorage.setItem("hourly",hourly);
   }
 
+  else{
+
+    const hourly =
+      Number(
+        document
+          .getElementById("hourlyInput")
+          .value
+      );
+
+
+    if(!hourly){
+
+      alert(
+        "Vyplň hodinovku."
+      );
+
+      return;
+    }
+
+
+    localStorage.setItem(
+      "hourly",
+      hourly
+    );
+  }
+
+
   calculateRate();
+
   updateHome();
 
-  showToast("Nastavení uloženo");
+  showToast(
+    "Nastavení uloženo"
+  );
 }
+
 
 function calculateRate(){
 
-  if(payMode==="monthly"){
+  if(payMode === "monthly"){
 
     const salary =
-      Number(localStorage.getItem("salary")) || 0;
+      Number(
+        localStorage.getItem("salary")
+      ) || 0;
+
 
     const hours =
-      Number(localStorage.getItem("hours")) || 160;
+      Number(
+        localStorage.getItem("hours")
+      ) || 160;
+
 
     ratePerMinute =
-      salary && hours
-      ? salary/(hours*60)
+      salary > 0 &&
+      hours > 0
+
+      ? salary / (hours * 60)
+
       : 0;
 
-  }else{
+  }
+
+  else{
 
     const hourly =
-      Number(localStorage.getItem("hourly")) || 0;
+      Number(
+        localStorage.getItem("hourly")
+      ) || 0;
+
 
     ratePerMinute =
-      hourly/60;
+      hourly > 0
+      ? hourly / 60
+      : 0;
   }
 }
 
-/* LOCATION */
+
+/* =========================
+   DOMA / PRÁCE
+========================= */
 
 function setLocationMode(mode){
 
   locationMode = mode;
 
-  localStorage.setItem("locationMode",mode);
+  localStorage.setItem(
+    "locationMode",
+    mode
+  );
 
   updateHome();
 }
 
+
 function updateLocation(){
 
   const home =
-    locationMode==="home";
+    locationMode === "home";
 
-  homeModeBtn.classList.toggle("active",home);
-  workModeBtn.classList.toggle("active",!home);
 
-  modeInfo.innerText =
+  document
+    .getElementById("homeModeBtn")
+    .classList
+    .toggle(
+      "active",
+      home
+    );
+
+
+  document
+    .getElementById("workModeBtn")
+    .classList
+    .toggle(
+      "active",
+      !home
+    );
+
+
+  document
+    .getElementById("modeInfo")
+    .innerText =
+
     home
+
     ? "Doma sereš zdarma."
+
     : "V práci se každá minuta mění na peníze.";
 
-  miniRate.innerHTML =
+
+  document
+    .getElementById("miniRate")
+    .innerHTML =
+
     home
+
     ? "🏠 Domácí KÁKO: <strong>0 Kč</strong>"
+
     : `KÁKO kurz: <strong>${moneyFormat(ratePerMinute)}/min</strong>`;
+
 }
 
-/* START */
+
+/* =========================
+   START KÁKO
+========================= */
 
 function startKako(){
 
   if(
-    locationMode==="work" &&
-    ratePerMinute<=0
+    locationMode === "work" &&
+    ratePerMinute <= 0
   ){
 
-    alert("Nejdřív nastav plat v Nastavení.");
+    alert(
+      "Nejdřív nastav plat v Nastavení."
+    );
 
-    showScreen("settingsScreen");
+    showScreen(
+      "settingsScreen"
+    );
 
     return;
   }
 
-  startTime = Date.now();
+
+  startTime =
+    Date.now();
+
+
+  activeLocationMode =
+    locationMode;
+
 
   localStorage.setItem(
     "activeKako",
     JSON.stringify({
-      start:startTime,
-      location:locationMode
+
+      start:
+        startTime,
+
+      location:
+        activeLocationMode
+
     })
   );
 
-  showScreen("timerScreen");
+
+  showScreen(
+    "timerScreen"
+  );
+
 
   prepareTimer();
 
+
   updateTimer();
 
+
   timerInterval =
-    setInterval(updateTimer,250);
+    setInterval(
+      updateTimer,
+      250
+    );
+
 
   changeQuote();
 
+
   quoteInterval =
-    setInterval(changeQuote,10000);
+    setInterval(
+      changeQuote,
+      10000
+    );
 }
+
+
+/* =========================
+   TIMER
+========================= */
 
 function prepareTimer(){
 
   const home =
-    locationMode==="home";
+    activeLocationMode === "home";
 
-  timerMode.innerText =
-    home ? "🏠 DOMA" : "💼 V PRÁCI";
 
-  liveLabel.innerText =
+  document
+    .getElementById("timerMode")
+    .innerText =
+
     home
+
+    ? "🏠 DOMA"
+
+    : "💼 V PRÁCI";
+
+
+  document
+    .getElementById("liveLabel")
+    .innerText =
+
+    home
+
     ? "FINANČNÍ VÝSLEDEK"
+
     : "PRÁVĚ JSI PROKADIL";
 
-  currentMoney.classList.toggle("free",home);
+
+  const currentMoney =
+    document
+      .getElementById("currentMoney");
+
+
+  currentMoney
+    .classList
+    .toggle(
+      "free",
+      home
+    );
+
 
   currentMoney.innerText =
-    home ? "Dnes zadarmo" : "0,00 Kč";
+
+    home
+
+    ? "Dnes zadarmo"
+
+    : "0,00 Kč";
 }
+
 
 function updateTimer(){
 
-  if(!startTime) return;
+  if(!startTime){
+    return;
+  }
+
 
   const seconds =
     Math.floor(
-      (Date.now()-startTime)/1000
+      (
+        Date.now() -
+        startTime
+      ) / 1000
     );
 
-  timer.innerText =
+
+  document
+    .getElementById("timer")
+    .innerText =
     formatClock(seconds);
 
-  if(locationMode==="work"){
 
-    currentMoney.innerText =
+  if(
+    activeLocationMode === "work"
+  ){
+
+    document
+      .getElementById("currentMoney")
+      .innerText =
+
       moneyFormat(
-        seconds/60*ratePerMinute
+        seconds /
+        60 *
+        ratePerMinute
       );
   }
 }
 
+
 function changeQuote(){
 
   const arr =
-    locationMode==="home"
+
+    activeLocationMode === "home"
+
     ? homeQuotes
+
     : workQuotes;
 
-  quote.innerText =
-    arr[Math.floor(Math.random()*arr.length)];
+
+  const random =
+    Math.floor(
+      Math.random() *
+      arr.length
+    );
+
+
+  document
+    .getElementById("quote")
+    .innerText =
+    arr[random];
 }
 
-/* CANCEL */
+
+/* =========================
+   ZRUŠIT
+========================= */
 
 function cancelKako(){
 
-  if(!confirm("Zrušit KÁKO bez uložení?")){
+  if(
+    !confirm(
+      "Zrušit KÁKO bez uložení do historie?"
+    )
+  ){
     return;
   }
 
+
   stopTimers();
 
-  localStorage.removeItem("activeKako");
+
+  localStorage.removeItem(
+    "activeKako"
+  );
+
 
   startTime = null;
 
-  showScreen("homeScreen");
+  activeLocationMode = null;
+
+
+  showScreen(
+    "homeScreen"
+  );
+
+
+  showToast(
+    "KÁKO zrušeno. Nikdo se nic nedozví."
+  );
 }
 
-/* STOP */
+
+/* =========================
+   DOKAKÁNO
+========================= */
 
 function stopKako(){
 
-  if(!startTime) return;
+  if(!startTime){
+    return;
+  }
+
 
   stopTimers();
 
-  const end = Date.now();
+
+  const end =
+    Date.now();
+
 
   const seconds =
     Math.max(
       1,
-      Math.floor((end-startTime)/1000)
+      Math.floor(
+        (
+          end -
+          startTime
+        ) / 1000
+      )
     );
 
+
   const money =
-    locationMode==="work"
-    ? seconds/60*ratePerMinute
+
+    activeLocationMode === "work"
+
+    ? seconds /
+      60 *
+      ratePerMinute
+
     : 0;
 
+
   const item = {
-    start:startTime,
-    end:end,
-    seconds:seconds,
-    money:money,
-    location:locationMode
+
+    start:
+      startTime,
+
+    end:
+      end,
+
+    seconds:
+      seconds,
+
+    money:
+      money,
+
+    location:
+      activeLocationMode || "work"
+
   };
 
-  history.unshift(item);
+
+  history.unshift(
+    item
+  );
+
 
   saveHistory();
 
-  localStorage.removeItem("activeKako");
 
-  lastResult = item;
+  localStorage.removeItem(
+    "activeKako"
+  );
 
-  prepareResult(item);
+
+  lastResult =
+    item;
+
+
+  prepareResult(
+    item
+  );
+
 
   startTime = null;
 
+  activeLocationMode = null;
+
+
   updateAll();
 
-  showScreen("resultScreen");
+
+  showScreen(
+    "resultScreen"
+  );
 }
+
 
 function stopTimers(){
 
-  clearInterval(timerInterval);
-  clearInterval(quoteInterval);
+  clearInterval(
+    timerInterval
+  );
+
+  clearInterval(
+    quoteInterval
+  );
+
 
   timerInterval = null;
+
   quoteInterval = null;
 }
 
-/* RESULT */
+
+/* =========================
+   VÝSLEDEK
+========================= */
 
 function prepareResult(item){
 
   const home =
-    item.location==="home";
+    item.location === "home";
 
-  resultSub.innerText =
+
+  document
+    .getElementById("resultSub")
+    .innerText =
+
     home
+
     ? "Domácí projekt dokončen."
+
     : "Firemní projekt dokončen.";
 
-  resultTime.innerText =
-    formatMinutes(item.seconds);
 
-  resultMoney.innerText =
+  document
+    .getElementById("resultTime")
+    .innerText =
+    formatMinutes(
+      item.seconds
+    );
+
+
+  document
+    .getElementById("resultMoneyLabel")
+    .innerText =
+
     home
-    ? "0 Kč"
-    : moneyFormat(item.money);
 
-  ratingText.innerText =
-    getRating(item.seconds);
+    ? "VYDĚLÁNO"
+
+    : "PROKAKÁNO";
+
+
+  document
+    .getElementById("resultMoney")
+    .innerText =
+
+    home
+
+    ? "0 Kč"
+
+    : moneyFormat(
+        item.money
+      );
+
+
+  document
+    .getElementById("ratingText")
+    .innerText =
+    getRating(
+      item.seconds
+    );
 }
+
 
 function getRating(seconds){
 
-  const min =
-    seconds/60;
+  const minutes =
+    seconds / 60;
 
-  if(min<2) return "⚡ Rychlovka";
-  if(min<5) return "👌 Efektivní";
-  if(min<10) return "💩 Solidní výkon";
-  if(min<15) return "📋 Porada vedení";
-  if(min<25) return "👔 Seniorní KÁKO";
-  if(min<40) return "🏆 Ředitel WC";
+
+  if(minutes < 2)
+    return "⚡ Rychlovka";
+
+
+  if(minutes < 5)
+    return "👌 Efektivní vyprazdňovač";
+
+
+  if(minutes < 10)
+    return "💩 Solidní výkon";
+
+
+  if(minutes < 15)
+    return "📋 Porada vedení";
+
+
+  if(minutes < 25)
+    return "👔 Seniorní KÁKO manažer";
+
+
+  if(minutes < 40)
+    return "🏆 Ředitel keramického oddělení";
+
 
   return "👑 Generální ředitel porcelánu";
 }
 
-/* SHARE */
+
+/* =========================
+   SDÍLENÍ
+========================= */
 
 async function shareResult(){
 
-  if(!lastResult) return;
+  if(!lastResult){
+    return;
+  }
+
+
+  const nickname =
+    localStorage.getItem("nickname")
+    || "Já";
+
 
   const home =
-    lastResult.location==="home";
+    lastResult.location === "home";
+
 
   const text =
-    home
-    ? `💩 KÁKO\n⏱ ${formatMinutes(lastResult.seconds)}\n🏠 Doma se sere zdarma.`
-    : `💩 KÁKO\n⏱ ${formatMinutes(lastResult.seconds)}\n💰 Prokakáno ${moneyFormat(lastResult.money)}`;
 
-  if(navigator.share){
+    home
+
+    ? `💩 KÁKO
+${nickname} právě dokončil domácí KÁKO.
+⏱ ${formatMinutes(lastResult.seconds)}
+💰 Vyděláno: 0 Kč
+🏠 Doma se sere zdarma.`
+
+    : `💩 KÁKO
+${nickname} právě dokončil pracovní KÁKO.
+⏱ ${formatMinutes(lastResult.seconds)}
+💰 Prokakáno: ${moneyFormat(lastResult.money)}
+💼 Firma děkuje za pracovní nasazení.`;
+
+
+  if(
+    navigator.share
+  ){
 
     try{
+
       await navigator.share({
-        title:"KÁKO",
-        text:text
+
+        title:
+          "KÁKO",
+
+        text:
+          text
+
       });
-    }catch(e){}
 
-  }else{
+    }
 
-    alert(text);
+    catch(e){}
+
+  }
+
+  else{
+
+    try{
+
+      await navigator
+        .clipboard
+        .writeText(
+          text
+        );
+
+
+      showToast(
+        "Výsledek zkopírován"
+      );
+
+    }
+
+    catch(e){
+
+      alert(
+        text
+      );
+
+    }
   }
 }
 
-/* STATS */
+
+/* =========================
+   STATISTIKY
+========================= */
 
 function filteredHistory(mode){
 
   const now =
     new Date();
 
-  return history.filter(item=>{
 
-    const d =
-      new Date(item.start);
+  return history.filter(item => {
 
-    if(mode==="today"){
+    const date =
+      new Date(
+        item.start
+      );
+
+
+    if(mode === "today"){
 
       return (
-        d.toDateString() ===
-        now.toDateString()
+        date.getDate() ===
+        now.getDate()
+
+        &&
+
+        date.getMonth() ===
+        now.getMonth()
+
+        &&
+
+        date.getFullYear() ===
+        now.getFullYear()
       );
     }
 
-    if(mode==="month"){
+
+    if(mode === "month"){
 
       return (
-        d.getMonth()===now.getMonth() &&
-        d.getFullYear()===now.getFullYear()
+        date.getMonth() ===
+        now.getMonth()
+
+        &&
+
+        date.getFullYear() ===
+        now.getFullYear()
       );
     }
+
 
     return true;
   });
 }
 
+
 function getStats(mode){
 
   const data =
-    filteredHistory(mode);
+    filteredHistory(
+      mode
+    );
+
 
   const home =
-    data.filter(x=>x.location==="home");
+    data.filter(
+      item =>
+      item.location === "home"
+    );
+
 
   const work =
-    data.filter(x=>x.location==="work");
+    data.filter(
+      item =>
+      item.location === "work"
+    );
+
 
   return {
-    visits:data.length,
-    seconds:sumSeconds(data),
-    money:sumMoney(work),
-    homeVisits:home.length,
-    homeSeconds:sumSeconds(home),
-    workVisits:work.length,
-    workSeconds:sumSeconds(work),
-    longest:maxSeconds(data),
+
+    visits:
+      data.length,
+
+    seconds:
+      sumSeconds(
+        data
+      ),
+
+    money:
+      sumMoney(
+        work
+      ),
+
+    homeVisits:
+      home.length,
+
+    homeSeconds:
+      sumSeconds(
+        home
+      ),
+
+    workVisits:
+      work.length,
+
+    workSeconds:
+      sumSeconds(
+        work
+      ),
+
+    longest:
+      maxSeconds(
+        data
+      ),
+
     mostExpensive:
       Math.max(
         0,
-        ...work.map(x=>x.money)
+        ...work.map(
+          item =>
+          Number(item.money) || 0
+        )
       )
+
   };
 }
 
+
 function sumSeconds(arr){
+
   return arr.reduce(
-    (s,x)=>s+x.seconds,
+
+    (sum,item) =>
+
+    sum +
+    (
+      Number(item.seconds)
+      || 0
+    ),
+
     0
   );
 }
+
 
 function sumMoney(arr){
+
   return arr.reduce(
-    (s,x)=>s+x.money,
+
+    (sum,item) =>
+
+    sum +
+    (
+      Number(item.money)
+      || 0
+    ),
+
     0
   );
 }
 
+
 function maxSeconds(arr){
+
   return arr.reduce(
-    (m,x)=>Math.max(m,x.seconds),
+
+    (max,item) =>
+
+    Math.max(
+      max,
+      Number(item.seconds) || 0
+    ),
+
     0
   );
 }
+
+
+function getMostVisitsOneDay(){
+
+  const counts = {};
+
+
+  history.forEach(item => {
+
+    const date =
+      new Date(
+        item.start
+      );
+
+
+    const key =
+      date.getFullYear()
+      + "-"
+      + date.getMonth()
+      + "-"
+      + date.getDate();
+
+
+    counts[key] =
+      (
+        counts[key]
+        || 0
+      ) + 1;
+
+  });
+
+
+  return Math.max(
+    0,
+    ...Object.values(
+      counts
+    )
+  );
+}
+
 
 function setStatsMode(mode){
 
-  statsMode = mode;
+  statsMode =
+    mode;
 
-  todayTab.classList.remove("active");
-  monthTab.classList.remove("active");
-  allTab.classList.remove("active");
 
-  if(mode==="today") todayTab.classList.add("active");
-  if(mode==="month") monthTab.classList.add("active");
-  if(mode==="all") allTab.classList.add("active");
+  document
+    .querySelectorAll(".tab")
+    .forEach(
+      tab =>
+      tab.classList.remove(
+        "active"
+      )
+    );
+
+
+  const map = {
+
+    today:
+      "todayTab",
+
+    month:
+      "monthTab",
+
+    all:
+      "allTab"
+
+  };
+
+
+  document
+    .getElementById(
+      map[mode]
+    )
+    .classList
+    .add(
+      "active"
+    );
+
 
   updateStats();
 }
 
+
 function updateStats(){
 
-  const s =
-    getStats(statsMode);
+  const stats =
+    getStats(
+      statsMode
+    );
 
-  statsVisits.innerText =
-    s.visits;
 
-  statsTime.innerText =
-    formatLongTime(s.seconds);
+  document
+    .getElementById("statsVisits")
+    .innerText =
+    stats.visits;
 
-  statsMoney.innerText =
-    moneyFormat(s.money);
 
-  homeVisits.innerText =
-    s.homeVisits+"×";
+  document
+    .getElementById("statsTime")
+    .innerText =
+    formatLongTime(
+      stats.seconds
+    );
 
-  homeTime.innerText =
-    formatLongTime(s.homeSeconds);
 
-  workVisits.innerText =
-    s.workVisits+"×";
+  document
+    .getElementById("statsMoney")
+    .innerText =
+    moneyFormat(
+      stats.money
+    );
 
-  workTime.innerText =
-    formatLongTime(s.workSeconds);
 
-  longestKako.innerText =
-    formatMinutes(s.longest);
+  document
+    .getElementById("homeVisits")
+    .innerText =
+    stats.homeVisits +
+    "×";
 
-  mostExpensive.innerText =
-    moneyFormat(s.mostExpensive);
+
+  document
+    .getElementById("homeTime")
+    .innerText =
+    formatLongTime(
+      stats.homeSeconds
+    );
+
+
+  document
+    .getElementById("workVisits")
+    .innerText =
+    stats.workVisits +
+    "×";
+
+
+  document
+    .getElementById("workTime")
+    .innerText =
+    formatLongTime(
+      stats.workSeconds
+    );
+
+
+  document
+    .getElementById("longestKako")
+    .innerText =
+    formatMinutes(
+      stats.longest
+    );
+
+
+  document
+    .getElementById("mostExpensive")
+    .innerText =
+    moneyFormat(
+      stats.mostExpensive
+    );
+
+
+  document
+    .getElementById("mostVisitsDay")
+    .innerText =
+    getMostVisitsOneDay();
+
 
   renderAchievements();
 }
 
-function renderAchievements(){
 
-  const s =
-    getStats("all");
-
-  achievements.innerHTML="";
-
-  window.achievementsData =
-    window.achievementsData || achievements;
-
-  achievements.forEach;
-}
+/* =========================
+   ACHIEVEMENTY
+========================= */
 
 function renderAchievements(){
 
-  const s =
-    getStats("all");
+  const stats =
+    getStats(
+      "all"
+    );
 
-  const box =
-    document.getElementById("achievements");
 
-  box.innerHTML="";
+  const container =
+    document
+      .getElementById(
+        "achievementsList"
+      );
 
-  achievements.forEach(a=>{
 
-    const unlocked =
-      a.test(s);
+  container.innerHTML =
+    "";
 
-    const div =
-      document.createElement("div");
 
-    div.className =
-      "achievement" +
-      (unlocked ? " unlocked" : "");
+  achievementsData
+    .forEach(item => {
 
-    div.innerHTML = `
-      <div class="achievement-icon">
-        ${unlocked ? a.icon : "🔒"}
-      </div>
+      const unlocked =
+        item.test(
+          stats
+        );
 
-      <div>
-        <strong>${a.title}</strong>
-        <small>${a.text}</small>
-      </div>
-    `;
 
-    box.appendChild(div);
-  });
+      const div =
+        document
+          .createElement(
+            "div"
+          );
+
+
+      div.className =
+        "achievement"
+        +
+        (
+          unlocked
+          ? " unlocked"
+          : ""
+        );
+
+
+      div.innerHTML = `
+
+        <div class="achievement-icon">
+
+          ${
+            unlocked
+            ? item.icon
+            : "🔒"
+          }
+
+        </div>
+
+        <div>
+
+          <strong>
+            ${item.title}
+          </strong>
+
+          <small>
+            ${item.text}
+          </small>
+
+        </div>
+
+      `;
+
+
+      container.appendChild(
+        div
+      );
+    });
 }
 
-/* HOME */
+
+/* =========================
+   DOMOVSKÁ OBRAZOVKA
+========================= */
 
 function updateHome(){
 
   calculateRate();
+
   updateLocation();
 
-  const s =
-    getStats("today");
 
-  todayVisits.innerText =
-    s.visits;
+  const stats =
+    getStats(
+      "today"
+    );
 
-  todayTime.innerText =
-    formatLongTime(s.seconds);
 
-  todayMoney.innerText =
-    moneyFormat(s.money);
+  document
+    .getElementById("todayVisits")
+    .innerText =
+    stats.visits;
+
+
+  document
+    .getElementById("todayTime")
+    .innerText =
+    formatLongTime(
+      stats.seconds
+    );
+
+
+  document
+    .getElementById("todayMoney")
+    .innerText =
+    moneyFormat(
+      stats.money
+    );
+
 
   const nickname =
-    localStorage.getItem("nickname");
+    localStorage.getItem(
+      "nickname"
+    );
 
-  helloText.innerText =
+
+  document
+    .getElementById("helloText")
+    .innerText =
+
     nickname
-    ? `${nickname}, každá minuta se počítá.`
+
+    ? nickname +
+      ", každá minuta se počítá."
+
     : "Každá minuta se počítá.";
 }
 
-/* HISTORY */
+
+/* =========================
+   HISTORIE
+========================= */
 
 function renderHistory(){
 
-  if(!history.length){
+  const container =
+    document
+      .getElementById(
+        "historyList"
+      );
 
-    historyList.innerHTML =
-      `<div class="empty">
-        Zatím žádné KÁKO. 💩
-      </div>`;
 
-    return;
-  }
+  if(
+    history.length === 0
+  ){
 
-  historyList.innerHTML="";
+    container.innerHTML = `
 
-  history.forEach((item,index)=>{
+      <div class="empty">
 
-    const d =
-      new Date(item.start);
+        Zatím žádné KÁKO.
+        <br>
+        To chce napravit. 💩
 
-    const div =
-      document.createElement("div");
-
-    div.className =
-      "history-item";
-
-    div.innerHTML = `
-
-      <div class="history-top">
-        <span>💩 ${d.toLocaleDateString("cs-CZ")}</span>
-        <span>${d.toLocaleTimeString("cs-CZ",{hour:"2-digit",minute:"2-digit"})}</span>
-      </div>
-
-      <div class="history-bottom">
-
-        <span>
-          ⏱ ${formatMinutes(item.seconds)}
-        </span>
-
-        <strong class="green">
-          ${item.location==="home" ? "0 Kč" : moneyFormat(item.money)}
-        </strong>
-
-        <button
-          class="delete-btn"
-          onclick="deleteHistory(${index})">
-          🗑
-        </button>
-
-      </div>
-
-      <div class="history-place">
-        ${item.location==="home" ? "🏠 DOMA" : "💼 V PRÁCI"}
       </div>
 
     `;
 
-    historyList.appendChild(div);
-  });
+    return;
+  }
+
+
+  container.innerHTML =
+    "";
+
+
+  history.forEach(
+    (item,index) => {
+
+      const date =
+        new Date(
+          item.start
+        );
+
+
+      const dateText =
+        date.toLocaleDateString(
+          "cs-CZ"
+        );
+
+
+      const timeText =
+        date.toLocaleTimeString(
+          "cs-CZ",
+          {
+            hour:
+              "2-digit",
+
+            minute:
+              "2-digit"
+          }
+        );
+
+
+      const home =
+        item.location === "home";
+
+
+      const div =
+        document
+          .createElement(
+            "div"
+          );
+
+
+      div.className =
+        "history-item";
+
+
+      div.innerHTML = `
+
+        <div class="history-top">
+
+          <span>
+            💩 ${dateText}
+          </span>
+
+          <span>
+            ${timeText}
+          </span>
+
+        </div>
+
+
+        <div class="history-bottom">
+
+          <span>
+            ⏱ ${formatMinutes(item.seconds)}
+          </span>
+
+          <strong class="green">
+
+            ${
+              home
+
+              ? "0 Kč"
+
+              : moneyFormat(
+                  item.money
+                )
+            }
+
+          </strong>
+
+
+          <button
+
+            class="delete-btn"
+
+            onclick="deleteHistory(${index})"
+
+          >
+            🗑
+          </button>
+
+        </div>
+
+
+        <div class="history-place">
+
+          ${
+            home
+
+            ? "🏠 DOMA"
+
+            : "💼 V PRÁCI"
+          }
+
+        </div>
+
+      `;
+
+
+      container.appendChild(
+        div
+      );
+    });
 }
+
 
 function deleteHistory(index){
 
-  if(!confirm("Smazat tento záznam?")){
+  if(
+    !confirm(
+      "Smazat tento záznam?"
+    )
+  ){
     return;
   }
 
-  history.splice(index,1);
+
+  history.splice(
+    index,
+    1
+  );
+
 
   saveHistory();
+
   updateAll();
+
+
+  showToast(
+    "Záznam smazán"
+  );
 }
+
 
 function clearHistory(){
 
-  if(!confirm("Opravdu smazat celou historii?")){
+  if(
+    !confirm(
+      "Opravdu smazat celou historii?"
+    )
+  ){
     return;
   }
 
-  if(!confirm("Fakt úplně všechno?")){
+
+  if(
+    !confirm(
+      "Fakt úplně všechno? Tohle nejde vrátit."
+    )
+  ){
     return;
   }
 
-  history=[];
+
+  history =
+    [];
+
 
   saveHistory();
+
   updateAll();
+
+
+  showToast(
+    "Historie byla smazána"
+  );
 }
+
 
 function saveHistory(){
 
   localStorage.setItem(
+
     "kakoHistory",
-    JSON.stringify(history)
+
+    JSON.stringify(
+      history
+    )
+
   );
 }
 
-/* SCREENS */
+
+/* =========================
+   OBRAZOVKY
+========================= */
 
 function showScreen(id){
 
   document
     .querySelectorAll(".screen")
-    .forEach(x=>x.classList.remove("active"));
+    .forEach(
+      screen =>
+      screen.classList.remove(
+        "active"
+      )
+    );
+
 
   document
     .getElementById(id)
-    .classList.add("active");
+    .classList
+    .add(
+      "active"
+    );
+
 
   document
     .querySelectorAll(".nav-btn")
-    .forEach(x=>x.classList.remove("active"));
+    .forEach(
+      button =>
+      button.classList.remove(
+        "active"
+      )
+    );
 
-  if(id==="homeScreen"){
-    navHome.classList.add("active");
+
+  if(id === "homeScreen"){
+
+    document
+      .getElementById("navHome")
+      .classList
+      .add(
+        "active"
+      );
+
     updateHome();
   }
 
-  if(id==="statsScreen"){
-    navStats.classList.add("active");
+
+  if(id === "statsScreen"){
+
+    document
+      .getElementById("navStats")
+      .classList
+      .add(
+        "active"
+      );
+
     updateStats();
   }
 
-  if(id==="historyScreen"){
-    navHistory.classList.add("active");
+
+  if(id === "historyScreen"){
+
+    document
+      .getElementById("navHistory")
+      .classList
+      .add(
+        "active"
+      );
+
     renderHistory();
   }
 
-  if(id==="settingsScreen"){
-    navSettings.classList.add("active");
+
+  if(id === "settingsScreen"){
+
+    document
+      .getElementById("navSettings")
+      .classList
+      .add(
+        "active"
+      );
   }
 
-  bottomNav.style.display =
-    id==="timerScreen"
+
+  document
+    .getElementById("bottomNav")
+    .style.display =
+
+    id === "timerScreen"
+
     ? "none"
+
     : "grid";
 }
 
-/* RESTORE */
+
+/* =========================
+   OBNOVENÍ BĚŽÍCÍHO KÁKO
+========================= */
 
 function restoreKako(){
 
   const raw =
-    localStorage.getItem("activeKako");
+    localStorage.getItem(
+      "activeKako"
+    );
 
-  if(!raw) return;
+
+  if(!raw){
+    return;
+  }
+
 
   try{
 
     const saved =
-      JSON.parse(raw);
+      JSON.parse(
+        raw
+      );
 
-    startTime =
-      Number(saved.start);
 
-    locationMode =
-      saved.location || "work";
+    if(
+      typeof saved === "number"
+    ){
 
-  }catch{
+      startTime =
+        saved;
+
+      activeLocationMode =
+        "work";
+
+    }
+
+    else{
+
+      startTime =
+        Number(
+          saved.start
+        );
+
+
+      activeLocationMode =
+        saved.location
+        || "work";
+
+    }
+
+  }
+
+  catch(e){
 
     startTime =
       Number(raw);
+
+    activeLocationMode =
+      "work";
   }
 
-  if(!startTime) return;
 
-  showScreen("timerScreen");
+  if(!startTime){
+    return;
+  }
+
+
+  showScreen(
+    "timerScreen"
+  );
+
 
   prepareTimer();
 
-  timerInterval =
-    setInterval(updateTimer,250);
 
-  quoteInterval =
-    setInterval(changeQuote,10000);
+  updateTimer();
+
+
+  timerInterval =
+    setInterval(
+      updateTimer,
+      250
+    );
+
 
   changeQuote();
-  updateTimer();
+
+
+  quoteInterval =
+    setInterval(
+      changeQuote,
+      10000
+    );
 }
 
-/* FORMAT */
+
+/* =========================
+   FORMÁTOVÁNÍ
+========================= */
 
 function moneyFormat(value){
 
-  return Number(value||0)
-    .toLocaleString(
-      "cs-CZ",
-      {
-        minimumFractionDigits:2,
-        maximumFractionDigits:2
-      }
-    )+" Kč";
+  return Number(
+    value || 0
+  )
+  .toLocaleString(
+    "cs-CZ",
+    {
+      minimumFractionDigits:
+        2,
+
+      maximumFractionDigits:
+        2
+    }
+  )
+  +
+  " Kč";
 }
+
 
 function formatClock(seconds){
 
-  const h =
-    Math.floor(seconds/3600);
+  seconds =
+    Math.max(
+      0,
+      Number(seconds) || 0
+    );
 
-  const m =
-    Math.floor((seconds%3600)/60);
 
-  const s =
-    seconds%60;
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
 
   return (
-    String(h).padStart(2,"0")+":"+
-    String(m).padStart(2,"0")+":"+
-    String(s).padStart(2,"0")
+
+    String(hours)
+      .padStart(
+        2,
+        "0"
+      )
+
+    + ":"
+
+    + String(minutes)
+      .padStart(
+        2,
+        "0"
+      )
+
+    + ":"
+
+    + String(secs)
+      .padStart(
+        2,
+        "0"
+      )
+
   );
 }
+
 
 function formatMinutes(seconds){
 
-  const h =
-    Math.floor(seconds/3600);
+  seconds =
+    Math.max(
+      0,
+      Number(seconds) || 0
+    );
 
-  const m =
-    Math.floor((seconds%3600)/60);
 
-  const s =
-    seconds%60;
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
 
-  if(h){
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  if(hours > 0){
 
     return (
-      h+":"+
-      String(m).padStart(2,"0")+":"+
-      String(s).padStart(2,"0")
+
+      hours
+
+      + ":"
+
+      + String(minutes)
+        .padStart(
+          2,
+          "0"
+        )
+
+      + ":"
+
+      + String(secs)
+        .padStart(
+          2,
+          "0"
+        )
+
     );
   }
 
+
   return (
-    String(m).padStart(2,"0")+":"+
-    String(s).padStart(2,"0")
+
+    String(minutes)
+      .padStart(
+        2,
+        "0"
+      )
+
+    + ":"
+
+    + String(secs)
+      .padStart(
+        2,
+        "0"
+      )
+
   );
 }
 
+
 function formatLongTime(seconds){
 
-  const h =
-    Math.floor(seconds/3600);
+  seconds =
+    Number(seconds)
+    || 0;
 
-  const m =
-    Math.floor((seconds%3600)/60);
 
-  if(h){
-    return h+" h "+m+" min";
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  if(hours > 0){
+
+    return (
+      hours +
+      " h " +
+      minutes +
+      " min"
+    );
   }
 
-  return m+" min";
+
+  return (
+    minutes +
+    " min"
+  );
 }
+
+
+/* =========================
+   TOAST
+========================= */
 
 function showToast(text){
 
-  toast.innerText=text;
-  toast.classList.add("show");
+  const toast =
+    document
+      .getElementById(
+        "toast"
+      );
 
-  clearTimeout(window.toastTimer);
+
+  toast.innerText =
+    text;
+
+
+  toast
+    .classList
+    .add(
+      "show"
+    );
+
+
+  clearTimeout(
+    window.toastTimer
+  );
+
 
   window.toastTimer =
-    setTimeout(()=>{
-      toast.classList.remove("show");
-    },2200);
+    setTimeout(
+      () => {
+
+        toast
+          .classList
+          .remove(
+            "show"
+          );
+
+      },
+      2200
+    );
 }
 
-/* UPDATE */
+
+/* =========================
+   AKTUALIZACE VŠEHO
+========================= */
 
 function updateAll(){
 
   updateHome();
+
   updateStats();
+
   renderHistory();
+
+  renderAchievements();
 }
 
-/* INIT */
+
+/* =========================
+   INIT
+========================= */
 
 loadSettings();
+
 updateAll();
+
 restoreKako();
 
 </script>
 
 </body>
+
 </html>
