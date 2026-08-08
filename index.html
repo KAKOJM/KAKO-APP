@@ -7,12 +7,7 @@
 
 <meta
   name="viewport"
-  content="width=device-width,
-  initial-scale=1,
-  maximum-scale=1,
-  minimum-scale=1,
-  user-scalable=no,
-  viewport-fit=cover"
+  content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"
 >
 
 <meta name="theme-color" content="#2a170e">
@@ -90,9 +85,7 @@ button{
 }
 
 
-/* =========================
-   LOGO
-========================= */
+/* LOGO */
 
 .logo-wrap{
   text-align:center;
@@ -118,9 +111,7 @@ button{
 }
 
 
-/* =========================
-   DOMA / PRÁCE
-========================= */
+/* DOMA / PRÁCE */
 
 .mode-switch{
   display:grid;
@@ -128,23 +119,17 @@ button{
   gap:5px;
 
   background:#ead9c2;
-
   padding:5px;
-
   border-radius:19px;
-
   margin-bottom:7px;
 }
 
 .mode-btn{
   border:0;
-
   border-radius:15px;
-
   padding:13px;
 
   background:none;
-
   color:#765d4d;
 
   font-size:14px;
@@ -160,7 +145,6 @@ button{
 
 .mode-info{
   text-align:center;
-
   color:var(--muted);
 
   font-size:12px;
@@ -170,17 +154,13 @@ button{
 }
 
 
-/* =========================
-   DNES
-========================= */
+/* DNES */
 
 .today-card{
   background:var(--cream2);
-
   border-radius:24px;
 
   padding:18px;
-
   margin-bottom:14px;
 }
 
@@ -200,7 +180,6 @@ button{
   grid-template-columns:repeat(3,1fr);
 
   text-align:center;
-
   gap:5px;
 }
 
@@ -227,9 +206,7 @@ button{
 }
 
 
-/* =========================
-   KURZ
-========================= */
+/* KURZ */
 
 .mini-rate{
   text-align:center;
@@ -247,21 +224,17 @@ button{
 }
 
 
-/* =========================
-   HLAVNÍ TLAČÍTKO
-========================= */
+/* HLAVNÍ TLAČÍTKO */
 
 .main-button{
   width:100%;
 
   border:0;
-
   border-radius:24px;
 
   padding:21px;
 
   background:var(--yellow);
-
   color:var(--brown);
 
   font-size:26px;
@@ -278,9 +251,7 @@ button{
 }
 
 
-/* =========================
-   TIMER
-========================= */
+/* TIMER */
 
 .timer-page{
   max-width:430px;
@@ -289,13 +260,12 @@ button{
   margin:auto;
 
   background:var(--brown);
-
   color:white;
 
   text-align:center;
 
   padding:
-    calc(35px + env(safe-area-inset-top))
+    calc(30px + env(safe-area-inset-top))
     20px
     calc(30px + env(safe-area-inset-bottom));
 }
@@ -304,7 +274,6 @@ button{
   display:inline-block;
 
   background:var(--yellow);
-
   color:var(--brown);
 
   border-radius:99px;
@@ -314,26 +283,26 @@ button{
   font-size:12px;
   font-weight:900;
 
-  margin-bottom:20px;
+  margin-bottom:17px;
 }
 
 .timer-title{
   color:var(--yellow);
 
-  font-size:24px;
+  font-size:23px;
   font-weight:900;
 
-  margin-bottom:20px;
+  margin-bottom:16px;
 }
 
 .timer{
-  font-size:56px;
+  font-size:54px;
   font-weight:900;
 }
 
 .toilet-art{
-  font-size:90px;
-  margin:25px 0;
+  font-size:76px;
+  margin:17px 0;
 }
 
 .live-label{
@@ -346,44 +315,101 @@ button{
 }
 
 .live-money{
-  margin-top:7px;
+  margin-top:6px;
 
   color:var(--green2);
 
-  font-size:46px;
+  font-size:44px;
   font-weight:900;
 }
 
 .live-money.free{
   color:var(--yellow);
-  font-size:31px;
+  font-size:30px;
 }
 
-.quote{
-  min-height:45px;
 
-  max-width:310px;
+/* NOVÁ VELKÁ HLÁŠKA */
 
-  margin:15px auto 22px;
+.quote-card{
+  background:#fff1dc;
+  color:var(--brown);
 
-  color:#d8c4b2;
+  border:3px solid var(--yellow);
 
-  line-height:1.4;
+  border-radius:22px;
 
-  font-size:14px;
+  padding:16px 16px;
+
+  margin:18px auto;
+
+  max-width:360px;
+
+  box-shadow:
+    0 7px 18px rgba(0,0,0,.18);
+
+  transform-origin:center;
 }
+
+.quote-card.work{
+  background:#fff0c6;
+}
+
+.quote-card.home{
+  background:#f4e2cd;
+}
+
+.quote-label{
+  display:block;
+
+  color:#9b6d15;
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:1.5px;
+
+  margin-bottom:7px;
+}
+
+.quote-text{
+  font-size:19px;
+  line-height:1.3;
+  font-weight:900;
+}
+
+.quote-pop{
+  animation:quotePop .48s ease;
+}
+
+@keyframes quotePop{
+
+  0%{
+    transform:scale(.88);
+    opacity:.15;
+  }
+
+  55%{
+    transform:scale(1.06);
+    opacity:1;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
 
 .stop-button{
   width:100%;
 
   border:0;
-
   border-radius:22px;
 
   padding:18px;
 
   background:var(--red);
-
   color:white;
 
   font-size:23px;
@@ -393,10 +419,9 @@ button{
 }
 
 .cancel-button{
-  margin-top:18px;
+  margin-top:17px;
 
   border:0;
-
   background:none;
 
   color:#d7c2af;
@@ -408,9 +433,7 @@ button{
 }
 
 
-/* =========================
-   OBECNÉ
-========================= */
+/* OBECNÉ */
 
 .page-title{
   font-size:28px;
@@ -425,7 +448,6 @@ button{
   border-radius:20px;
 
   padding:16px;
-
   margin-bottom:10px;
 }
 
@@ -447,9 +469,7 @@ button{
 }
 
 
-/* =========================
-   STATISTIKY
-========================= */
+/* STATISTIKY */
 
 .tabs{
   display:grid;
@@ -462,7 +482,6 @@ button{
 
 .tab{
   border:0;
-
   border-radius:13px;
 
   padding:10px;
@@ -470,7 +489,6 @@ button{
   background:#ead8c1;
 
   font-weight:900;
-
   cursor:pointer;
 }
 
@@ -519,15 +537,12 @@ button{
 }
 
 
-/* =========================
-   ACHIEVEMENTY
-========================= */
+/* ACHIEVEMENTY */
 
 .achievement{
   display:flex;
 
   gap:12px;
-
   align-items:center;
 
   background:var(--cream2);
@@ -535,7 +550,6 @@ button{
   border-radius:18px;
 
   padding:13px;
-
   margin-bottom:8px;
 
   opacity:.4;
@@ -559,9 +573,7 @@ button{
 }
 
 
-/* =========================
-   HISTORIE
-========================= */
+/* HISTORIE */
 
 .history-item{
   background:var(--cream2);
@@ -569,7 +581,6 @@ button{
   border-radius:19px;
 
   padding:15px;
-
   margin-bottom:10px;
 }
 
@@ -583,7 +594,6 @@ button{
 
 .history-top{
   font-weight:900;
-
   margin-bottom:9px;
 }
 
@@ -610,7 +620,6 @@ button{
   border:0;
 
   background:#dfcbc4;
-
   color:#8e2c27;
 
   border-radius:10px;
@@ -635,15 +644,12 @@ button{
   width:100%;
 
   border:0;
-
   border-radius:15px;
 
   padding:13px;
-
   margin-top:20px;
 
   background:#ead6d2;
-
   color:#9b2d27;
 
   font-weight:900;
@@ -652,19 +658,15 @@ button{
 }
 
 
-/* =========================
-   NASTAVENÍ
-========================= */
+/* NASTAVENÍ */
 
 .settings-card{
   background:white;
 
   border:2px solid #eadbc8;
-
   border-radius:22px;
 
   padding:17px;
-
   margin-bottom:12px;
 }
 
@@ -685,7 +687,6 @@ button{
   width:100%;
 
   border:2px solid #ddc8ae;
-
   border-radius:13px;
 
   background:#fffaf3;
@@ -708,7 +709,6 @@ button{
 
 .pay-btn{
   border:0;
-
   border-radius:13px;
 
   padding:11px;
@@ -729,13 +729,11 @@ button{
   width:100%;
 
   border:0;
-
   border-radius:15px;
 
   padding:14px;
 
   background:var(--brown);
-
   color:white;
 
   font-weight:900;
@@ -744,9 +742,7 @@ button{
 }
 
 
-/* =========================
-   VÝSLEDEK
-========================= */
+/* VÝSLEDEK */
 
 .result-title{
   font-size:39px;
@@ -757,7 +753,6 @@ button{
 
 .result-sub{
   color:var(--muted);
-
   margin-top:5px;
 }
 
@@ -828,19 +823,15 @@ button{
   width:100%;
 
   border:0;
-
   border-radius:19px;
 
   padding:16px;
-
   margin-top:12px;
 
   background:var(--brown);
-
   color:white;
 
   font-weight:900;
-
   font-size:15px;
 
   cursor:pointer;
@@ -852,9 +843,7 @@ button{
 }
 
 
-/* =========================
-   NAVIGACE
-========================= */
+/* NAVIGACE */
 
 .bottom-nav{
   position:fixed;
@@ -881,7 +870,6 @@ button{
 
 .nav-btn{
   border:0;
-
   background:none;
 
   color:#cbb39f;
@@ -897,9 +885,7 @@ button{
 }
 
 
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 .toast{
   position:fixed;
@@ -913,7 +899,6 @@ button{
   max-width:360px;
 
   background:var(--brown);
-
   color:white;
 
   border-radius:16px;
@@ -946,17 +931,11 @@ button{
 <body>
 
 
-<!-- =========================
-     DOMŮ
-========================= -->
+<!-- DOMŮ -->
 
-<div
-  id="homeScreen"
-  class="screen active"
->
+<div id="homeScreen" class="screen active">
 
 <div class="app">
-
 
 <div class="logo-wrap">
 
@@ -968,10 +947,7 @@ button{
     KÁKO
   </div>
 
-  <div
-    id="helloText"
-    class="logo-sub"
-  >
+  <div id="helloText" class="logo-sub">
     Každá minuta se počítá.
   </div>
 
@@ -980,111 +956,98 @@ button{
 
 <div class="mode-switch">
 
-  <button
-    id="homeModeBtn"
-    class="mode-btn"
-    onclick="setLocationMode('home')"
-  >
-    🏠 DOMA
-  </button>
+<button
+  id="homeModeBtn"
+  class="mode-btn"
+  onclick="setLocationMode('home')"
+>
+  🏠 DOMA
+</button>
 
 
-  <button
-    id="workModeBtn"
-    class="mode-btn active"
-    onclick="setLocationMode('work')"
-  >
-    💼 V PRÁCI
-  </button>
+<button
+  id="workModeBtn"
+  class="mode-btn active"
+  onclick="setLocationMode('work')"
+>
+  💼 V PRÁCI
+</button>
 
 </div>
 
 
-<div
-  id="modeInfo"
-  class="mode-info"
->
+<div id="modeInfo" class="mode-info">
   V práci se každá minuta mění na peníze.
 </div>
 
 
 <div class="today-card">
 
-  <div class="today-title">
-    DNES
-  </div>
+<div class="today-title">
+  DNES
+</div>
 
+<div class="today-grid">
 
-  <div class="today-grid">
+<div class="today-box">
 
+  <span>🚽</span>
 
-    <div class="today-box">
+  <strong id="todayVisits">
+    0
+  </strong>
 
-      <span>
-        🚽
-      </span>
-
-      <strong id="todayVisits">
-        0
-      </strong>
-
-      <small>
-        NÁVŠTĚV
-      </small>
-
-    </div>
-
-
-    <div class="today-box">
-
-      <span>
-        ⏱
-      </span>
-
-      <strong id="todayTime">
-        0 min
-      </strong>
-
-      <small>
-        NA WC
-      </small>
-
-    </div>
-
-
-    <div class="today-box">
-
-      <span>
-        💰
-      </span>
-
-      <strong
-        id="todayMoney"
-        class="green"
-      >
-        0 Kč
-      </strong>
-
-      <small>
-        V PRÁCI
-      </small>
-
-    </div>
-
-
-  </div>
+  <small>
+    NÁVŠTĚV
+  </small>
 
 </div>
 
 
-<div
-  id="miniRate"
-  class="mini-rate"
->
+<div class="today-box">
+
+  <span>⏱</span>
+
+  <strong id="todayTime">
+    0 min
+  </strong>
+
+  <small>
+    NA WC
+  </small>
+
+</div>
+
+
+<div class="today-box">
+
+  <span>💰</span>
+
+  <strong
+    id="todayMoney"
+    class="green"
+  >
+    0 Kč
+  </strong>
+
+  <small>
+    V PRÁCI
+  </small>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="miniRate" class="mini-rate">
+
   KÁKO kurz:
   <strong>
     0 Kč/min
   </strong>
+
 </div>
 
 
@@ -1095,23 +1058,17 @@ button{
   💩 JDU KÁKO
 </button>
 
-
-</div>
 </div>
 
+</div>
 
 
-<!-- =========================
-     TIMER
-========================= -->
 
-<div
-  id="timerScreen"
-  class="screen"
->
+<!-- TIMER -->
+
+<div id="timerScreen" class="screen">
 
 <div class="timer-page">
-
 
 <div
   id="timerMode"
@@ -1156,10 +1113,24 @@ button{
 
 
 <div
-  id="quote"
-  class="quote"
+  id="quoteCard"
+  class="quote-card work"
 >
-  Produktivita má mnoho podob.
+
+<span
+  id="quoteLabel"
+  class="quote-label"
+>
+  FIREMNÍ HLÁŠENÍ
+</span>
+
+<div
+  id="quoteText"
+  class="quote-text"
+>
+  Firma právě financuje tvé trávení.
+</div>
+
 </div>
 
 
@@ -1180,21 +1151,16 @@ button{
 
 
 </div>
+
 </div>
 
 
 
-<!-- =========================
-     VÝSLEDEK
-========================= -->
+<!-- VÝSLEDEK -->
 
-<div
-  id="resultScreen"
-  class="screen"
->
+<div id="resultScreen" class="screen">
 
 <div class="app">
-
 
 <div class="result-title">
   DOKAKÁNO!
@@ -1216,48 +1182,46 @@ button{
 
 <div class="rating">
 
-  <small>
-    HODNOCENÍ
-  </small>
+<small>
+  HODNOCENÍ
+</small>
 
-  <strong id="ratingText">
-    Solidní výkon
-  </strong>
+<strong id="ratingText">
+  Solidní výkon
+</strong>
 
 </div>
 
 
 <div class="result-grid">
 
-
 <div class="result-box">
 
-  <small>
-    ČAS
-  </small>
+<small>
+  ČAS
+</small>
 
-  <strong id="resultTime">
-    00:00
-  </strong>
+<strong id="resultTime">
+  00:00
+</strong>
 
 </div>
 
 
 <div class="result-box">
 
-  <small id="resultMoneyLabel">
-    VYDĚLÁNO
-  </small>
+<small id="resultMoneyLabel">
+  VYDĚLÁNO
+</small>
 
-  <strong
-    id="resultMoney"
-    class="green"
-  >
-    0 Kč
-  </strong>
+<strong
+  id="resultMoney"
+  class="green"
+>
+  0 Kč
+</strong>
 
 </div>
-
 
 </div>
 
@@ -1277,23 +1241,17 @@ button{
   ✓ ZPĚT DOMŮ
 </button>
 
-
-</div>
 </div>
 
+</div>
 
 
-<!-- =========================
-     STATISTIKY
-========================= -->
 
-<div
-  id="statsScreen"
-  class="screen"
->
+<!-- STATISTIKY -->
+
+<div id="statsScreen" class="screen">
 
 <div class="app">
-
 
 <div class="page-title">
   Statistiky
@@ -1302,73 +1260,73 @@ button{
 
 <div class="tabs">
 
-  <button
-    id="todayTab"
-    class="tab active"
-    onclick="setStatsMode('today')"
-  >
-    Dnes
-  </button>
+<button
+  id="todayTab"
+  class="tab active"
+  onclick="setStatsMode('today')"
+>
+  Dnes
+</button>
 
 
-  <button
-    id="monthTab"
-    class="tab"
-    onclick="setStatsMode('month')"
-  >
-    Měsíc
-  </button>
+<button
+  id="monthTab"
+  class="tab"
+  onclick="setStatsMode('month')"
+>
+  Měsíc
+</button>
 
 
-  <button
-    id="allTab"
-    class="tab"
-    onclick="setStatsMode('all')"
-  >
-    Celkem
-  </button>
-
-</div>
-
-
-<div class="card row">
-
-  <span>
-    🚽 Návštěv
-  </span>
-
-  <strong id="statsVisits">
-    0
-  </strong>
+<button
+  id="allTab"
+  class="tab"
+  onclick="setStatsMode('all')"
+>
+  Celkem
+</button>
 
 </div>
 
 
 <div class="card row">
 
-  <span>
-    ⏱ Čas na WC
-  </span>
+<span>
+  🚽 Návštěv
+</span>
 
-  <strong id="statsTime">
-    0 min
-  </strong>
+<strong id="statsVisits">
+  0
+</strong>
 
 </div>
 
 
 <div class="card row">
 
-  <span>
-    💰 Vyděláno v práci
-  </span>
+<span>
+  ⏱ Čas na WC
+</span>
 
-  <strong
-    id="statsMoney"
-    class="green"
-  >
-    0 Kč
-  </strong>
+<strong id="statsTime">
+  0 min
+</strong>
+
+</div>
+
+
+<div class="card row">
+
+<span>
+  💰 Vyděláno v práci
+</span>
+
+<strong
+  id="statsMoney"
+  class="green"
+>
+  0 Kč
+</strong>
 
 </div>
 
@@ -1380,40 +1338,38 @@ button{
 
 <div class="split">
 
-
 <div class="split-box">
 
-  <span>
-    🏠 DOMA
-  </span>
+<span>
+  🏠 DOMA
+</span>
 
-  <strong id="homeVisits">
-    0×
-  </strong>
+<strong id="homeVisits">
+  0×
+</strong>
 
-  <span id="homeTime">
-    0 min
-  </span>
+<span id="homeTime">
+  0 min
+</span>
 
 </div>
 
 
 <div class="split-box">
 
-  <span>
-    💼 V PRÁCI
-  </span>
+<span>
+  💼 V PRÁCI
+</span>
 
-  <strong id="workVisits">
-    0×
-  </strong>
+<strong id="workVisits">
+  0×
+</strong>
 
-  <span id="workTime">
-    0 min
-  </span>
+<span id="workTime">
+  0 min
+</span>
 
 </div>
-
 
 </div>
 
@@ -1425,42 +1381,42 @@ button{
 
 <div class="card row">
 
-  <span>
-    Nejdelší KÁKO
-  </span>
+<span>
+  Nejdelší KÁKO
+</span>
 
-  <strong id="longestKako">
-    00:00
-  </strong>
-
-</div>
-
-
-<div class="card row">
-
-  <span>
-    Nejdražší KÁKO
-  </span>
-
-  <strong
-    id="mostExpensive"
-    class="green"
-  >
-    0 Kč
-  </strong>
+<strong id="longestKako">
+  00:00
+</strong>
 
 </div>
 
 
 <div class="card row">
 
-  <span>
-    Nejvíc návštěv za den
-  </span>
+<span>
+  Nejdražší KÁKO
+</span>
 
-  <strong id="mostVisitsDay">
-    0
-  </strong>
+<strong
+  id="mostExpensive"
+  class="green"
+>
+  0 Kč
+</strong>
+
+</div>
+
+
+<div class="card row">
+
+<span>
+  Nejvíc návštěv za den
+</span>
+
+<strong id="mostVisitsDay">
+  0
+</strong>
 
 </div>
 
@@ -1472,23 +1428,17 @@ button{
 
 <div id="achievementsList"></div>
 
-
-</div>
 </div>
 
+</div>
 
 
-<!-- =========================
-     HISTORIE
-========================= -->
 
-<div
-  id="historyScreen"
-  class="screen"
->
+<!-- HISTORIE -->
+
+<div id="historyScreen" class="screen">
 
 <div class="app">
-
 
 <div class="page-title">
   Historie
@@ -1505,23 +1455,17 @@ button{
   SMAZAT CELOU HISTORII
 </button>
 
-
-</div>
 </div>
 
+</div>
 
 
-<!-- =========================
-     NASTAVENÍ
-========================= -->
 
-<div
-  id="settingsScreen"
-  class="screen"
->
+<!-- NASTAVENÍ -->
+
+<div id="settingsScreen" class="screen">
 
 <div class="app">
-
 
 <div class="page-title">
   Nastavení
@@ -1530,129 +1474,123 @@ button{
 
 <div class="settings-card">
 
-  <h3>
-    Profil
-  </h3>
+<h3>
+  Profil
+</h3>
 
 
-  <label>
-    Přezdívka
-  </label>
+<label>
+  Přezdívka
+</label>
 
 
-  <input
-    id="nicknameInput"
-    type="text"
-    maxlength="25"
-    placeholder="např. Milan"
-  >
+<input
+  id="nicknameInput"
+  type="text"
+  maxlength="25"
+  placeholder="např. Milan"
+>
 
 </div>
 
 
 <div class="settings-card">
 
-  <h3>
-    Výdělek
-  </h3>
+<h3>
+  Výdělek
+</h3>
 
 
-  <div class="pay-switch">
+<div class="pay-switch">
+
+<button
+  id="monthlyBtn"
+  class="pay-btn active"
+  onclick="setPayMode('monthly')"
+>
+  Měsíční plat
+</button>
 
 
-  <button
-    id="monthlyBtn"
-    class="pay-btn active"
-    onclick="setPayMode('monthly')"
-  >
-    Měsíční plat
-  </button>
-
-
-  <button
-    id="hourlyBtn"
-    class="pay-btn"
-    onclick="setPayMode('hourly')"
-  >
-    Hodinovka
-  </button>
-
-
-  </div>
-
-
-  <div id="monthlySettings">
-
-    <label>
-      Měsíční čistá mzda
-    </label>
-
-    <input
-      id="salaryInput"
-      type="number"
-      inputmode="decimal"
-      placeholder="např. 50000"
-    >
-
-
-    <label>
-      Pracovních hodin za měsíc
-    </label>
-
-    <input
-      id="hoursInput"
-      type="number"
-      inputmode="decimal"
-      value="160"
-    >
-
-  </div>
-
-
-  <div
-    id="hourlySettings"
-    style="display:none"
-  >
-
-    <label>
-      Čistá hodinovka
-    </label>
-
-    <input
-      id="hourlyInput"
-      type="number"
-      inputmode="decimal"
-      placeholder="např. 250"
-    >
-
-  </div>
-
-
-  <button
-    class="save-btn"
-    onclick="saveSettings()"
-  >
-    ULOŽIT
-  </button>
-
+<button
+  id="hourlyBtn"
+  class="pay-btn"
+  onclick="setPayMode('hourly')"
+>
+  Hodinovka
+</button>
 
 </div>
 
 
+<div id="monthlySettings">
+
+<label>
+  Měsíční čistá mzda
+</label>
+
+<input
+  id="salaryInput"
+  type="number"
+  inputmode="decimal"
+  placeholder="např. 50000"
+>
+
+
+<label>
+  Pracovních hodin za měsíc
+</label>
+
+<input
+  id="hoursInput"
+  type="number"
+  inputmode="decimal"
+  value="160"
+>
+
 </div>
+
+
+<div
+  id="hourlySettings"
+  style="display:none"
+>
+
+<label>
+  Čistá hodinovka
+</label>
+
+<input
+  id="hourlyInput"
+  type="number"
+  inputmode="decimal"
+  placeholder="např. 250"
+>
+
+</div>
+
+
+<button
+  class="save-btn"
+  onclick="saveSettings()"
+>
+  ULOŽIT A ZPĚT
+</button>
+
+</div>
+
+</div>
+
 </div>
 
 
 
-<!-- =========================
-     SPODNÍ MENU
-========================= -->
+<!-- MENU -->
 
 <div
   id="bottomNav"
   class="bottom-nav"
 >
-
 
 <button
   id="navHome"
@@ -1697,7 +1635,6 @@ button{
   Nastavení
 </button>
 
-
 </div>
 
 
@@ -1710,14 +1647,13 @@ button{
 
 <script>
 
-/* =========================
-   STAV A DATA
-========================= */
+/* DATA */
 
 let timerInterval = null;
 let quoteInterval = null;
 
 let startTime = null;
+
 let activeLocationMode = null;
 
 let lastResult = null;
@@ -1732,13 +1668,14 @@ let ratePerMinute = 0;
 
 let statsMode = "today";
 
+let lastQuoteIndex = -1;
+
+
 let history =
   JSON.parse(
     localStorage.getItem("kakoHistory")
   ) || [];
 
-
-/* starší historie zůstane funkční */
 
 history = history.map(item => ({
 
@@ -1746,10 +1683,12 @@ history = history.map(item => ({
     Number(item.start),
 
   end:
-    Number(item.end) ||
+    Number(item.end)
+    ||
     (
-      Number(item.start) +
-      (Number(item.seconds) || 0) * 1000
+      Number(item.start)
+      +
+      (Number(item.seconds)||0) * 1000
     ),
 
   seconds:
@@ -1766,13 +1705,14 @@ history = history.map(item => ({
 saveHistory();
 
 
-/* =========================
-   HLÁŠKY
-========================= */
+
+/* HLÁŠKY */
 
 const workQuotes = [
 
   "Firma právě financuje tvé trávení.",
+
+  "Výplata běží. Ty sedíš. Ideální stav.",
 
   "Každá další minuta jde na účet zaměstnavatele.",
 
@@ -1788,21 +1728,27 @@ const workQuotes = [
 
   "Produktivita dnes dostala nový význam.",
 
-  "Pracovní výkon právě nabírá na hodnotě.",
-
   "Firma investuje do tvého vnitřního rozvoje.",
 
   "Tahle pracovní schůzka nemohla být e-mail.",
 
   "HR oddělení o tomhle benefitu zatím neví.",
 
-  "Výplata běží. Ty sedíš. Ideální stav.",
-
   "Dnes pracuje hlavně tlusté střevo.",
 
-  "Další minuta, další peníze.",
+  "Další minuta. Další peníze.",
 
-  "Keramické oddělení hlásí plný provoz."
+  "Keramické oddělení hlásí plný provoz.",
+
+  "Tvoje pracovní nasazení právě voní úspěchem.",
+
+  "Šéf platí. Porcelán drží.",
+
+  "Konečně práce, u které můžeš sedět.",
+
+  "Právě probíhá interní očista firmy.",
+
+  "Nejlepší peníze jsou ty, které vyděláš vsedě."
 
 ];
 
@@ -1817,13 +1763,13 @@ const homeQuotes = [
 
   "Domácí směna bez příplatků.",
 
-  "Výkon dobrý, odměna nulová.",
+  "Výkon dobrý. Odměna nulová.",
 
   "Tentokrát náklady neseš ty.",
 
   "Volnočasová aktivita v plném proudu.",
 
-  "Keramika pracuje, peněženka nikoliv.",
+  "Keramika pracuje. Peněženka nikoliv.",
 
   "Doma ti za to bohužel nikdo nezaplatí.",
 
@@ -1831,79 +1777,83 @@ const homeQuotes = [
 
   "Nula korun. Stoprocentní nasazení.",
 
-  "Domácí produktivita bez finančního efektu."
+  "Domácí produktivita bez finančního efektu.",
+
+  "Tolik práce a ani koruna.",
+
+  "Tady bohužel firemní rozpočet nepomůže.",
+
+  "Porcelán ano. Prémie ne."
 
 ];
 
 
-/* =========================
-   ACHIEVEMENTY
-========================= */
+
+/* ACHIEVEMENTY */
 
 const achievementsData = [
 
-  {
-    icon:"💩",
-    title:"První hovínko",
-    text:"Dokonči první KÁKO",
-    test:s => s.visits >= 1
-  },
+{
+  icon:"💩",
+  title:"První hovínko",
+  text:"Dokonči první KÁKO",
+  test:s => s.visits >= 1
+},
 
-  {
-    icon:"🔟",
-    title:"Pravidelný zákazník",
-    text:"Dokonči 10 návštěv",
-    test:s => s.visits >= 10
-  },
+{
+  icon:"🔟",
+  title:"Pravidelný zákazník",
+  text:"Dokonči 10 návštěv",
+  test:s => s.visits >= 10
+},
 
-  {
-    icon:"⏱",
-    title:"Hodina pravdy",
-    text:"Strav celkem 1 hodinu na WC",
-    test:s => s.seconds >= 3600
-  },
+{
+  icon:"⏱",
+  title:"Hodina pravdy",
+  text:"Strav celkem 1 hodinu na WC",
+  test:s => s.seconds >= 3600
+},
 
-  {
-    icon:"💵",
-    title:"Firemní investor",
-    text:"Vydělej na WC 500 Kč",
-    test:s => s.money >= 500
-  },
+{
+  icon:"💵",
+  title:"Firemní investor",
+  text:"Vydělej na WC 500 Kč",
+  test:s => s.money >= 500
+},
 
-  {
-    icon:"🤑",
-    title:"Keramický magnát",
-    text:"Vydělej na WC 1 000 Kč",
-    test:s => s.money >= 1000
-  },
+{
+  icon:"🤑",
+  title:"Keramický magnát",
+  text:"Vydělej na WC 1 000 Kč",
+  test:s => s.money >= 1000
+},
 
-  {
-    icon:"🏆",
-    title:"Dlouhá porada",
-    text:"Jedno KÁKO minimálně 20 minut",
-    test:s => s.longest >= 1200
-  },
+{
+  icon:"🏆",
+  title:"Dlouhá porada",
+  text:"Jedno KÁKO minimálně 20 minut",
+  test:s => s.longest >= 1200
+},
 
-  {
-    icon:"🏠",
-    title:"Domácí patriot",
-    text:"Dokonči 5 návštěv doma",
-    test:s => s.homeVisits >= 5
-  },
+{
+  icon:"🏠",
+  title:"Domácí patriot",
+  text:"Dokonči 5 návštěv doma",
+  test:s => s.homeVisits >= 5
+},
 
-  {
-    icon:"💼",
-    title:"Firemní specialista",
-    text:"Dokonči 5 návštěv v práci",
-    test:s => s.workVisits >= 5
-  }
+{
+  icon:"💼",
+  title:"Firemní specialista",
+  text:"Dokonči 5 návštěv v práci",
+  test:s => s.workVisits >= 5
+}
 
 ];
 
 
-/* =========================
-   NASTAVENÍ
-========================= */
+
+/* NASTAVENÍ */
 
 function loadSettings(){
 
@@ -1926,27 +1876,16 @@ function loadSettings(){
     ) || 0;
 
 
-  document
-    .getElementById("nicknameInput")
-    .value =
+  document.getElementById("nicknameInput").value =
     nickname;
 
-
-  document
-    .getElementById("salaryInput")
-    .value =
+  document.getElementById("salaryInput").value =
     salary || "";
 
-
-  document
-    .getElementById("hoursInput")
-    .value =
+  document.getElementById("hoursInput").value =
     hours;
 
-
-  document
-    .getElementById("hourlyInput")
-    .value =
+  document.getElementById("hourlyInput").value =
     hourly || "";
 
 
@@ -1996,17 +1935,19 @@ function updatePayUI(){
   document
     .getElementById("monthlySettings")
     .style.display =
+
     payMode === "monthly"
-      ? "block"
-      : "none";
+    ? "block"
+    : "none";
 
 
   document
     .getElementById("hourlySettings")
     .style.display =
+
     payMode === "hourly"
-      ? "block"
-      : "none";
+    ? "block"
+    : "none";
 }
 
 
@@ -2097,8 +2038,16 @@ function saveSettings(){
 
   updateHome();
 
+
+  /* NOVĚ AUTOMATICKY DOMŮ */
+
+  showScreen(
+    "homeScreen"
+  );
+
+
   showToast(
-    "Nastavení uloženo"
+    "✓ Nastavení uloženo"
   );
 }
 
@@ -2145,18 +2094,20 @@ function calculateRate(){
 }
 
 
-/* =========================
-   DOMA / PRÁCE
-========================= */
+
+/* DOMA / PRÁCE */
 
 function setLocationMode(mode){
 
-  locationMode = mode;
+  locationMode =
+    mode;
+
 
   localStorage.setItem(
     "locationMode",
     mode
   );
+
 
   updateHome();
 }
@@ -2206,13 +2157,11 @@ function updateLocation(){
     ? "🏠 Domácí KÁKO: <strong>0 Kč</strong>"
 
     : `KÁKO kurz: <strong>${moneyFormat(ratePerMinute)}/min</strong>`;
-
 }
 
 
-/* =========================
-   START KÁKO
-========================= */
+
+/* START */
 
 function startKako(){
 
@@ -2224,6 +2173,7 @@ function startKako(){
     alert(
       "Nejdřív nastav plat v Nastavení."
     );
+
 
     showScreen(
       "settingsScreen"
@@ -2242,7 +2192,9 @@ function startKako(){
 
 
   localStorage.setItem(
+
     "activeKako",
+
     JSON.stringify({
 
       start:
@@ -2252,6 +2204,7 @@ function startKako(){
         activeLocationMode
 
     })
+
   );
 
 
@@ -2266,6 +2219,11 @@ function startKako(){
   updateTimer();
 
 
+  /* PRVNÍ HLÁŠKA HNED */
+
+  changeQuote();
+
+
   timerInterval =
     setInterval(
       updateTimer,
@@ -2273,8 +2231,7 @@ function startKako(){
     );
 
 
-  changeQuote();
-
+  /* KAŽDÝCH 10 SEKUND NOVÁ */
 
   quoteInterval =
     setInterval(
@@ -2284,9 +2241,8 @@ function startKako(){
 }
 
 
-/* =========================
-   TIMER
-========================= */
+
+/* TIMER */
 
 function prepareTimer(){
 
@@ -2316,12 +2272,12 @@ function prepareTimer(){
     : "PRÁVĚ JSI PROKADIL";
 
 
-  const currentMoney =
+  const money =
     document
       .getElementById("currentMoney");
 
 
-  currentMoney
+  money
     .classList
     .toggle(
       "free",
@@ -2329,13 +2285,45 @@ function prepareTimer(){
     );
 
 
-  currentMoney.innerText =
+  money.innerText =
 
     home
 
     ? "Dnes zadarmo"
 
     : "0,00 Kč";
+
+
+  const card =
+    document
+      .getElementById("quoteCard");
+
+
+  card
+    .classList
+    .toggle(
+      "home",
+      home
+    );
+
+
+  card
+    .classList
+    .toggle(
+      "work",
+      !home
+    );
+
+
+  document
+    .getElementById("quoteLabel")
+    .innerText =
+
+    home
+
+    ? "DOMÁCÍ HLÁŠENÍ"
+
+    : "FIREMNÍ HLÁŠENÍ";
 }
 
 
@@ -2349,16 +2337,21 @@ function updateTimer(){
   const seconds =
     Math.floor(
       (
-        Date.now() -
+        Date.now()
+        -
         startTime
-      ) / 1000
+      )
+      /
+      1000
     );
 
 
   document
     .getElementById("timer")
     .innerText =
-    formatClock(seconds);
+    formatClock(
+      seconds
+    );
 
 
   if(
@@ -2370,17 +2363,22 @@ function updateTimer(){
       .innerText =
 
       moneyFormat(
+
         seconds /
         60 *
         ratePerMinute
+
       );
   }
 }
 
 
+
+/* NOVÁ VELKÁ HLÁŠKA */
+
 function changeQuote(){
 
-  const arr =
+  const source =
 
     activeLocationMode === "home"
 
@@ -2389,23 +2387,67 @@ function changeQuote(){
     : workQuotes;
 
 
-  const random =
-    Math.floor(
-      Math.random() *
-      arr.length
+  let index;
+
+
+  /* zaručíme, že nebude 2× za sebou stejná */
+
+  do{
+
+    index =
+      Math.floor(
+        Math.random() *
+        source.length
+      );
+
+  }
+
+  while(
+    index === lastQuoteIndex &&
+    source.length > 1
+  );
+
+
+  lastQuoteIndex =
+    index;
+
+
+  const text =
+    document
+      .getElementById("quoteText");
+
+
+  const card =
+    document
+      .getElementById("quoteCard");
+
+
+  text.innerText =
+    source[index];
+
+
+  /* restart animace */
+
+  card
+    .classList
+    .remove(
+      "quote-pop"
     );
 
 
-  document
-    .getElementById("quote")
-    .innerText =
-    arr[random];
+  void card.offsetWidth;
+
+
+  card
+    .classList
+    .add(
+      "quote-pop"
+    );
 }
 
 
-/* =========================
-   ZRUŠIT
-========================= */
+
+/* ZRUŠIT */
 
 function cancelKako(){
 
@@ -2426,9 +2468,12 @@ function cancelKako(){
   );
 
 
-  startTime = null;
+  startTime =
+    null;
 
-  activeLocationMode = null;
+
+  activeLocationMode =
+    null;
 
 
   showScreen(
@@ -2442,9 +2487,8 @@ function cancelKako(){
 }
 
 
-/* =========================
-   DOKAKÁNO
-========================= */
+
+/* DOKAKÁNO */
 
 function stopKako(){
 
@@ -2462,13 +2506,18 @@ function stopKako(){
 
   const seconds =
     Math.max(
+
       1,
+
       Math.floor(
         (
           end -
           startTime
-        ) / 1000
+        )
+        /
+        1000
       )
+
     );
 
 
@@ -2525,9 +2574,12 @@ function stopKako(){
   );
 
 
-  startTime = null;
+  startTime =
+    null;
 
-  activeLocationMode = null;
+
+  activeLocationMode =
+    null;
 
 
   updateAll();
@@ -2545,20 +2597,23 @@ function stopTimers(){
     timerInterval
   );
 
+
   clearInterval(
     quoteInterval
   );
 
 
-  timerInterval = null;
+  timerInterval =
+    null;
 
-  quoteInterval = null;
+
+  quoteInterval =
+    null;
 }
 
 
-/* =========================
-   VÝSLEDEK
-========================= */
+
+/* VÝSLEDEK */
 
 function prepareResult(item){
 
@@ -2621,7 +2676,8 @@ function prepareResult(item){
 function getRating(seconds){
 
   const minutes =
-    seconds / 60;
+    seconds /
+    60;
 
 
   if(minutes < 2)
@@ -2652,9 +2708,8 @@ function getRating(seconds){
 }
 
 
-/* =========================
-   SDÍLENÍ
-========================= */
+
+/* SDÍLENÍ */
 
 async function shareResult(){
 
@@ -2665,7 +2720,8 @@ async function shareResult(){
 
   const nickname =
     localStorage.getItem("nickname")
-    || "Já";
+    ||
+    "Já";
 
 
   const home =
@@ -2733,15 +2789,13 @@ ${nickname} právě dokončil pracovní KÁKO.
       alert(
         text
       );
-
     }
   }
 }
 
 
-/* =========================
-   STATISTIKY
-========================= */
+
+/* STATISTIKY */
 
 function filteredHistory(mode){
 
@@ -2749,49 +2803,55 @@ function filteredHistory(mode){
     new Date();
 
 
-  return history.filter(item => {
+  return history.filter(
+    item => {
 
-    const date =
-      new Date(
-        item.start
-      );
+      const date =
+        new Date(
+          item.start
+        );
 
 
-    if(mode === "today"){
+      if(mode === "today"){
 
-      return (
-        date.getDate() ===
-        now.getDate()
+        return (
 
-        &&
+          date.getDate() ===
+          now.getDate()
 
-        date.getMonth() ===
-        now.getMonth()
+          &&
 
-        &&
+          date.getMonth() ===
+          now.getMonth()
 
-        date.getFullYear() ===
-        now.getFullYear()
-      );
+          &&
+
+          date.getFullYear() ===
+          now.getFullYear()
+
+        );
+      }
+
+
+      if(mode === "month"){
+
+        return (
+
+          date.getMonth() ===
+          now.getMonth()
+
+          &&
+
+          date.getFullYear() ===
+          now.getFullYear()
+
+        );
+      }
+
+
+      return true;
     }
-
-
-    if(mode === "month"){
-
-      return (
-        date.getMonth() ===
-        now.getMonth()
-
-        &&
-
-        date.getFullYear() ===
-        now.getFullYear()
-      );
-    }
-
-
-    return true;
-  });
+  );
 }
 
 
@@ -2805,15 +2865,15 @@ function getStats(mode){
 
   const home =
     data.filter(
-      item =>
-      item.location === "home"
+      x =>
+      x.location === "home"
     );
 
 
   const work =
     data.filter(
-      item =>
-      item.location === "work"
+      x =>
+      x.location === "work"
     );
 
 
@@ -2855,11 +2915,14 @@ function getStats(mode){
 
     mostExpensive:
       Math.max(
+
         0,
+
         ...work.map(
-          item =>
-          Number(item.money) || 0
+          x =>
+          Number(x.money) || 0
         )
+
       )
 
   };
@@ -2871,7 +2934,6 @@ function sumSeconds(arr){
   return arr.reduce(
 
     (sum,item) =>
-
     sum +
     (
       Number(item.seconds)
@@ -2879,6 +2941,7 @@ function sumSeconds(arr){
     ),
 
     0
+
   );
 }
 
@@ -2888,7 +2951,6 @@ function sumMoney(arr){
   return arr.reduce(
 
     (sum,item) =>
-
     sum +
     (
       Number(item.money)
@@ -2896,6 +2958,7 @@ function sumMoney(arr){
     ),
 
     0
+
   );
 }
 
@@ -2905,13 +2968,13 @@ function maxSeconds(arr){
   return arr.reduce(
 
     (max,item) =>
-
     Math.max(
       max,
       Number(item.seconds) || 0
     ),
 
     0
+
   );
 }
 
@@ -2921,36 +2984,44 @@ function getMostVisitsOneDay(){
   const counts = {};
 
 
-  history.forEach(item => {
+  history.forEach(
+    item => {
 
-    const date =
-      new Date(
-        item.start
-      );
-
-
-    const key =
-      date.getFullYear()
-      + "-"
-      + date.getMonth()
-      + "-"
-      + date.getDate();
+      const d =
+        new Date(
+          item.start
+        );
 
 
-    counts[key] =
-      (
-        counts[key]
-        || 0
-      ) + 1;
+      const key =
 
-  });
+        d.getFullYear()
+        + "-"
+        + d.getMonth()
+        + "-"
+        + d.getDate();
+
+
+      counts[key] =
+        (
+          counts[key]
+          || 0
+        )
+        +
+        1;
+
+    }
+  );
 
 
   return Math.max(
+
     0,
+
     ...Object.values(
       counts
     )
+
   );
 }
 
@@ -2964,8 +3035,8 @@ function setStatsMode(mode){
   document
     .querySelectorAll(".tab")
     .forEach(
-      tab =>
-      tab.classList.remove(
+      x =>
+      x.classList.remove(
         "active"
       )
     );
@@ -3001,83 +3072,63 @@ function setStatsMode(mode){
 
 function updateStats(){
 
-  const stats =
+  const s =
     getStats(
       statsMode
     );
 
 
-  document
-    .getElementById("statsVisits")
-    .innerText =
-    stats.visits;
+  document.getElementById("statsVisits").innerText =
+    s.visits;
 
 
-  document
-    .getElementById("statsTime")
-    .innerText =
+  document.getElementById("statsTime").innerText =
     formatLongTime(
-      stats.seconds
+      s.seconds
     );
 
 
-  document
-    .getElementById("statsMoney")
-    .innerText =
+  document.getElementById("statsMoney").innerText =
     moneyFormat(
-      stats.money
+      s.money
     );
 
 
-  document
-    .getElementById("homeVisits")
-    .innerText =
-    stats.homeVisits +
+  document.getElementById("homeVisits").innerText =
+    s.homeVisits +
     "×";
 
 
-  document
-    .getElementById("homeTime")
-    .innerText =
+  document.getElementById("homeTime").innerText =
     formatLongTime(
-      stats.homeSeconds
+      s.homeSeconds
     );
 
 
-  document
-    .getElementById("workVisits")
-    .innerText =
-    stats.workVisits +
+  document.getElementById("workVisits").innerText =
+    s.workVisits +
     "×";
 
 
-  document
-    .getElementById("workTime")
-    .innerText =
+  document.getElementById("workTime").innerText =
     formatLongTime(
-      stats.workSeconds
+      s.workSeconds
     );
 
 
-  document
-    .getElementById("longestKako")
-    .innerText =
+  document.getElementById("longestKako").innerText =
     formatMinutes(
-      stats.longest
+      s.longest
     );
 
 
-  document
-    .getElementById("mostExpensive")
-    .innerText =
+  document.getElementById("mostExpensive").innerText =
     moneyFormat(
-      stats.mostExpensive
+      s.mostExpensive
     );
 
 
-  document
-    .getElementById("mostVisitsDay")
-    .innerText =
+  document.getElementById("mostVisitsDay").innerText =
     getMostVisitsOneDay();
 
 
@@ -3085,46 +3136,44 @@ function updateStats(){
 }
 
 
-/* =========================
-   ACHIEVEMENTY
-========================= */
+
+/* ACHIEVEMENTY */
 
 function renderAchievements(){
 
-  const stats =
+  const s =
     getStats(
       "all"
     );
 
 
-  const container =
-    document
-      .getElementById(
-        "achievementsList"
-      );
+  const box =
+    document.getElementById(
+      "achievementsList"
+    );
 
 
-  container.innerHTML =
+  box.innerHTML =
     "";
 
 
-  achievementsData
-    .forEach(item => {
+  achievementsData.forEach(
+    a => {
 
       const unlocked =
-        item.test(
-          stats
+        a.test(
+          s
         );
 
 
       const div =
-        document
-          .createElement(
-            "div"
-          );
+        document.createElement(
+          "div"
+        );
 
 
       div.className =
+
         "achievement"
         +
         (
@@ -3140,7 +3189,7 @@ function renderAchievements(){
 
           ${
             unlocked
-            ? item.icon
+            ? a.icon
             : "🔒"
           }
 
@@ -3149,11 +3198,11 @@ function renderAchievements(){
         <div>
 
           <strong>
-            ${item.title}
+            ${a.title}
           </strong>
 
           <small>
-            ${item.text}
+            ${a.text}
           </small>
 
         </div>
@@ -3161,16 +3210,16 @@ function renderAchievements(){
       `;
 
 
-      container.appendChild(
+      box.appendChild(
         div
       );
-    });
+    }
+  );
 }
 
 
-/* =========================
-   DOMOVSKÁ OBRAZOVKA
-========================= */
+
+/* DOMOVSKÁ STRÁNKA */
 
 function updateHome(){
 
@@ -3179,31 +3228,25 @@ function updateHome(){
   updateLocation();
 
 
-  const stats =
+  const s =
     getStats(
       "today"
     );
 
 
-  document
-    .getElementById("todayVisits")
-    .innerText =
-    stats.visits;
+  document.getElementById("todayVisits").innerText =
+    s.visits;
 
 
-  document
-    .getElementById("todayTime")
-    .innerText =
+  document.getElementById("todayTime").innerText =
     formatLongTime(
-      stats.seconds
+      s.seconds
     );
 
 
-  document
-    .getElementById("todayMoney")
-    .innerText =
+  document.getElementById("todayMoney").innerText =
     moneyFormat(
-      stats.money
+      s.money
     );
 
 
@@ -3213,9 +3256,7 @@ function updateHome(){
     );
 
 
-  document
-    .getElementById("helloText")
-    .innerText =
+  document.getElementById("helloText").innerText =
 
     nickname
 
@@ -3226,24 +3267,22 @@ function updateHome(){
 }
 
 
-/* =========================
-   HISTORIE
-========================= */
+
+/* HISTORIE */
 
 function renderHistory(){
 
-  const container =
-    document
-      .getElementById(
-        "historyList"
-      );
+  const box =
+    document.getElementById(
+      "historyList"
+    );
 
 
   if(
     history.length === 0
   ){
 
-    container.innerHTML = `
+    box.innerHTML = `
 
       <div class="empty">
 
@@ -3259,7 +3298,7 @@ function renderHistory(){
   }
 
 
-  container.innerHTML =
+  box.innerHTML =
     "";
 
 
@@ -3296,10 +3335,9 @@ function renderHistory(){
 
 
       const div =
-        document
-          .createElement(
-            "div"
-          );
+        document.createElement(
+          "div"
+        );
 
 
       div.className =
@@ -3331,23 +3369,16 @@ function renderHistory(){
 
             ${
               home
-
               ? "0 Kč"
-
-              : moneyFormat(
-                  item.money
-                )
+              : moneyFormat(item.money)
             }
 
           </strong>
 
 
           <button
-
             class="delete-btn"
-
             onclick="deleteHistory(${index})"
-
           >
             🗑
           </button>
@@ -3359,9 +3390,7 @@ function renderHistory(){
 
           ${
             home
-
             ? "🏠 DOMA"
-
             : "💼 V PRÁCI"
           }
 
@@ -3370,10 +3399,11 @@ function renderHistory(){
       `;
 
 
-      container.appendChild(
+      box.appendChild(
         div
       );
-    });
+    }
+  );
 }
 
 
@@ -3454,9 +3484,8 @@ function saveHistory(){
 }
 
 
-/* =========================
-   OBRAZOVKY
-========================= */
+
+/* OBRAZOVKY */
 
 function showScreen(id){
 
@@ -3481,8 +3510,8 @@ function showScreen(id){
   document
     .querySelectorAll(".nav-btn")
     .forEach(
-      button =>
-      button.classList.remove(
+      btn =>
+      btn.classList.remove(
         "active"
       )
     );
@@ -3550,9 +3579,8 @@ function showScreen(id){
 }
 
 
-/* =========================
-   OBNOVENÍ BĚŽÍCÍHO KÁKO
-========================= */
+
+/* OBNOVA BĚŽÍCÍHO KÁKO */
 
 function restoreKako(){
 
@@ -3575,38 +3603,26 @@ function restoreKako(){
       );
 
 
-    if(
-      typeof saved === "number"
-    ){
-
-      startTime =
-        saved;
-
-      activeLocationMode =
-        "work";
-
-    }
-
-    else{
-
-      startTime =
-        Number(
-          saved.start
-        );
+    startTime =
+      Number(
+        saved.start
+      );
 
 
-      activeLocationMode =
-        saved.location
-        || "work";
-
-    }
+    activeLocationMode =
+      saved.location
+      ||
+      "work";
 
   }
 
   catch(e){
 
     startTime =
-      Number(raw);
+      Number(
+        raw
+      );
+
 
     activeLocationMode =
       "work";
@@ -3629,14 +3645,14 @@ function restoreKako(){
   updateTimer();
 
 
+  changeQuote();
+
+
   timerInterval =
     setInterval(
       updateTimer,
       250
     );
-
-
-  changeQuote();
 
 
   quoteInterval =
@@ -3647,9 +3663,8 @@ function restoreKako(){
 }
 
 
-/* =========================
-   FORMÁTOVÁNÍ
-========================= */
+
+/* FORMÁT */
 
 function moneyFormat(value){
 
@@ -3680,21 +3695,23 @@ function formatClock(seconds){
     );
 
 
-  const hours =
+  const h =
     Math.floor(
       seconds / 3600
     );
 
 
-  const minutes =
+  const m =
     Math.floor(
       (
         seconds % 3600
-      ) / 60
+      )
+      /
+      60
     );
 
 
-  const secs =
+  const s =
     Math.floor(
       seconds % 60
     );
@@ -3702,27 +3719,15 @@ function formatClock(seconds){
 
   return (
 
-    String(hours)
-      .padStart(
-        2,
-        "0"
-      )
-
-    + ":"
-
-    + String(minutes)
-      .padStart(
-        2,
-        "0"
-      )
-
-    + ":"
-
-    + String(secs)
-      .padStart(
-        2,
-        "0"
-      )
+    String(h).padStart(2,"0")
+    +
+    ":"
+    +
+    String(m).padStart(2,"0")
+    +
+    ":"
+    +
+    String(s).padStart(2,"0")
 
   );
 }
@@ -3737,47 +3742,41 @@ function formatMinutes(seconds){
     );
 
 
-  const hours =
+  const h =
     Math.floor(
       seconds / 3600
     );
 
 
-  const minutes =
+  const m =
     Math.floor(
       (
         seconds % 3600
-      ) / 60
+      )
+      /
+      60
     );
 
 
-  const secs =
+  const s =
     Math.floor(
       seconds % 60
     );
 
 
-  if(hours > 0){
+  if(h > 0){
 
     return (
 
-      hours
-
-      + ":"
-
-      + String(minutes)
-        .padStart(
-          2,
-          "0"
-        )
-
-      + ":"
-
-      + String(secs)
-        .padStart(
-          2,
-          "0"
-        )
+      h
+      +
+      ":"
+      +
+      String(m).padStart(2,"0")
+      +
+      ":"
+      +
+      String(s).padStart(2,"0")
 
     );
   }
@@ -3785,19 +3784,11 @@ function formatMinutes(seconds){
 
   return (
 
-    String(minutes)
-      .padStart(
-        2,
-        "0"
-      )
-
-    + ":"
-
-    + String(secs)
-      .padStart(
-        2,
-        "0"
-      )
+    String(m).padStart(2,"0")
+    +
+    ":"
+    +
+    String(s).padStart(2,"0")
 
   );
 }
@@ -3807,63 +3798,62 @@ function formatLongTime(seconds){
 
   seconds =
     Number(seconds)
-    || 0;
+    ||
+    0;
 
 
-  const hours =
+  const h =
     Math.floor(
       seconds / 3600
     );
 
 
-  const minutes =
+  const m =
     Math.floor(
       (
         seconds % 3600
-      ) / 60
+      )
+      /
+      60
     );
 
 
-  if(hours > 0){
+  if(h > 0){
 
     return (
-      hours +
+      h +
       " h " +
-      minutes +
+      m +
       " min"
     );
   }
 
 
   return (
-    minutes +
+    m +
     " min"
   );
 }
 
 
-/* =========================
-   TOAST
-========================= */
+
+/* TOAST */
 
 function showToast(text){
 
   const toast =
-    document
-      .getElementById(
-        "toast"
-      );
+    document.getElementById(
+      "toast"
+    );
 
 
   toast.innerText =
     text;
 
 
-  toast
-    .classList
-    .add(
-      "show"
-    );
+  toast.classList.add(
+    "show"
+  );
 
 
   clearTimeout(
@@ -3875,11 +3865,9 @@ function showToast(text){
     setTimeout(
       () => {
 
-        toast
-          .classList
-          .remove(
-            "show"
-          );
+        toast.classList.remove(
+          "show"
+        );
 
       },
       2200
@@ -3887,9 +3875,8 @@ function showToast(text){
 }
 
 
-/* =========================
-   AKTUALIZACE VŠEHO
-========================= */
+
+/* UPDATE */
 
 function updateAll(){
 
@@ -3903,9 +3890,8 @@ function updateAll(){
 }
 
 
-/* =========================
-   INIT
-========================= */
+
+/* INIT */
 
 loadSettings();
 
@@ -3916,5 +3902,4 @@ restoreKako();
 </script>
 
 </body>
-
 </html>
