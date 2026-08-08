@@ -53,7 +53,8 @@ body{
 }
 
 button,
-input{
+input,
+select{
   font-family:inherit;
 }
 
@@ -74,6 +75,7 @@ button{
   max-width:430px;
   min-height:100vh;
   margin:auto;
+
   background:var(--cream);
 
   padding:
@@ -81,6 +83,7 @@ button{
     18px
     calc(105px + env(safe-area-inset-bottom));
 }
+
 
 /* LOGO */
 
@@ -107,6 +110,7 @@ button{
   font-weight:700;
 }
 
+
 /* DOMA / PRÁCE */
 
 .mode-switch{
@@ -125,8 +129,10 @@ button{
   border:0;
   border-radius:15px;
   padding:13px;
+
   background:none;
   color:#765d4d;
+
   font-size:14px;
   font-weight:900;
   cursor:pointer;
@@ -140,16 +146,20 @@ button{
 .mode-info{
   text-align:center;
   color:var(--muted);
+
   font-size:12px;
   font-weight:700;
+
   margin:8px 0 16px;
 }
+
 
 /* DNES */
 
 .today-card{
   background:var(--cream2);
   border-radius:24px;
+
   padding:18px;
   margin-bottom:14px;
 }
@@ -165,6 +175,7 @@ button{
 .today-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   gap:5px;
   text-align:center;
 }
@@ -183,7 +194,9 @@ button{
 .today-box small{
   display:block;
   margin-top:3px;
+
   color:var(--muted);
+
   font-size:10px;
   font-weight:800;
 }
@@ -192,13 +205,17 @@ button{
   color:var(--green);
 }
 
+
 /* KURZ */
 
 .mini-rate{
   text-align:center;
+
   margin-bottom:14px;
+
   font-size:13px;
   font-weight:800;
+
   color:var(--muted);
 }
 
@@ -206,18 +223,25 @@ button{
   color:var(--green);
 }
 
+
 /* HLAVNÍ TLAČÍTKO */
 
 .main-button{
   width:100%;
+
   border:0;
   border-radius:24px;
+
   padding:21px;
+
   background:var(--yellow);
   color:var(--brown);
+
   font-size:26px;
   font-weight:900;
+
   box-shadow:0 5px 0 #d7a218;
+
   cursor:pointer;
 }
 
@@ -226,11 +250,13 @@ button{
   box-shadow:0 2px 0 #d7a218;
 }
 
+
 /* TIMER */
 
 .timer-page{
   max-width:430px;
   min-height:100vh;
+
   margin:auto;
 
   background:var(--brown);
@@ -246,19 +272,26 @@ button{
 
 .timer-mode{
   display:inline-block;
+
   background:var(--yellow);
   color:var(--brown);
+
   border-radius:99px;
+
   padding:8px 14px;
+
   font-size:12px;
   font-weight:900;
+
   margin-bottom:12px;
 }
 
 .timer-title{
   color:var(--yellow);
+
   font-size:22px;
   font-weight:900;
+
   margin-bottom:11px;
 }
 
@@ -274,6 +307,7 @@ button{
 
 .live-label{
   color:#dcc6b4;
+
   font-size:11px;
   font-weight:900;
   letter-spacing:1px;
@@ -281,7 +315,9 @@ button{
 
 .live-money{
   margin-top:5px;
+
   color:var(--green2);
+
   font-size:42px;
   font-weight:900;
 }
@@ -290,6 +326,7 @@ button{
   color:var(--yellow);
   font-size:29px;
 }
+
 
 /* HLÁŠKY */
 
@@ -357,49 +394,67 @@ button{
 
 .stop-button{
   width:100%;
+
   border:0;
   border-radius:22px;
+
   padding:17px;
+
   background:var(--red);
   color:white;
+
   font-size:22px;
   font-weight:900;
+
   cursor:pointer;
 }
 
 .cancel-button{
   margin-top:14px;
+
   border:0;
   background:none;
+
   color:#d7c2af;
+
   font-size:13px;
   font-weight:800;
+
   cursor:pointer;
 }
+
 
 /* OBECNÉ */
 
 .page-title{
   font-size:30px;
   font-weight:900;
+
   margin:10px 0 18px;
 }
+
 
 /* STATISTIKY */
 
 .tabs{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   gap:7px;
+
   margin-bottom:18px;
 }
 
 .tab{
   border:0;
   border-radius:13px;
+
   padding:11px;
+
   background:var(--cream3);
+
   font-weight:900;
+
   cursor:pointer;
 }
 
@@ -411,15 +466,21 @@ button{
 .stats-summary{
   display:grid;
   grid-template-columns:repeat(3,1fr);
+
   gap:9px;
+
   margin-bottom:20px;
 }
 
 .stats-main-card{
   background:var(--cream2);
+
   border-radius:20px;
+
   min-height:112px;
+
   padding:15px 6px;
+
   text-align:center;
 
   display:flex;
@@ -435,15 +496,20 @@ button{
 
 .stats-main-card strong{
   display:block;
+
   font-size:20px;
   line-height:1.05;
+
   overflow-wrap:anywhere;
 }
 
 .stats-main-card small{
   display:block;
+
   margin-top:7px;
+
   color:var(--muted);
+
   font-size:9px;
   font-weight:900;
 }
@@ -455,19 +521,24 @@ button{
 .stats-section-title{
   font-size:19px;
   font-weight:900;
+
   margin-bottom:10px;
 }
 
 .place-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 }
 
 .place-card{
   background:var(--cream2);
+
   border-radius:21px;
+
   padding:17px 12px;
+
   text-align:center;
 }
 
@@ -477,20 +548,26 @@ button{
 
 .place-card strong{
   display:block;
+
   font-size:23px;
+
   margin:8px 0 4px;
 }
 
 .place-card small{
   color:var(--muted);
+
   font-size:11px;
   font-weight:800;
 }
 
 .record-card{
   background:var(--cream2);
+
   border-radius:18px;
+
   padding:15px 16px;
+
   margin-bottom:9px;
 
   display:flex;
@@ -503,7 +580,9 @@ button{
 .record-left{
   display:flex;
   align-items:center;
+
   gap:10px;
+
   font-weight:800;
 }
 
@@ -515,18 +594,23 @@ button{
   font-size:19px;
 }
 
+
 /* ACHIEVEMENTY */
 
 .achievement-progress-card{
   background:var(--brown);
   color:white;
+
   border-radius:22px;
+
   padding:18px;
+
   margin-bottom:16px;
 }
 
 .achievement-progress-card small{
   color:#d5bfae;
+
   font-size:11px;
   font-weight:900;
   letter-spacing:1px;
@@ -534,20 +618,26 @@ button{
 
 .achievement-progress-card strong{
   display:block;
+
   margin-top:6px;
+
   color:var(--yellow);
+
   font-size:25px;
 }
 
 .achievement{
   display:flex;
   align-items:center;
+
   gap:13px;
 
   background:var(--cream2);
+
   border-radius:18px;
 
   padding:14px;
+
   margin-bottom:9px;
 
   opacity:.4;
@@ -559,33 +649,43 @@ button{
 
 .achievement-icon{
   width:42px;
+
   text-align:center;
+
   font-size:29px;
 }
 
 .achievement strong{
   display:block;
+
   font-size:15px;
 }
 
 .achievement small{
   display:block;
+
   margin-top:3px;
+
   color:var(--muted);
 }
+
 
 /* HISTORIE */
 
 .history-item{
   background:var(--cream2);
+
   border-radius:19px;
+
   padding:15px;
+
   margin-bottom:10px;
 }
 
 .history-top,
 .history-bottom{
   display:flex;
+
   justify-content:space-between;
   align-items:center;
 }
@@ -601,50 +701,72 @@ button{
 
 .history-place{
   display:inline-block;
+
   margin-top:9px;
+
   background:#dcc6ad;
+
   padding:5px 9px;
+
   border-radius:99px;
+
   font-size:10px;
   font-weight:900;
 }
 
 .delete-btn{
   border:0;
+
   background:#dfcbc4;
   color:#8e2c27;
+
   border-radius:10px;
+
   padding:7px 9px;
+
   font-size:11px;
   font-weight:900;
+
   cursor:pointer;
 }
 
 .empty{
   text-align:center;
+
   padding:35px 10px;
+
   color:var(--muted);
 }
 
 .danger{
   width:100%;
+
   border:0;
   border-radius:15px;
+
   padding:13px;
+
   margin-top:20px;
+
   background:#ead6d2;
   color:#9b2d27;
+
   font-weight:900;
+
   cursor:pointer;
 }
+
 
 /* NASTAVENÍ */
 
 .settings-card{
   background:white;
+
   border:2px solid #eadbc8;
   border-radius:22px;
+
   padding:17px;
+
   margin-bottom:12px;
 }
 
@@ -654,34 +776,48 @@ button{
 
 .settings-card label{
   display:block;
+
   font-size:12px;
   font-weight:900;
+
   margin-bottom:5px;
 }
 
-.settings-card input{
+.settings-card input,
+.settings-card select{
   width:100%;
+
   border:2px solid #ddc8ae;
   border-radius:13px;
+
   background:#fffaf3;
+
   padding:13px;
+
   font-size:16px;
+
   margin-bottom:13px;
 }
 
 .pay-switch{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:6px;
+
   margin-bottom:14px;
 }
 
 .pay-btn{
   border:0;
   border-radius:13px;
+
   padding:11px;
+
   background:#eadbc8;
+
   font-weight:900;
+
   cursor:pointer;
 }
 
@@ -690,76 +826,111 @@ button{
   color:white;
 }
 
-.sound-row{
+.setting-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:15px;
 }
 
-.sound-info strong{
+.setting-info{
+  flex:1;
+}
+
+.setting-info strong{
   display:block;
   font-size:15px;
 }
 
-.sound-info small{
+.setting-info small{
   display:block;
+
   color:var(--muted);
+
   margin-top:4px;
+
   line-height:1.3;
 }
 
-.sound-toggle{
+.setting-toggle{
   min-width:88px;
+
   border:0;
   border-radius:99px;
+
   padding:11px 12px;
+
   background:#d9c9b5;
   color:#765d4d;
+
   font-weight:900;
+
   cursor:pointer;
 }
 
-.sound-toggle.on{
+.setting-toggle.on{
   background:var(--green);
   color:white;
 }
 
+.reminder-time{
+  margin-top:16px;
+}
+
+.reminder-time label{
+  margin-bottom:6px;
+}
+
 .save-btn{
   width:100%;
+
   border:0;
   border-radius:15px;
+
   padding:14px;
+
   background:var(--brown);
   color:white;
+
   font-weight:900;
+
   cursor:pointer;
 }
+
 
 /* VÝSLEDEK */
 
 .result-title{
   font-size:39px;
   font-weight:900;
+
   margin-top:12px;
 }
 
 .result-sub{
   color:var(--muted);
+
   margin-top:5px;
 }
 
 .result-poop{
   text-align:center;
+
   font-size:75px;
+
   margin:20px 0;
 }
 
 .rating{
   background:var(--yellow);
+
   border-radius:20px;
+
   padding:16px;
+
   text-align:center;
+
   margin-bottom:12px;
 }
 
@@ -770,20 +941,26 @@ button{
 
 .rating strong{
   display:block;
+
   margin-top:5px;
+
   font-size:20px;
 }
 
 .result-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 }
 
 .result-box{
   background:var(--cream2);
+
   border-radius:19px;
+
   padding:15px 8px;
+
   text-align:center;
 }
 
@@ -794,20 +971,28 @@ button{
 
 .result-box strong{
   display:block;
+
   margin-top:6px;
+
   font-size:20px;
 }
 
 .action-btn{
   width:100%;
+
   border:0;
   border-radius:19px;
+
   padding:16px;
+
   margin-top:12px;
+
   background:var(--brown);
   color:white;
+
   font-weight:900;
   font-size:15px;
+
   cursor:pointer;
 }
 
@@ -816,10 +1001,12 @@ button{
   color:var(--brown);
 }
 
+
 /* SPODNÍ MENU */
 
 .bottom-nav{
   position:fixed;
+
   left:50%;
   bottom:0;
 
@@ -842,18 +1029,25 @@ button{
 
 .nav-btn{
   position:relative;
+
   border:0;
   background:none;
+
   color:#cbb39f;
+
   font-size:10px;
   font-weight:900;
+
   cursor:pointer;
+
   padding:2px 1px;
 }
 
 .nav-icon{
   display:block;
+
   font-size:18px;
+
   margin-bottom:2px;
 }
 
@@ -867,17 +1061,23 @@ button{
 
 .running-dot{
   display:none;
+
   position:absolute;
+
   width:7px;
   height:7px;
+
   border-radius:50%;
+
   background:#63d36d;
+
   top:-1px;
   right:18%;
 }
 
 .nav-btn.running .running-dot{
   display:block;
+
   animation:pulseDot 1.2s infinite;
 }
 
@@ -899,10 +1099,12 @@ button{
   }
 }
 
+
 /* TOAST */
 
 .toast{
   position:fixed;
+
   bottom:105px;
   left:50%;
 
@@ -915,6 +1117,7 @@ button{
   color:white;
 
   border:1px solid #765441;
+
   border-radius:16px;
 
   padding:13px;
@@ -925,6 +1128,7 @@ button{
   font-weight:800;
 
   opacity:0;
+
   pointer-events:none;
 
   transition:.2s;
@@ -936,92 +1140,242 @@ button{
   opacity:1;
 }
 
+
+/* =========================
+   UPOZORNĚNÍ NA DLOUHÉ KÁKO
+========================= */
+
+.reminder-overlay{
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(20,10,5,.78);
+
+  backdrop-filter:blur(6px);
+
+  z-index:5000;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+}
+
+.reminder-overlay.show{
+  display:flex;
+}
+
+.reminder-modal{
+  width:100%;
+  max-width:390px;
+
+  background:var(--cream);
+
+  border-radius:28px;
+
+  padding:24px 20px 20px;
+
+  text-align:center;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.4);
+
+  animation:reminderPop .3s ease;
+}
+
+@keyframes reminderPop{
+
+  from{
+    transform:scale(.88);
+    opacity:0;
+  }
+
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.reminder-icon{
+  font-size:58px;
+}
+
+.reminder-title{
+  font-size:29px;
+  font-weight:900;
+
+  margin-top:7px;
+}
+
+.reminder-text{
+  color:var(--muted);
+
+  font-size:15px;
+  line-height:1.45;
+
+  margin:10px 0 20px;
+}
+
+.reminder-time-value{
+  display:block;
+
+  color:var(--brown);
+
+  font-size:28px;
+  font-weight:900;
+
+  margin-top:7px;
+}
+
+.reminder-continue{
+  width:100%;
+
+  border:0;
+  border-radius:19px;
+
+  padding:16px;
+
+  background:var(--yellow);
+  color:var(--brown);
+
+  font-size:17px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.reminder-stop{
+  width:100%;
+
+  border:0;
+  border-radius:19px;
+
+  padding:16px;
+
+  margin-top:10px;
+
+  background:var(--red);
+  color:white;
+
+  font-size:17px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
 </style>
+
 </head>
 
 <body>
 
+
 <!-- DOMŮ -->
 
 <div id="homeScreen" class="screen active">
+
 <div class="app">
 
 <div class="logo-wrap">
 
-  <div class="logo-poop">💩</div>
+<div class="logo-poop">
+💩
+</div>
 
-  <div class="logo">KÁKO</div>
+<div class="logo">
+KÁKO
+</div>
 
-  <div id="helloText" class="logo-sub">
-    Každá minuta se počítá.
-  </div>
+<div id="helloText" class="logo-sub">
+Každá minuta se počítá.
+</div>
 
 </div>
+
 
 <div class="mode-switch">
 
 <button
-  id="homeModeBtn"
-  class="mode-btn"
-  onclick="setLocationMode('home')"
+id="homeModeBtn"
+class="mode-btn"
+onclick="setLocationMode('home')"
 >
-  🏠 DOMA
+🏠 DOMA
 </button>
 
 <button
-  id="workModeBtn"
-  class="mode-btn active"
-  onclick="setLocationMode('work')"
+id="workModeBtn"
+class="mode-btn active"
+onclick="setLocationMode('work')"
 >
-  💼 V PRÁCI
+💼 V PRÁCI
 </button>
 
 </div>
 
-<div id="modeInfo" class="mode-info">
-  V práci se každá minuta mění na peníze.
+
+<div
+id="modeInfo"
+class="mode-info"
+>
+V práci se každá minuta mění na peníze.
 </div>
+
 
 <div class="today-card">
 
 <div class="today-title">
-  DNES
+DNES
 </div>
 
 <div class="today-grid">
 
 <div class="today-box">
-  <span>🚽</span>
-  <strong id="todayVisits">0</strong>
-  <small>NÁVŠTĚV</small>
+<span>🚽</span>
+<strong id="todayVisits">0</strong>
+<small>NÁVŠTĚV</small>
 </div>
 
 <div class="today-box">
-  <span>⏱</span>
-  <strong id="todayTime">0 min</strong>
-  <small>NA WC</small>
+<span>⏱</span>
+<strong id="todayTime">0 min</strong>
+<small>NA WC</small>
 </div>
 
 <div class="today-box">
-  <span>💰</span>
-  <strong id="todayMoney" class="green">0 Kč</strong>
-  <small>V PRÁCI</small>
+<span>💰</span>
+<strong id="todayMoney" class="green">0 Kč</strong>
+<small>V PRÁCI</small>
 </div>
 
 </div>
+
 </div>
 
-<div id="miniRate" class="mini-rate">
-  KÁKO kurz:
-  <strong>0 Kč/min</strong>
+
+<div
+id="miniRate"
+class="mini-rate"
+>
+KÁKO kurz:
+<strong>0 Kč/min</strong>
 </div>
 
-<button class="main-button" onclick="startKako()">
-  💩 JDU KÁKO
+
+<button
+class="main-button"
+onclick="startKako()"
+>
+💩 JDU KÁKO
 </button>
 
 </div>
+
 </div>
+
 
 
 <!-- TIMER -->
@@ -1030,230 +1384,353 @@ button{
 
 <div class="timer-page">
 
-<div id="timerMode" class="timer-mode">
-  💼 V PRÁCI
+<div
+id="timerMode"
+class="timer-mode"
+>
+💼 V PRÁCI
 </div>
 
 <div class="timer-title">
-  KÁKO PROBÍHÁ 💩
+KÁKO PROBÍHÁ 💩
 </div>
 
-<div id="timer" class="timer">
-  00:00:00
+<div
+id="timer"
+class="timer"
+>
+00:00:00
 </div>
 
 <div class="toilet-art">
-  💩🚽
+💩🚽
 </div>
 
-<div id="liveLabel" class="live-label">
-  PRÁVĚ JSI PROKADIL
+<div
+id="liveLabel"
+class="live-label"
+>
+PRÁVĚ JSI PROKADIL
 </div>
 
-<div id="currentMoney" class="live-money">
-  0,00 Kč
+<div
+id="currentMoney"
+class="live-money"
+>
+0,00 Kč
 </div>
 
-<div id="quoteCard" class="quote-card">
 
-<span id="quoteLabel" class="quote-label">
-  FIREMNÍ HLÁŠENÍ
+<div
+id="quoteCard"
+class="quote-card"
+>
+
+<span
+id="quoteLabel"
+class="quote-label"
+>
+FIREMNÍ HLÁŠENÍ
 </span>
 
-<div id="quoteText" class="quote-text">
-  Firma právě financuje tvé trávení.
+<div
+id="quoteText"
+class="quote-text"
+>
+Firma právě financuje tvé trávení.
 </div>
 
 </div>
 
-<button class="stop-button" onclick="stopKako()">
-  💩 DOKAKÁNO
+
+<button
+class="stop-button"
+onclick="stopKako()"
+>
+💩 DOKAKÁNO
 </button>
 
-<button class="cancel-button" onclick="cancelKako()">
-  ✕ ZRUŠIT BEZ ULOŽENÍ
+
+<button
+class="cancel-button"
+onclick="cancelKako()"
+>
+✕ ZRUŠIT BEZ ULOŽENÍ
 </button>
 
 </div>
+
 </div>
+
 
 
 <!-- VÝSLEDEK -->
 
 <div id="resultScreen" class="screen">
+
 <div class="app">
 
 <div class="result-title">
-  DOKAKÁNO!
+DOKAKÁNO!
 </div>
 
-<div id="resultSub" class="result-sub">
-  Další úspěšný projekt.
+<div
+id="resultSub"
+class="result-sub"
+>
+Další úspěšný projekt.
 </div>
 
 <div class="result-poop">
-  😎💩
+😎💩
 </div>
+
 
 <div class="rating">
 
-<small>HODNOCENÍ</small>
+<small>
+HODNOCENÍ
+</small>
 
 <strong id="ratingText">
-  Solidní výkon
+Solidní výkon
 </strong>
 
 </div>
 
+
 <div class="result-grid">
 
 <div class="result-box">
-  <small>ČAS</small>
-  <strong id="resultTime">00:00</strong>
+
+<small>
+ČAS
+</small>
+
+<strong id="resultTime">
+00:00
+</strong>
+
 </div>
+
 
 <div class="result-box">
-  <small id="resultMoneyLabel">VYDĚLÁNO</small>
-  <strong id="resultMoney" class="green">0 Kč</strong>
-</div>
+
+<small id="resultMoneyLabel">
+VYDĚLÁNO
+</small>
+
+<strong
+id="resultMoney"
+class="green"
+>
+0 Kč
+</strong>
 
 </div>
 
-<button class="action-btn share-btn" onclick="shareResult()">
-  📤 SDÍLET
+</div>
+
+
+<button
+class="action-btn share-btn"
+onclick="shareResult()"
+>
+📤 SDÍLET
 </button>
 
-<button class="action-btn" onclick="showScreen('homeScreen')">
-  ✓ ZPĚT DOMŮ
+
+<button
+class="action-btn"
+onclick="showScreen('homeScreen')"
+>
+✓ ZPĚT DOMŮ
 </button>
 
 </div>
+
 </div>
+
 
 
 <!-- STATISTIKY -->
 
 <div id="statsScreen" class="screen">
+
 <div class="app">
 
 <div class="page-title">
-  Statistiky
+Statistiky
 </div>
+
 
 <div class="tabs">
 
 <button
-  id="todayTab"
-  class="tab active"
-  onclick="setStatsMode('today')"
+id="todayTab"
+class="tab active"
+onclick="setStatsMode('today')"
 >
-  Dnes
+Dnes
 </button>
 
 <button
-  id="monthTab"
-  class="tab"
-  onclick="setStatsMode('month')"
+id="monthTab"
+class="tab"
+onclick="setStatsMode('month')"
 >
-  Měsíc
+Měsíc
 </button>
 
 <button
-  id="allTab"
-  class="tab"
-  onclick="setStatsMode('all')"
+id="allTab"
+class="tab"
+onclick="setStatsMode('all')"
 >
-  Celkem
+Celkem
 </button>
 
 </div>
+
 
 <div class="stats-summary">
 
 <div class="stats-main-card">
-  <div class="icon">🚽</div>
-  <strong id="statsVisits">0</strong>
-  <small>NÁVŠTĚV</small>
+<div class="icon">🚽</div>
+<strong id="statsVisits">0</strong>
+<small>NÁVŠTĚV</small>
 </div>
 
 <div class="stats-main-card">
-  <div class="icon">⏱</div>
-  <strong id="statsTime">0 min</strong>
-  <small>ČAS NA WC</small>
+<div class="icon">⏱</div>
+<strong id="statsTime">0 min</strong>
+<small>ČAS NA WC</small>
 </div>
 
 <div class="stats-main-card">
-  <div class="icon">💰</div>
-  <strong id="statsMoney" class="green">0 Kč</strong>
-  <small>VYDĚLÁNO</small>
+<div class="icon">💰</div>
+<strong id="statsMoney" class="green">0 Kč</strong>
+<small>VYDĚLÁNO</small>
 </div>
 
 </div>
+
 
 <div class="stats-section">
 
 <div class="stats-section-title">
-  Doma vs. práce
+Doma vs. práce
 </div>
+
 
 <div class="place-grid">
 
 <div class="place-card">
-  <div class="place-icon">🏠</div>
-  <strong id="homeVisits">0×</strong>
-  <small id="homeTime">0 min</small>
+
+<div class="place-icon">
+🏠
 </div>
+
+<strong id="homeVisits">
+0×
+</strong>
+
+<small id="homeTime">
+0 min
+</small>
+
+</div>
+
 
 <div class="place-card">
-  <div class="place-icon">💼</div>
-  <strong id="workVisits">0×</strong>
-  <small id="workTime">0 min</small>
+
+<div class="place-icon">
+💼
+</div>
+
+<strong id="workVisits">
+0×
+</strong>
+
+<small id="workTime">
+0 min
+</small>
+
 </div>
 
 </div>
+
 </div>
+
 
 <div class="stats-section">
 
 <div class="stats-section-title">
-  🏆 Rekordy
+🏆 Rekordy
 </div>
+
 
 <div class="record-card">
 
 <div class="record-left">
-  <span class="record-icon">⏱</span>
-  <span>Nejdelší KÁKO</span>
+
+<span class="record-icon">
+⏱
+</span>
+
+<span>
+Nejdelší KÁKO
+</span>
+
 </div>
 
 <strong id="longestKako">
-  00:00
+00:00
 </strong>
 
 </div>
 
+
 <div class="record-card">
 
 <div class="record-left">
-  <span class="record-icon">💵</span>
-  <span>Nejdražší KÁKO</span>
+
+<span class="record-icon">
+💵
+</span>
+
+<span>
+Nejdražší KÁKO
+</span>
+
 </div>
 
-<strong id="mostExpensive" class="green">
-  0 Kč
+<strong
+id="mostExpensive"
+class="green"
+>
+0 Kč
 </strong>
 
 </div>
 
+
 <div class="record-card">
 
 <div class="record-left">
-  <span class="record-icon">🚽</span>
-  <span>Nejvíc za den</span>
+
+<span class="record-icon">
+🚽
+</span>
+
+<span>
+Nejvíc za den
+</span>
+
 </div>
 
 <strong id="mostVisitsDay">
-  0
+0
 </strong>
 
 </div>
@@ -1261,79 +1738,103 @@ button{
 </div>
 
 </div>
+
 </div>
+
 
 
 <!-- ACHIEVEMENTY -->
 
-<div id="achievementsScreen" class="screen">
+<div
+id="achievementsScreen"
+class="screen"
+>
+
 <div class="app">
 
 <div class="page-title">
-  Achievementy
+Achievementy
 </div>
+
 
 <div class="achievement-progress-card">
 
 <small>
-  TVŮJ KÁKO PROGRES
+TVŮJ KÁKO PROGRES
 </small>
 
 <strong id="achievementProgress">
-  0 / 8
+0 / 8
 </strong>
 
 </div>
+
 
 <div id="achievementsList"></div>
 
 </div>
+
 </div>
+
 
 
 <!-- HISTORIE -->
 
-<div id="historyScreen" class="screen">
+<div
+id="historyScreen"
+class="screen"
+>
+
 <div class="app">
 
 <div class="page-title">
-  Historie
+Historie
 </div>
 
 <div id="historyList"></div>
 
-<button class="danger" onclick="clearHistory()">
-  SMAZAT CELOU HISTORII
+<button
+class="danger"
+onclick="clearHistory()"
+>
+SMAZAT CELOU HISTORII
 </button>
 
 </div>
+
 </div>
+
 
 
 <!-- NASTAVENÍ -->
 
-<div id="settingsScreen" class="screen">
+<div
+id="settingsScreen"
+class="screen"
+>
+
 <div class="app">
 
 <div class="page-title">
-  Nastavení
+Nastavení
 </div>
+
 
 <div class="settings-card">
 
 <h3>
-  Profil
+Profil
 </h3>
 
 <label>
-  Přezdívka
+Přezdívka
 </label>
 
 <input
-  id="nicknameInput"
-  type="text"
-  maxlength="25"
-  placeholder="např. Milan"
+id="nicknameInput"
+type="text"
+maxlength="25"
+placeholder="např. Milan"
 >
 
 </div>
@@ -1342,99 +1843,110 @@ button{
 <div class="settings-card">
 
 <h3>
-  Výdělek
+Výdělek
 </h3>
+
 
 <div class="pay-switch">
 
 <button
-  id="monthlyBtn"
-  class="pay-btn active"
-  onclick="setPayMode('monthly')"
+id="monthlyBtn"
+class="pay-btn active"
+onclick="setPayMode('monthly')"
 >
-  Měsíční plat
+Měsíční plat
 </button>
 
 <button
-  id="hourlyBtn"
-  class="pay-btn"
-  onclick="setPayMode('hourly')"
+id="hourlyBtn"
+class="pay-btn"
+onclick="setPayMode('hourly')"
 >
-  Hodinovka
+Hodinovka
 </button>
 
 </div>
+
 
 <div id="monthlySettings">
 
 <label>
-  Měsíční čistá mzda
+Měsíční čistá mzda
 </label>
 
 <input
-  id="salaryInput"
-  type="number"
-  inputmode="decimal"
-  placeholder="např. 50000"
+id="salaryInput"
+type="number"
+inputmode="decimal"
+placeholder="např. 50000"
+>
+
+
+<label>
+Pracovních hodin za měsíc
+</label>
+
+<input
+id="hoursInput"
+type="number"
+inputmode="decimal"
+value="160"
+>
+
+</div>
+
+
+<div
+id="hourlySettings"
+style="display:none"
 >
 
 <label>
-  Pracovních hodin za měsíc
+Čistá hodinovka
 </label>
 
 <input
-  id="hoursInput"
-  type="number"
-  inputmode="decimal"
-  value="160"
->
-
-</div>
-
-<div id="hourlySettings" style="display:none">
-
-<label>
-  Čistá hodinovka
-</label>
-
-<input
-  id="hourlyInput"
-  type="number"
-  inputmode="decimal"
-  placeholder="např. 250"
+id="hourlyInput"
+type="number"
+inputmode="decimal"
+placeholder="např. 250"
 >
 
 </div>
 
 </div>
 
+
+
+<!-- ZVUK -->
 
 <div class="settings-card">
 
 <h3>
-  Zvuk
+Zvuk
 </h3>
 
-<div class="sound-row">
+<div class="setting-row">
 
-<div class="sound-info">
+<div class="setting-info">
 
 <strong>
-  🔊 Zvuky KÁKO
+🔊 Zvuky KÁKO
 </strong>
 
 <small>
-  Hlášky a dokončení KÁKO.
+Zvuk u hlášek a dokončení.
 </small>
 
 </div>
 
+
 <button
-  id="soundToggle"
-  class="sound-toggle"
-  onclick="toggleSound()"
+id="soundToggle"
+class="setting-toggle"
+onclick="toggleSound()"
 >
-  VYP
+VYP
 </button>
 
 </div>
@@ -1442,78 +1954,239 @@ button{
 </div>
 
 
+
+<!-- UPOZORNĚNÍ -->
+
+<div class="settings-card">
+
+<h3>
+Hlídání KÁKO
+</h3>
+
+
+<div class="setting-row">
+
+<div class="setting-info">
+
+<strong>
+🚨 Nezapomněl jsem dokakat?
+</strong>
+
+<small>
+Aplikace tě upozorní, když KÁKO běží podezřele dlouho.
+</small>
+
+</div>
+
+
 <button
-  class="save-btn"
-  onclick="saveSettings()"
+id="reminderToggle"
+class="setting-toggle"
+onclick="toggleReminder()"
 >
-  ULOŽIT A ZPĚT
+ZAP
 </button>
 
 </div>
+
+
+<div
+id="reminderTimeBox"
+class="reminder-time"
+>
+
+<label>
+První upozornění po
+</label>
+
+<select id="reminderMinutesSelect">
+
+<option value="15">
+15 minutách
+</option>
+
+<option value="20">
+20 minutách
+</option>
+
+<option value="30">
+30 minutách
+</option>
+
+</select>
+
 </div>
+
+</div>
+
+
+<button
+class="save-btn"
+onclick="saveSettings()"
+>
+ULOŽIT A ZPĚT
+</button>
+
+</div>
+
+</div>
+
 
 
 <!-- SPODNÍ MENU -->
 
-<div id="bottomNav" class="bottom-nav">
+<div
+id="bottomNav"
+class="bottom-nav"
+>
+
 
 <button
-  id="navPrimary"
-  class="nav-btn active"
-  onclick="openPrimaryScreen()"
+id="navPrimary"
+class="nav-btn active"
+onclick="openPrimaryScreen()"
 >
 
 <span class="running-dot"></span>
 
-<span id="navPrimaryIcon" class="nav-icon">
-  🏠
+<span
+id="navPrimaryIcon"
+class="nav-icon"
+>
+🏠
 </span>
 
 <span id="navPrimaryText">
-  Domů
+Domů
 </span>
 
 </button>
 
-<button
-  id="navStats"
-  class="nav-btn"
-  onclick="showScreen('statsScreen')"
->
-  <span class="nav-icon">📊</span>
-  Statistiky
-</button>
 
 <button
-  id="navAchievements"
-  class="nav-btn"
-  onclick="showScreen('achievementsScreen')"
+id="navStats"
+class="nav-btn"
+onclick="showScreen('statsScreen')"
 >
-  <span class="nav-icon">🏅</span>
-  Úspěchy
+
+<span class="nav-icon">
+📊
+</span>
+
+Statistiky
+
 </button>
 
-<button
-  id="navHistory"
-  class="nav-btn"
-  onclick="showScreen('historyScreen')"
->
-  <span class="nav-icon">📜</span>
-  Historie
-</button>
 
 <button
-  id="navSettings"
-  class="nav-btn"
-  onclick="showScreen('settingsScreen')"
+id="navAchievements"
+class="nav-btn"
+onclick="showScreen('achievementsScreen')"
 >
-  <span class="nav-icon">⚙️</span>
-  Nastavení
+
+<span class="nav-icon">
+🏅
+</span>
+
+Úspěchy
+
+</button>
+
+
+<button
+id="navHistory"
+class="nav-btn"
+onclick="showScreen('historyScreen')"
+>
+
+<span class="nav-icon">
+📜
+</span>
+
+Historie
+
+</button>
+
+
+<button
+id="navSettings"
+class="nav-btn"
+onclick="showScreen('settingsScreen')"
+>
+
+<span class="nav-icon">
+⚙️
+</span>
+
+Nastavení
+
 </button>
 
 </div>
 
-<div id="toast" class="toast"></div>
+
+
+<!-- TOAST -->
+
+<div
+id="toast"
+class="toast"
+></div>
+
+
+
+<!-- UPOZORNĚNÍ -->
+
+<div
+id="reminderOverlay"
+class="reminder-overlay"
+>
+
+<div class="reminder-modal">
+
+<div class="reminder-icon">
+🚨💩
+</div>
+
+<div class="reminder-title">
+JEŠTĚ KAKÁŠ?
+</div>
+
+<div class="reminder-text">
+
+KÁKO už běží nějak podezřele dlouho.
+
+<span
+id="reminderRunningTime"
+class="reminder-time-value"
+>
+20:00
+</span>
+
+Nezapomněl jsi ho ukončit?
+
+</div>
+
+
+<button
+class="reminder-continue"
+onclick="continueKako()"
+>
+💩 JO, JEŠTĚ KAKÁM
+</button>
+
+
+<button
+class="reminder-stop"
+onclick="finishFromReminder()"
+>
+🚽 DOKAKÁNO
+</button>
+
+</div>
+
+</div>
+
 
 
 <script>
@@ -1528,16 +2201,30 @@ let quoteInterval = null;
 let startTime = null;
 let activeLocationMode = null;
 
+let nextReminderAt = null;
+
 let lastResult = null;
 
 let locationMode =
-  localStorage.getItem("locationMode") || "work";
+  localStorage.getItem("locationMode")
+  || "work";
 
 let payMode =
-  localStorage.getItem("payMode") || "monthly";
+  localStorage.getItem("payMode")
+  || "monthly";
 
 let soundEnabled =
-  localStorage.getItem("soundEnabled") !== "false";
+  localStorage.getItem("soundEnabled")
+  !== "false";
+
+let reminderEnabled =
+  localStorage.getItem("reminderEnabled")
+  !== "false";
+
+let reminderMinutes =
+  Number(
+    localStorage.getItem("reminderMinutes")
+  ) || 20;
 
 let ratePerMinute = 0;
 let statsMode = "today";
@@ -1557,247 +2244,151 @@ let history =
   ) || [];
 
 
-history = history.map(item => ({
+history =
+  history.map(item => ({
 
-  start:
-    Number(item.start),
+    start:
+      Number(item.start),
 
-  end:
-    Number(item.end)
-    ||
-    (
-      Number(item.start)
-      +
-      (Number(item.seconds)||0) * 1000
-    ),
+    end:
+      Number(item.end)
+      ||
+      (
+        Number(item.start)
+        +
+        (Number(item.seconds) || 0) * 1000
+      ),
 
-  seconds:
-    Number(item.seconds) || 0,
+    seconds:
+      Number(item.seconds) || 0,
 
-  money:
-    Number(item.money) || 0,
+    money:
+      Number(item.money) || 0,
 
-  location:
-    item.location || "work"
+    location:
+      item.location || "work"
 
-}));
+  }));
 
 saveHistory();
 
 
+
 /* =========================
-   HLÁŠKY V PRÁCI - 60
+   HLÁŠKY V PRÁCI
 ========================= */
 
 const workQuotes = [
 
 "Firma právě financuje tvé trávení.",
-
 "Výplata běží. Ty sedíš. Ideální stav.",
-
 "Každá další minuta jde na účet zaměstnavatele.",
-
 "Porada keramického oddělení pokračuje.",
-
 "Šéf netuší, jak tvrdě právě pracuješ.",
-
 "Tohle je skutečný pasivní příjem.",
-
 "Firemní rozpočet dostává zabrat.",
-
 "Ještě chvíli a máš na kafe.",
-
 "Produktivita dnes dostala nový význam.",
-
 "Firma investuje do tvého vnitřního rozvoje.",
-
 "Tahle pracovní schůzka nemohla být e-mail.",
-
 "HR oddělení o tomhle benefitu zatím neví.",
-
 "Dnes pracuje hlavně tlusté střevo.",
-
 "Další minuta. Další peníze.",
-
 "Keramické oddělení hlásí plný provoz.",
-
 "Tvoje pracovní nasazení právě voní úspěchem.",
-
 "Šéf platí. Porcelán drží.",
-
 "Konečně práce, u které můžeš sedět.",
-
 "Právě probíhá interní očista firmy.",
-
 "Nejlepší peníze jsou ty, které vyděláš vsedě.",
-
 "Zaměstnavatel právě sponzoruje biologický proces.",
-
 "Tohle je benefit, který v pracovní smlouvě nenajdeš.",
-
 "Další úspěšný meeting bez PowerPointu.",
-
 "Pracovní morálka sedí pevně na porcelánu.",
-
 "Dnes jde výkon opravdu odspodu.",
-
 "Firma právě platí prémiovou keramickou pauzu.",
-
 "Pozor. Náklady zaměstnavatele právě rostou.",
-
 "Tvé střevo si právě píše přesčas.",
-
 "Finanční oddělení by tenhle graf vidět nechtělo.",
-
 "Účetní právě někde cítí nevysvětlitelný neklid.",
-
 "Zatímco ostatní pracují, ty optimalizuješ cashflow.",
-
 "Tohle je nejlépe placené sezení dne.",
-
 "Pracovní porada probíhá za zavřenými dveřmi.",
-
 "Prosíme nerušit. Probíhá důležitý firemní proces.",
-
 "Další koruny právě mizí v kanalizaci.",
-
 "Keramický management děkuje za nasazení.",
-
 "Firma platí každou sekundu tohoto výkonu.",
-
 "Výkonnostní bonus právě teče správným směrem.",
-
 "Šéf chtěl produktivitu. Dostal produkt.",
-
 "Tahle směna má opravdu silný závěr.",
-
 "Pracovní doba ještě nikdy nebyla tak uspokojivá.",
-
 "Zaměstnavatel právě investuje do pravidelnosti.",
-
 "Další pracovní úkol úspěšně tlačíš kupředu.",
-
 "V kanceláři možná chybíš. Ve statistikách rosteš.",
-
 "Dnešní nejdůležitější projekt právě pokračuje.",
-
 "Prémie nikde, ale KÁKO kurz jede.",
-
 "Tohle je přesně důvod, proč existuje pracovní doba.",
-
 "Čím déle sedíš, tím dražší je výsledek.",
-
 "Firemní kultura právě získává nový význam.",
-
 "Na LinkedIn tohle raději nedávej.",
-
 "Výkon roste. Náklady také.",
-
 "Kolegové možná pracují. Ty vyděláváš strategicky.",
-
 "Ještě pár minut a firma ti zaplatí oběd.",
-
 "Strategická keramická pauza je v plném proudu.",
-
 "Management zatím netuší, kde vznikají skutečné náklady.",
-
 "Dnes máš nejlépe placenou židli ve firmě.",
-
 "Tohle se do timesheetu píše jen velmi těžko.",
-
 "Zaměstnavatel právě dostává svoje peníze zpět. Bohužel jinou cestou.",
-
 "Další firemní investice právě míří do kanalizace.",
-
 "KÁKO oddělení hlásí: mise pokračuje."
 
 ];
 
 
 /* =========================
-   HLÁŠKY DOMA - 40
+   HLÁŠKY DOMA
 ========================= */
 
 const homeQuotes = [
 
 "Doma sereš zdarma.",
-
 "Čistě soukromý projekt.",
-
 "Žádné peníze. Jen čest a sláva.",
-
 "Domácí směna bez příplatků.",
-
 "Výkon dobrý. Odměna nulová.",
-
 "Tentokrát náklady neseš ty.",
-
 "Volnočasová aktivita v plném proudu.",
-
 "Keramika pracuje. Peněženka nikoliv.",
-
 "Doma ti za to bohužel nikdo nezaplatí.",
-
 "Soukromá porada byla zahájena.",
-
 "Nula korun. Stoprocentní nasazení.",
-
 "Domácí produktivita bez finančního efektu.",
-
 "Tolik práce a ani koruna.",
-
 "Tady bohužel firemní rozpočet nepomůže.",
-
 "Porcelán ano. Prémie ne.",
-
 "Domácí KÁKO. Čistá práce z lásky.",
-
 "Výdělek nulový. Pocit k nezaplacení.",
-
 "Soukromý sektor dnes neposkytuje žádné benefity.",
-
 "Dnes pracuješ úplně zadarmo.",
-
 "Tohle ti účetní bohužel neproplatí.",
-
 "Výkon běží. Faktura nevzniká.",
-
 "Rodinný rozpočet zůstává beze změny.",
-
 "Domácí směna pokračuje bez nároku na odměnu.",
-
 "Žádný šéf. Žádné peníze. Jen ty a porcelán.",
-
 "Doma jsou všechny minuty tvoje. Bohužel i náklady.",
-
 "Keramické oddělení dnes jede na vlastní účet.",
-
 "Výsledky dobré, finanční návratnost tragická.",
-
 "Soukromé KÁKO právě vstupuje do další fáze.",
-
 "Doma se počítá čas. Peníze ne.",
-
 "Z ekonomického hlediska naprostá katastrofa.",
-
 "Z hygienického hlediska velmi potřebná investice.",
-
 "Tahle pauza se do výplaty opravdu nepočítá.",
-
 "Domácí provoz hlásí nulový zisk.",
-
 "Další minuta zdarma. Gratulujeme.",
-
 "Zaměstnavatel dnes ušetřil. Ty ne.",
-
 "Doma je klid. A nulová hodinovka.",
-
 "Tohle je charitativní práce pro vlastní střevo.",
-
 "Výkon profesionální. Plat amatérský.",
-
 "Kdybys byl v práci, už by z toho něco káplo.",
-
 "Domácí keramika děkuje za návštěvu."
 
 ];
@@ -1868,6 +2459,7 @@ const achievementsData = [
 ];
 
 
+
 /* =========================
    BALÍČEK HLÁŠEK
 ========================= */
@@ -1889,6 +2481,7 @@ function shuffleArray(array){
         (i + 1)
       );
 
+
     [
       copy[i],
       copy[j]
@@ -1899,6 +2492,7 @@ function shuffleArray(array){
       copy[i]
     ];
   }
+
 
   return copy;
 }
@@ -1911,13 +2505,16 @@ function resetQuoteDecks(){
       workQuotes
     );
 
+
   homeDeck =
     shuffleArray(
       homeQuotes
     );
 
+
   workDeckPosition =
     0;
+
 
   homeDeckPosition =
     0;
@@ -1942,6 +2539,7 @@ function getNextQuote(){
         shuffleArray(
           homeQuotes
         );
+
 
       homeDeckPosition =
         0;
@@ -1973,6 +2571,7 @@ function getNextQuote(){
         workQuotes
       );
 
+
     workDeckPosition =
       0;
   }
@@ -1991,6 +2590,7 @@ function getNextQuote(){
 }
 
 
+
 /* =========================
    BĚŽÍ KÁKO?
 ========================= */
@@ -1999,6 +2599,7 @@ function isKakoRunning(){
 
   return !!startTime;
 }
+
 
 
 /* =========================
@@ -2085,6 +2686,7 @@ function openPrimaryScreen(){
     );
   }
 }
+
 
 
 /* =========================
@@ -2235,11 +2837,10 @@ function playPopSound(){
       "sine";
 
 
-    osc.frequency
-      .setValueAtTime(
-        520,
-        ctx.currentTime
-      );
+    osc.frequency.setValueAtTime(
+      520,
+      ctx.currentTime
+    );
 
 
     osc.frequency
@@ -2249,11 +2850,10 @@ function playPopSound(){
       );
 
 
-    gain.gain
-      .setValueAtTime(
-        .035,
-        ctx.currentTime
-      );
+    gain.gain.setValueAtTime(
+      .035,
+      ctx.currentTime
+    );
 
 
     gain.gain
@@ -2267,8 +2867,7 @@ function playPopSound(){
 
 
     osc.stop(
-      ctx.currentTime +
-      .11
+      ctx.currentTime + .11
     );
 
   }
@@ -2330,8 +2929,7 @@ function playFinishSound(){
         osc.frequency
           .setValueAtTime(
             frequency,
-            now +
-            index * .08
+            now + index * .08
           );
 
 
@@ -2348,8 +2946,7 @@ function playFinishSound(){
         gain.gain
           .setValueAtTime(
             .04,
-            now +
-            index * .08
+            now + index * .08
           );
 
 
@@ -2363,8 +2960,7 @@ function playFinishSound(){
 
 
         osc.start(
-          now +
-          index * .08
+          now + index * .08
         );
 
 
@@ -2383,6 +2979,333 @@ function playFinishSound(){
 }
 
 
+function playReminderSound(){
+
+  if(
+    !soundEnabled
+  ){
+    return;
+  }
+
+
+  const ctx =
+    getAudioContext();
+
+
+  if(
+    !ctx
+  ){
+    return;
+  }
+
+
+  try{
+
+    const now =
+      ctx.currentTime;
+
+
+    [700,900,700]
+      .forEach(
+        (freq,index) => {
+
+          const osc =
+            ctx.createOscillator();
+
+
+          const gain =
+            ctx.createGain();
+
+
+          osc.type =
+            "square";
+
+
+          osc.frequency
+            .setValueAtTime(
+              freq,
+              now + index * .16
+            );
+
+
+          gain.gain
+            .setValueAtTime(
+              .025,
+              now + index * .16
+            );
+
+
+          gain.gain
+            .exponentialRampToValueAtTime(
+              .001,
+              now + index * .16 + .12
+            );
+
+
+          osc.connect(
+            gain
+          );
+
+
+          gain.connect(
+            ctx.destination
+          );
+
+
+          osc.start(
+            now + index * .16
+          );
+
+
+          osc.stop(
+            now + index * .16 + .13
+          );
+
+        }
+      );
+
+  }
+
+  catch(e){}
+}
+
+
+
+/* =========================
+   UPOZORNĚNÍ
+========================= */
+
+function updateReminderUI(){
+
+  const button =
+    document.getElementById(
+      "reminderToggle"
+    );
+
+
+  button.innerText =
+    reminderEnabled
+    ? "ZAP"
+    : "VYP";
+
+
+  button.classList.toggle(
+    "on",
+    reminderEnabled
+  );
+
+
+  document
+    .getElementById(
+      "reminderTimeBox"
+    )
+    .style.display =
+
+    reminderEnabled
+    ? "block"
+    : "none";
+
+
+  document
+    .getElementById(
+      "reminderMinutesSelect"
+    )
+    .value =
+    String(
+      reminderMinutes
+    );
+}
+
+
+function toggleReminder(){
+
+  reminderEnabled =
+    !reminderEnabled;
+
+
+  localStorage.setItem(
+    "reminderEnabled",
+    String(
+      reminderEnabled
+    )
+  );
+
+
+  updateReminderUI();
+
+
+  if(
+    isKakoRunning()
+  ){
+
+    if(
+      reminderEnabled
+    ){
+
+      nextReminderAt =
+        Date.now()
+        +
+        reminderMinutes *
+        60 *
+        1000;
+
+    }
+
+    else{
+
+      nextReminderAt =
+        null;
+
+
+      closeReminder();
+    }
+
+
+    saveActiveKako();
+  }
+}
+
+
+function checkReminder(){
+
+  if(
+    !startTime
+    ||
+    !reminderEnabled
+    ||
+    !nextReminderAt
+  ){
+    return;
+  }
+
+
+  if(
+    Date.now() >=
+    nextReminderAt
+  ){
+
+    nextReminderAt =
+      null;
+
+
+    saveActiveKako();
+
+
+    showReminder();
+  }
+}
+
+
+function showReminder(){
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  const seconds =
+    Math.floor(
+      (
+        Date.now()
+        -
+        startTime
+      )
+      /
+      1000
+    );
+
+
+  document
+    .getElementById(
+      "reminderRunningTime"
+    )
+    .innerText =
+    formatMinutes(
+      seconds
+    );
+
+
+  document
+    .getElementById(
+      "reminderOverlay"
+    )
+    .classList
+    .add(
+      "show"
+    );
+
+
+  playReminderSound();
+
+
+  if(
+    navigator.vibrate
+  ){
+
+    navigator.vibrate(
+      [150,80,150]
+    );
+  }
+}
+
+
+function closeReminder(){
+
+  document
+    .getElementById(
+      "reminderOverlay"
+    )
+    .classList
+    .remove(
+      "show"
+    );
+}
+
+
+function continueKako(){
+
+  closeReminder();
+
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  /*
+  Další kontrola za 15 minut
+  */
+
+  nextReminderAt =
+    Date.now()
+    +
+    15 *
+    60 *
+    1000;
+
+
+  saveActiveKako();
+
+
+  showToast(
+    "💩 Dobře. Kontrola zase za 15 minut."
+  );
+}
+
+
+function finishFromReminder(){
+
+  closeReminder();
+
+  stopKako();
+}
+
+
+
 /* =========================
    NASTAVENÍ
 ========================= */
@@ -2392,7 +3315,8 @@ function loadSettings(){
   const nickname =
     localStorage.getItem(
       "nickname"
-    ) || "";
+    )
+    || "";
 
 
   const salary =
@@ -2456,6 +3380,8 @@ function loadSettings(){
   calculateRate();
 
   updateSoundUI();
+
+  updateReminderUI();
 }
 
 
@@ -2513,9 +3439,7 @@ function updatePayUI(){
 
     payMode ===
     "monthly"
-
     ? "block"
-
     : "none";
 
 
@@ -2527,9 +3451,7 @@ function updatePayUI(){
 
     payMode ===
     "hourly"
-
     ? "block"
-
     : "none";
 }
 
@@ -2548,6 +3470,25 @@ function saveSettings(){
   localStorage.setItem(
     "nickname",
     nickname
+  );
+
+
+  reminderMinutes =
+    Number(
+      document
+        .getElementById(
+          "reminderMinutesSelect"
+        )
+        .value
+    )
+    || 20;
+
+
+  localStorage.setItem(
+    "reminderMinutes",
+    String(
+      reminderMinutes
+    )
   );
 
 
@@ -2577,7 +3518,8 @@ function saveSettings(){
 
 
     if(
-      !salary ||
+      !salary
+      ||
       !hours
     ){
 
@@ -2637,6 +3579,8 @@ function saveSettings(){
 
   updateHome();
 
+  updateReminderUI();
+
 
   if(
     isKakoRunning()
@@ -2687,7 +3631,8 @@ function calculateRate(){
 
     ratePerMinute =
 
-      salary > 0 &&
+      salary > 0
+      &&
       hours > 0
 
       ? salary /
@@ -2716,6 +3661,7 @@ function calculateRate(){
       : 0;
   }
 }
+
 
 
 /* =========================
@@ -2794,6 +3740,42 @@ function updateLocation(){
 }
 
 
+
+/* =========================
+   AKTIVNÍ KÁKO DO STORAGE
+========================= */
+
+function saveActiveKako(){
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  localStorage.setItem(
+
+    "activeKako",
+
+    JSON.stringify({
+
+      start:
+        startTime,
+
+      location:
+        activeLocationMode,
+
+      nextReminderAt:
+        nextReminderAt
+
+    })
+
+  );
+}
+
+
+
 /* =========================
    START
 ========================= */
@@ -2843,24 +3825,30 @@ function startKako(){
     locationMode;
 
 
+  if(
+    reminderEnabled
+  ){
+
+    nextReminderAt =
+      startTime
+      +
+      reminderMinutes *
+      60 *
+      1000;
+
+  }
+
+  else{
+
+    nextReminderAt =
+      null;
+  }
+
+
   resetQuoteDecks();
 
 
-  localStorage.setItem(
-
-    "activeKako",
-
-    JSON.stringify({
-
-      start:
-        startTime,
-
-      location:
-        activeLocationMode
-
-    })
-
-  );
+  saveActiveKako();
 
 
   updatePrimaryNav();
@@ -2883,7 +3871,10 @@ function startKako(){
 
   quoteInterval =
     setInterval(
-      () => changeQuote(true),
+      () =>
+        changeQuote(
+          true
+        ),
       10000
     );
 
@@ -2892,6 +3883,7 @@ function startKako(){
     "timerScreen"
   );
 }
+
 
 
 /* =========================
@@ -3032,11 +4024,15 @@ function updateTimer(){
 
       );
   }
+
+
+  checkReminder();
 }
 
 
+
 /* =========================
-   HLÁŠKY PO 10 SEC
+   HLÁŠKY
 ========================= */
 
 function changeQuote(
@@ -3087,8 +4083,9 @@ function changeQuote(
 }
 
 
+
 /* =========================
-   ZRUŠENÍ
+   ZRUŠIT
 ========================= */
 
 function cancelKako(){
@@ -3101,6 +4098,8 @@ function cancelKako(){
     return;
   }
 
+
+  closeReminder();
 
   stopTimers();
 
@@ -3118,6 +4117,10 @@ function cancelKako(){
     null;
 
 
+  nextReminderAt =
+    null;
+
+
   updatePrimaryNav();
 
 
@@ -3132,6 +4135,7 @@ function cancelKako(){
 }
 
 
+
 /* =========================
    DOKAKÁNO
 ========================= */
@@ -3144,6 +4148,8 @@ function stopKako(){
     return;
   }
 
+
+  closeReminder();
 
   stopTimers();
 
@@ -3233,6 +4239,10 @@ function stopKako(){
     null;
 
 
+  nextReminderAt =
+    null;
+
+
   updatePrimaryNav();
 
   updateAll();
@@ -3266,6 +4276,7 @@ function stopTimers(){
   quoteInterval =
     null;
 }
+
 
 
 /* =========================
@@ -3375,6 +4386,7 @@ function getRating(seconds){
 }
 
 
+
 /* =========================
    SDÍLENÍ
 ========================= */
@@ -3463,6 +4475,7 @@ ${nickname} právě dokončil pracovní KÁKO.
     }
   }
 }
+
 
 
 /* =========================
@@ -3614,7 +4627,8 @@ function sumSeconds(arr){
     sum +
     (
       Number(item.seconds)
-      || 0
+      ||
+      0
     ),
 
     0
@@ -3631,7 +4645,8 @@ function sumMoney(arr){
     sum +
     (
       Number(item.money)
-      || 0
+      ||
+      0
     ),
 
     0
@@ -3658,7 +4673,8 @@ function maxSeconds(arr){
 
 function getMostVisitsOneDay(){
 
-  const counts = {};
+  const counts =
+    {};
 
 
   history.forEach(
@@ -3673,10 +4689,14 @@ function getMostVisitsOneDay(){
       const key =
 
         d.getFullYear()
-        + "-"
-        + d.getMonth()
-        + "-"
-        + d.getDate();
+        +
+        "-"
+        +
+        d.getMonth()
+        +
+        "-"
+        +
+        d.getDate();
 
 
       counts[key] =
@@ -3850,6 +4870,7 @@ function updateStats(){
 }
 
 
+
 /* =========================
    ACHIEVEMENTY
 ========================= */
@@ -3959,8 +4980,9 @@ function renderAchievements(){
 }
 
 
+
 /* =========================
-   DOMOVSKÁ OBRAZOVKA
+   DOMŮ
 ========================= */
 
 function updateHome(){
@@ -4023,6 +5045,7 @@ function updateHome(){
 
     : "Každá minuta se počítá.";
 }
+
 
 
 /* =========================
@@ -4244,6 +5267,7 @@ function saveHistory(){
 }
 
 
+
 /* =========================
    OBRAZOVKY
 ========================= */
@@ -4300,7 +5324,6 @@ function showScreen(id){
       .add(
         "active"
       );
-
   }
 
 
@@ -4374,6 +5397,11 @@ function showScreen(id){
       .add(
         "active"
       );
+
+
+    updateReminderUI();
+
+    updateSoundUI();
   }
 
 
@@ -4389,8 +5417,9 @@ function showScreen(id){
 }
 
 
+
 /* =========================
-   OBNOVA KÁKO
+   OBNOVA BĚŽÍCÍHO KÁKO
 ========================= */
 
 function restoreKako(){
@@ -4427,6 +5456,14 @@ function restoreKako(){
       ||
       "work";
 
+
+    nextReminderAt =
+      Number(
+        saved.nextReminderAt
+      )
+      ||
+      null;
+
   }
 
   catch(e){
@@ -4439,6 +5476,10 @@ function restoreKako(){
 
     activeLocationMode =
       "work";
+
+
+    nextReminderAt =
+      null;
   }
 
 
@@ -4446,6 +5487,24 @@ function restoreKako(){
     !startTime
   ){
     return;
+  }
+
+
+  if(
+    reminderEnabled
+    &&
+    !nextReminderAt
+  ){
+
+    nextReminderAt =
+      startTime
+      +
+      reminderMinutes *
+      60 *
+      1000;
+
+
+    saveActiveKako();
   }
 
 
@@ -4473,9 +5532,9 @@ function restoreKako(){
   quoteInterval =
     setInterval(
       () =>
-      changeQuote(
-        true
-      ),
+        changeQuote(
+          true
+        ),
       10000
     );
 
@@ -4483,7 +5542,11 @@ function restoreKako(){
   showScreen(
     "timerScreen"
   );
+
+
+  checkReminder();
 }
+
 
 
 /* =========================
@@ -4695,6 +5758,7 @@ function formatLongTime(seconds){
 }
 
 
+
 /* =========================
    TOAST
 ========================= */
@@ -4737,6 +5801,7 @@ function showToast(text){
 }
 
 
+
 /* =========================
    UPDATE
 ========================= */
@@ -4754,7 +5819,10 @@ function updateAll(){
   updatePrimaryNav();
 
   updateSoundUI();
+
+  updateReminderUI();
 }
+
 
 
 /* =========================
