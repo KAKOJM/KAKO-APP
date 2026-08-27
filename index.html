@@ -1,163 +1,5576 @@
-const CACHE =
-  "kako-v5-cache-1";
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#2a170e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KÁKO">
+
+<title>KÁKO</title>
+
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.png">
+
+<style>
+:root{
+  --brown:#2a170e;
+  --cream:#fff7e9;
+  --cream2:#f1dfc7;
+  --cream3:#ead8c1;
+  --yellow:#ffc72c;
+  --green:#318b43;
+  --green2:#61c66a;
+  --red:#df392f;
+  --muted:#806b5d;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  min-height:100%;
+  overscroll-behavior:none;
+  touch-action:manipulation;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--brown);
+  color:var(--brown);
+  -webkit-text-size-adjust:100%;
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+.app{
+  max-width:430px;
+  min-height:100vh;
+  margin:auto;
+  background:var(--cream);
+  padding:
+    calc(14px + env(safe-area-inset-top))
+    18px
+    calc(105px + env(safe-area-inset-bottom));
+}
+
+/* LOGO */
+
+.logo-wrap{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.logo-poop{
+  font-size:43px;
+  line-height:1;
+}
+
+.logo{
+  font-size:52px;
+  font-weight:900;
+  letter-spacing:-3px;
+}
+
+.logo-sub{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+}
+
+/* DOMA / PRÁCE */
+
+.mode-switch{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  background:var(--cream3);
+  padding:5px;
+  border-radius:19px;
+  margin-bottom:8px;
+}
+
+.mode-btn{
+  border:0;
+  border-radius:15px;
+  padding:13px;
+  background:transparent;
+  color:#765d4d;
+  font-size:14px;
+  font-weight:900;
+}
+
+.mode-btn.active{
+  background:var(--brown);
+  color:white;
+}
+
+.mode-info{
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+  margin:8px 0 16px;
+}
+
+/* DNES */
+
+.today-card{
+  background:var(--cream2);
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:14px;
+}
+
+.today-title{
+  text-align:center;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+  margin-bottom:14px;
+}
+
+.today-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+  text-align:center;
+}
+
+.today-box span{
+  display:block;
+  font-size:22px;
+  margin-bottom:5px;
+}
+
+.today-box strong{
+  display:block;
+  font-size:17px;
+}
+
+.today-box small{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:800;
+}
+
+.green{
+  color:var(--green);
+}
+
+.mini-rate{
+  text-align:center;
+  margin-bottom:14px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:800;
+}
+
+.mini-rate strong{
+  color:var(--green);
+}
+
+.main-button{
+  width:100%;
+  border:0;
+  border-radius:24px;
+  padding:21px;
+  background:var(--yellow);
+  color:var(--brown);
+  font-size:26px;
+  font-weight:900;
+  box-shadow:0 5px 0 #d7a218;
+}
+
+.main-button:active{
+  transform:translateY(3px);
+  box-shadow:0 2px 0 #d7a218;
+}
+
+/* TIMER */
+
+.timer-page{
+  max-width:430px;
+  min-height:100vh;
+  margin:auto;
+  background:var(--brown);
+  color:white;
+  text-align:center;
+
+  padding:
+    calc(12px + env(safe-area-inset-top))
+    20px
+    calc(105px + env(safe-area-inset-bottom));
+}
+
+.timer-mode{
+  display:inline-block;
+  background:var(--yellow);
+  color:var(--brown);
+  border-radius:99px;
+  padding:7px 14px;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:7px;
+}
+
+.timer-title{
+  color:var(--yellow);
+  font-size:21px;
+  font-weight:900;
+  margin-bottom:7px;
+}
+
+.timer{
+  font-size:51px;
+  font-weight:900;
+  line-height:1.05;
+}
+
+.toilet-art{
+  font-size:57px;
+  margin:7px 0;
+}
+
+.live-label{
+  color:#dcc6b4;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.live-money{
+  margin-top:4px;
+  color:var(--green2);
+  font-size:39px;
+  font-weight:900;
+}
+
+.live-money.free{
+  color:var(--yellow);
+  font-size:28px;
+}
+
+.quote-card{
+  background:#fff0c6;
+  color:var(--brown);
+  border:3px solid var(--yellow);
+  border-radius:22px;
+  padding:13px 15px;
+  max-width:360px;
+
+  /*
+  HLÁŠKA POSUNUTA VÝŠ
+  */
+  margin:-4px auto 11px;
+
+  box-shadow:0 7px 18px rgba(0,0,0,.18);
+}
+
+.quote-card.home{
+  background:#f4e2cd;
+}
+
+.quote-label{
+  display:block;
+  color:#9b6d15;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  margin-bottom:6px;
+}
+
+.quote-text{
+  font-size:18px;
+  line-height:1.27;
+  font-weight:900;
+}
+
+.quote-pop{
+  animation:quotePop .45s ease;
+}
+
+@keyframes quotePop{
+  0%{
+    transform:scale(.9);
+    opacity:.2;
+  }
+
+  55%{
+    transform:scale(1.05);
+    opacity:1;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.stop-button{
+  width:100%;
+  border:0;
+  border-radius:22px;
+  padding:16px;
+  background:var(--red);
+  color:white;
+  font-size:22px;
+  font-weight:900;
+}
+
+.stop-button:disabled{
+  opacity:.65;
+}
+
+.cancel-button{
+  margin-top:11px;
+  border:0;
+  background:transparent;
+  color:#d7c2af;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* OBECNÉ */
+
+.page-title{
+  font-size:30px;
+  font-weight:900;
+  margin:10px 0 18px;
+}
+
+/* STATISTIKY */
+
+.tabs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  margin-bottom:17px;
+}
+
+.tab{
+  border:0;
+  border-radius:13px;
+  padding:11px 5px;
+  background:var(--cream3);
+  color:var(--brown);
+  font-weight:900;
+}
+
+.tab.active{
+  background:var(--brown);
+  color:white;
+}
+
+.stats-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:21px;
+}
+
+.stats-main-card{
+  background:var(--cream2);
+  border-radius:20px;
+  min-height:120px;
+  padding:14px 5px;
+  text-align:center;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.stats-main-card .icon{
+  font-size:27px;
+  margin-bottom:8px;
+}
+
+.stats-main-card strong{
+  display:block;
+  font-size:19px;
+  line-height:1.1;
+  overflow-wrap:anywhere;
+}
+
+.stats-main-card small{
+  display:block;
+  margin-top:8px;
+  color:var(--muted);
+  font-size:9px;
+  font-weight:900;
+}
+
+.stats-section{
+  margin-top:22px;
+}
+
+.stats-section-title{
+  font-size:19px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.place-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.place-card{
+  background:var(--cream2);
+  border-radius:21px;
+  padding:17px 12px;
+  text-align:center;
+}
+
+.place-icon{
+  font-size:29px;
+}
+
+.place-card strong{
+  display:block;
+  font-size:23px;
+  margin:8px 0 4px;
+}
+
+.place-card small{
+  color:var(--muted);
+  font-size:11px;
+  font-weight:800;
+}
+
+.record-card{
+  background:var(--cream2);
+  border-radius:18px;
+  padding:15px 16px;
+  margin-bottom:9px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.record-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+}
+
+.record-icon{
+  font-size:22px;
+}
+
+.record-card strong{
+  font-size:18px;
+  text-align:right;
+}
+
+/* ACHIEVEMENTY */
+
+.achievement-progress-card{
+  background:var(--brown);
+  color:white;
+  border-radius:22px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.achievement-progress-card small{
+  color:#d5bfae;
+  font-size:11px;
+  font-weight:900;
+}
+
+.achievement-progress-card strong{
+  display:block;
+  margin-top:6px;
+  color:var(--yellow);
+  font-size:25px;
+}
+
+.achievement{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  background:var(--cream2);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:9px;
+  opacity:.42;
+}
+
+.achievement.unlocked{
+  opacity:1;
+}
+
+.achievement-icon{
+  width:42px;
+  flex:0 0 42px;
+  text-align:center;
+  font-size:29px;
+}
+
+.achievement strong{
+  display:block;
+  font-size:15px;
+}
+
+.achievement small{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  line-height:1.3;
+}
+
+/* HISTORIE */
+
+.history-item{
+  background:var(--cream2);
+  border-radius:19px;
+  padding:15px;
+  margin-bottom:10px;
+}
+
+.history-top,
+.history-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.history-top{
+  font-weight:900;
+  margin-bottom:9px;
+}
+
+.history-bottom{
+  gap:8px;
+}
+
+.history-place{
+  display:inline-block;
+  margin-top:9px;
+  background:#dcc6ad;
+  padding:5px 9px;
+  border-radius:99px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.delete-btn{
+  border:0;
+  background:#dfcbc4;
+  color:#8e2c27;
+  border-radius:10px;
+  padding:7px 9px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.empty{
+  text-align:center;
+  padding:35px 10px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.danger{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:13px;
+  margin-top:20px;
+  background:#ead6d2;
+  color:#9b2d27;
+  font-weight:900;
+}
+
+/* SETTINGS */
+
+.settings-card{
+  background:white;
+  border:2px solid #eadbc8;
+  border-radius:22px;
+  padding:17px;
+  margin-bottom:12px;
+}
+
+.settings-card h3{
+  margin-bottom:15px;
+}
+
+.settings-card label{
+  display:block;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:5px;
+}
+
+.settings-card input,
+.settings-card select{
+  width:100%;
+  border:2px solid #ddc8ae;
+  border-radius:13px;
+  background:#fffaf3;
+  padding:13px;
+  font-size:16px;
+  margin-bottom:13px;
+}
+
+.pay-switch{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin-bottom:14px;
+}
+
+.pay-btn{
+  border:0;
+  border-radius:13px;
+  padding:11px;
+  background:#eadbc8;
+  font-weight:900;
+}
+
+.pay-btn.active{
+  background:var(--brown);
+  color:white;
+}
+
+.setting-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.setting-info{
+  flex:1;
+}
+
+.setting-info strong{
+  display:block;
+  font-size:15px;
+}
+
+.setting-info small{
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+  line-height:1.3;
+}
+
+.setting-toggle{
+  min-width:78px;
+  border:0;
+  border-radius:99px;
+  padding:11px 12px;
+  background:#d9c9b5;
+  color:#765d4d;
+  font-weight:900;
+}
+
+.setting-toggle.on{
+  background:var(--green);
+  color:white;
+}
+
+.sound-tests{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:16px;
+}
+
+.sound-test-btn{
+  border:0;
+  border-radius:14px;
+  padding:12px 6px;
+  background:var(--cream2);
+  color:var(--brown);
+  font-size:11px;
+  font-weight:900;
+}
+
+.reminder-time{
+  margin-top:16px;
+}
+
+.save-btn{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:14px;
+  background:var(--brown);
+  color:white;
+  font-weight:900;
+}
+
+/* RESULT */
+
+.result-title{
+  font-size:39px;
+  font-weight:900;
+  margin-top:12px;
+}
+
+.result-sub{
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.result-poop{
+  text-align:center;
+  font-size:75px;
+  margin:20px 0;
+}
+
+.rating{
+  background:var(--yellow);
+  border-radius:20px;
+  padding:16px;
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.rating small{
+  font-size:10px;
+  font-weight:900;
+}
+
+.rating strong{
+  display:block;
+  margin-top:5px;
+  font-size:20px;
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.result-box{
+  background:var(--cream2);
+  border-radius:19px;
+  padding:15px 8px;
+  text-align:center;
+}
+
+.result-box small{
+  font-size:10px;
+  font-weight:900;
+}
+
+.result-box strong{
+  display:block;
+  margin-top:6px;
+  font-size:20px;
+}
+
+.action-btn{
+  width:100%;
+  border:0;
+  border-radius:19px;
+  padding:16px;
+  margin-top:12px;
+  background:var(--brown);
+  color:white;
+  font-weight:900;
+  font-size:15px;
+}
+
+.share-btn{
+  background:var(--yellow);
+  color:var(--brown);
+}
+
+/* BOTTOM MENU */
+
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+
+  width:min(430px,100%);
+
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+
+  background:var(--brown);
+
+  padding:
+    9px 2px
+    calc(12px + env(safe-area-inset-bottom));
+
+  z-index:999;
+}
+
+.nav-btn{
+  position:relative;
+  border:0;
+  background:transparent;
+  color:#cbb39f;
+  font-size:9px;
+  font-weight:900;
+  padding:2px 0;
+}
+
+.nav-icon{
+  display:block;
+  font-size:18px;
+  margin-bottom:2px;
+}
+
+.nav-btn.active,
+.nav-btn.running{
+  color:var(--yellow);
+}
+
+.running-dot{
+  display:none;
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#63d36d;
+  top:-1px;
+  right:18%;
+}
+
+.nav-btn.running .running-dot{
+  display:block;
+  animation:pulseDot 1.2s infinite;
+}
+
+@keyframes pulseDot{
+  0%{
+    transform:scale(.8);
+    opacity:.55;
+  }
+
+  50%{
+    transform:scale(1.35);
+    opacity:1;
+  }
+
+  100%{
+    transform:scale(.8);
+    opacity:.55;
+  }
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:105px;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:calc(100% - 45px);
+  max-width:360px;
+
+  background:var(--brown);
+  color:white;
+
+  border:1px solid #765441;
+  border-radius:16px;
+
+  padding:13px;
+
+  text-align:center;
+  font-size:13px;
+  font-weight:800;
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:.2s;
+
+  z-index:1200;
+}
+
+.toast.show{
+  opacity:1;
+}
+
+/* REMINDER */
+
+.reminder-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+
+  background:rgba(20,10,5,.78);
+  backdrop-filter:blur(6px);
+
+  z-index:5000;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+}
+
+.reminder-overlay.show{
+  display:flex;
+}
+
+.reminder-modal{
+  width:100%;
+  max-width:390px;
+
+  background:var(--cream);
+
+  border-radius:28px;
+
+  padding:24px 20px 20px;
+
+  text-align:center;
+}
+
+.reminder-icon{
+  font-size:58px;
+}
+
+.reminder-title{
+  font-size:29px;
+  font-weight:900;
+  margin-top:7px;
+}
+
+.reminder-text{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.45;
+  margin:10px 0 20px;
+}
+
+.reminder-time-value{
+  display:block;
+  color:var(--brown);
+  font-size:28px;
+  font-weight:900;
+  margin-top:7px;
+}
+
+.reminder-continue,
+.reminder-stop{
+  width:100%;
+  border:0;
+  border-radius:19px;
+  padding:16px;
+  font-size:17px;
+  font-weight:900;
+}
+
+.reminder-continue{
+  background:var(--yellow);
+  color:var(--brown);
+}
+
+.reminder-stop{
+  margin-top:10px;
+  background:var(--red);
+  color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     ZVUKY
+     Gong a spláchnutí se přehrávají přes Web Audio API.
+     Nejsou zde žádné HTML <audio> prvky, aby iPhone
+     nevytvářel ovládací panel médií na zamčené obrazovce.
+===================================================== -->
+
+<!-- =====================================================
+     DOMŮ
+===================================================== -->
+
+<div id="homeScreen" class="screen active">
+<div class="app">
+
+<div class="logo-wrap">
+  <div class="logo-poop">💩</div>
+  <div class="logo">KÁKO</div>
+
+  <div id="helloText" class="logo-sub">
+    Každá minuta se počítá.
+  </div>
+</div>
+
+<div class="mode-switch">
+
+<button
+  id="homeModeBtn"
+  class="mode-btn"
+  onclick="setLocationMode('home')"
+>
+  🏠 DOMA
+</button>
+
+<button
+  id="workModeBtn"
+  class="mode-btn active"
+  onclick="setLocationMode('work')"
+>
+  💼 V PRÁCI
+</button>
+
+</div>
+
+<div id="modeInfo" class="mode-info">
+  V práci se každá minuta mění na peníze.
+</div>
+
+<div class="today-card">
+
+<div class="today-title">
+  DNES
+</div>
+
+<div class="today-grid">
+
+<div class="today-box">
+  <span>🚽</span>
+  <strong id="todayVisits">0</strong>
+  <small>NÁVŠTĚV</small>
+</div>
+
+<div class="today-box">
+  <span>⏱</span>
+  <strong id="todayTime">0 min</strong>
+  <small>NA WC</small>
+</div>
+
+<div class="today-box">
+  <span>💰</span>
+  <strong id="todayMoney" class="green">0 Kč</strong>
+  <small>V PRÁCI</small>
+</div>
+
+</div>
+</div>
+
+<div id="miniRate" class="mini-rate">
+  KÁKO kurz:
+  <strong>0 Kč/min</strong>
+</div>
+
+<button
+  class="main-button"
+  onclick="startKako()"
+>
+  💩 JDU KÁKO
+</button>
+
+</div>
+</div>
 
 
-const ASSETS = [
+<!-- =====================================================
+     KÁKO BĚŽÍ
+===================================================== -->
 
-  "./",
+<div id="timerScreen" class="screen">
+<div class="timer-page">
 
-  "./index.html",
+<div id="timerMode" class="timer-mode">
+  💼 V PRÁCI
+</div>
 
-  "./styles.css",
+<div class="timer-title">
+  KÁKO PROBÍHÁ 💩
+</div>
 
-  "./app.js",
+<div id="timer" class="timer">
+  00:00:00
+</div>
 
-  "./manifest.json",
+<div class="toilet-art">
+  💩🚽
+</div>
 
-  "./icon.svg"
+<div id="liveLabel" class="live-label">
+  PRÁVĚ JSI PROKADIL
+</div>
+
+<div id="currentMoney" class="live-money">
+  0,00 Kč
+</div>
+
+<div id="quoteCard" class="quote-card">
+
+<span id="quoteLabel" class="quote-label">
+  FIREMNÍ HLÁŠENÍ
+</span>
+
+<div id="quoteText" class="quote-text">
+  Firma právě financuje tvé trávení.
+</div>
+
+</div>
+
+<button
+  id="stopKakoButton"
+  class="stop-button"
+  onclick="stopKako()"
+>
+  💩 DOKAKÁNO
+</button>
+
+<button
+  class="cancel-button"
+  onclick="cancelKako()"
+>
+  ✕ ZRUŠIT BEZ ULOŽENÍ
+</button>
+
+</div>
+</div>
+
+
+<!-- =====================================================
+     VÝSLEDEK
+===================================================== -->
+
+<div id="resultScreen" class="screen">
+<div class="app">
+
+<div class="result-title">
+  DOKAKÁNO!
+</div>
+
+<div id="resultSub" class="result-sub">
+  Další úspěšný projekt.
+</div>
+
+<div class="result-poop">
+  😎💩
+</div>
+
+<div class="rating">
+
+<small>
+  HODNOCENÍ
+</small>
+
+<strong id="ratingText">
+  Solidní výkon
+</strong>
+
+</div>
+
+<div class="result-grid">
+
+<div class="result-box">
+  <small>ČAS</small>
+  <strong id="resultTime">00:00</strong>
+</div>
+
+<div class="result-box">
+  <small id="resultMoneyLabel">
+    VYDĚLÁNO
+  </small>
+
+  <strong
+    id="resultMoney"
+    class="green"
+  >
+    0 Kč
+  </strong>
+</div>
+
+</div>
+
+<button
+  class="action-btn share-btn"
+  onclick="shareResult()"
+>
+  📤 SDÍLET
+</button>
+
+<button
+  class="action-btn"
+  onclick="showScreen('homeScreen')"
+>
+  ✓ ZPĚT DOMŮ
+</button>
+
+</div>
+</div>
+
+
+<!-- =====================================================
+     STATISTIKY
+===================================================== -->
+
+<div id="statsScreen" class="screen">
+<div class="app">
+
+<div class="page-title">
+  Statistiky
+</div>
+
+<div class="tabs">
+
+<button
+  id="todayTab"
+  class="tab active"
+  onclick="setStatsMode('today')"
+>
+  Dnes
+</button>
+
+<button
+  id="monthTab"
+  class="tab"
+  onclick="setStatsMode('month')"
+>
+  Měsíc
+</button>
+
+<button
+  id="allTab"
+  class="tab"
+  onclick="setStatsMode('all')"
+>
+  Celkem
+</button>
+
+</div>
+
+<div class="stats-summary">
+
+<div class="stats-main-card">
+  <div class="icon">🚽</div>
+  <strong id="statsVisits">0</strong>
+  <small>NÁVŠTĚV</small>
+</div>
+
+<div class="stats-main-card">
+  <div class="icon">⏱</div>
+  <strong id="statsTime">0 min</strong>
+  <small>ČAS NA WC</small>
+</div>
+
+<div class="stats-main-card">
+  <div class="icon">💰</div>
+  <strong
+    id="statsMoney"
+    class="green"
+  >
+    0 Kč
+  </strong>
+  <small>VYDĚLÁNO</small>
+</div>
+
+</div>
+
+<div class="stats-section">
+
+<div class="stats-section-title">
+  Doma vs. práce
+</div>
+
+<div class="place-grid">
+
+<div class="place-card">
+  <div class="place-icon">🏠</div>
+  <strong id="homeVisits">0×</strong>
+  <small id="homeTime">0 min</small>
+</div>
+
+<div class="place-card">
+  <div class="place-icon">💼</div>
+  <strong id="workVisits">0×</strong>
+  <small id="workTime">0 min</small>
+</div>
+
+</div>
+</div>
+
+<div class="stats-section">
+
+<div class="stats-section-title">
+  🏆 Rekordy
+</div>
+
+<div class="record-card">
+
+<div class="record-left">
+  <span class="record-icon">⏱</span>
+  <span>Nejdelší KÁKO</span>
+</div>
+
+<strong id="longestKako">
+  00:00
+</strong>
+
+</div>
+
+<div class="record-card">
+
+<div class="record-left">
+  <span class="record-icon">💵</span>
+  <span>Nejdražší KÁKO</span>
+</div>
+
+<strong
+  id="mostExpensive"
+  class="green"
+>
+  0 Kč
+</strong>
+
+</div>
+
+<div class="record-card">
+
+<div class="record-left">
+  <span class="record-icon">🚽</span>
+  <span>Nejvíc za den</span>
+</div>
+
+<strong id="mostVisitsDay">
+  0
+</strong>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =====================================================
+     ACHIEVEMENTY
+===================================================== -->
+
+<div id="achievementsScreen" class="screen">
+<div class="app">
+
+<div class="page-title">
+  Achievementy
+</div>
+
+<div class="achievement-progress-card">
+
+<small>
+  TVŮJ KÁKO PROGRES
+</small>
+
+<strong id="achievementProgress">
+  0 / 8
+</strong>
+
+</div>
+
+<div id="achievementsList"></div>
+
+</div>
+</div>
+
+
+<!-- =====================================================
+     HISTORIE
+===================================================== -->
+
+<div id="historyScreen" class="screen">
+<div class="app">
+
+<div class="page-title">
+  Historie
+</div>
+
+<div id="historyList"></div>
+
+<button
+  class="danger"
+  onclick="clearHistory()"
+>
+  SMAZAT CELOU HISTORII
+</button>
+
+</div>
+</div>
+
+
+<!-- =====================================================
+     NASTAVENÍ
+===================================================== -->
+
+<div id="settingsScreen" class="screen">
+<div class="app">
+
+<div class="page-title">
+  Nastavení
+</div>
+
+<div class="settings-card">
+
+<h3>Profil</h3>
+
+<label>
+  Přezdívka
+</label>
+
+<input
+  id="nicknameInput"
+  type="text"
+  maxlength="25"
+  placeholder="např. Milan"
+>
+
+</div>
+
+
+<div class="settings-card">
+
+<h3>Výdělek</h3>
+
+<div class="pay-switch">
+
+<button
+  id="monthlyBtn"
+  class="pay-btn active"
+  onclick="setPayMode('monthly')"
+>
+  Měsíční plat
+</button>
+
+<button
+  id="hourlyBtn"
+  class="pay-btn"
+  onclick="setPayMode('hourly')"
+>
+  Hodinovka
+</button>
+
+</div>
+
+<div id="monthlySettings">
+
+<label>
+  Měsíční čistá mzda
+</label>
+
+<input
+  id="salaryInput"
+  type="number"
+  inputmode="decimal"
+  placeholder="např. 50000"
+>
+
+<label>
+  Pracovních hodin za měsíc
+</label>
+
+<input
+  id="hoursInput"
+  type="number"
+  inputmode="decimal"
+  value="160"
+>
+
+</div>
+
+<div
+  id="hourlySettings"
+  style="display:none"
+>
+
+<label>
+  Čistá hodinovka
+</label>
+
+<input
+  id="hourlyInput"
+  type="number"
+  inputmode="decimal"
+  placeholder="např. 250"
+>
+
+</div>
+
+</div>
+
+
+<!-- ZVUKY -->
+
+<div class="settings-card">
+
+<h3>Zvuk</h3>
+
+<div class="setting-row">
+
+<div class="setting-info">
+
+<strong>
+  🔊 Zvuky KÁKO
+</strong>
+
+<small>
+  Gong při zahájení a spláchnutí při ukončení.
+</small>
+
+</div>
+
+<button
+  id="soundToggle"
+  class="setting-toggle"
+  onclick="toggleSound()"
+>
+  ZAP
+</button>
+
+</div>
+
+<div class="sound-tests">
+
+<button
+  class="sound-test-btn"
+  onclick="testStartBell()"
+>
+  🥊 TEST GONG
+</button>
+
+<button
+  class="sound-test-btn"
+  onclick="testFlush()"
+>
+  🚽 TEST SPLÁCHNUTÍ
+</button>
+
+</div>
+
+</div>
+
+
+<!-- UPOZORNĚNÍ -->
+
+<div class="settings-card">
+
+<h3>Hlídání KÁKO</h3>
+
+<div class="setting-row">
+
+<div class="setting-info">
+
+<strong>
+  🚨 Nezapomněl jsem dokakat?
+</strong>
+
+<small>
+  Aplikace tě upozorní, pokud necháš KÁKO běžet příliš dlouho.
+</small>
+
+</div>
+
+<button
+  id="reminderToggle"
+  class="setting-toggle"
+  onclick="toggleReminder()"
+>
+  ZAP
+</button>
+
+</div>
+
+<div
+  id="reminderTimeBox"
+  class="reminder-time"
+>
+
+<label>
+  První upozornění po
+</label>
+
+<select id="reminderMinutesSelect">
+  <option value="15">15 minutách</option>
+  <option value="20">20 minutách</option>
+  <option value="30">30 minutách</option>
+</select>
+
+</div>
+
+</div>
+
+
+<button
+  class="save-btn"
+  onclick="saveSettings()"
+>
+  ULOŽIT A ZPĚT
+</button>
+
+</div>
+</div>
+
+
+<!-- =====================================================
+     SPODNÍ MENU - JE NA VŠECH OBRAZOVKÁCH
+===================================================== -->
+
+<div id="bottomNav" class="bottom-nav">
+
+<button
+  id="navPrimary"
+  class="nav-btn active"
+  onclick="openPrimaryScreen()"
+>
+
+<span class="running-dot"></span>
+
+<span
+  id="navPrimaryIcon"
+  class="nav-icon"
+>
+  🏠
+</span>
+
+<span id="navPrimaryText">
+  Domů
+</span>
+
+</button>
+
+
+<button
+  id="navStats"
+  class="nav-btn"
+  onclick="showScreen('statsScreen')"
+>
+  <span class="nav-icon">📊</span>
+  Statistiky
+</button>
+
+
+<button
+  id="navAchievements"
+  class="nav-btn"
+  onclick="showScreen('achievementsScreen')"
+>
+  <span class="nav-icon">🏅</span>
+  Úspěchy
+</button>
+
+
+<button
+  id="navHistory"
+  class="nav-btn"
+  onclick="showScreen('historyScreen')"
+>
+  <span class="nav-icon">📜</span>
+  Historie
+</button>
+
+
+<button
+  id="navSettings"
+  class="nav-btn"
+  onclick="showScreen('settingsScreen')"
+>
+  <span class="nav-icon">⚙️</span>
+  Nastavení
+</button>
+
+</div>
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+<!-- =====================================================
+     REMINDER
+===================================================== -->
+
+<div
+  id="reminderOverlay"
+  class="reminder-overlay"
+>
+
+<div class="reminder-modal">
+
+<div class="reminder-icon">
+  🚨💩
+</div>
+
+<div class="reminder-title">
+  JEŠTĚ KAKÁŠ?
+</div>
+
+<div class="reminder-text">
+
+KÁKO už běží nějak podezřele dlouho.
+
+<span
+  id="reminderRunningTime"
+  class="reminder-time-value"
+>
+  20:00
+</span>
+
+Nezapomněl jsi ho ukončit?
+
+</div>
+
+<button
+  class="reminder-continue"
+  onclick="continueKako()"
+>
+  💩 JO, JEŠTĚ KAKÁM
+</button>
+
+<button
+  class="reminder-stop"
+  onclick="finishFromReminder()"
+>
+  🚽 DOKAKÁNO
+</button>
+
+</div>
+</div>
+
+
+<script>
+
+/* =====================================================
+   PROMĚNNÉ
+===================================================== */
+
+let timerInterval = null;
+let quoteInterval = null;
+
+let startTime = null;
+let activeLocationMode = null;
+let nextReminderAt = null;
+
+let lastResult = null;
+let isFinishing = false;
+
+let locationMode =
+  localStorage.getItem("locationMode") || "work";
+
+let payMode =
+  localStorage.getItem("payMode") || "monthly";
+
+let soundEnabled =
+  localStorage.getItem("soundEnabled") !== "false";
+
+let reminderEnabled =
+  localStorage.getItem("reminderEnabled") !== "false";
+
+let reminderMinutes =
+  Number(
+    localStorage.getItem("reminderMinutes")
+  ) || 20;
+
+let ratePerMinute = 0;
+
+let statsMode = "today";
+
+let workDeck = [];
+let homeDeck = [];
+
+let workDeckPosition = 0;
+let homeDeckPosition = 0;
+
+
+/* =====================================================
+   HISTORIE
+===================================================== */
+
+let history = [];
+
+try{
+
+  history =
+    JSON.parse(
+      localStorage.getItem("kakoHistory")
+    ) || [];
+
+}
+catch(error){
+
+  history = [];
+
+}
+
+history =
+  history.map(
+    item => ({
+
+      start:
+        Number(item.start),
+
+      end:
+        Number(item.end)
+        ||
+        (
+          Number(item.start)
+          +
+          (Number(item.seconds) || 0) * 1000
+        ),
+
+      seconds:
+        Number(item.seconds) || 0,
+
+      money:
+        Number(item.money) || 0,
+
+      location:
+        item.location || "work"
+
+    })
+  );
+
+saveHistory();
+
+
+/* =====================================================
+   HLÁŠKY V PRÁCI
+   60 HLÁŠEK = PŘI 10 SEKUNDÁCH 10 MINUT
+===================================================== */
+
+const workQuotes = [
+
+"Firma právě financuje tvé trávení.",
+
+"Výplata běží. Ty sedíš. Ideální stav.",
+
+"Každá další minuta jde na účet zaměstnavatele.",
+
+"Porada keramického oddělení pokračuje.",
+
+"Šéf netuší, jak tvrdě právě pracuješ.",
+
+"Tohle je skutečný pasivní příjem.",
+
+"Firemní rozpočet dostává zabrat.",
+
+"Ještě chvíli a máš na kafe.",
+
+"Produktivita dnes dostala nový význam.",
+
+"Firma investuje do tvého vnitřního rozvoje.",
+
+"Tahle pracovní schůzka nemohla být e-mail.",
+
+"HR oddělení o tomhle benefitu zatím neví.",
+
+"Dnes pracuje hlavně tlusté střevo.",
+
+"Další minuta. Další peníze.",
+
+"Keramické oddělení hlásí plný provoz.",
+
+"Tvoje pracovní nasazení právě voní úspěchem.",
+
+"Šéf platí. Porcelán drží.",
+
+"Konečně práce, u které můžeš sedět.",
+
+"Právě probíhá interní očista firmy.",
+
+"Nejlepší peníze jsou ty, které vyděláš vsedě.",
+
+"Zaměstnavatel právě sponzoruje biologický proces.",
+
+"Tohle je benefit, který v pracovní smlouvě nenajdeš.",
+
+"Další úspěšný meeting bez PowerPointu.",
+
+"Pracovní morálka sedí pevně na porcelánu.",
+
+"Dnes jde výkon opravdu odspodu.",
+
+"Firma právě platí prémiovou keramickou pauzu.",
+
+"Pozor. Náklady zaměstnavatele právě rostou.",
+
+"Tvé střevo si právě píše přesčas.",
+
+"Finanční oddělení by tenhle graf vidět nechtělo.",
+
+"Účetní právě někde cítí nevysvětlitelný neklid.",
+
+"Zatímco ostatní pracují, ty optimalizuješ cashflow.",
+
+"Tohle je nejlépe placené sezení dne.",
+
+"Pracovní porada probíhá za zavřenými dveřmi.",
+
+"Prosíme nerušit. Probíhá důležitý firemní proces.",
+
+"Další koruny právě mizí v kanalizaci.",
+
+"Keramický management děkuje za nasazení.",
+
+"Firma platí každou sekundu tohoto výkonu.",
+
+"Výkonnostní bonus právě teče správným směrem.",
+
+"Šéf chtěl produktivitu. Dostal produkt.",
+
+"Tahle směna má opravdu silný závěr.",
+
+"Pracovní doba ještě nikdy nebyla tak uspokojivá.",
+
+"Zaměstnavatel právě investuje do pravidelnosti.",
+
+"Další pracovní úkol úspěšně tlačíš kupředu.",
+
+"V kanceláři možná chybíš. Ve statistikách rosteš.",
+
+"Dnešní nejdůležitější projekt právě pokračuje.",
+
+"Prémie nikde, ale KÁKO kurz jede.",
+
+"Tohle je přesně důvod, proč existuje pracovní doba.",
+
+"Čím déle sedíš, tím dražší je výsledek.",
+
+"Firemní kultura právě získává nový význam.",
+
+"Na LinkedIn tohle raději nedávej.",
+
+"Výkon roste. Náklady také.",
+
+"Kolegové možná pracují. Ty vyděláváš strategicky.",
+
+"Ještě pár minut a firma ti zaplatí oběd.",
+
+"Strategická keramická pauza je v plném proudu.",
+
+"Management zatím netuší, kde vznikají skutečné náklady.",
+
+"Dnes máš nejlépe placenou židli ve firmě.",
+
+"Tohle se do timesheetu píše jen velmi těžko.",
+
+"Zaměstnavatel právě dostává svoje peníze zpět. Bohužel jinou cestou.",
+
+"Další firemní investice právě míří do kanalizace.",
+
+"KÁKO oddělení hlásí: mise pokračuje."
 
 ];
 
 
-self.addEventListener(
+/* =====================================================
+   HLÁŠKY DOMA
+===================================================== */
 
-  "install",
+const homeQuotes = [
 
-  event => {
+"Doma sereš zdarma.",
 
-    event.waitUntil(
+"Čistě soukromý projekt.",
 
-      caches
-        .open(
-          CACHE
-        )
-        .then(
-          cache =>
-            cache.addAll(
-              ASSETS
-            )
-        )
+"Žádné peníze. Jen čest a sláva.",
 
-    );
+"Domácí směna bez příplatků.",
+
+"Výkon dobrý. Odměna nulová.",
+
+"Tentokrát náklady neseš ty.",
+
+"Volnočasová aktivita v plném proudu.",
+
+"Keramika pracuje. Peněženka nikoliv.",
+
+"Doma ti za to bohužel nikdo nezaplatí.",
+
+"Soukromá porada byla zahájena.",
+
+"Nula korun. Stoprocentní nasazení.",
+
+"Domácí produktivita bez finančního efektu.",
+
+"Tolik práce a ani koruna.",
+
+"Tady bohužel firemní rozpočet nepomůže.",
+
+"Porcelán ano. Prémie ne.",
+
+"Domácí KÁKO. Čistá práce z lásky.",
+
+"Výdělek nulový. Pocit k nezaplacení.",
+
+"Soukromý sektor dnes neposkytuje žádné benefity.",
+
+"Dnes pracuješ úplně zadarmo.",
+
+"Tohle ti účetní bohužel neproplatí.",
+
+"Výkon běží. Faktura nevzniká.",
+
+"Rodinný rozpočet zůstává beze změny.",
+
+"Domácí směna pokračuje bez nároku na odměnu.",
+
+"Žádný šéf. Žádné peníze. Jen ty a porcelán.",
+
+"Doma jsou všechny minuty tvoje. Bohužel i náklady.",
+
+"Keramické oddělení dnes jede na vlastní účet.",
+
+"Výsledky dobré, finanční návratnost tragická.",
+
+"Soukromé KÁKO právě vstupuje do další fáze.",
+
+"Doma se počítá čas. Peníze ne.",
+
+"Z ekonomického hlediska naprostá katastrofa.",
+
+"Z hygienického hlediska velmi potřebná investice.",
+
+"Tahle pauza se do výplaty opravdu nepočítá.",
+
+"Domácí provoz hlásí nulový zisk.",
+
+"Další minuta zdarma. Gratulujeme.",
+
+"Zaměstnavatel dnes ušetřil. Ty ne.",
+
+"Doma je klid. A nulová hodinovka.",
+
+"Tohle je charitativní práce pro vlastní střevo.",
+
+"Výkon profesionální. Plat amatérský.",
+
+"Kdybys byl v práci, už by z toho něco káplo.",
+
+"Domácí keramika děkuje za návštěvu.",
+
+"Soukromá mise pokračuje bez sponzora.",
+
+"Dnes jsi svým vlastním zaměstnavatelem. A neplatíš dobře.",
+
+"Domácí porcelán právě eviduje další návštěvu.",
+
+"Čas běží. Výplata stojí.",
+
+"Doma je to stejné KÁKO, jen bez firemních peněz.",
+
+"Další neplacená směna právě pokračuje.",
+
+"Keramická domácí kancelář je otevřena.",
+
+"Tady se opravdu pracuje jen pro dobrý pocit.",
+
+"Domácí projekt nemá žádný rozpočet.",
+
+"Žádná faktura. Žádný bonus. Jen výsledek.",
+
+"Soukromé oddělení trávení hlásí provoz.",
+
+"Tohle KÁKO si financuješ úplně sám.",
+
+"Ekonomové by doporučili chodit raději v práci.",
+
+"Domácí produktivita právě dosáhla porcelánového maxima.",
+
+"Tady ti každá minuta vydělává přesně nula korun.",
+
+"Domácí KÁKO je nejdražší tím, že není placené.",
+
+"Pracovní doba nikde. Střevo ale jede.",
+
+"Dnešní soukromá porada stále pokračuje.",
+
+"Porcelán je připraven. Výplata nikoliv.",
+
+"Domácí KÁKO oddělení děkuje za spolupráci."
+
+];
 
 
-    self.skipWaiting();
+/* =====================================================
+   ACHIEVEMENTY
+===================================================== */
+
+const achievementsData = [
+
+{
+  icon:"💩",
+  title:"První hovínko",
+  text:"Dokonči první KÁKO",
+  test:s => s.visits >= 1
+},
+
+{
+  icon:"🔟",
+  title:"Pravidelný zákazník",
+  text:"Dokonči 10 návštěv",
+  test:s => s.visits >= 10
+},
+
+{
+  icon:"⏱",
+  title:"Hodina pravdy",
+  text:"Strav celkem 1 hodinu na WC",
+  test:s => s.seconds >= 3600
+},
+
+{
+  icon:"💵",
+  title:"Firemní investor",
+  text:"Vydělej na WC 500 Kč",
+  test:s => s.money >= 500
+},
+
+{
+  icon:"🤑",
+  title:"Keramický magnát",
+  text:"Vydělej na WC 1 000 Kč",
+  test:s => s.money >= 1000
+},
+
+{
+  icon:"🏆",
+  title:"Dlouhá porada",
+  text:"Jedno KÁKO minimálně 20 minut",
+  test:s => s.longest >= 1200
+},
+
+{
+  icon:"🏠",
+  title:"Domácí patriot",
+  text:"Dokonči 5 návštěv doma",
+  test:s => s.homeVisits >= 5
+},
+
+{
+  icon:"💼",
+  title:"Firemní specialista",
+  text:"Dokonči 5 návštěv v práci",
+  test:s => s.workVisits >= 5
+}
+
+];
+
+
+/* =====================================================
+   AUDIO - WEB AUDIO API
+
+   DŮLEŽITÉ:
+   - žádné HTML <audio>
+   - gong: Boxing-bell-sound-effect.mp3
+   - spláchnutí: flush.wav
+   - iPhone tak nemá dostat klasický přehrávač médií
+===================================================== */
+
+let audioContext = null;
+let bellBuffer = null;
+let flushBuffer = null;
+let bellBufferPromise = null;
+let flushBufferPromise = null;
+let activeSoundSources = new Set();
+
+
+function clearMediaSession(){
+
+  try{
+
+    if(
+      "mediaSession" in navigator
+    ){
+
+      navigator.mediaSession.metadata = null;
+
+      try{
+        navigator.mediaSession.playbackState = "none";
+      }
+      catch(error){}
+
+    }
+
+  }
+  catch(error){}
+
+}
+
+
+function getAudioContext(){
+
+  if(
+    !audioContext
+  ){
+
+    const AudioContextClass =
+      window.AudioContext
+      ||
+      window.webkitAudioContext;
+
+
+    if(
+      !AudioContextClass
+    ){
+      return null;
+    }
+
+
+    audioContext =
+      new AudioContextClass();
 
   }
 
-);
+
+  return audioContext;
+
+}
 
 
+async function resumeAudioContext(){
 
-self.addEventListener(
-
-  "activate",
-
-  event => {
-
-    event.waitUntil(
-
-      caches
-        .keys()
-        .then(
-
-          keys =>
-
-            Promise.all(
-
-              keys
-
-                .filter(
-                  k =>
-                    k !== CACHE
-                )
-
-                .map(
-                  k =>
-                    caches.delete(
-                      k
-                    )
-                )
-
-            )
-
-        )
-
-    );
+  const context =
+    getAudioContext();
 
 
-    self.clients.claim();
-
+  if(
+    !context
+  ){
+    return null;
   }
 
-);
 
+  try{
 
+    if(
+      context.state === "suspended"
+    ){
 
-self.addEventListener(
+      await context.resume();
 
-  "fetch",
+    }
 
-  event => {
+  }
+  catch(error){
 
-    event.respondWith(
-
-      caches
-        .match(
-          event.request
-        )
-        .then(
-
-          cached =>
-
-            cached
-
-            ||
-
-            fetch(
-              event.request
-            )
-
-            .then(
-
-              response => {
-
-                const copy =
-                  response.clone();
-
-
-                caches
-                  .open(
-                    CACHE
-                  )
-                  .then(
-                    cache =>
-                      cache.put(
-                        event.request,
-                        copy
-                      )
-                  );
-
-
-                return response;
-
-              }
-
-            )
-
-            .catch(
-
-              () =>
-                caches.match(
-                  "./index.html"
-                )
-
-            )
-
-        )
-
+    console.log(
+      "AudioContext se nepodařilo aktivovat:",
+      error
     );
 
   }
 
+
+  clearMediaSession();
+
+  return context;
+
+}
+
+
+async function fetchAndDecodeSound(url){
+
+  const context =
+    getAudioContext();
+
+
+  if(
+    !context
+  ){
+    return null;
+  }
+
+
+  const response =
+    await fetch(
+      url,
+      {
+        cache:"force-cache"
+      }
+    );
+
+
+  if(
+    !response.ok
+  ){
+
+    throw new Error(
+      `${url}: HTTP ${response.status}`
+    );
+
+  }
+
+
+  const arrayBuffer =
+    await response.arrayBuffer();
+
+
+  return await context.decodeAudioData(
+    arrayBuffer.slice(0)
+  );
+
+}
+
+
+function loadBellBuffer(){
+
+  if(
+    bellBuffer
+  ){
+    return Promise.resolve(
+      bellBuffer
+    );
+  }
+
+
+  if(
+    !bellBufferPromise
+  ){
+
+    bellBufferPromise =
+      fetchAndDecodeSound(
+        "Boxing-bell-sound-effect.mp3"
+      )
+      .then(buffer => {
+
+        bellBuffer = buffer;
+
+        return buffer;
+
+      })
+      .catch(error => {
+
+        bellBufferPromise = null;
+
+        console.log(
+          "Gong se nepodařilo načíst:",
+          error
+        );
+
+        return null;
+
+      });
+
+  }
+
+
+  return bellBufferPromise;
+
+}
+
+
+function loadFlushBuffer(){
+
+  if(
+    flushBuffer
+  ){
+    return Promise.resolve(
+      flushBuffer
+    );
+  }
+
+
+  if(
+    !flushBufferPromise
+  ){
+
+    flushBufferPromise =
+      fetchAndDecodeSound(
+        "flush.wav"
+      )
+      .then(buffer => {
+
+        flushBuffer = buffer;
+
+        return buffer;
+
+      })
+      .catch(error => {
+
+        flushBufferPromise = null;
+
+        console.log(
+          "Spláchnutí se nepodařilo načíst:",
+          error
+        );
+
+        return null;
+
+      });
+
+  }
+
+
+  return flushBufferPromise;
+
+}
+
+
+function preloadSounds(){
+
+  if(
+    !soundEnabled
+  ){
+    return;
+  }
+
+
+  getAudioContext();
+
+  loadBellBuffer();
+  loadFlushBuffer();
+
+}
+
+
+function stopAllSounds(){
+
+  activeSoundSources.forEach(
+    source => {
+
+      try{
+        source.stop();
+      }
+      catch(error){}
+
+    }
+  );
+
+
+  activeSoundSources.clear();
+
+  clearMediaSession();
+
+}
+
+
+async function playAudioBuffer(bufferPromise){
+
+  if(
+    !soundEnabled
+  ){
+    return false;
+  }
+
+
+  const context =
+    await resumeAudioContext();
+
+
+  if(
+    !context
+  ){
+    return false;
+  }
+
+
+  let buffer = null;
+
+
+  try{
+
+    buffer =
+      await bufferPromise();
+
+  }
+  catch(error){
+
+    console.log(
+      "Zvuk se nepodařilo načíst:",
+      error
+    );
+
+    return false;
+
+  }
+
+
+  if(
+    !buffer
+  ){
+    return false;
+  }
+
+
+  try{
+
+    const source =
+      context.createBufferSource();
+
+
+    const gain =
+      context.createGain();
+
+
+    source.buffer = buffer;
+
+    gain.gain.value = 1;
+
+
+    source.connect(
+      gain
+    );
+
+
+    gain.connect(
+      context.destination
+    );
+
+
+    activeSoundSources.add(
+      source
+    );
+
+
+    source.onended =
+      function(){
+
+        activeSoundSources.delete(
+          source
+        );
+
+        clearMediaSession();
+
+      };
+
+
+    source.start(0);
+
+    clearMediaSession();
+
+    return true;
+
+  }
+  catch(error){
+
+    console.log(
+      "Zvuk se nepodařilo přehrát:",
+      error
+    );
+
+    return false;
+
+  }
+
+}
+
+
+function playStartBell(){
+
+  return playAudioBuffer(
+    loadBellBuffer
+  );
+
+}
+
+
+function playFlushSound(){
+
+  return playAudioBuffer(
+    loadFlushBuffer
+  );
+
+}
+
+
+async function testStartBell(){
+
+  if(
+    !soundEnabled
+  ){
+
+    showToast(
+      "Nejdřív zapni zvuky."
+    );
+
+    return;
+
+  }
+
+
+  await resumeAudioContext();
+  await playStartBell();
+
+}
+
+
+async function testFlush(){
+
+  if(
+    !soundEnabled
+  ){
+
+    showToast(
+      "Nejdřív zapni zvuky."
+    );
+
+    return;
+
+  }
+
+
+  await resumeAudioContext();
+  await playFlushSound();
+
+}
+
+
+/* =====================================================
+   HLÁŠKY - NÁHODNĚ BEZ OPAKOVÁNÍ
+===================================================== */
+
+function shuffleArray(array){
+
+  const copy =
+    [...array];
+
+  for(
+    let i = copy.length - 1;
+    i > 0;
+    i--
+  ){
+
+    const j =
+      Math.floor(
+        Math.random() * (i + 1)
+      );
+
+    [
+      copy[i],
+      copy[j]
+    ]
+    =
+    [
+      copy[j],
+      copy[i]
+    ];
+
+  }
+
+  return copy;
+
+}
+
+
+function resetQuoteDecks(){
+
+  workDeck =
+    shuffleArray(
+      workQuotes
+    );
+
+  homeDeck =
+    shuffleArray(
+      homeQuotes
+    );
+
+  workDeckPosition = 0;
+  homeDeckPosition = 0;
+
+}
+
+
+function getNextQuote(){
+
+  if(
+    activeLocationMode === "home"
+  ){
+
+    if(
+      homeDeckPosition >=
+      homeDeck.length
+    ){
+
+      homeDeck =
+        shuffleArray(
+          homeQuotes
+        );
+
+      homeDeckPosition = 0;
+
+    }
+
+    return homeDeck[
+      homeDeckPosition++
+    ];
+
+  }
+
+
+  if(
+    workDeckPosition >=
+    workDeck.length
+  ){
+
+    workDeck =
+      shuffleArray(
+        workQuotes
+      );
+
+    workDeckPosition = 0;
+
+  }
+
+
+  return workDeck[
+    workDeckPosition++
+  ];
+
+}
+
+
+/* =====================================================
+   SPODNÍ MENU
+===================================================== */
+
+function isKakoRunning(){
+
+  return !!startTime;
+
+}
+
+
+function updatePrimaryNav(){
+
+  const button =
+    document.getElementById(
+      "navPrimary"
+    );
+
+
+  if(
+    isKakoRunning()
+  ){
+
+    document.getElementById(
+      "navPrimaryIcon"
+    ).innerText =
+      "💩";
+
+
+    document.getElementById(
+      "navPrimaryText"
+    ).innerText =
+      "KÁKO";
+
+
+    button.classList.add(
+      "running"
+    );
+
+  }
+
+  else{
+
+    document.getElementById(
+      "navPrimaryIcon"
+    ).innerText =
+      "🏠";
+
+
+    document.getElementById(
+      "navPrimaryText"
+    ).innerText =
+      "Domů";
+
+
+    button.classList.remove(
+      "running"
+    );
+
+  }
+
+}
+
+
+function openPrimaryScreen(){
+
+  if(
+    isKakoRunning()
+  ){
+
+    showScreen(
+      "timerScreen"
+    );
+
+  }
+
+  else{
+
+    showScreen(
+      "homeScreen"
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ZVUK ZAP / VYP
+===================================================== */
+
+function updateSoundUI(){
+
+  const button =
+    document.getElementById(
+      "soundToggle"
+    );
+
+  button.innerText =
+    soundEnabled
+    ? "ZAP"
+    : "VYP";
+
+  button.classList.toggle(
+    "on",
+    soundEnabled
+  );
+
+}
+
+
+function toggleSound(){
+
+  soundEnabled =
+    !soundEnabled;
+
+
+  localStorage.setItem(
+    "soundEnabled",
+    String(soundEnabled)
+  );
+
+
+  if(
+    soundEnabled
+  ){
+
+    resumeAudioContext();
+
+    preloadSounds();
+
+  }
+
+  else{
+
+    stopAllSounds();
+
+  }
+
+
+  updateSoundUI();
+
+
+  showToast(
+    soundEnabled
+    ? "🔊 Zvuky zapnuté"
+    : "🔇 Zvuky vypnuté"
+  );
+
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+function loadSettings(){
+
+  document.getElementById(
+    "nicknameInput"
+  ).value =
+    localStorage.getItem(
+      "nickname"
+    ) || "";
+
+
+  document.getElementById(
+    "salaryInput"
+  ).value =
+    localStorage.getItem(
+      "salary"
+    ) || "";
+
+
+  document.getElementById(
+    "hoursInput"
+  ).value =
+    localStorage.getItem(
+      "hours"
+    ) || 160;
+
+
+  document.getElementById(
+    "hourlyInput"
+  ).value =
+    localStorage.getItem(
+      "hourly"
+    ) || "";
+
+
+  updatePayUI();
+  updateSoundUI();
+  updateReminderUI();
+  calculateRate();
+
+}
+
+
+function setPayMode(mode){
+
+  payMode =
+    mode;
+
+
+  localStorage.setItem(
+    "payMode",
+    mode
+  );
+
+
+  updatePayUI();
+  calculateRate();
+  updateHome();
+
+}
+
+
+function updatePayUI(){
+
+  document
+    .getElementById(
+      "monthlyBtn"
+    )
+    .classList
+    .toggle(
+      "active",
+      payMode === "monthly"
+    );
+
+
+  document
+    .getElementById(
+      "hourlyBtn"
+    )
+    .classList
+    .toggle(
+      "active",
+      payMode === "hourly"
+    );
+
+
+  document.getElementById(
+    "monthlySettings"
+  ).style.display =
+    payMode === "monthly"
+    ? "block"
+    : "none";
+
+
+  document.getElementById(
+    "hourlySettings"
+  ).style.display =
+    payMode === "hourly"
+    ? "block"
+    : "none";
+
+}
+
+
+function saveSettings(){
+
+  const nickname =
+    document
+      .getElementById(
+        "nicknameInput"
+      )
+      .value
+      .trim();
+
+
+  localStorage.setItem(
+    "nickname",
+    nickname
+  );
+
+
+  reminderMinutes =
+    Number(
+      document.getElementById(
+        "reminderMinutesSelect"
+      ).value
+    ) || 20;
+
+
+  localStorage.setItem(
+    "reminderMinutes",
+    String(reminderMinutes)
+  );
+
+
+  if(
+    payMode === "monthly"
+  ){
+
+    const salary =
+      Number(
+        document.getElementById(
+          "salaryInput"
+        ).value
+      );
+
+
+    const hours =
+      Number(
+        document.getElementById(
+          "hoursInput"
+        ).value
+      );
+
+
+    if(
+      !salary ||
+      !hours
+    ){
+
+      alert(
+        "Vyplň měsíční plat a pracovní hodiny."
+      );
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+      "salary",
+      salary
+    );
+
+
+    localStorage.setItem(
+      "hours",
+      hours
+    );
+
+  }
+
+  else{
+
+    const hourly =
+      Number(
+        document.getElementById(
+          "hourlyInput"
+        ).value
+      );
+
+
+    if(
+      !hourly
+    ){
+
+      alert(
+        "Vyplň hodinovku."
+      );
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+      "hourly",
+      hourly
+    );
+
+  }
+
+
+  calculateRate();
+  updateHome();
+
+
+  showScreen(
+    isKakoRunning()
+    ? "timerScreen"
+    : "homeScreen"
+  );
+
+
+  showToast(
+    "✓ Nastavení uloženo"
+  );
+
+}
+
+
+function calculateRate(){
+
+  if(
+    payMode === "monthly"
+  ){
+
+    const salary =
+      Number(
+        localStorage.getItem(
+          "salary"
+        )
+      ) || 0;
+
+
+    const hours =
+      Number(
+        localStorage.getItem(
+          "hours"
+        )
+      ) || 160;
+
+
+    ratePerMinute =
+      salary > 0 &&
+      hours > 0
+      ?
+      salary /
+      (hours * 60)
+      :
+      0;
+
+  }
+
+  else{
+
+    const hourly =
+      Number(
+        localStorage.getItem(
+          "hourly"
+        )
+      ) || 0;
+
+
+    ratePerMinute =
+      hourly > 0
+      ?
+      hourly / 60
+      :
+      0;
+
+  }
+
+}
+
+
+/* =====================================================
+   DOMA / PRÁCE
+===================================================== */
+
+function setLocationMode(mode){
+
+  locationMode =
+    mode;
+
+
+  localStorage.setItem(
+    "locationMode",
+    mode
+  );
+
+
+  updateHome();
+
+}
+
+
+function updateLocation(){
+
+  const home =
+    locationMode === "home";
+
+
+  document.getElementById(
+    "homeModeBtn"
+  ).classList.toggle(
+    "active",
+    home
+  );
+
+
+  document.getElementById(
+    "workModeBtn"
+  ).classList.toggle(
+    "active",
+    !home
+  );
+
+
+  document.getElementById(
+    "modeInfo"
+  ).innerText =
+    home
+    ?
+    "Doma sereš zdarma."
+    :
+    "V práci se každá minuta mění na peníze.";
+
+
+  document.getElementById(
+    "miniRate"
+  ).innerHTML =
+    home
+    ?
+    "🏠 Domácí KÁKO: <strong>0 Kč</strong>"
+    :
+    `KÁKO kurz: <strong>${moneyFormat(ratePerMinute)}/min</strong>`;
+
+}
+
+
+/* =====================================================
+   ULOŽENÍ ROZJETÉHO KÁKO
+===================================================== */
+
+function saveActiveKako(){
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  localStorage.setItem(
+    "activeKako",
+    JSON.stringify({
+
+      start:
+        startTime,
+
+      location:
+        activeLocationMode,
+
+      nextReminderAt:
+        nextReminderAt
+
+    })
+  );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+async function startKako(){
+
+  if(
+    isKakoRunning()
+  ){
+
+    showScreen(
+      "timerScreen"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    locationMode === "work"
+    &&
+    ratePerMinute <= 0
+  ){
+
+    alert(
+      "Nejdřív nastav plat v Nastavení."
+    );
+
+
+    showScreen(
+      "settingsScreen"
+    );
+
+
+    return;
+
+  }
+
+
+  /*
+  Web Audio se aktivuje přímo po kliknutí.
+  Nepoužíváme HTML <audio>, aby iPhone nevytvářel
+  mediální panel na zamčené obrazovce.
+  */
+
+  if(
+    soundEnabled
+  ){
+
+    await resumeAudioContext();
+
+    await playStartBell();
+
+  }
+
+
+  startTime =
+    Date.now();
+
+
+  activeLocationMode =
+    locationMode;
+
+
+  if(
+    reminderEnabled
+  ){
+
+    nextReminderAt =
+      startTime
+      +
+      reminderMinutes * 60000;
+
+  }
+
+  else{
+
+    nextReminderAt =
+      null;
+
+  }
+
+
+  resetQuoteDecks();
+
+
+  saveActiveKako();
+
+
+  prepareTimer();
+
+
+  updateTimer();
+
+
+  changeQuote();
+
+
+  startTimers();
+
+
+  updatePrimaryNav();
+
+
+  showScreen(
+    "timerScreen"
+  );
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimers(){
+
+  stopTimers();
+
+
+  timerInterval =
+    setInterval(
+      updateTimer,
+      250
+    );
+
+
+  quoteInterval =
+    setInterval(
+      changeQuote,
+      10000
+    );
+
+}
+
+
+function stopTimers(){
+
+  if(
+    timerInterval
+  ){
+
+    clearInterval(
+      timerInterval
+    );
+
+  }
+
+
+  if(
+    quoteInterval
+  ){
+
+    clearInterval(
+      quoteInterval
+    );
+
+  }
+
+
+  timerInterval = null;
+  quoteInterval = null;
+
+}
+
+
+function prepareTimer(){
+
+  const home =
+    activeLocationMode === "home";
+
+
+  document.getElementById(
+    "timerMode"
+  ).innerText =
+    home
+    ?
+    "🏠 DOMA"
+    :
+    "💼 V PRÁCI";
+
+
+  document.getElementById(
+    "liveLabel"
+  ).innerText =
+    home
+    ?
+    "FINANČNÍ VÝSLEDEK"
+    :
+    "PRÁVĚ JSI PROKADIL";
+
+
+  const money =
+    document.getElementById(
+      "currentMoney"
+    );
+
+
+  money.classList.toggle(
+    "free",
+    home
+  );
+
+
+  money.innerText =
+    home
+    ?
+    "Dnes zadarmo"
+    :
+    "0,00 Kč";
+
+
+  const card =
+    document.getElementById(
+      "quoteCard"
+    );
+
+
+  card.classList.toggle(
+    "home",
+    home
+  );
+
+
+  document.getElementById(
+    "quoteLabel"
+  ).innerText =
+    home
+    ?
+    "DOMÁCÍ HLÁŠENÍ"
+    :
+    "FIREMNÍ HLÁŠENÍ";
+
+}
+
+
+function updateTimer(){
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  const seconds =
+    Math.max(
+      0,
+      Math.floor(
+        (
+          Date.now()
+          -
+          startTime
+        ) / 1000
+      )
+    );
+
+
+  document.getElementById(
+    "timer"
+  ).innerText =
+    formatClock(
+      seconds
+    );
+
+
+  if(
+    activeLocationMode === "work"
+  ){
+
+    document.getElementById(
+      "currentMoney"
+    ).innerText =
+      moneyFormat(
+        seconds /
+        60 *
+        ratePerMinute
+      );
+
+  }
+
+
+  checkReminder();
+
+}
+
+
+/* =====================================================
+   HLÁŠKY
+===================================================== */
+
+function changeQuote(){
+
+  if(
+    !activeLocationMode
+  ){
+    return;
+  }
+
+
+  const quote =
+    getNextQuote();
+
+
+  const card =
+    document.getElementById(
+      "quoteCard"
+    );
+
+
+  document.getElementById(
+    "quoteText"
+  ).innerText =
+    quote;
+
+
+  card.classList.remove(
+    "quote-pop"
+  );
+
+
+  void card.offsetWidth;
+
+
+  card.classList.add(
+    "quote-pop"
+  );
+
+}
+
+
+/* =====================================================
+   UKONČENÍ KÁKO
+===================================================== */
+
+async function stopKako(){
+
+  if(
+    !startTime
+    ||
+    isFinishing
+  ){
+    return;
+  }
+
+
+  isFinishing =
+    true;
+
+
+  const button =
+    document.getElementById(
+      "stopKakoButton"
+    );
+
+
+  button.disabled =
+    true;
+
+
+  button.innerText =
+    "🚽 SPLACHUJU...";
+
+
+  /*
+  Spláchnutí se přehrává přes Web Audio API.
+  Soubor zůstává flush.wav.
+  */
+
+  if(
+    soundEnabled
+  ){
+
+    await resumeAudioContext();
+
+    await playFlushSound();
+
+  }
+
+
+  const end =
+    Date.now();
+
+
+  const currentStart =
+    startTime;
+
+
+  const currentLocation =
+    activeLocationMode;
+
+
+  stopTimers();
+
+
+  closeReminder();
+
+
+  const seconds =
+    Math.max(
+      1,
+      Math.floor(
+        (
+          end -
+          currentStart
+        ) / 1000
+      )
+    );
+
+
+  const money =
+    currentLocation === "work"
+    ?
+    seconds /
+    60 *
+    ratePerMinute
+    :
+    0;
+
+
+  const item = {
+
+    start:
+      currentStart,
+
+    end:
+      end,
+
+    seconds:
+      seconds,
+
+    money:
+      money,
+
+    location:
+      currentLocation || "work"
+
+  };
+
+
+  history.unshift(
+    item
+  );
+
+
+  saveHistory();
+
+
+  localStorage.removeItem(
+    "activeKako"
+  );
+
+
+  lastResult =
+    item;
+
+
+  prepareResult(
+    item
+  );
+
+
+  startTime = null;
+  activeLocationMode = null;
+  nextReminderAt = null;
+
+
+  updateAll();
+
+
+  /*
+  1,2 SEKUNDY NECHÁME ZAZNÍT SPLÁCHNUTÍ
+  NEŽ PŘEJDEME NA VÝSLEDEK.
+  */
+
+  setTimeout(
+    function(){
+
+      showScreen(
+        "resultScreen"
+      );
+
+
+      button.disabled =
+        false;
+
+
+      button.innerText =
+        "💩 DOKAKÁNO";
+
+
+      isFinishing =
+        false;
+
+    },
+
+    soundEnabled
+    ?
+    1200
+    :
+    0
+  );
+
+}
+
+
+/* =====================================================
+   ZRUŠENÍ
+===================================================== */
+
+function cancelKako(){
+
+  if(
+    !confirm(
+      "Zrušit KÁKO bez uložení do historie?"
+    )
+  ){
+    return;
+  }
+
+
+  stopTimers();
+
+
+  closeReminder();
+
+
+  localStorage.removeItem(
+    "activeKako"
+  );
+
+
+  startTime = null;
+  activeLocationMode = null;
+  nextReminderAt = null;
+
+
+  updatePrimaryNav();
+
+
+  showScreen(
+    "homeScreen"
+  );
+
+
+  showToast(
+    "KÁKO zrušeno. Nikdo se nic nedozví."
+  );
+
+}
+
+
+/* =====================================================
+   VÝSLEDEK
+===================================================== */
+
+function prepareResult(item){
+
+  const home =
+    item.location === "home";
+
+
+  document.getElementById(
+    "resultSub"
+  ).innerText =
+    home
+    ?
+    "Domácí projekt dokončen."
+    :
+    "Firemní projekt dokončen.";
+
+
+  document.getElementById(
+    "resultTime"
+  ).innerText =
+    formatMinutes(
+      item.seconds
+    );
+
+
+  document.getElementById(
+    "resultMoneyLabel"
+  ).innerText =
+    home
+    ?
+    "VYDĚLÁNO"
+    :
+    "PROKAKÁNO";
+
+
+  document.getElementById(
+    "resultMoney"
+  ).innerText =
+    home
+    ?
+    "0 Kč"
+    :
+    moneyFormat(
+      item.money
+    );
+
+
+  document.getElementById(
+    "ratingText"
+  ).innerText =
+    getRating(
+      item.seconds
+    );
+
+}
+
+
+function getRating(seconds){
+
+  const minutes =
+    seconds / 60;
+
+
+  if(
+    minutes < 2
+  ){
+    return "⚡ Rychlovka";
+  }
+
+
+  if(
+    minutes < 5
+  ){
+    return "👌 Efektivní vyprazdňovač";
+  }
+
+
+  if(
+    minutes < 10
+  ){
+    return "💩 Solidní výkon";
+  }
+
+
+  if(
+    minutes < 15
+  ){
+    return "📋 Porada vedení";
+  }
+
+
+  if(
+    minutes < 25
+  ){
+    return "👔 Seniorní KÁKO manažer";
+  }
+
+
+  if(
+    minutes < 40
+  ){
+    return "🏆 Ředitel keramického oddělení";
+  }
+
+
+  return "👑 Generální ředitel porcelánu";
+
+}
+
+
+/* =====================================================
+   SDÍLENÍ
+===================================================== */
+
+async function shareResult(){
+
+  if(
+    !lastResult
+  ){
+    return;
+  }
+
+
+  const nickname =
+    localStorage.getItem(
+      "nickname"
+    ) || "Já";
+
+
+  const home =
+    lastResult.location === "home";
+
+
+  const text =
+    home
+    ?
+`💩 KÁKO
+${nickname} právě dokončil domácí KÁKO.
+⏱ ${formatMinutes(lastResult.seconds)}
+💰 Vyděláno: 0 Kč
+🏠 Doma se sere zdarma.`
+    :
+`💩 KÁKO
+${nickname} právě dokončil pracovní KÁKO.
+⏱ ${formatMinutes(lastResult.seconds)}
+💰 Prokakáno: ${moneyFormat(lastResult.money)}
+💼 Firma děkuje za pracovní nasazení.`;
+
+
+  if(
+    navigator.share
+  ){
+
+    try{
+
+      await navigator.share({
+
+        title:
+          "KÁKO",
+
+        text:
+          text
+
+      });
+
+    }
+    catch(error){}
+
+  }
+
+  else{
+
+    try{
+
+      await navigator.clipboard.writeText(
+        text
+      );
+
+
+      showToast(
+        "Výsledek zkopírován"
+      );
+
+    }
+
+    catch(error){
+
+      alert(
+        text
+      );
+
+    }
+
+  }
+
+}
+
+
+/* =====================================================
+   STATISTIKY
+===================================================== */
+
+function filteredHistory(mode){
+
+  const now =
+    new Date();
+
+
+  return history.filter(
+    item => {
+
+      const date =
+        new Date(
+          item.start
+        );
+
+
+      if(
+        mode === "today"
+      ){
+
+        return (
+
+          date.getDate() ===
+          now.getDate()
+
+          &&
+
+          date.getMonth() ===
+          now.getMonth()
+
+          &&
+
+          date.getFullYear() ===
+          now.getFullYear()
+
+        );
+
+      }
+
+
+      if(
+        mode === "month"
+      ){
+
+        return (
+
+          date.getMonth() ===
+          now.getMonth()
+
+          &&
+
+          date.getFullYear() ===
+          now.getFullYear()
+
+        );
+
+      }
+
+
+      return true;
+
+    }
+  );
+
+}
+
+
+function sumSeconds(array){
+
+  return array.reduce(
+    (sum,item) =>
+      sum +
+      (
+        Number(
+          item.seconds
+        ) || 0
+      ),
+    0
+  );
+
+}
+
+
+function sumMoney(array){
+
+  return array.reduce(
+    (sum,item) =>
+      sum +
+      (
+        Number(
+          item.money
+        ) || 0
+      ),
+    0
+  );
+
+}
+
+
+function maxSeconds(array){
+
+  return array.reduce(
+    (max,item) =>
+      Math.max(
+        max,
+        Number(
+          item.seconds
+        ) || 0
+      ),
+    0
+  );
+
+}
+
+
+function getStats(mode){
+
+  const data =
+    filteredHistory(
+      mode
+    );
+
+
+  const home =
+    data.filter(
+      item =>
+        item.location === "home"
+    );
+
+
+  const work =
+    data.filter(
+      item =>
+        item.location === "work"
+    );
+
+
+  return {
+
+    visits:
+      data.length,
+
+    seconds:
+      sumSeconds(
+        data
+      ),
+
+    money:
+      sumMoney(
+        work
+      ),
+
+    homeVisits:
+      home.length,
+
+    homeSeconds:
+      sumSeconds(
+        home
+      ),
+
+    workVisits:
+      work.length,
+
+    workSeconds:
+      sumSeconds(
+        work
+      ),
+
+    longest:
+      maxSeconds(
+        data
+      ),
+
+    mostExpensive:
+      Math.max(
+        0,
+        ...work.map(
+          item =>
+            Number(
+              item.money
+            ) || 0
+        )
+      )
+
+  };
+
+}
+
+
+function getMostVisitsOneDay(){
+
+  const counts = {};
+
+
+  history.forEach(
+    item => {
+
+      const date =
+        new Date(
+          item.start
+        );
+
+
+      const key =
+        date.getFullYear()
+        +
+        "-"
+        +
+        date.getMonth()
+        +
+        "-"
+        +
+        date.getDate();
+
+
+      counts[key] =
+        (
+          counts[key] || 0
+        ) + 1;
+
+    }
+  );
+
+
+  return Math.max(
+    0,
+    ...Object.values(
+      counts
+    )
+  );
+
+}
+
+
+function setStatsMode(mode){
+
+  statsMode =
+    mode;
+
+
+  document
+    .querySelectorAll(
+      ".tab"
+    )
+    .forEach(
+      tab =>
+        tab.classList.remove(
+          "active"
+        )
+    );
+
+
+  const map = {
+
+    today:
+      "todayTab",
+
+    month:
+      "monthTab",
+
+    all:
+      "allTab"
+
+  };
+
+
+  document
+    .getElementById(
+      map[mode]
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  updateStats();
+
+}
+
+
+function updateStats(){
+
+  const stats =
+    getStats(
+      statsMode
+    );
+
+
+  document.getElementById(
+    "statsVisits"
+  ).innerText =
+    stats.visits;
+
+
+  document.getElementById(
+    "statsTime"
+  ).innerText =
+    formatLongTime(
+      stats.seconds
+    );
+
+
+  document.getElementById(
+    "statsMoney"
+  ).innerText =
+    moneyFormat(
+      stats.money
+    );
+
+
+  document.getElementById(
+    "homeVisits"
+  ).innerText =
+    stats.homeVisits +
+    "×";
+
+
+  document.getElementById(
+    "homeTime"
+  ).innerText =
+    formatLongTime(
+      stats.homeSeconds
+    );
+
+
+  document.getElementById(
+    "workVisits"
+  ).innerText =
+    stats.workVisits +
+    "×";
+
+
+  document.getElementById(
+    "workTime"
+  ).innerText =
+    formatLongTime(
+      stats.workSeconds
+    );
+
+
+  document.getElementById(
+    "longestKako"
+  ).innerText =
+    formatMinutes(
+      stats.longest
+    );
+
+
+  document.getElementById(
+    "mostExpensive"
+  ).innerText =
+    moneyFormat(
+      stats.mostExpensive
+    );
+
+
+  document.getElementById(
+    "mostVisitsDay"
+  ).innerText =
+    getMostVisitsOneDay();
+
+}
+
+
+/* =====================================================
+   ACHIEVEMENTY
+===================================================== */
+
+function renderAchievements(){
+
+  const stats =
+    getStats(
+      "all"
+    );
+
+
+  const box =
+    document.getElementById(
+      "achievementsList"
+    );
+
+
+  box.innerHTML = "";
+
+
+  let unlockedCount = 0;
+
+
+  achievementsData.forEach(
+    achievement => {
+
+      const unlocked =
+        achievement.test(
+          stats
+        );
+
+
+      if(
+        unlocked
+      ){
+
+        unlockedCount++;
+
+      }
+
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.className =
+        "achievement"
+        +
+        (
+          unlocked
+          ?
+          " unlocked"
+          :
+          ""
+        );
+
+
+      div.innerHTML = `
+
+        <div class="achievement-icon">
+
+          ${
+            unlocked
+            ?
+            achievement.icon
+            :
+            "🔒"
+          }
+
+        </div>
+
+        <div>
+
+          <strong>
+            ${achievement.title}
+          </strong>
+
+          <small>
+            ${achievement.text}
+          </small>
+
+        </div>
+
+      `;
+
+
+      box.appendChild(
+        div
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "achievementProgress"
+  ).innerText =
+    unlockedCount
+    +
+    " / "
+    +
+    achievementsData.length;
+
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+function updateHome(){
+
+  calculateRate();
+
+
+  updateLocation();
+
+
+  const stats =
+    getStats(
+      "today"
+    );
+
+
+  document.getElementById(
+    "todayVisits"
+  ).innerText =
+    stats.visits;
+
+
+  document.getElementById(
+    "todayTime"
+  ).innerText =
+    formatLongTime(
+      stats.seconds
+    );
+
+
+  document.getElementById(
+    "todayMoney"
+  ).innerText =
+    moneyFormat(
+      stats.money
+    );
+
+
+  const nickname =
+    localStorage.getItem(
+      "nickname"
+    );
+
+
+  document.getElementById(
+    "helloText"
+  ).innerText =
+    nickname
+    ?
+    nickname +
+    ", každá minuta se počítá."
+    :
+    "Každá minuta se počítá.";
+
+}
+
+
+/* =====================================================
+   HISTORIE
+===================================================== */
+
+function renderHistory(){
+
+  const box =
+    document.getElementById(
+      "historyList"
+    );
+
+
+  if(
+    history.length === 0
+  ){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        Zatím žádné KÁKO.<br>
+        To chce napravit. 💩
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  box.innerHTML = "";
+
+
+  history.forEach(
+    (item,index) => {
+
+      const date =
+        new Date(
+          item.start
+        );
+
+
+      const dateText =
+        date.toLocaleDateString(
+          "cs-CZ"
+        );
+
+
+      const timeText =
+        date.toLocaleTimeString(
+          "cs-CZ",
+          {
+            hour:"2-digit",
+            minute:"2-digit"
+          }
+        );
+
+
+      const home =
+        item.location === "home";
+
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.className =
+        "history-item";
+
+
+      div.innerHTML = `
+
+        <div class="history-top">
+
+          <span>
+            💩 ${dateText}
+          </span>
+
+          <span>
+            ${timeText}
+          </span>
+
+        </div>
+
+
+        <div class="history-bottom">
+
+          <span>
+            ⏱ ${formatMinutes(item.seconds)}
+          </span>
+
+          <strong class="green">
+
+            ${
+              home
+              ?
+              "0 Kč"
+              :
+              moneyFormat(
+                item.money
+              )
+            }
+
+          </strong>
+
+          <button
+            class="delete-btn"
+            onclick="deleteHistory(${index})"
+          >
+            🗑
+          </button>
+
+        </div>
+
+
+        <div class="history-place">
+
+          ${
+            home
+            ?
+            "🏠 DOMA"
+            :
+            "💼 V PRÁCI"
+          }
+
+        </div>
+
+      `;
+
+
+      box.appendChild(
+        div
+      );
+
+    }
+  );
+
+}
+
+
+function deleteHistory(index){
+
+  if(
+    !confirm(
+      "Smazat tento záznam?"
+    )
+  ){
+    return;
+  }
+
+
+  history.splice(
+    index,
+    1
+  );
+
+
+  saveHistory();
+
+
+  updateAll();
+
+
+  showToast(
+    "Záznam smazán"
+  );
+
+}
+
+
+function clearHistory(){
+
+  if(
+    !confirm(
+      "Opravdu smazat celou historii?"
+    )
+  ){
+    return;
+  }
+
+
+  if(
+    !confirm(
+      "Fakt úplně všechno? Tohle nejde vrátit."
+    )
+  ){
+    return;
+  }
+
+
+  history = [];
+
+
+  saveHistory();
+
+
+  updateAll();
+
+
+  showToast(
+    "Historie byla smazána"
+  );
+
+}
+
+
+function saveHistory(){
+
+  localStorage.setItem(
+    "kakoHistory",
+    JSON.stringify(
+      history
+    )
+  );
+
+}
+
+
+/* =====================================================
+   REMINDER
+===================================================== */
+
+function updateReminderUI(){
+
+  const button =
+    document.getElementById(
+      "reminderToggle"
+    );
+
+
+  button.innerText =
+    reminderEnabled
+    ?
+    "ZAP"
+    :
+    "VYP";
+
+
+  button.classList.toggle(
+    "on",
+    reminderEnabled
+  );
+
+
+  document.getElementById(
+    "reminderTimeBox"
+  ).style.display =
+    reminderEnabled
+    ?
+    "block"
+    :
+    "none";
+
+
+  document.getElementById(
+    "reminderMinutesSelect"
+  ).value =
+    String(
+      reminderMinutes
+    );
+
+}
+
+
+function toggleReminder(){
+
+  reminderEnabled =
+    !reminderEnabled;
+
+
+  localStorage.setItem(
+    "reminderEnabled",
+    String(
+      reminderEnabled
+    )
+  );
+
+
+  updateReminderUI();
+
+
+  if(
+    isKakoRunning()
+  ){
+
+    nextReminderAt =
+      reminderEnabled
+      ?
+      Date.now()
+      +
+      reminderMinutes * 60000
+      :
+      null;
+
+
+    saveActiveKako();
+
+  }
+
+}
+
+
+function checkReminder(){
+
+  if(
+    !startTime
+    ||
+    !reminderEnabled
+    ||
+    !nextReminderAt
+  ){
+    return;
+  }
+
+
+  if(
+    Date.now() >=
+    nextReminderAt
+  ){
+
+    nextReminderAt =
+      null;
+
+
+    saveActiveKako();
+
+
+    showReminder();
+
+  }
+
+}
+
+
+function showReminder(){
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  const seconds =
+    Math.floor(
+      (
+        Date.now()
+        -
+        startTime
+      ) / 1000
+    );
+
+
+  document.getElementById(
+    "reminderRunningTime"
+  ).innerText =
+    formatMinutes(
+      seconds
+    );
+
+
+  document.getElementById(
+    "reminderOverlay"
+  ).classList.add(
+    "show"
+  );
+
+}
+
+
+function closeReminder(){
+
+  document.getElementById(
+    "reminderOverlay"
+  ).classList.remove(
+    "show"
+  );
+
+}
+
+
+function continueKako(){
+
+  closeReminder();
+
+
+  nextReminderAt =
+    Date.now()
+    +
+    15 * 60000;
+
+
+  saveActiveKako();
+
+
+  showToast(
+    "💩 Kontrola zase za 15 minut."
+  );
+
+}
+
+
+function finishFromReminder(){
+
+  closeReminder();
+
+
+  stopKako();
+
+}
+
+
+/* =====================================================
+   OBRAZOVKY
+===================================================== */
+
+function showScreen(id){
+
+  document
+    .querySelectorAll(
+      ".screen"
+    )
+    .forEach(
+      screen =>
+        screen.classList.remove(
+          "active"
+        )
+    );
+
+
+  document
+    .getElementById(
+      id
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  document
+    .querySelectorAll(
+      ".nav-btn"
+    )
+    .forEach(
+      button =>
+        button.classList.remove(
+          "active"
+        )
+    );
+
+
+  if(
+    id === "homeScreen"
+    ||
+    id === "timerScreen"
+    ||
+    id === "resultScreen"
+  ){
+
+    document.getElementById(
+      "navPrimary"
+    ).classList.add(
+      "active"
+    );
+
+  }
+
+
+  if(
+    id === "statsScreen"
+  ){
+
+    document.getElementById(
+      "navStats"
+    ).classList.add(
+      "active"
+    );
+
+
+    updateStats();
+
+  }
+
+
+  if(
+    id === "achievementsScreen"
+  ){
+
+    document.getElementById(
+      "navAchievements"
+    ).classList.add(
+      "active"
+    );
+
+
+    renderAchievements();
+
+  }
+
+
+  if(
+    id === "historyScreen"
+  ){
+
+    document.getElementById(
+      "navHistory"
+    ).classList.add(
+      "active"
+    );
+
+
+    renderHistory();
+
+  }
+
+
+  if(
+    id === "settingsScreen"
+  ){
+
+    document.getElementById(
+      "navSettings"
+    ).classList.add(
+      "active"
+    );
+
+
+    updateSoundUI();
+
+
+    updateReminderUI();
+
+  }
+
+
+  updatePrimaryNav();
+
+}
+
+
+/* =====================================================
+   OBNOVENÍ ROZJETÉHO KÁKO PO ZAVŘENÍ APP
+===================================================== */
+
+function restoreKako(){
+
+  const raw =
+    localStorage.getItem(
+      "activeKako"
+    );
+
+
+  if(
+    !raw
+  ){
+    return;
+  }
+
+
+  try{
+
+    const saved =
+      JSON.parse(
+        raw
+      );
+
+
+    startTime =
+      Number(
+        saved.start
+      );
+
+
+    activeLocationMode =
+      saved.location || "work";
+
+
+    nextReminderAt =
+      Number(
+        saved.nextReminderAt
+      ) || null;
+
+  }
+
+  catch(error){
+
+    localStorage.removeItem(
+      "activeKako"
+    );
+
+
+    return;
+
+  }
+
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  if(
+    reminderEnabled
+    &&
+    !nextReminderAt
+  ){
+
+    nextReminderAt =
+      startTime
+      +
+      reminderMinutes * 60000;
+
+  }
+
+
+  resetQuoteDecks();
+
+
+  prepareTimer();
+
+
+  updateTimer();
+
+
+  changeQuote();
+
+
+  startTimers();
+
+
+  showScreen(
+    "timerScreen"
+  );
+
+}
+
+
+/* =====================================================
+   FORMÁTOVÁNÍ
+===================================================== */
+
+function moneyFormat(value){
+
+  return Number(
+    value || 0
+  )
+  .toLocaleString(
+    "cs-CZ",
+    {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }
+  )
+  +
+  " Kč";
+
+}
+
+
+function formatClock(seconds){
+
+  seconds =
+    Math.max(
+      0,
+      Number(
+        seconds
+      ) || 0
+    );
+
+
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  return (
+
+    String(
+      hours
+    ).padStart(
+      2,
+      "0"
+    )
+
+    +
+
+    ":"
+
+    +
+
+    String(
+      minutes
+    ).padStart(
+      2,
+      "0"
+    )
+
+    +
+
+    ":"
+
+    +
+
+    String(
+      secs
+    ).padStart(
+      2,
+      "0"
+    )
+
+  );
+
+}
+
+
+function formatMinutes(seconds){
+
+  seconds =
+    Math.max(
+      0,
+      Number(
+        seconds
+      ) || 0
+    );
+
+
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  if(
+    hours > 0
+  ){
+
+    return (
+
+      hours
+
+      +
+
+      ":"
+
+      +
+
+      String(
+        minutes
+      ).padStart(
+        2,
+        "0"
+      )
+
+      +
+
+      ":"
+
+      +
+
+      String(
+        secs
+      ).padStart(
+        2,
+        "0"
+      )
+
+    );
+
+  }
+
+
+  return (
+
+    String(
+      minutes
+    ).padStart(
+      2,
+      "0"
+    )
+
+    +
+
+    ":"
+
+    +
+
+    String(
+      secs
+    ).padStart(
+      2,
+      "0"
+    )
+
+  );
+
+}
+
+
+function formatLongTime(seconds){
+
+  seconds =
+    Number(
+      seconds
+    ) || 0;
+
+
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  if(
+    hours > 0
+  ){
+
+    return (
+      hours
+      +
+      " h "
+      +
+      minutes
+      +
+      " min"
+    );
+
+  }
+
+
+  return (
+    minutes
+    +
+    " min"
+  );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(text){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.innerText =
+    text;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    window.toastTimer
+  );
+
+
+  window.toastTimer =
+    setTimeout(
+      function(){
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2200
+    );
+
+}
+
+
+/* =====================================================
+   UPDATE VŠEHO
+===================================================== */
+
+function updateAll(){
+
+  updateHome();
+
+  updateStats();
+
+  renderAchievements();
+
+  renderHistory();
+
+  updatePrimaryNav();
+
+  updateSoundUI();
+
+  updateReminderUI();
+
+}
+
+
+/* =====================================================
+   KDYŽ SE APP VRÁTÍ Z POZADÍ
+===================================================== */
+
+document.addEventListener(
+  "visibilitychange",
+  function(){
+
+    clearMediaSession();
+
+    if(
+      document.visibilityState === "visible"
+      &&
+      startTime
+    ){
+
+      updateTimer();
+
+      checkReminder();
+
+    }
+
+  }
 );
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+resetQuoteDecks();
+
+loadSettings();
+
+updateAll();
+
+if(
+  soundEnabled
+){
+  preloadSounds();
+}
+
+clearMediaSession();
+
+restoreKako();
+
+</script>
+
+</body>
+</html>
