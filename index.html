@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 5.2 – HRY</title>
+<title>KÁKO 5.7 – HRY</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1579,6 +1579,71 @@ body.arcade-game-active #gamesScreen #arcadeWhackTip{
   body.arcade-game-active #gamesScreen #arcadeOneButton{height:54px;min-height:54px}
 }
 
+
+/* ================================================================
+   KÁKO 5.7 – ovladač hada číslo 13: jeden kompaktní D-pad
+   Velká dotyková ramena, minimální zbytečné okraje, větší hrací plocha.
+   ================================================================ */
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+  display:grid!important;
+  grid-template-columns:repeat(3,60px)!important;
+  grid-template-rows:repeat(3,56px)!important;
+  gap:0!important;
+  width:180px!important;
+  max-width:180px!important;
+  margin:0 auto!important;
+  position:relative;
+  align-self:center!important;
+  isolation:isolate;
+}
+#gamesScreen #arcadeSnakeControls[hidden]{display:none!important;}
+#gamesScreen #arcadeSnakeControls:before{
+  content:"";grid-column:2;grid-row:2;
+  display:block;background:#3b2416;
+  border:2px solid #9b6b32;
+  box-shadow:inset 0 -3px 0 #22140d;
+  z-index:0;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir{
+  width:60px!important;height:56px!important;min-height:56px!important;
+  border:2px solid #9b6b32!important;
+  border-radius:0!important;
+  padding:0!important;z-index:1;box-shadow:inset 0 -3px 0 #22140d;
+  transform:none;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-up{grid-column:2!important;grid-row:1!important;border-radius:16px 16px 0 0!important;border-bottom:0!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-left{grid-column:1!important;grid-row:2!important;border-radius:16px 0 0 16px!important;border-right:0!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-right{grid-column:3!important;grid-row:2!important;border-radius:0 16px 16px 0!important;border-left:0!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-down{grid-column:2!important;grid-row:3!important;border-radius:0 0 16px 16px!important;border-top:0!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon{width:33px!important;height:33px!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.pressed,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button:active{background:var(--yellow)!important;color:var(--brown)!important;}
+@media(max-height:680px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+    grid-template-rows:repeat(3,48px)!important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir{
+    height:48px!important;min-height:48px!important;
+  }
+}
+/* Uspořádání her – úchop jen při zapnutém řazení. */
+.arcade-sort-header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:13px;}
+.arcade-sort-header span{font-size:11px;color:var(--muted);font-weight:700;line-height:1.35;flex:1;}
+.arcade-sort-toggle{flex:0 0 auto;border:0;border-radius:12px;background:var(--brown);color:#ffdf87;padding:11px 12px;font-size:11px;font-weight:900;min-height:44px;}
+.arcade-sort-row{display:flex;align-items:stretch;gap:7px;min-width:0;}
+.arcade-sort-row .arcade-card{flex:1;min-width:0;}
+.arcade-sort-handle{display:none;flex:0 0 58px;border:2px solid #a67e53;border-radius:16px;background:var(--yellow);color:var(--brown);font-weight:900;font-size:33px;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+.arcade-sorting .arcade-sort-handle{display:block;}
+.arcade-sorting .arcade-card{pointer-events:none;opacity:.92;}
+.arcade-sorting .arcade-sort-row.arcade-dragging{background:#ffe2a0;border-radius:20px;outline:2px dashed #9b6b32;z-index:10;}
+@media(max-width:350px){.arcade-sort-header{align-items:stretch;flex-direction:column;}.arcade-sort-toggle{align-self:flex-end;}}
+
+
+.arcade-sort-row{position:relative;}
+.arcade-sorting .arcade-sort-row.arcade-dragging{z-index:20;opacity:.93;box-shadow:0 7px 18px rgba(59,36,22,.15);}
+.arcade-sorting .arcade-sort-row.arcade-drop-target{border-top:4px solid #ba862b;}
 </style>
 </head>
 
@@ -2190,7 +2255,11 @@ body.arcade-game-active #gamesScreen #arcadeWhackTip{
     </div>
     <div id="arcadeTimer" class="arcade-timer"></div>
     <div id="arcadeLibrary" class="arcade-library">
-      <div class="arcade-cards">
+      <div class="arcade-sort-header">
+        <span id="arcadeSortHint">Pořadí her si můžeš upravit podle sebe.</span>
+        <button type="button" id="arcadeSortToggle" class="arcade-sort-toggle" aria-pressed="false">↕ SEŘADIT HRY</button>
+      </div>
+      <div class="arcade-cards" id="arcadeCards">
         <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('snake')">
           <span class="arcade-card-icon">💩</span>
           <span class="arcade-card-info"><span class="arcade-card-name">KÁKOHAD</span><span class="arcade-card-desc">Sbírej toaletní papír, rosti a nenaraz sám do sebe.</span><span class="arcade-card-best" id="arcBestSnake">Rekord: 0</span></span>
@@ -2419,6 +2488,7 @@ Nezapomněl jsi ho ukončit?
 
 <script>
 
+const KAKO_MAX_DURATION_MS = 30 * 60 * 1000; // KÁKO 5.7: tvrdý časový limit
 let timerInterval = null;
 let quoteInterval = null;
 
@@ -4126,9 +4196,10 @@ function prepareTimer(){
 
 function updateTimer(){
 
-  if(
-    !startTime
-  ){
+  if(!startTime) return;
+  // Wall-clock based: reliable when Safari throttles/suspends JavaScript in background.
+  if(Date.now() - startTime >= KAKO_MAX_DURATION_MS && !isFinishing){
+    finalizeKako(true);
     return;
   }
 
@@ -4136,13 +4207,7 @@ function updateTimer(){
   const seconds =
     Math.max(
       0,
-      Math.floor(
-        (
-          Date.now()
-          -
-          startTime
-        ) / 1000
-      )
+      Math.min(1800,Math.floor((Date.now() - startTime) / 1000))
     );
 
 
@@ -4217,166 +4282,59 @@ function changeQuote(){
 }
 
 
-/* STOP */
-
-async function stopKako(){
-
-  if(
-    !startTime
-    ||
-    isFinishing
-  ){
-    return;
-  }
-
-
-  isFinishing =
-    true;
-
-
-  const button =
-    document.getElementById(
-      "stopKakoButton"
-    );
-
-
-  button.disabled =
-    true;
-
-
-  button.innerText =
-    "🚽 SPLACHUJU...";
-
-
-  if(
-    soundEnabled
-  ){
-
-    await resumeAudioContext();
-
-    await playFlushSound();
-
-  }
-
-
-  const end =
-    Date.now();
-
-
-  const currentStart =
-    startTime;
-
-
-  const currentLocation =
-    activeLocationMode;
-
-
+/* STOP – KÁKO 5.7: jediný zápis, nejvýše 30 minut */
+function finalizeKako(automatic = false){
+  if(!startTime) return false;
+  // Manual stop sets isFinishing before playing the flush; auto-stop cannot race it.
+  if(automatic && isFinishing) return false;
+  isFinishing = true;
+  const currentStart = startTime;
+  const currentLocation = activeLocationMode || 'work';
+  const end = Math.min(Date.now(), currentStart + KAKO_MAX_DURATION_MS);
+  const seconds = Math.min(1800, Math.max(1, Math.floor((end-currentStart)/1000)));
+  const money = currentLocation === 'work' ? seconds / 60 * ratePerMinute : 0;
+  const item = {start:currentStart, end, seconds, money, location:currentLocation};
+  // Clear running state before rendering, so another tick/visibility event cannot duplicate the entry.
   stopTimers();
   closeReminder();
-
-
-  const seconds =
-    Math.max(
-      1,
-      Math.floor(
-        (
-          end -
-          currentStart
-        ) / 1000
-      )
-    );
-
-
-  const money =
-    currentLocation === "work"
-    ?
-    seconds /
-    60 *
-    ratePerMinute
-    :
-    0;
-
-
-  const item = {
-
-    start:
-      currentStart,
-
-    end:
-      end,
-
-    seconds:
-      seconds,
-
-    money:
-      money,
-
-    location:
-      currentLocation || "work"
-
-  };
-
-
-  history.unshift(
-    item
-  );
-
-
-  saveHistory();
-
-
-  localStorage.removeItem(
-    "activeKako"
-  );
-
-
-  lastResult =
-    item;
-
-
-  prepareResult(
-    item
-  );
-
-
   startTime = null;
   activeLocationMode = null;
   nextReminderAt = null;
-
-
+  try {localStorage.removeItem('activeKako');} catch(e) {}
+  history.unshift(item);
+  saveHistory();
+  lastResult = item;
+  prepareResult(item);
   updateAll();
-
-
-  setTimeout(
-    function(){
-
-      showScreen(
-        "resultScreen"
-      );
-
-
-      button.disabled =
-        false;
-
-
-      button.innerText =
-        "💩 DOKAKÁNO";
-
-
-      isFinishing =
-        false;
-
-    },
-
-    soundEnabled
-    ?
-    1200
-    :
-    0
-  );
-
+  const button=document.getElementById('stopKakoButton');
+  button.disabled=false;
+  button.innerText='💩 DOKAKÁNO';
+  isFinishing=false;
+  if(automatic){
+    const invite=document.getElementById('arcadeInvite');
+    if(invite) invite.hidden=true;
+    // Never forcibly interrupt an arcade game: let the player finish the level.
+    const inArcade=document.getElementById('gamesScreen').classList.contains('active');
+    if(!inArcade) showScreen('resultScreen');
+    showToast('⏱ KÁKO automaticky ukončeno po 30 minutách. Výsledek uložen.');
+  } else {
+    showScreen('resultScreen');
+  }
+  return true;
 }
 
+async function stopKako(){
+  if(!startTime || isFinishing) return;
+  isFinishing=true;
+  const button=document.getElementById('stopKakoButton');
+  button.disabled=true;
+  button.innerText='🚽 SPLACHUJU...';
+  // No extra timer is created. Absolute start timestamp still limits the saved duration.
+  if(soundEnabled){
+    try{await resumeAudioContext(); await playFlushSound();}catch(e){}
+  }
+  finalizeKako(false);
+}
 
 /* ZRUŠENÍ */
 
@@ -5769,16 +5727,17 @@ function restoreKako(){
   }
 
 
+  if(Date.now()-startTime >= KAKO_MAX_DURATION_MS){
+    finalizeKako(true);
+    return;
+  }
   resetQuoteDecks();
   prepareTimer();
   updateTimer();
   changeQuote();
   startTimers();
 
-
-  showScreen(
-    "timerScreen"
-  );
+  showScreen("timerScreen");
 
 }
 
@@ -6079,6 +6038,8 @@ function updateAll(){
 }
 
 
+window.addEventListener('pageshow', function(){if(startTime)updateTimer();});
+window.addEventListener('focus', function(){if(startTime)updateTimer();});
 document.addEventListener(
   "visibilitychange",
   function(){
@@ -6292,6 +6253,7 @@ restoreKako();
   }
   function onScreenChange(id){
     // Změna hlavní obrazovky nesmí ponechat otevřenou celoplošnou hru.
+    if(id!=='gamesScreen' && sorting)setSorting(false);
     if(id!=='gamesScreen' && game)back();
     if(id==='gamesScreen'){updateCards();updateKakoTime();}
   }
@@ -6744,6 +6706,87 @@ restoreKako();
   });
   $('arcadeSound').textContent=sound?'🔊 Zvuk':'🔇 Zvuk';
   const dpr=Math.min(window.devicePixelRatio||1,2.5);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+  // KÁKO 5.7 – reorder games with an accessible drag handle, persisted only on drop.
+  const arcadeOrderKey='kakoArcadeGameOrderV1';
+  const allowedGames=['snake','invaders','racing','whack','flappy','run'];
+  const arcadeCards=$('arcadeCards');
+  let sorting=false, dragRow=null, dragPointer=null, dragMoved=false;
+  const itemFor=id=>arcadeCards.querySelector('.arcade-sort-row[data-game="'+id+'"]');
+  for(const card of Array.from(arcadeCards.querySelectorAll(':scope > .arcade-card'))){
+    const found=card.getAttribute('onclick').match(/open\('([^']+)'\)/);
+    if(!found || !allowedGames.includes(found[1]))continue;
+    const row=document.createElement('div');
+    row.className='arcade-sort-row';row.dataset.game=found[1];
+    const handle=document.createElement('button');
+    handle.type='button';handle.className='arcade-sort-handle';
+    handle.setAttribute('aria-label','Podrž a přesuň '+card.querySelector('.arcade-card-name').textContent);
+    handle.textContent='☰';
+    arcadeCards.insertBefore(row,card);
+    row.appendChild(card);row.appendChild(handle);
+  }
+  function loadGameOrder(){
+    try{
+      const saved=JSON.parse(localStorage.getItem(arcadeOrderKey));
+      if(Array.isArray(saved)){
+        for(const id of saved){if(allowedGames.includes(id) && itemFor(id))arcadeCards.appendChild(itemFor(id));}
+      }
+    }catch(e){}
+  }
+  function persistGameOrder(){
+    const order=Array.from(arcadeCards.children).map(row=>row.dataset.game).filter(id=>allowedGames.includes(id));
+    try{localStorage.setItem(arcadeOrderKey,JSON.stringify(order));}catch(e){}
+  }
+  function setSorting(enabled){
+    sorting=!!enabled;
+    dragRow=null;dragPointer=null;
+    $('arcadeLibrary').classList.toggle('arcade-sorting',sorting);
+    $('arcadeSortToggle').textContent=sorting?'✓ HOTOVO':'↕ SEŘADIT HRY';
+    $('arcadeSortToggle').setAttribute('aria-pressed',String(sorting));
+    $('arcadeSortHint').textContent=sorting?'Podrž ☰ a přetáhni hru na nové místo.':'Pořadí her si můžeš upravit podle sebe.';
+    if(!sorting)persistGameOrder();
+  }
+  $('arcadeSortToggle').addEventListener('click',()=>setSorting(!sorting));
+  arcadeCards.addEventListener('click',e=>{
+    if(sorting && e.target.closest('.arcade-card')){e.preventDefault();e.stopPropagation();}
+  },true);
+  let dragStartY=0,dropBefore=null;
+  arcadeCards.addEventListener('pointerdown',e=>{
+    const handle=e.target.closest('.arcade-sort-handle');
+    if(!sorting || !handle || dragRow)return;
+    e.preventDefault();
+    dragRow=handle.closest('.arcade-sort-row');dragPointer=e.pointerId;
+    dragStartY=e.clientY;dropBefore=null;
+    dragRow.classList.add('arcade-dragging');
+    try{handle.setPointerCapture(e.pointerId);}catch(err){}
+  });
+  arcadeCards.addEventListener('pointermove',e=>{
+    if(!dragRow || e.pointerId!==dragPointer)return;
+    e.preventDefault();
+    const dy=e.clientY-dragStartY;
+    dragRow.style.transform='translateY('+dy+'px)';
+    const rows=Array.from(arcadeCards.children).filter(row=>row!==dragRow);
+    dropBefore=rows.find(row=>e.clientY < row.getBoundingClientRect().top+row.getBoundingClientRect().height/2) || null;
+    for(const row of rows)row.classList.toggle('arcade-drop-target',row===dropBefore);
+    // Touch scrolling is disabled on the handle; scroll the list near the screen edges.
+    if(e.clientY<90)window.scrollBy(0,-8);
+    else if(e.clientY>window.innerHeight-90)window.scrollBy(0,8);
+  },{passive:false});
+  function endDrag(e){
+    if(!dragRow || (e && e.pointerId!==dragPointer))return;
+    const moving=dragRow;
+    moving.style.transform='';moving.classList.remove('arcade-dragging');
+    for(const row of arcadeCards.children)row.classList.remove('arcade-drop-target');
+    dragRow=null;dragPointer=null;
+    // Do not alter the DOM during pointer capture: Safari otherwise cancels dragging.
+    if(dropBefore && dropBefore!==moving)arcadeCards.insertBefore(moving,dropBefore);
+    else if(!dropBefore)arcadeCards.appendChild(moving);
+    dropBefore=null;
+    persistGameOrder();
+  }
+  arcadeCards.addEventListener('pointerup',endDrag);
+  arcadeCards.addEventListener('pointercancel',endDrag);
+  arcadeCards.addEventListener('lostpointercapture',endDrag);
+  loadGameOrder();
   window.KAKO_ARCADE={open,back,start,pause,onScreenChange,invite};
   updateCards();updateKakoTime();setInterval(updateKakoTime,1000);
   requestAnimationFrame(render);
