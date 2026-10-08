@@ -1038,6 +1038,127 @@ button{
 .arcade-game-tools{display:flex;justify-content:center;gap:8px;margin:12px auto 4px;}
 .arcade-tool{background:var(--brown);border:0;border-radius:11px;color:white;padding:11px 13px;font-weight:800;font-size:12px;}
 
+
+/* =====================================================
+   KÁKO HRY 5.1: fullscreen hry, viditelné ZPĚT,
+   ovládání vždy na displeji, bez spodní navigace.
+===================================================== */
+body.arcade-game-active{overflow:hidden;overscroll-behavior:none;}
+body.arcade-game-active #bottomNav{display:none!important;}
+body.arcade-game-active #gamesScreen{height:100dvh;overflow:hidden;}
+body.arcade-game-active #gamesScreen .arcade-app{
+  position:fixed;inset:0;z-index:1300;
+  width:100%;max-width:430px;margin:0 auto;
+  height:100dvh;min-height:0;overflow:hidden;
+  display:flex;flex-direction:column;
+  padding:calc(6px + env(safe-area-inset-top)) 10px calc(7px + env(safe-area-inset-bottom));
+  background:var(--cream);
+}
+body.arcade-game-active #gamesScreen .arcade-header,
+body.arcade-game-active #gamesScreen #arcadeTimer{display:none!important;}
+body.arcade-game-active #arcadeGame{
+  flex:1 1 auto;min-height:0;display:flex;flex-direction:column;
+  gap:5px;width:100%;
+}
+body.arcade-game-active .arcade-back{
+  flex:0 0 auto;width:100%;min-height:39px;
+  background:var(--yellow);color:var(--brown);
+  border-radius:12px;padding:8px 13px;
+  text-align:left;font-size:14px;font-weight:900;
+}
+body.arcade-game-active .arcade-game-head{
+  flex:0 0 auto;margin:0;min-height:30px;
+}
+body.arcade-game-active .arcade-game-name{font-size:19px;}
+body.arcade-game-active .arcade-sound{padding:6px 10px;font-size:11px;}
+body.arcade-game-active .arcade-hud{
+  flex:0 0 auto;margin:0;gap:5px;
+}
+body.arcade-game-active .arcade-hud-item{padding:5px 3px;border-radius:9px;}
+body.arcade-game-active .arcade-hud-item small{font-size:8px;}
+body.arcade-game-active .arcade-hud-item strong{font-size:17px;margin-top:1px;}
+body.arcade-game-active .arcade-canvas-shell{
+  flex:1 1 auto;min-height:0;width:100%;max-width:none;
+  aspect-ratio:auto;margin:0;border-width:2px;
+  display:flex;align-items:center;justify-content:center;
+}
+body.arcade-game-active #arcadeCanvas{
+  flex:0 0 auto;max-width:100%;max-height:100%;
+  touch-action:none;
+}
+body.arcade-game-active .arcade-controls{
+  flex:0 0 auto;width:100%;max-width:none;margin:0;
+}
+body.arcade-game-active .arcade-snake-buttons{
+  grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;
+}
+body.arcade-game-active .arcade-snake-buttons .arcade-up,
+body.arcade-game-active .arcade-snake-buttons .arcade-left,
+body.arcade-game-active .arcade-snake-buttons .arcade-down,
+body.arcade-game-active .arcade-snake-buttons .arcade-right{
+  grid-column:auto;grid-row:auto;
+}
+body.arcade-game-active .arcade-side-buttons{gap:5px;}
+body.arcade-game-active .arcade-button{
+  height:48px;min-height:48px;font-size:23px;border-radius:11px;
+}
+body.arcade-game-active .arcade-side-buttons .arcade-action{font-size:14px;}
+body.arcade-game-active .arcade-control-help{display:none;}
+body.arcade-game-active .arcade-game-tools{
+  flex:0 0 auto;display:flex;gap:6px;margin:0;
+}
+body.arcade-game-active .arcade-tool{
+  flex:1;padding:8px 9px;min-height:34px;
+  border-radius:9px;font-size:12px;
+}
+body.arcade-game-active .arcade-overlay{
+  padding:8px;
+}
+body.arcade-game-active .arcade-overlay-icon{font-size:34px;}
+body.arcade-game-active .arcade-overlay-title{font-size:23px;margin:7px 0;}
+body.arcade-game-active .arcade-overlay-text{font-size:12px;line-height:1.35;margin:8px 0;}
+body.arcade-game-active .arcade-overlay-button{padding:11px 10px;}
+@media(max-height:660px){
+  body.arcade-game-active #gamesScreen .arcade-app{
+    padding-top:calc(3px + env(safe-area-inset-top));
+    padding-bottom:calc(3px + env(safe-area-inset-bottom));
+  }
+  body.arcade-game-active #arcadeGame{gap:3px;}
+  body.arcade-game-active .arcade-back{min-height:34px;padding:6px 10px;}
+  body.arcade-game-active .arcade-game-head{min-height:27px;}
+  body.arcade-game-active .arcade-game-name{font-size:17px;}
+  body.arcade-game-active .arcade-hud-item{padding:3px 2px;}
+  body.arcade-game-active .arcade-button{min-height:42px;height:42px;}
+  body.arcade-game-active .arcade-tool{min-height:30px;padding:5px 8px;}
+  body.arcade-game-active .arcade-overlay-icon{font-size:27px;}
+  body.arcade-game-active .arcade-overlay-title{font-size:19px;margin:5px 0;}
+  body.arcade-game-active .arcade-overlay-text{font-size:11px;margin:5px 0;}
+}
+
+/* Dialog po zahájení aktivity: časomíra se už spustila. */
+.arcade-invite[hidden]{display:none!important;}
+.arcade-invite{
+  position:fixed;inset:0;z-index:3100;display:flex;
+  align-items:center;justify-content:center;
+  background:rgba(30,16,8,.77);backdrop-filter:blur(5px);
+  padding:20px;
+}
+.arcade-invite-dialog{
+  width:100%;max-width:370px;
+  background:var(--cream);border-radius:25px;
+  padding:25px 20px;text-align:center;color:var(--brown);
+  box-shadow:0 18px 55px rgba(0,0,0,.35);
+}
+.arcade-invite-icon{font-size:45px;line-height:1.1;}
+.arcade-invite-dialog h2{font-size:25px;font-weight:900;margin:10px 0;line-height:1.2;}
+.arcade-invite-dialog p{font-size:14px;font-weight:700;line-height:1.5;color:var(--muted);margin:6px 0 17px;}
+.arcade-invite-yes,.arcade-invite-no{
+  display:block;width:100%;min-height:51px;border:0;border-radius:15px;
+  font-size:15px;font-weight:900;
+}
+.arcade-invite-yes{background:var(--yellow);color:var(--brown);}
+.arcade-invite-no{background:var(--cream2);color:var(--brown);margin-top:9px;}
+
 </style>
 </head>
 
@@ -1704,6 +1825,17 @@ button{
   </div>
 </div>
 
+
+<!-- Nabídka hry po stisknutí JDU KÁKO -->
+<div id="arcadeInvite" class="arcade-invite" role="dialog" aria-modal="true" aria-labelledby="arcadeInviteTitle" hidden>
+  <div class="arcade-invite-dialog">
+    <div class="arcade-invite-icon">💩🎮</div>
+    <h2 id="arcadeInviteTitle">Chceš si při KÁKO zahrát hru?</h2>
+    <p>Časomíra už běží a počítá výdělek. Hraní ji nepřeruší!</p>
+    <button type="button" id="arcadeInviteYes" class="arcade-invite-yes">🎮 ANO – VYBRAT HRU</button>
+    <button type="button" id="arcadeInviteNo" class="arcade-invite-no">NE – JEN KÁKO</button>
+  </div>
+</div>
 
 <!-- SPOLEČNÉ PEVNÉ MENU -->
 
@@ -3411,6 +3543,11 @@ async function startKako(){
   showScreen(
     "timerScreen"
   );
+
+  // V tomto okamžiku už je aktivita i časomíra bezpečně spuštěná.
+  if(window.KAKO_ARCADE){
+    window.KAKO_ARCADE.invite();
+  }
 
 }
 
@@ -5612,12 +5749,32 @@ restoreKako();
     modalFn=fn;
   }
   function hideModal(){$('arcadeOverlay').hidden=true;}
+  function fitCanvas(){
+    const shell=$('arcadeTouchArea');
+    if(!shell||!shell.offsetWidth||!shell.offsetHeight)return;
+    const fit=Math.min((shell.clientWidth-4)/W,(shell.clientHeight-4)/H);
+    if(fit>0){canvas.style.width=Math.floor(W*fit)+'px';canvas.style.height=Math.floor(H*fit)+'px';}
+  }
+  function invite(){
+    const el=$('arcadeInvite');
+    if(!el)return;
+    el.hidden=false;
+    $('arcadeInviteYes').focus();
+  }
+  function dismissInvite(play){
+    $('arcadeInvite').hidden=true;
+    if(play){
+      back();
+      showScreen('gamesScreen');
+    }
+  }
   function stopGame(){clearHeld();phase='idle';s=null;}
   function open(which){
     if(!title[which])return;
     stopGame();game=which;
     $('arcadeLibrary').hidden=true;
     $('arcadeGame').hidden=false;
+    document.body.classList.add('arcade-game-active');
     $('arcadeGameName').textContent=title[which];
     $('arcadeGameHelp').textContent=copy[which];
     $('arcadeSnakeControls').hidden=which!=='snake';
@@ -5627,9 +5784,12 @@ restoreKako();
     showModal(which==='snake'?'💩':which==='invaders'?'🪠':'🚽',title[which],copy[which],'HRÁT →',start);
     $('arcadePause').disabled=false;
     window.scrollTo(0,0);
+    requestAnimationFrame(fitCanvas);
   }
   function back(){
-    stopGame();game=null;$('arcadeGame').hidden=true;$('arcadeLibrary').hidden=false;
+    stopGame();game=null;
+    document.body.classList.remove('arcade-game-active');
+    $('arcadeGame').hidden=true;$('arcadeLibrary').hidden=false;
     updateCards();window.scrollTo(0,0);
   }
   function start(){
@@ -5651,7 +5811,8 @@ restoreKako();
     }
   }
   function onScreenChange(id){
-    if(id!=='gamesScreen' && phase==='playing')pause();
+    // Změna hlavní obrazovky nesmí ponechat otevřenou celoplošnou hru.
+    if(id!=='gamesScreen' && game)back();
     if(id==='gamesScreen'){updateCards();updateKakoTime();}
   }
   function updateKakoTime(){
@@ -5912,6 +6073,15 @@ restoreKako();
     const key=keyboardMap[e.code];if(key)actionPress(key,false);
   });
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&phase==='playing')pause();});
+  $('arcadeInviteYes').addEventListener('click',()=>dismissInvite(true));
+  $('arcadeInviteNo').addEventListener('click',()=>dismissInvite(false));
+  document.addEventListener('keydown',e=>{
+    if(e.code==='Escape'&&!$('arcadeInvite').hidden){e.preventDefault();dismissInvite(false);}
+  });
+  window.addEventListener('resize',()=>{if(game)fitCanvas();});
+  if(window.ResizeObserver){
+    new ResizeObserver(()=>{if(game)fitCanvas();}).observe($('arcadeTouchArea'));
+  }
   $('arcadeOverlayButton').addEventListener('click',()=>{if(typeof modalFn==='function')modalFn();});
   $('arcadePause').addEventListener('click',pause);
   $('arcadeRestart').addEventListener('click',start);
@@ -5922,7 +6092,7 @@ restoreKako();
   });
   $('arcadeSound').textContent=sound?'🔊 Zvuk':'🔇 Zvuk';
   const dpr=Math.min(window.devicePixelRatio||1,2.5);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
-  window.KAKO_ARCADE={open,back,start,pause,onScreenChange};
+  window.KAKO_ARCADE={open,back,start,pause,onScreenChange,invite};
   updateCards();updateKakoTime();setInterval(updateKakoTime,1000);
   requestAnimationFrame(render);
 })();
