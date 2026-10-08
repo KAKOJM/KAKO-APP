@@ -984,6 +984,60 @@ button{
   background:var(--red);
   color:white;
 }
+/* =====================================================
+   KÁKO ARCADE – herní sekce v původním designu KÁKO
+   ===================================================== */
+.bottom-nav{grid-template-columns:repeat(6,minmax(0,1fr));}
+.bottom-nav .nav-btn{font-size:8.5px;min-width:0;white-space:nowrap;}
+.bottom-nav .nav-icon{font-size:18px;}
+.arcade-app{background:var(--cream);}
+.arcade-header{text-align:center;margin:3px 0 19px;}
+.arcade-kicker{display:inline-block;background:var(--yellow);font-size:11px;font-weight:900;letter-spacing:1px;border-radius:30px;padding:7px 13px;}
+.arcade-title{font-size:38px;letter-spacing:-1.4px;font-weight:900;margin:9px 0 4px;}
+.arcade-sub{font-size:13px;font-weight:700;color:var(--muted);line-height:1.5;}
+.arcade-timer{display:none;background:var(--brown);color:#fff3d4;font-size:12px;font-weight:800;padding:12px;margin:0 0 14px;border-radius:15px;text-align:center;}
+.arcade-cards{display:grid;grid-template-columns:1fr;gap:11px;}
+.arcade-card{display:flex;align-items:center;gap:13px;width:100%;border:2px solid #e6ceae;border-radius:20px;padding:15px;background:var(--cream2);color:var(--brown);text-align:left;box-shadow:0 3px 0 #dfc7a5;}
+.arcade-card:active{transform:translateY(2px);box-shadow:0 1px 0 #dfc7a5;}
+.arcade-card-icon{display:grid;place-items:center;flex:0 0 55px;height:55px;border-radius:14px;background:var(--yellow);font-size:32px;}
+.arcade-card-info{flex:1;min-width:0;}
+.arcade-card-name{display:block;font-size:18px;font-weight:900;letter-spacing:-.2px;}
+.arcade-card-desc{display:block;color:var(--muted);font-size:12px;line-height:1.4;margin-top:4px;font-weight:700;}
+.arcade-card-best{display:block;font-size:10px;font-weight:900;margin-top:7px;color:var(--green);}
+.arcade-card-next{font-weight:900;font-size:25px;color:#936a3c;}
+.arcade-info{margin-top:18px;color:var(--muted);font-size:12px;text-align:center;line-height:1.5;font-weight:700;}
+.arcade-game-panel[hidden],.arcade-library[hidden],.arcade-controls[hidden]{display:none!important;}
+.arcade-back{background:transparent;border:0;color:var(--brown);font-weight:900;font-size:13px;padding:8px 2px 11px;}
+.arcade-game-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:9px;}
+.arcade-game-name{font-size:23px;font-weight:900;letter-spacing:-.6px;}
+.arcade-sound{background:var(--cream2);border:0;border-radius:10px;padding:9px 11px;font-size:12px;font-weight:900;color:var(--brown);}
+.arcade-hud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:8px;}
+.arcade-hud-item{background:var(--cream2);padding:8px 4px;border-radius:12px;text-align:center;}
+.arcade-hud-item small{display:block;font-size:9px;color:var(--muted);font-weight:900;}
+.arcade-hud-item strong{display:block;font-size:19px;font-weight:900;margin-top:4px;font-variant-numeric:tabular-nums;}
+.arcade-canvas-shell{position:relative;width:100%;max-width:390px;margin:0 auto;aspect-ratio:320/420;border-radius:15px;overflow:hidden;background:#302014;border:3px solid var(--brown);touch-action:none;}
+#arcadeCanvas{display:block;width:100%;height:100%;touch-action:none;}
+.arcade-overlay{position:absolute;inset:0;z-index:3;background:rgba(31,17,10,.89);display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:20px;}
+.arcade-overlay[hidden]{display:none!important;}
+.arcade-overlay-inner{width:100%;max-width:270px;}
+.arcade-overlay-icon{font-size:46px;line-height:1.2;}
+.arcade-overlay-title{font-size:27px;color:var(--yellow);font-weight:900;margin:10px 0;line-height:1.12;}
+.arcade-overlay-text{font-size:13px;line-height:1.55;color:#e0cfc1;margin:10px 0 18px;}
+.arcade-overlay-button{width:100%;padding:14px 12px;border:0;border-radius:14px;background:var(--yellow);color:var(--brown);font-size:16px;font-weight:900;}
+.arcade-controls{margin:12px auto 0;max-width:390px;}
+.arcade-snake-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+.arcade-button{min-height:61px;border:2px solid #ad8f6e;border-radius:14px;background:var(--cream2);color:var(--brown);font-weight:900;font-size:25px;touch-action:none;}
+.arcade-button:active,.arcade-button.pressed{background:var(--yellow);transform:scale(.98);}
+.arcade-snake-buttons .arcade-up{grid-column:2;}
+.arcade-snake-buttons .arcade-left{grid-column:1;grid-row:2;}
+.arcade-snake-buttons .arcade-down{grid-column:2;grid-row:2;}
+.arcade-snake-buttons .arcade-right{grid-column:3;grid-row:2;}
+.arcade-side-buttons{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:7px;}
+.arcade-side-buttons .arcade-action{font-size:15px;background:var(--yellow);}
+.arcade-control-help{text-align:center;color:var(--muted);font-size:12px;line-height:1.4;margin-top:10px;font-weight:700;}
+.arcade-game-tools{display:flex;justify-content:center;gap:8px;margin:12px auto 4px;}
+.arcade-tool{background:var(--brown);border:0;border-radius:11px;color:white;padding:11px 13px;font-weight:800;font-size:12px;}
+
 </style>
 </head>
 
@@ -1583,6 +1637,74 @@ button{
 </div>
 
 
+<!-- =====================================================
+     KÁKO HRY – samostatná sekce, časomíra běží dál
+===================================================== -->
+<div id="gamesScreen" class="screen">
+  <div class="app arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-kicker">💩 EXTRA ZÁBAVA</div>
+      <div class="arcade-title">🎮 KÁKO HRY</div>
+      <div class="arcade-sub">I na záchodě můžeš lámat rekordy!</div>
+    </div>
+    <div id="arcadeTimer" class="arcade-timer"></div>
+    <div id="arcadeLibrary" class="arcade-library">
+      <div class="arcade-cards">
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('snake')">
+          <span class="arcade-card-icon">💩</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKOHAD</span><span class="arcade-card-desc">Sbírej toaletní papír, rosti a nenaraz sám do sebe.</span><span class="arcade-card-best" id="arcBestSnake">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('invaders')">
+          <span class="arcade-card-icon">🪠</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO INVADERS</span><span class="arcade-card-desc">Střílej po létajících bobcích a porážej bossy.</span><span class="arcade-card-best" id="arcBestInvaders">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('racing')">
+          <span class="arcade-card-icon">🚽</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO RACING</span><span class="arcade-card-desc">Sólová nekonečná jízda kanalizací. Bez soupeře!</span><span class="arcade-card-best" id="arcBestRacing">Rekord: 0 m</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+      </div>
+      <div class="arcade-info">Rekordy se ukládají do tohoto zařízení. Statistiky a historie KÁKO se nemění.</div>
+    </div>
+    <div id="arcadeGame" class="arcade-game-panel" hidden>
+      <button type="button" class="arcade-back" onclick="KAKO_ARCADE.back()">‹ ZPĚT NA VÝBĚR HER</button>
+      <div class="arcade-game-head"><span id="arcadeGameName" class="arcade-game-name">KÁKO HRY</span><button type="button" class="arcade-sound" id="arcadeSound">🔇 Zvuk</button></div>
+      <div class="arcade-hud">
+        <div class="arcade-hud-item"><small id="arcadeLabelScore">SKÓRE</small><strong id="arcadeScore">0</strong></div>
+        <div class="arcade-hud-item"><small>REKORD</small><strong id="arcadeBest">0</strong></div>
+        <div class="arcade-hud-item"><small id="arcadeLabelLives">ŽIVOTY</small><strong id="arcadeLives">1</strong></div>
+      </div>
+      <div class="arcade-canvas-shell" id="arcadeTouchArea">
+        <canvas id="arcadeCanvas" width="320" height="420" aria-label="Hrací plocha KÁKO ARCADE"></canvas>
+        <div id="arcadeOverlay" class="arcade-overlay">
+          <div class="arcade-overlay-inner">
+            <div id="arcadeOverlayIcon" class="arcade-overlay-icon">💩</div>
+            <div id="arcadeOverlayTitle" class="arcade-overlay-title">PŘIPRAVEN?</div>
+            <div id="arcadeOverlayText" class="arcade-overlay-text">Hra začíná.</div>
+            <button type="button" id="arcadeOverlayButton" class="arcade-overlay-button">HRÁT →</button>
+          </div>
+        </div>
+      </div>
+      <div id="arcadeSnakeControls" class="arcade-controls arcade-snake-buttons" hidden>
+        <button class="arcade-button arcade-up" data-arcade-control="up" aria-label="Nahoru">▲</button>
+        <button class="arcade-button arcade-left" data-arcade-control="left" aria-label="Vlevo">◀</button>
+        <button class="arcade-button arcade-down" data-arcade-control="down" aria-label="Dolů">▼</button>
+        <button class="arcade-button arcade-right" data-arcade-control="right" aria-label="Vpravo">▶</button>
+      </div>
+      <div id="arcadeSideControls" class="arcade-controls arcade-side-buttons" hidden>
+        <button class="arcade-button" data-arcade-control="left" aria-label="Vlevo">◀</button>
+        <button class="arcade-button arcade-action" id="arcadeAction" data-arcade-control="action">PALBA!</button>
+        <button class="arcade-button" data-arcade-control="right" aria-label="Vpravo">▶</button>
+      </div>
+      <div id="arcadeGameHelp" class="arcade-control-help"></div>
+      <div class="arcade-game-tools"><button class="arcade-tool" id="arcadePause">⏸ Pauza</button><button class="arcade-tool" id="arcadeRestart">↻ Nová hra</button></div>
+    </div>
+  </div>
+</div>
+
+
 <!-- SPOLEČNÉ PEVNÉ MENU -->
 
 <div id="bottomNav" class="bottom-nav">
@@ -1646,6 +1768,11 @@ button{
 >
   <span class="nav-icon">⚙️</span>
   Nastavení
+</button>
+
+<button id="navGames" class="nav-btn" onclick="showScreen('gamesScreen')">
+  <span class="nav-icon">🎮</span>
+  KÁKO HRY
 </button>
 
 <div class="bottom-author">
@@ -4967,7 +5094,16 @@ function showScreen(id){
   }
 
 
+  if(id === "gamesScreen"){
+    document.getElementById("navGames").classList.add("active");
+  }
+
   updatePrimaryNav();
+
+  // Opuštění her herní stav pozastaví, časomíra KÁKO běží dále.
+  if(window.KAKO_ARCADE){
+    window.KAKO_ARCADE.onScreenChange(id);
+  }
 
 }
 
@@ -5399,5 +5535,398 @@ restoreKako();
 
 </script>
 
+<script>
+/* =============================================================
+   KÁKO HRY – jedna samostatná herní vrstva, oddělená od časomíry
+   ============================================================= */
+(function(){
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const canvas = $('arcadeCanvas');
+  if(!canvas || window.KAKO_ARCADE) return;
+  const ctx = canvas.getContext('2d');
+  const W=320,H=420;
+  const title = {snake:'KÁKOHAD',invaders:'KÁKO INVADERS',racing:'KÁKO RACING'};
+  const keys = {snake:'kakoArcadeRecordSnake',invaders:'kakoArcadeRecordInvaders',racing:'kakoArcadeRecordRacing'};
+  const copy = {snake:'Sbírej papír 🧻, nezakousni se do vlastního ocasu. Šipky nebo přejetí prstem.',invaders:'Drž PALBA a pohybuj kartáčem. Každá třetí vlna přinese bosse.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.'};
+  let game=null,phase='idle',s=null,best={snake:0,invaders:0,racing:0},sound=false,audio=null;
+  let leftDown=false,rightDown=false,actionDown=false,prev=0,modalFn=null,pointerStart=null;
+  const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  const randInt=n=>Math.floor(Math.random()*n);
+  for(const k of Object.keys(best)){
+    try{best[k]=Math.max(0,Number(localStorage.getItem(keys[k]))||0);}catch(e){}
+  }
+  try{sound=localStorage.getItem('kakoArcadeSound')==='true';}catch(e){}
+  function beep(freq=400,length=.08){
+    if(!sound)return;
+    try{
+      const API=window.AudioContext||window.webkitAudioContext;
+      if(!API)return;
+      audio=audio||new API();if(audio.state==='suspended')audio.resume();
+      let oscillator=audio.createOscillator(),gain=audio.createGain();
+      oscillator.type='triangle';oscillator.frequency.setValueAtTime(freq,audio.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(Math.max(80,freq/2),audio.currentTime+length);
+      gain.gain.setValueAtTime(.035,audio.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+length);
+      oscillator.connect(gain);gain.connect(audio.destination);oscillator.start();oscillator.stop(audio.currentTime+length);
+    }catch(e){}
+  }
+  function rrect(x,y,w,h,rad,color){ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,w,h,rad);ctx.fill();}
+  function text(t,x,y,size=20,color='#fff',weight='900'){
+    ctx.fillStyle=color;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=weight+' '+size+'px Arial, sans-serif';ctx.fillText(t,x,y);
+  }
+  function emoji(t,x,y,size=24){
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=size+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.fillText(t,x,y);
+  }
+  function record(){
+    if(!s || !game)return;
+    let v=Math.floor(s.points);
+    if(v>best[game]){
+      best[game]=v;
+      try{localStorage.setItem(keys[game],String(v));}catch(e){}
+      updateCards();
+    }
+  }
+  function updateCards(){
+    $('arcBestSnake').textContent='Rekord: '+best.snake;
+    $('arcBestInvaders').textContent='Rekord: '+best.invaders;
+    $('arcBestRacing').textContent='Rekord: '+best.racing+' m';
+  }
+  function updateHud(){
+    if(!s)return;
+    $('arcadeLabelScore').textContent=game==='racing'?'METRY':'SKÓRE';
+    $('arcadeScore').textContent=Math.floor(s.points)+(game==='racing'?' m':'');
+    $('arcadeBest').textContent=best[game]+(game==='racing'?' m':'');
+    $('arcadeLabelLives').textContent=game==='snake'?'ÚROVEŇ':game==='invaders'?'ŽIVOTY':'ŽIVOTY';
+    $('arcadeLives').textContent=game==='snake'?s.level:s.hp;
+    $('arcadePause').textContent=phase==='paused'?'▶ Pokračovat':'⏸ Pauza';
+  }
+  function clearHeld(){leftDown=false;rightDown=false;actionDown=false;document.querySelectorAll('#gamesScreen .arcade-button').forEach(x=>x.classList.remove('pressed'));}
+  function showModal(icon,heading,description,button,fn){
+    $('arcadeOverlayIcon').textContent=icon;
+    $('arcadeOverlayTitle').textContent=heading;
+    $('arcadeOverlayText').textContent=description;
+    $('arcadeOverlayButton').textContent=button;
+    $('arcadeOverlay').hidden=false;
+    modalFn=fn;
+  }
+  function hideModal(){$('arcadeOverlay').hidden=true;}
+  function stopGame(){clearHeld();phase='idle';s=null;}
+  function open(which){
+    if(!title[which])return;
+    stopGame();game=which;
+    $('arcadeLibrary').hidden=true;
+    $('arcadeGame').hidden=false;
+    $('arcadeGameName').textContent=title[which];
+    $('arcadeGameHelp').textContent=copy[which];
+    $('arcadeSnakeControls').hidden=which!=='snake';
+    $('arcadeSideControls').hidden=which==='snake';
+    $('arcadeAction').textContent=which==='racing'?'⚡ TURBO':'🪠 PALBA';
+    initState();updateHud();
+    showModal(which==='snake'?'💩':which==='invaders'?'🪠':'🚽',title[which],copy[which],'HRÁT →',start);
+    $('arcadePause').disabled=false;
+    window.scrollTo(0,0);
+  }
+  function back(){
+    stopGame();game=null;$('arcadeGame').hidden=true;$('arcadeLibrary').hidden=false;
+    updateCards();window.scrollTo(0,0);
+  }
+  function start(){
+    if(!game)return;
+    clearHeld();initState();phase='playing';hideModal();updateHud();beep(640,.12);
+  }
+  function finish(reason){
+    if(phase!=='playing')return;
+    phase='over';clearHeld();record();updateHud();beep(180,.22);
+    showModal('🏆','KONEC HRY!',reason+' Rekord: '+best[game]+(game==='racing'?' m':'')+'.','HRÁT ZNOVU →',start);
+  }
+  function pause(){
+    if(!game||phase==='idle'||phase==='over')return;
+    if(phase==='paused'){
+      phase='playing';hideModal();updateHud();prev=performance.now();
+    }else{
+      phase='paused';clearHeld();
+      showModal('⏸','PAUZA','Hra čeká. Časomíra KÁKO běží dál.','POKRAČOVAT →',pause);updateHud();
+    }
+  }
+  function onScreenChange(id){
+    if(id!=='gamesScreen' && phase==='playing')pause();
+    if(id==='gamesScreen'){updateCards();updateKakoTime();}
+  }
+  function updateKakoTime(){
+    const t=$('arcadeTimer');if(!t)return;
+    const active=typeof startTime!=='undefined'&&startTime&&Number(startTime)>0;
+    t.style.display=active?'block':'none';
+    if(active){
+      const sec=Math.max(0,Math.floor((Date.now()-Number(startTime))/1000));
+      const two=n=>String(n).padStart(2,'0');
+      t.textContent='⏱ KÁKO běží: '+two(Math.floor(sec/3600))+':'+two(Math.floor(sec%3600/60))+':'+two(sec%60)+' · Hry nepřerušují aktivitu';
+    }
+  }
+  function newSnake(){
+    s={points:0,level:1,snake:[{x:7,y:10},{x:6,y:10},{x:5,y:10}],direction:{x:1,y:0},next:null,food:null,bonus:null,timer:0,eaten:0};
+    placeFood();
+  }
+  function occupied(x,y){return s.snake.some(p=>p.x===x&&p.y===y);}
+  function randomCell(){
+    for(let i=0;i<400;i++){
+      const x=randInt(16),y=randInt(18);
+      if(!occupied(x,y)&&(!s.food||s.food.x!==x||s.food.y!==y)&&(!s.bonus||s.bonus.x!==x||s.bonus.y!==y))return {x,y};
+    }
+    return null;
+  }
+  function placeFood(){s.food=randomCell();}
+  function snakeDirection(dir){
+    if(phase!=='playing')return;
+    const d={up:{x:0,y:-1},down:{x:0,y:1},left:{x:-1,y:0},right:{x:1,y:0}}[dir];
+    if(d && !(d.x===-s.direction.x && d.y===-s.direction.y)) s.next=d;
+  }
+  function snakeStep(){
+    if(s.next){s.direction=s.next;s.next=null;}
+    const head={x:s.snake[0].x+s.direction.x,y:s.snake[0].y+s.direction.y};
+    const eatFood=s.food&&head.x===s.food.x&&head.y===s.food.y;
+    const eatBonus=s.bonus&&head.x===s.bonus.x&&head.y===s.bonus.y;
+    const body=eatFood||eatBonus?s.snake:s.snake.slice(0,-1);
+    if(head.x<0||head.x>=16||head.y<0||head.y>=18||body.some(p=>p.x===head.x&&p.y===head.y)){
+      finish('Had narazil. Získal jsi '+s.points+' bodů.');return;
+    }
+    s.snake.unshift(head);
+    if(eatFood){
+      s.points+=10;s.eaten++;s.level=1+Math.floor(s.eaten/4);beep(530,.06);
+      s.food=null;placeFood();
+      if(s.eaten%5===0&&!s.bonus)s.bonus=randomCell();
+    }else if(eatBonus){
+      s.points+=30;beep(810,.14);s.bonus=null;
+    }else s.snake.pop();
+    record();updateHud();
+  }
+  function updateSnake(dt){
+    s.timer+=dt;const delay=Math.max(.067,.16-s.level*.008);
+    while(s.timer>=delay&&phase==='playing'){s.timer-=delay;snakeStep();}
+  }
+  function paintSnake(){
+    ctx.fillStyle='#3e291a';ctx.fillRect(0,0,W,H);
+    const Y=29;
+    for(let y=0;y<18;y++)for(let x=0;x<16;x++){
+      ctx.fillStyle=(x+y)%2?'#f3dfc3':'#eed4b1';ctx.fillRect(x*20,Y+y*20,20,20);
+    }
+    text('SBÍREJ 🧻   ·   VYHNI SE OCASU',160,14,11,'#ffe5af');
+    if(s.food)emoji('🧻',s.food.x*20+10,Y+s.food.y*20+10,18);
+    if(s.bonus)emoji('🚽',s.bonus.x*20+10,Y+s.bonus.y*20+10,20);
+    s.snake.slice().reverse().forEach((p,i)=>{
+      emoji('💩',p.x*20+10,Y+p.y*20+10,19);
+    });
+    rrect(0,389,W,31,0,'#3e291a');text('Délka hada: '+s.snake.length,160,403,12,'#ffe9bf');
+  }
+  function newInvaders(){
+    s={points:0,hp:3,level:1,px:160,shots:[],attacks:[],enemies:[],move:1,shotCD:0,enemyCD:1.4,delay:0};
+    spawnWave();
+  }
+  function spawnWave(){
+    s.enemies=[];s.shots=[];s.attacks=[];s.move=1;s.enemyCD=Math.max(.55,1.45-s.level*.04);s.delay=0;
+    if(s.level%3===0){s.enemies.push({x:160,y:80,hp:10+s.level*2,boss:true});return;}
+    const rows=Math.min(4,2+Math.floor(s.level/2));
+    for(let row=0;row<rows;row++)for(let col=0;col<6;col++){
+      s.enemies.push({x:47+col*45,y:68+row*41,hp:1,boss:false});
+    }
+  }
+  function fire(){
+    if(phase!=='playing'||s.shotCD>0)return;
+    s.shots.push({x:s.px,y:358});s.shotCD=.18;beep(550,.035);
+  }
+  function invadersDamage(){
+    s.hp--;beep(120,.16);updateHud();if(s.hp<=0)finish('Bobci obsadili celý záchod! Skóre: '+s.points+'.');
+  }
+  function updateInvaders(dt){
+    const movement=(rightDown?1:0)-(leftDown?1:0);
+    s.px=clamp(s.px+movement*210*dt,25,295);
+    s.shotCD=Math.max(0,s.shotCD-dt);
+    if(actionDown)fire();
+    if(s.delay>0){s.delay-=dt;if(s.delay<=0){s.level++;spawnWave();}return;}
+    const speed=(s.level%3===0?75:31)+s.level*7;
+    let edge=false;
+    for(const e of s.enemies){e.x+=s.move*speed*dt;if(e.x<24||e.x>296)edge=true;}
+    if(edge){s.move*=-1;for(const e of s.enemies){e.x=clamp(e.x,24,296);e.y+=13;}}
+    s.enemyCD-=dt;
+    if(s.enemyCD<=0&&s.enemies.length){
+      const e=s.enemies[randInt(s.enemies.length)];
+      s.attacks.push({x:e.x,y:e.y+17});
+      s.enemyCD=Math.max(.35,rnd(.85,1.5)-s.level*.035);
+    }
+    for(let i=s.shots.length-1;i>=0;i--){
+      const shot=s.shots[i];shot.y-=395*dt;
+      if(shot.y<0){s.shots.splice(i,1);continue;}
+      const hit=s.enemies.find(e=>Math.abs(e.x-shot.x)<(e.boss?32:18)&&Math.abs(e.y-shot.y)<(e.boss?30:18));
+      if(hit){
+        s.shots.splice(i,1);hit.hp--;beep(780,.05);
+        if(hit.hp<=0){s.enemies.splice(s.enemies.indexOf(hit),1);s.points+=hit.boss?500:25;record();updateHud();}
+      }
+    }
+    for(let i=s.attacks.length-1;i>=0;i--){
+      const bullet=s.attacks[i];bullet.y+=(140+s.level*7)*dt;
+      if(bullet.y>420){s.attacks.splice(i,1);continue;}
+      if(Math.abs(bullet.x-s.px)<21&&Math.abs(bullet.y-372)<20){s.attacks.splice(i,1);invadersDamage();if(phase!=='playing')return;}
+    }
+    for(let i=s.enemies.length-1;i>=0;i--){
+      if(s.enemies[i].y>=345){s.enemies.splice(i,1);invadersDamage();if(phase!=='playing')return;}
+    }
+    if(!s.enemies.length && s.delay===0){s.points+=75;record();updateHud();s.delay=1.1;beep(850,.18);}
+  }
+  function paintInvaders(){
+    const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#271c31');bg.addColorStop(1,'#614136');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<15;i++){
+      ctx.fillStyle='rgba(255,217,146,.1)';ctx.fillRect((i*69+11)%320,(i*91+5)%420,3,3);
+    }
+    rrect(0,394,320,26,0,'#2a170e');text('VLNA '+s.level+(s.level%3===0?'  •  BOSS':''),160,406,14,'#fcd774');
+    for(const e of s.enemies){
+      emoji(e.boss?'👾':'💩',e.x,e.y,e.boss?59:29);
+      if(e.boss){rrect(e.x-40,e.y-42,80,6,3,'#573626');rrect(e.x-40,e.y-42,80*(e.hp/(10+s.level*2)),6,3,'#ffd24b');}
+    }
+    for(const shot of s.shots)rrect(shot.x-3,shot.y-12,6,17,3,'#ffcd35');
+    for(const b of s.attacks)emoji('💧',b.x,b.y,21);
+    emoji('🪠',s.px,370,41);
+    if(s.delay>0){rrect(39,179,242,65,12,'#2a170ee8');text('VLNA HOTOVÁ!',160,210,23,'#ffd461');}
+  }
+  function newRacing(){
+    s={points:0,hp:3,lane:1,carX:160,objects:[],spawn:.7,boost:64,shield:0};
+  }
+  const laneX=[62,160,258];
+  function moveRace(d){if(phase!=='playing')return;s.lane=clamp(s.lane+d,0,2);beep(300,.035);}
+  function updateRacing(dt){
+    const turbo=actionDown&&s.boost>0;
+    const velocity=turbo?210:135;
+    s.boost=clamp(s.boost+(turbo?-40:8)*dt,0,100);
+    s.points+=dt*(turbo?22:12);
+    s.carX+=(laneX[s.lane]-s.carX)*Math.min(1,dt*15);
+    s.shield=Math.max(0,s.shield-dt);
+    s.spawn-=dt;
+    if(s.spawn<=0){
+      s.spawn=clamp(rnd(.5,.9)-s.points/2000,.37,.9);
+      const lane=randInt(3),kind=Math.random()<.27?'paper':Math.random()<.13?'charge':'obstacle';
+      s.objects.push({lane,y:-36,kind,used:false});
+    }
+    for(let i=s.objects.length-1;i>=0;i--){
+      const o=s.objects[i];o.y+=velocity*dt;
+      if(o.y>H+35){s.objects.splice(i,1);continue;}
+      if(!o.used&&o.y>338&&o.y<398&&o.lane===s.lane){
+        o.used=true;s.objects.splice(i,1);
+        if(o.kind==='paper') {s.points+=25;beep(620,.08);}
+        else if(o.kind==='charge'){s.boost=clamp(s.boost+38,0,100);beep(800,.09);}
+        else if(s.shield===0){s.hp--;s.shield=1;beep(150,.17);if(s.hp<=0){record();finish('Ujel jsi '+Math.floor(s.points)+' metrů.');return;}}
+      }
+    }
+    record();updateHud();
+  }
+  function paintRacing(){
+    const b=ctx.createLinearGradient(0,0,0,H);b.addColorStop(0,'#34433d');b.addColorStop(1,'#142721');ctx.fillStyle=b;ctx.fillRect(0,0,W,H);
+    rrect(14,0,292,H,0,'#73644f');rrect(22,0,276,H,0,'#665743');
+    ctx.setLineDash([17,19]);ctx.lineWidth=2;ctx.strokeStyle='#dfcda263';
+    for(const x of [111,209]){ctx.beginPath();ctx.moveTo(x,(Math.floor(s.points*3)%36)-36);ctx.lineTo(x,H+36);ctx.stroke();}ctx.setLineDash([]);
+    rrect(18,0,6,H,0,'#403522');rrect(296,0,6,H,0,'#403522');
+    for(const o of s.objects)emoji(o.kind==='paper'?'🧻':o.kind==='charge'?'⚡':'🕳️',laneX[o.lane],o.y,33);
+    if(!(s.shield>0&&Math.floor(s.shield*12)%2===0))emoji('🚽',s.carX,370,50);
+    rrect(15,9,290,37,8,'#2a170ee3');
+    text('KANALIZAČNÍ GRAND PRIX',160,20,12,'#ffe1a3');
+    rrect(81,33,158,7,3,'#3c281b');rrect(81,33,158*s.boost/100,7,3,'#ffce2c');
+    rrect(79,397,162,21,7,'#2a170edf');text('⚡ TURBO '+Math.round(s.boost)+' %',160,408,12,'#ffe4ab');
+  }
+  function initState(){if(game==='snake')newSnake();else if(game==='invaders')newInvaders();else if(game==='racing')newRacing();}
+  function update(dt){
+    if(phase!=='playing'||!s)return;
+    if(game==='snake')updateSnake(dt);
+    else if(game==='invaders')updateInvaders(dt);
+    else if(game==='racing')updateRacing(dt);
+  }
+  function draw(){
+    if(!game||!s)return;
+    if(game==='snake')paintSnake();else if(game==='invaders')paintInvaders();else if(game==='racing')paintRacing();
+  }
+  function render(t){
+    const dt=Math.min(prev?(t-prev)/1000:0,.06);prev=t;
+    if(game){
+      if(!$('arcadeGame').hidden&&$('gamesScreen').classList.contains('active')){
+        update(dt);draw();
+      }
+    }
+    requestAnimationFrame(render);
+  }
+  function actionPress(k,down){
+    if(!game||phase!=='playing')return;
+    if(game==='snake'){if(down&&k!=='action')snakeDirection(k);return;}
+    if(game==='racing'){
+      if(k==='action')actionDown=down;
+      else if(down)moveRace(k==='left'?-1:1);
+      return;
+    }
+    if(k==='left')leftDown=down;
+    else if(k==='right')rightDown=down;
+    else if(k==='action'){actionDown=down;if(down)fire();}
+  }
+  document.querySelectorAll('#gamesScreen [data-arcade-control]').forEach(button=>{
+    const k=button.dataset.arcadeControl;
+    button.addEventListener('pointerdown',e=>{
+      e.preventDefault();button.classList.add('pressed');
+      try{button.setPointerCapture(e.pointerId);}catch(err){}
+      actionPress(k,true);
+    });
+    for(const ev of ['pointerup','pointercancel','lostpointercapture']){
+      button.addEventListener(ev,()=>{button.classList.remove('pressed');actionPress(k,false);});
+    }
+  });
+  canvas.addEventListener('pointerdown',e=>{
+    if(phase!=='playing')return;
+    const rect=canvas.getBoundingClientRect();
+    pointerStart={x:e.clientX,y:e.clientY};
+    if(game==='invaders'){
+      s.px=clamp((e.clientX-rect.left)/rect.width*W,25,295);fire();
+    }
+    try{canvas.setPointerCapture(e.pointerId);}catch(err){}
+  });
+  canvas.addEventListener('pointermove',e=>{
+    if(phase==='playing'&&game==='invaders'&&pointerStart){
+      const r=canvas.getBoundingClientRect();s.px=clamp((e.clientX-r.left)/r.width*W,25,295);
+    }
+  });
+  canvas.addEventListener('pointerup',e=>{
+    if(!pointerStart)return;
+    const dx=e.clientX-pointerStart.x,dy=e.clientY-pointerStart.y;
+    if(Math.max(Math.abs(dx),Math.abs(dy))>22){
+      if(game==='snake')snakeDirection(Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up');
+      if(game==='racing'&&Math.abs(dx)>24)moveRace(dx>0?1:-1);
+    }
+    pointerStart=null;
+  });
+  canvas.addEventListener('pointercancel',()=>pointerStart=null);
+  const keyboardMap={ArrowUp:'up',KeyW:'up',ArrowDown:'down',KeyS:'down',ArrowLeft:'left',KeyA:'left',ArrowRight:'right',KeyD:'right',Space:'action'};
+  document.addEventListener('keydown',e=>{
+    if(!game||!$('gamesScreen').classList.contains('active'))return;
+    if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+    const key=keyboardMap[e.code];
+    if(key){e.preventDefault();if(!e.repeat)actionPress(key,true);}
+    if(e.code==='KeyP'&&!e.repeat){e.preventDefault();pause();}
+    if(e.code==='KeyR'&&!e.repeat){e.preventDefault();start();}
+    if(e.code==='Escape'&&!e.repeat){e.preventDefault();back();}
+  });
+  document.addEventListener('keyup',e=>{
+    const key=keyboardMap[e.code];if(key)actionPress(key,false);
+  });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&phase==='playing')pause();});
+  $('arcadeOverlayButton').addEventListener('click',()=>{if(typeof modalFn==='function')modalFn();});
+  $('arcadePause').addEventListener('click',pause);
+  $('arcadeRestart').addEventListener('click',start);
+  $('arcadeSound').addEventListener('click',()=>{
+    sound=!sound;$('arcadeSound').textContent=sound?'🔊 Zvuk':'🔇 Zvuk';
+    try{localStorage.setItem('kakoArcadeSound',String(sound));}catch(e){}
+    beep(650,.07);
+  });
+  $('arcadeSound').textContent=sound?'🔊 Zvuk':'🔇 Zvuk';
+  const dpr=Math.min(window.devicePixelRatio||1,2.5);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+  window.KAKO_ARCADE={open,back,start,pause,onScreenChange};
+  updateCards();updateKakoTime();setInterval(updateKakoTime,1000);
+  requestAnimationFrame(render);
+})();
+
+</script>
 </body>
 </html>
