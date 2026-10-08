@@ -1201,6 +1201,99 @@ body.arcade-game-active .arcade-overlay-text{margin:6px 0 9px;}
   body.arcade-game-active .arcade-speed-options button{min-height:32px;}
 }
 
+
+/* ============================================================
+   KÁKO 5.3 – jednotné šipky bez emoji + ergonomický D-PAD
+   Jeden SVG symbol pro všechny směry a hry.
+   ============================================================ */
+#gamesScreen .arcade-button.arcade-dir,
+body.arcade-game-active #gamesScreen .arcade-button.arcade-dir{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  background:#3b2416;
+  border:3px solid #9b6b32;
+  border-radius:15px;
+  color:#fff9e8;
+  box-shadow:inset 0 -4px 0 #22140d;
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+#gamesScreen .arcade-button.arcade-dir:active,
+#gamesScreen .arcade-button.arcade-dir.pressed,
+body.arcade-game-active #gamesScreen .arcade-button.arcade-dir:active,
+body.arcade-game-active #gamesScreen .arcade-button.arcade-dir.pressed{
+  background:var(--yellow);
+  color:var(--brown);
+  border-color:#b67b24;
+  transform:scale(.98);
+}
+#gamesScreen .arcade-arrow-icon{
+  display:block;
+  width:clamp(30px,8.5vw,39px);
+  height:clamp(30px,8.5vw,39px);
+  fill:currentColor;
+  flex:none;
+  pointer-events:none;
+}
+#gamesScreen .arcade-left .arcade-arrow-icon{transform:rotate(-90deg)}
+#gamesScreen .arcade-down .arcade-arrow-icon{transform:rotate(180deg)}
+#gamesScreen .arcade-right .arcade-arrow-icon{transform:rotate(90deg)}
+/* Křížový ovladač hada: nahoru uprostřed, pod tím vlevo/dolů/vpravo. */
+#gamesScreen .arcade-snake-buttons,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(2,clamp(52px,8.6dvh,73px));
+  gap:7px;
+  width:min(100%,344px);
+  max-width:344px;
+  margin:0 auto;
+}
+#gamesScreen .arcade-snake-buttons .arcade-up,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-up{grid-column:2;grid-row:1;}
+#gamesScreen .arcade-snake-buttons .arcade-left,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-left{grid-column:1;grid-row:2;}
+#gamesScreen .arcade-snake-buttons .arcade-down,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-down{grid-column:2;grid-row:2;}
+#gamesScreen .arcade-snake-buttons .arcade-right,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-right{grid-column:3;grid-row:2;}
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-button.arcade-dir{
+  width:100%;height:100%;min-height:0;
+}
+/* V Invaders i Racing zcela identické šipky a velikost symbolů. */
+body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-button.arcade-dir{
+  height:clamp(60px,10.5dvh,80px);
+  min-height:60px;
+}
+body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-action{
+  height:clamp(60px,10.5dvh,80px);
+  min-height:60px;
+}
+/* Zpět do her zůstává přímo nad ovládáním, nic pod šipkami. */
+body.arcade-game-active #arcadeGame{gap:4px;}
+body.arcade-game-active #gamesScreen .arcade-controls{order:3;flex:0 0 auto;}
+body.arcade-game-active #gamesScreen .arcade-back{order:2;flex:0 0 auto;}
+@media(max-height:660px){
+  #gamesScreen .arcade-snake-buttons,
+  body.arcade-game-active #gamesScreen .arcade-snake-buttons{
+    grid-template-rows:repeat(2,clamp(48px,8.4dvh,57px));gap:5px;
+  }
+  body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-button.arcade-dir,
+  body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-action{height:58px;min-height:58px;}
+}
+@media(max-height:540px){
+  body.arcade-game-active #gamesScreen .arcade-snake-buttons{
+    grid-template-rows:repeat(2,43px);gap:4px;
+  }
+  body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-button.arcade-dir,
+  body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-action{height:50px;min-height:50px;}
+  #gamesScreen .arcade-arrow-icon{width:29px;height:29px;}
+}
+
 </style>
 </head>
 
@@ -1860,15 +1953,15 @@ body.arcade-game-active .arcade-overlay-text{margin:6px 0 9px;}
       </div>
       <button type="button" class="arcade-back" onclick="KAKO_ARCADE.back()">‹ ZPĚT DO HER</button>
       <div id="arcadeSnakeControls" class="arcade-controls arcade-snake-buttons" hidden>
-        <button class="arcade-button arcade-up" data-arcade-control="up" aria-label="Nahoru">▲</button>
-        <button class="arcade-button arcade-left" data-arcade-control="left" aria-label="Vlevo">◀</button>
-        <button class="arcade-button arcade-down" data-arcade-control="down" aria-label="Dolů">▼</button>
-        <button class="arcade-button arcade-right" data-arcade-control="right" aria-label="Vpravo">▶</button>
+        <button class="arcade-button arcade-dir arcade-up" data-arcade-control="up" aria-label="Nahoru"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-down" data-arcade-control="down" aria-label="Dolů"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
       </div>
       <div id="arcadeSideControls" class="arcade-controls arcade-side-buttons" hidden>
-        <button class="arcade-button" data-arcade-control="left" aria-label="Vlevo">◀</button>
+        <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
         <button class="arcade-button arcade-action" id="arcadeAction" data-arcade-control="action">PALBA!</button>
-        <button class="arcade-button" data-arcade-control="right" aria-label="Vpravo">▶</button>
+        <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
       </div>
     </div>
   </div>
