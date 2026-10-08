@@ -1294,6 +1294,114 @@ body.arcade-game-active #gamesScreen .arcade-back{order:2;flex:0 0 auto;}
   #gamesScreen .arcade-arrow-icon{width:29px;height:29px;}
 }
 
+
+/* ============================================================
+   KÁKO 5.4 – pevný herní dock a ovládání bez označování textu
+   Ovládací prvky se chovají jako herní tlačítka, ne jako text.
+   Platí jen uvnitř her; mimo hry zůstávají textová pole použitelná.
+   ============================================================ */
+body.arcade-game-active #gamesScreen,
+body.arcade-game-active #gamesScreen *,
+#gamesScreen .arcade-bottom-dock,
+#gamesScreen .arcade-bottom-dock * {
+  -webkit-user-select:none !important;
+  user-select:none !important;
+  -webkit-touch-callout:none !important;
+  -webkit-tap-highlight-color:transparent !important;
+  -webkit-user-drag:none;
+}
+body.arcade-game-active #gamesScreen button,
+body.arcade-game-active #gamesScreen svg,
+body.arcade-game-active #gamesScreen .arcade-canvas-shell {
+  -webkit-touch-callout:none !important;
+}
+#gamesScreen .arcade-bottom-dock {
+  order:2;
+  flex:0 0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  width:100%;
+  margin-top:auto;
+  padding:2px 0 0;
+  background:var(--cream);
+  position:relative;
+  z-index:6;
+  touch-action:none;
+}
+body.arcade-game-active #gamesScreen #arcadeGame .arcade-canvas-shell{
+  flex:1 1 auto;
+  min-height:0;
+}
+body.arcade-game-active #gamesScreen .arcade-bottom-dock .arcade-back{
+  order:0;
+  width:100%;
+  flex:0 0 auto;
+  touch-action:manipulation;
+}
+body.arcade-game-active #gamesScreen .arcade-bottom-dock .arcade-controls{
+  order:1;
+  width:100%;
+  max-width:100%;
+  margin:0;
+  flex:0 0 auto;
+}
+/* Opravdový kříž: horní, levé a pravé rameno, dolní rameno.
+             [ ↑ ]
+       [ ← ]       [ → ]
+             [ ↓ ]
+ */
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(3,clamp(44px,6.4dvh,61px));
+  gap:4px;
+  width:min(100%,284px);
+  max-width:284px;
+  align-self:center;
+  justify-content:center;
+  margin:0 auto;
+}
+#gamesScreen #arcadeSnakeControls[hidden]{display:none!important;}
+#gamesScreen #arcadeSnakeControls .arcade-up{grid-column:2;grid-row:1;}
+#gamesScreen #arcadeSnakeControls .arcade-left{grid-column:1;grid-row:2;}
+#gamesScreen #arcadeSnakeControls .arcade-right{grid-column:3;grid-row:2;}
+#gamesScreen #arcadeSnakeControls .arcade-down{grid-column:2;grid-row:3;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button{
+  width:100%;height:100%;min-height:0;
+}
+#gamesScreen #arcadeSideControls .arcade-button,
+#gamesScreen #arcadeSnakeControls .arcade-button{
+  touch-action:none !important;
+  -webkit-user-select:none !important;
+  user-select:none !important;
+  -webkit-touch-callout:none !important;
+  -webkit-tap-highlight-color:transparent !important;
+  -webkit-user-drag:none !important;
+}
+#gamesScreen .arcade-arrow-icon,
+#gamesScreen .arcade-arrow-icon *{
+  pointer-events:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+@media(max-height:660px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+    grid-template-rows:repeat(3,clamp(44px,6.4dvh,52px));
+    gap:3px;
+  }
+}
+@media(max-height:540px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+    grid-template-rows:repeat(3,43px);
+    gap:2px;
+  }
+  body.arcade-game-active #gamesScreen .arcade-bottom-dock{gap:2px;}
+}
+
 </style>
 </head>
 
@@ -1951,6 +2059,8 @@ body.arcade-game-active #gamesScreen .arcade-back{order:2;flex:0 0 auto;}
           </div>
         </div>
       </div>
+      <!-- Stabilní herní dock na spodním okraji obrazovky. -->
+      <div class="arcade-bottom-dock" id="arcadeBottomDock">
       <button type="button" class="arcade-back" onclick="KAKO_ARCADE.back()">‹ ZPĚT DO HER</button>
       <div id="arcadeSnakeControls" class="arcade-controls arcade-snake-buttons" hidden>
         <button class="arcade-button arcade-dir arcade-up" data-arcade-control="up" aria-label="Nahoru"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
@@ -1963,6 +2073,7 @@ body.arcade-game-active #gamesScreen .arcade-back{order:2;flex:0 0 auto;}
         <button class="arcade-button arcade-action" id="arcadeAction" data-arcade-control="action">PALBA!</button>
         <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
       </div>
+      </div><!-- /arcade-bottom-dock -->
     </div>
   </div>
 </div>
@@ -6207,8 +6318,26 @@ restoreKako();
     else if(k==='right')rightDown=down;
     else if(k==='action'){actionDown=down;if(down)fire();}
   }
+  // Blokujeme nativní výběr textu, iOS callout, dlouhé podržení a drag jen ve hrách.
+  const arcadeScreen=$('gamesScreen');
+  const avoidNativeTouch=(e)=>{
+    if(document.body.classList.contains('arcade-game-active')) e.preventDefault();
+  };
+  arcadeScreen.addEventListener('contextmenu',avoidNativeTouch);
+  arcadeScreen.addEventListener('selectstart',avoidNativeTouch);
+  arcadeScreen.addEventListener('dragstart',avoidNativeTouch);
+  document.addEventListener('selectionchange',()=>{
+    if(!document.body.classList.contains('arcade-game-active'))return;
+    const selection=window.getSelection();
+    if(selection && !selection.isCollapsed && arcadeScreen.contains(selection.anchorNode)){
+      selection.removeAllRanges();
+    }
+  });
   document.querySelectorAll('#gamesScreen [data-arcade-control]').forEach(button=>{
     const k=button.dataset.arcadeControl;
+    // Při držení TURBO/PALBA/šipek zrušíme výchozí dotykové chování Safari.
+    button.addEventListener('touchstart',e=>e.preventDefault(),{passive:false});
+    button.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
     button.addEventListener('pointerdown',e=>{
       e.preventDefault();button.classList.add('pressed');
       try{button.setPointerCapture(e.pointerId);}catch(err){}
@@ -6219,6 +6348,7 @@ restoreKako();
     }
   });
   canvas.addEventListener('pointerdown',e=>{
+    e.preventDefault();
     if(phase!=='playing')return;
     const rect=canvas.getBoundingClientRect();
     pointerStart={x:e.clientX,y:e.clientY};
