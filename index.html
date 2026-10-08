@@ -1316,7 +1316,6 @@ body.arcade-game-active #gamesScreen .arcade-canvas-shell {
   -webkit-touch-callout:none !important;
 }
 #gamesScreen .arcade-bottom-dock {
-  order:2;
   flex:0 0 auto;
   display:flex;
   flex-direction:column;
@@ -1400,6 +1399,112 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button{
     gap:2px;
   }
   body.arcade-game-active #gamesScreen .arcade-bottom-dock{gap:2px;}
+}
+
+
+/* ================================================================
+   KÁKO 5.5 – ergonomické ovládání + stabilní iOS bez výběru textu
+   ================================================================ */
+html, body, body * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+}
+/* Textová pole zůstávají editovatelná: nastavování jména a mzdy. */
+input, textarea, select, option, [contenteditable="true"], [contenteditable="true"] * {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+}
+body.arcade-game-active #gamesScreen button, #gamesScreen [data-arcade-control], #gamesScreen .arcade-arrow-icon {
+  touch-action: none;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+/* Herní plátno nad ovládacím dockem; staré order z 5.1 jinak prohazovalo pořadí. */
+body.arcade-game-active #gamesScreen #arcadeGame .arcade-canvas-shell { order:1 !important; }
+body.arcade-game-active #gamesScreen #arcadeGame .arcade-bottom-dock { order:2 !important; }
+/* Pěkný opravdový kříž s velkými, od sebe oddělenými rameny. */
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+  display:grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-template-rows: repeat(3,clamp(56px,8.55dvh,76px));
+  column-gap: clamp(10px,1.4dvh,14px);
+  row-gap: clamp(9px,1.2dvh,13px);
+  width:min(100%,314px);
+  max-width:314px;
+  margin:0 auto;
+  align-self:center;
+}
+#gamesScreen #arcadeSnakeControls .arcade-up {grid-column:2!important;grid-row:1!important;}
+#gamesScreen #arcadeSnakeControls .arcade-left {grid-column:1!important;grid-row:2!important;}
+#gamesScreen #arcadeSnakeControls .arcade-right {grid-column:3!important;grid-row:2!important;}
+#gamesScreen #arcadeSnakeControls .arcade-down {grid-column:2!important;grid-row:3!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-dir {
+  width:100%;height:100%;min-height:0;
+}
+/* Invaders: [←] [→] [PALBA], Racing: [←] [→] [TURBO]. */
+#gamesScreen #arcadeSideControls,
+body.arcade-game-active #gamesScreen #arcadeSideControls {
+  display:grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,1.38fr);
+  gap:clamp(9px,1.3dvh,13px);
+  width:100%; max-width:100%;
+  margin:0;
+}
+#gamesScreen #arcadeSideControls[hidden] {display:none!important;}
+body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-dir,
+body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {
+  height:clamp(65px,9.6dvh,82px);
+  min-height:65px;
+}
+body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {
+  font-size:clamp(15px,4.6vw,18px);
+  font-weight:900;
+  white-space:nowrap;
+}
+/* Jednotné masivní bílé šipky ve všech hrách. */
+#gamesScreen .arcade-arrow-icon,
+body.arcade-game-active #gamesScreen .arcade-arrow-icon {
+  width:clamp(42px,6.7dvh,55px);
+  height:clamp(42px,6.7dvh,55px);
+  fill:currentColor;
+  pointer-events:none;
+  flex-shrink:0;
+}
+#gamesScreen .arcade-button.arcade-dir,
+body.arcade-game-active #gamesScreen .arcade-button.arcade-dir {
+  color:#fff9e8;
+  background:#3b2416;
+  border:3px solid #a87a43;
+  box-shadow:inset 0 -4px 0 #21120a;
+}
+/* Šipky zůstávají výborně čitelné i v nejmenším mobilním okně. */
+@media(max-height:690px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+    grid-template-rows:repeat(3,clamp(52px,8.2dvh,61px));
+    row-gap:8px;column-gap:10px;
+    width:min(100%,292px);
+  }
+  body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-dir,
+  body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {height:62px;min-height:62px;}
+}
+@media(max-height:560px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+    grid-template-rows: repeat(3,49px);
+    row-gap:6px;column-gap:9px;
+    width:min(100%,264px);
+  }
+  #gamesScreen .arcade-arrow-icon,
+  body.arcade-game-active #gamesScreen .arcade-arrow-icon {width:38px;height:38px;}
+  body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-dir,
+  body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {height:55px;min-height:55px;}
 }
 
 </style>
@@ -2063,15 +2168,15 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button{
       <div class="arcade-bottom-dock" id="arcadeBottomDock">
       <button type="button" class="arcade-back" onclick="KAKO_ARCADE.back()">‹ ZPĚT DO HER</button>
       <div id="arcadeSnakeControls" class="arcade-controls arcade-snake-buttons" hidden>
-        <button class="arcade-button arcade-dir arcade-up" data-arcade-control="up" aria-label="Nahoru"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
-        <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
-        <button class="arcade-button arcade-dir arcade-down" data-arcade-control="down" aria-label="Dolů"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
-        <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-up" data-arcade-control="up" aria-label="Nahoru"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-down" data-arcade-control="down" aria-label="Dolů"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
       </div>
       <div id="arcadeSideControls" class="arcade-controls arcade-side-buttons" hidden>
-        <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
         <button class="arcade-button arcade-action" id="arcadeAction" data-arcade-control="action">PALBA!</button>
-        <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 4.5 30 27H2Z"/></svg></button>
       </div>
       </div><!-- /arcade-bottom-dock -->
     </div>
@@ -6415,5 +6520,27 @@ restoreKako();
 })();
 
 </script>
+
+<script>
+/* KÁKO 5.5: iOS Safari nesmí označovat text ani otevírat Kopírovat.
+   Platí pro celou aplikaci kromě skutečně editovatelných polí. */
+(function(){
+  'use strict';
+  function editable(target){
+    const el=target && (target.nodeType===1?target:target.parentElement);
+    return !!(el && el.closest && el.closest('input,textarea,select,[contenteditable="true"]'));
+  }
+  for(const type of ['selectstart','contextmenu','dragstart']){
+    document.addEventListener(type,function(event){
+      if(!editable(event.target))event.preventDefault();
+    },{capture:true});
+  }
+  document.addEventListener('selectionchange',function(){
+    const selection=window.getSelection && window.getSelection();
+    if(selection && !selection.isCollapsed && !editable(selection.anchorNode))selection.removeAllRanges();
+  },{passive:true});
+})();
+</script>
+
 </body>
 </html>
