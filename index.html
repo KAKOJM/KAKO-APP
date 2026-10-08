@@ -1507,6 +1507,78 @@ body.arcade-game-active #gamesScreen .arcade-button.arcade-dir {
   body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {height:55px;min-height:55px;}
 }
 
+
+
+/* ============================================================
+  KÁKO 5.6 – kompaktní čtyřsměrný ovladač a jedním prstem hrané hry
+  Kříž má velké DOTYKOVÉ PLOCHY, ale zabírá jen cca 154 px na výšku.
+============================================================ */
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+  display:grid!important;
+  grid-template-columns:repeat(3,64px)!important;
+  grid-template-rows:repeat(3,48px)!important;
+  column-gap:5px!important;
+  row-gap:4px!important;
+  width:max-content!important;
+  max-width:100%!important;
+  margin:0 auto!important;
+  justify-content:center;
+  align-content:center;
+}
+#gamesScreen #arcadeSnakeControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeSnakeControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeSideControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeOneButtonControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeWhackTip[hidden]{display:none!important}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button{
+  min-height:0!important;height:48px!important;width:64px!important;
+  padding:0!important;border-radius:13px!important;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon{
+  width:33px!important;height:33px!important;
+}
+body.arcade-game-active #gamesScreen .arcade-bottom-dock{
+  margin-top:auto!important;padding-top:0!important;gap:4px!important;
+}
+body.arcade-game-active #gamesScreen #arcadeGame .arcade-canvas-shell{
+  flex:1 1 auto!important;min-height:0!important;
+}
+#gamesScreen #arcadeOneButtonControls[hidden]{display:none!important;}
+#gamesScreen #arcadeOneButtonControls{
+  display:flex;justify-content:center;align-items:center;
+  width:100%;margin:0!important;
+}
+body.arcade-game-active #gamesScreen #arcadeOneButton{
+  display:block;width:min(100%,340px);height:clamp(62px,9dvh,78px);
+  min-height:62px;border-radius:15px;background:var(--yellow);
+  color:var(--brown);border:3px solid #be8b20;
+  font-size:23px;font-weight:900;
+  box-shadow:inset 0 -4px 0 #b98c23;
+  touch-action:none;
+}
+body.arcade-game-active #gamesScreen #arcadeOneButton:active,
+body.arcade-game-active #gamesScreen #arcadeOneButton.pressed{filter:brightness(.92);transform:scale(.985)}
+body.arcade-game-active #gamesScreen #arcadeWhackTip{
+  display:block;font-size:12px;font-weight:900;text-align:center;
+  color:#785437;background:#f1dfc7;border-radius:10px;padding:7px;
+}
+#arcadeWhackTip[hidden]{display:none!important}
+@media(max-height:620px){
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+    grid-template-columns:repeat(3,60px)!important;
+    grid-template-rows:repeat(3,43px)!important;
+    column-gap:4px!important;row-gap:3px!important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button{
+    width:60px!important;height:43px!important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon{
+    width:30px!important;height:30px!important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeOneButton{height:54px;min-height:54px}
+}
+
 </style>
 </head>
 
@@ -2134,6 +2206,21 @@ body.arcade-game-active #gamesScreen .arcade-button.arcade-dir {
           <span class="arcade-card-info"><span class="arcade-card-name">KÁKO RACING</span><span class="arcade-card-desc">Sólová nekonečná jízda kanalizací. Bez soupeře!</span><span class="arcade-card-best" id="arcBestRacing">Rekord: 0 m</span></span>
           <span class="arcade-card-next">›</span>
         </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('whack')">
+          <span class="arcade-card-icon">🪠</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">PRAŠŤ HO-VNO</span><span class="arcade-card-desc">Klepej na bobky, které vyskakují ze záchodů. Postřehová hra na 45 sekund.</span><span class="arcade-card-best" id="arcBestWhack">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('flappy')">
+          <span class="arcade-card-icon">🪽</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">FLAPPY KÁKO</span><span class="arcade-card-desc">Klepnutím leť mezi trubkami. Jednoduché ovládání jedním prstem.</span><span class="arcade-card-best" id="arcBestFlappy">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('run')">
+          <span class="arcade-card-icon">🏃</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO RUN</span><span class="arcade-card-desc">Skákej přes překážky, sbírej papír a doběhni co nejdál.</span><span class="arcade-card-best" id="arcBestRun">Rekord: 0 m</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
       </div>
       <div class="arcade-info">Rekordy se ukládají do tohoto zařízení. Statistiky a historie KÁKO se nemění.</div>
     </div>
@@ -2178,6 +2265,10 @@ body.arcade-game-active #gamesScreen .arcade-button.arcade-dir {
         <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
         <button class="arcade-button arcade-action" id="arcadeAction" data-arcade-control="action">PALBA!</button>
       </div>
+      <div id="arcadeOneButtonControls" class="arcade-controls" hidden>
+        <button type="button" class="arcade-button" id="arcadeOneButton" data-arcade-control="action">SKOK!</button>
+      </div>
+      <div id="arcadeWhackTip" hidden>KLEPNI PŘÍMO NA BOBEK! 🪠</div>
       </div><!-- /arcade-bottom-dock -->
     </div>
   </div>
@@ -6041,10 +6132,10 @@ restoreKako();
   if(!canvas || window.KAKO_ARCADE) return;
   const ctx = canvas.getContext('2d');
   const W=320,H=420;
-  const title = {snake:'KÁKOHAD',invaders:'KÁKO INVADERS',racing:'KÁKO RACING'};
-  const keys = {snake:'kakoArcadeRecordSnake',invaders:'kakoArcadeRecordInvaders',racing:'kakoArcadeRecordRacing'};
-  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.'};
-  let game=null,phase='idle',s=null,best={snake:0,invaders:0,racing:0},sound=false,audio=null;
+  const title = {snake:'KÁKOHAD',invaders:'KÁKO INVADERS',racing:'KÁKO RACING',whack:'PRAŠŤ HO-VNO',flappy:'FLAPPY KÁKO',run:'KÁKO RUN'};
+  const keys = {snake:'kakoArcadeRecordSnake',invaders:'kakoArcadeRecordInvaders',racing:'kakoArcadeRecordRacing',whack:'kakoArcadeRecordWhack',flappy:'kakoArcadeRecordFlappy',run:'kakoArcadeRecordRun'};
+  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.',whack:'Klepej prstem na bobky v otvorech. Máš 45 sekund a za každý zásah získáš body.',flappy:'Klepni do hry nebo na SKOK a proleť mezi trubkami. Nespadni na zem!',run:'Klepni nebo stiskni SKOK, přeskoč překážky a sbírej toaletní papír.'};
+  let game=null,phase='idle',s=null,best={snake:0,invaders:0,racing:0,whack:0,flappy:0,run:0},sound=false,audio=null;
   let leftDown=false,rightDown=false,actionDown=false,prev=0,modalFn=null,pointerStart=null;
   // Volba zůstane uložená, výchozí obtížnost je schválně klidná.
   const snakeDelays={slow:.34,normal:.25,fast:.18};
@@ -6099,14 +6190,18 @@ restoreKako();
     $('arcBestSnake').textContent='Rekord: '+best.snake;
     $('arcBestInvaders').textContent='Rekord: '+best.invaders;
     $('arcBestRacing').textContent='Rekord: '+best.racing+' m';
+    $('arcBestWhack').textContent='Rekord: '+best.whack;
+    $('arcBestFlappy').textContent='Rekord: '+best.flappy;
+    $('arcBestRun').textContent='Rekord: '+best.run+' m';
   }
   function updateHud(){
     if(!s)return;
-    $('arcadeLabelScore').textContent=game==='racing'?'METRY':'SKÓRE';
-    $('arcadeScore').textContent=Math.floor(s.points)+(game==='racing'?' m':'');
-    $('arcadeBest').textContent=best[game]+(game==='racing'?' m':'');
-    $('arcadeLabelLives').textContent=game==='snake'?'ÚROVEŇ':game==='invaders'?'ŽIVOTY':'ŽIVOTY';
-    $('arcadeLives').textContent=game==='snake'?s.level:s.hp;
+    const meters=(game==='racing'||game==='run');
+    $('arcadeLabelScore').textContent=meters?'METRY':'SKÓRE';
+    $('arcadeScore').textContent=Math.floor(s.points)+(meters?' m':'');
+    $('arcadeBest').textContent=best[game]+(meters?' m':'');
+    $('arcadeLabelLives').textContent=game==='snake'?'ÚROVEŇ':game==='whack'?'ČAS':game==='flappy'?'PRŮLETŮ':'ŽIVOTY';
+    $('arcadeLives').textContent=game==='snake'?s.level:game==='whack'?Math.max(0,Math.ceil(s.time))+' s':game==='flappy'?s.points:s.hp;
     $('arcadePause').textContent=phase==='paused'?'▶ Pokračovat':'⏸ Pauza';
   }
   function clearHeld(){leftDown=false;rightDown=false;actionDown=false;document.querySelectorAll('#gamesScreen .arcade-button').forEach(x=>x.classList.remove('pressed'));}
@@ -6160,10 +6255,13 @@ restoreKako();
     document.body.classList.add('arcade-game-active');
     $('arcadeGameName').textContent=title[which];
     $('arcadeSnakeControls').hidden=which!=='snake';
-    $('arcadeSideControls').hidden=which==='snake';
+    $('arcadeSideControls').hidden=which!=='invaders'&&which!=='racing';
+    $('arcadeOneButtonControls').hidden=which!=='flappy'&&which!=='run';
+    $('arcadeWhackTip').hidden=which!=='whack';
+    $('arcadeOneButton').textContent=which==='flappy'?'🪽 MÁVNI!':'⬆ SKOK!';
     $('arcadeAction').textContent=which==='racing'?'⚡ TURBO':'💦 PALBA';
     initState();updateHud();
-    showModal(which==='snake'?'💩':which==='invaders'?'🚽':'🚽',title[which],copy[which],'HRÁT →',start);
+    showModal(({snake:'💩',invaders:'🚽',racing:'🚽',whack:'🪠',flappy:'🪽',run:'🏃'})[which],title[which],copy[which],'HRÁT →',start);
     $('arcadePause').disabled=false;
     window.scrollTo(0,0);
     requestAnimationFrame(fitCanvas);
@@ -6176,12 +6274,12 @@ restoreKako();
   }
   function start(){
     if(!game)return;
-    clearHeld();initState();phase='playing';hideModal();updateHud();beep(640,.12);
+    clearHeld();initState();phase='playing';prev=performance.now();hideModal();updateHud();beep(640,.12);
   }
   function finish(reason){
     if(phase!=='playing')return;
     phase='over';clearHeld();record();persistBest();updateHud();beep(180,.22);
-    showModal('🏆','KONEC HRY!',reason+' Rekord: '+best[game]+(game==='racing'?' m':'')+'.','HRÁT ZNOVU →',start);
+    showModal('🏆','KONEC HRY!',reason+' Rekord: '+best[game]+((game==='racing'||game==='run')?' m':'')+'.','HRÁT ZNOVU →',start);
   }
   function pause(){
     if(!game||phase==='idle'||phase==='over')return;
@@ -6389,16 +6487,142 @@ restoreKako();
     rrect(81,33,158,7,3,'#3c281b');rrect(81,33,158*s.boost/100,7,3,'#ffce2c');
     rrect(79,397,162,21,7,'#2a170edf');text('⚡ TURBO '+Math.round(s.boost)+' %',160,408,12,'#ffe4ab');
   }
-  function initState(){if(game==='snake')newSnake();else if(game==='invaders')newInvaders();else if(game==='racing')newRacing();}
+
+  // PRAŠŤ HO-VNO: žádné další časovače, celý postřehový režim běží ve společném RAF.
+  function newWhack(){
+    s={points:0,hp:3,time:45,target:-1,expires:0,spawn:.32,combo:0,pops:[],feedback:0};
+  }
+  const whackCells=Array.from({length:9},(_,i)=>({x:61+(i%3)*99,y:105+Math.floor(i/3)*105}));
+  function whackAt(x,y){
+    if(phase!=='playing'||game!=='whack')return;
+    const idx=whackCells.findIndex(p=>Math.hypot(x-p.x,y-p.y)<38);
+    if(idx===s.target){
+      s.points+=10; s.combo++;if(s.combo%5===0)s.points+=25;
+      s.pops.push({x,y,life:.6,good:true});s.target=-1;s.spawn=.1;
+      beep(550,.06);record();updateHud();
+    }else if(idx>=0){
+      s.combo=0;s.pops.push({x,y,life:.45,good:false});beep(175,.07);
+    }
+  }
+  function updateWhack(dt){
+    s.time-=dt;
+    if(s.time<=0){s.time=0;record();finish('Za 45 sekund jsi získal '+s.points+' bodů.');return;}
+    if(s.target>=0){s.expires-=dt;if(s.expires<=0){s.target=-1;s.spawn=.19;s.combo=0;}}
+    else{s.spawn-=dt;if(s.spawn<=0){s.target=randInt(9);s.expires=Math.max(.78,1.38-s.points*.0011);}}
+    for(let i=s.pops.length-1;i>=0;i--){s.pops[i].life-=dt;if(s.pops[i].life<=0)s.pops.splice(i,1);}
+  }
+  function paintWhack(){
+    rrect(0,0,W,H,0,'#f3dec1');
+    rrect(0,0,W,47,0,'#43281a');text('🪠 PRAŠŤ HO-VNO  •  '+Math.ceil(s.time)+' s',160,24,15,'#ffdf78');
+    for(let i=0;i<9;i++){
+      const p=whackCells[i];
+      rrect(p.x-42,p.y-37,84,79,15,'#c7a17a');
+      ctx.fillStyle='#39261d';ctx.beginPath();ctx.ellipse(p.x,p.y+10,34,18,0,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle='#8b674b';ctx.lineWidth=3;ctx.stroke();
+      if(s.target===i){emoji('💩',p.x,p.y-12,49);}
+    }
+    for(const p of s.pops){ctx.globalAlpha=Math.min(1,p.life*3);text(p.good?'PRÁSK!':'VEDLE!',p.x,p.y-41,14,p.good?'#287a3c':'#ac3d35');}
+    ctx.globalAlpha=1;
+    rrect(14,387,292,28,7,'#43281a');text('Klepej na bobky!  Kombo: '+s.combo,160,401,12,'#fce4a7');
+  }
+  // FLAPPY KÁKO: jedna dotyková akce, vyvážená gravitace a mezery.
+  function newFlappy(){
+    s={points:0,hp:1,y:185,vy:0,pipes:[],spawn:1.5,anim:0,started:false};
+  }
+  function flap(){
+    if(phase!=='playing'||game!=='flappy')return;
+    s.started=true;s.vy=-255;beep(520,.055);
+  }
+  function updateFlappy(dt){
+    s.anim+=dt;
+    if(!s.started)return;
+    s.vy=Math.min(420,s.vy+640*dt);
+    s.y+=s.vy*dt;
+    s.spawn-=dt;
+    if(s.spawn<=0){s.spawn=2.0;s.pipes.push({x:350,top:rnd(82,245),gap:145,scored:false});}
+    for(let i=s.pipes.length-1;i>=0;i--){
+      const p=s.pipes[i];p.x-=116*dt;
+      if(p.x<-58){s.pipes.splice(i,1);continue;}
+      if(!p.scored&&p.x+54<86){p.scored=true;s.points++;beep(745,.065);record();updateHud();}
+      if(86+14>p.x&&86-14<p.x+54&&(s.y-14<p.top||s.y+14>p.top+p.gap)){
+        finish('Proletěl jsi '+s.points+' mezer mezi trubkami.');return;
+      }
+    }
+    if(s.y<15||s.y>398){finish('Proletěl jsi '+s.points+' mezer mezi trubkami.');}
+  }
+  function paintFlappy(){
+    const sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#80d4e6');sky.addColorStop(1,'#e9e3b8');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<5;i++){ctx.fillStyle='#ffffff77';ctx.beginPath();ctx.ellipse((i*93+16-s.anim*14)%380,65+(i%3)*67,32,12,0,0,7);ctx.fill();}
+    for(const p of s.pipes){
+      rrect(p.x,0,54,p.top,5,'#3b9966');rrect(p.x-5,p.top-20,64,20,4,'#20794c');
+      rrect(p.x,p.top+p.gap,54,H-p.top-p.gap,5,'#3b9966');rrect(p.x-5,p.top+p.gap,64,20,4,'#20794c');
+      ctx.fillStyle='#9fdeb4';ctx.fillRect(p.x+9,0,6,Math.max(0,p.top-22));
+      ctx.fillRect(p.x+9,p.top+p.gap+20,6,Math.max(0,H-p.top-p.gap-20));
+    }
+    emoji('💩',86,s.y,39);
+    rrect(0,0,320,36,0,'#3a271bcd');text('PROLETĚNO: '+s.points,160,18,17,'#ffebbd');
+    if(!s.started){rrect(35,182,250,57,12,'#382519d9');text('KLEPNI A LEŤ!',160,209,21,'#ffdb76');}
+  }
+  // KÁKO RUN: plynulá časově nezávislá fyzika, omezené množství objektů.
+  function newRun(){
+    s={points:0,hp:3,y:338,vy:0,ground:338,obstacles:[],spawn:1.2,inv:0,anim:0,speed:145};
+  }
+  function jumpRun(){
+    if(phase!=='playing'||game!=='run')return;
+    if(s.y>=s.ground-1){s.vy=-375;beep(460,.07);}
+  }
+  function updateRun(dt){
+    s.anim+=dt;s.points+=dt*12;s.speed=Math.min(205,145+s.points*.07);
+    s.y+=s.vy*dt;s.vy+=900*dt;
+    if(s.y>=s.ground){s.y=s.ground;s.vy=0;}
+    s.inv=Math.max(0,s.inv-dt);
+    s.spawn-=dt;
+    if(s.spawn<=0){
+      s.spawn=rnd(1.35,2.1);
+      const bonus=Math.random()<.28;
+      s.obstacles.push({x:350,kind:bonus?'paper':Math.random()<.5?'plunger':'toilet',y:bonus?rnd(249,289):338,hit:false});
+    }
+    for(let i=s.obstacles.length-1;i>=0;i--){
+      const o=s.obstacles[i];o.x-=s.speed*dt;
+      if(o.x<-45){s.obstacles.splice(i,1);continue;}
+      if(!o.hit&&Math.abs(o.x-76)<25&&Math.abs(o.y-s.y)<(o.kind==='paper'?33:36)){
+        o.hit=true;s.obstacles.splice(i,1);
+        if(o.kind==='paper'){s.points+=35;beep(740,.06);}
+        else if(s.inv<=0){s.hp--;s.inv=1.2;beep(160,.13);if(s.hp<=0){record();finish('Uběhl jsi '+Math.floor(s.points)+' metrů.');return;}}
+      }
+    }
+    record();
+  }
+  function paintRun(){
+    const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#d9c8a9');bg.addColorStop(1,'#988466');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<6;i++){
+      const x=(i*80-s.anim*25)%440;ctx.fillStyle='#8b795b66';ctx.fillRect(x,90,4,265);
+      ctx.fillStyle='#f2dcc080';ctx.fillRect(x+4,92,52,8);
+    }
+    rrect(0,360,W,60,0,'#6b4c32');rrect(0,354,W,7,0,'#3b281c');
+    for(let i=0;i<8;i++)rrect(((i*62-s.anim*s.speed*.6)%400+400)%400-10,392,36,5,2,'#ad8760');
+    for(const o of s.obstacles){emoji(o.kind==='paper'?'🧻':o.kind==='plunger'?'🪠':'🚽',o.x,o.y,o.kind==='paper'?29:41);}
+    if(!(s.inv>0&&Math.floor(s.inv*10)%2===0))emoji('💩',76,s.y,43);
+    rrect(9,10,302,31,7,'#39251cdb');text('UBĚHNUTO '+Math.floor(s.points)+' m  •  ♥ '+s.hp,160,25,15,'#ffdda1');
+    text('SKÁKEJ PŘES PŘEKÁŽKY',160,70,13,'#5a3826');
+  }
+  function initState(){
+    if(game==='snake')newSnake();else if(game==='invaders')newInvaders();else if(game==='racing')newRacing();
+    else if(game==='whack')newWhack();else if(game==='flappy')newFlappy();else if(game==='run')newRun();
+  }
   function update(dt){
     if(phase!=='playing'||!s)return;
     if(game==='snake')updateSnake(dt);
     else if(game==='invaders')updateInvaders(dt);
     else if(game==='racing')updateRacing(dt);
+    else if(game==='whack')updateWhack(dt);
+    else if(game==='flappy')updateFlappy(dt);
+    else if(game==='run')updateRun(dt);
   }
   function draw(){
     if(!game||!s)return;
     if(game==='snake')paintSnake();else if(game==='invaders')paintInvaders();else if(game==='racing')paintRacing();
+    else if(game==='whack')paintWhack();else if(game==='flappy')paintFlappy();else if(game==='run')paintRun();
   }
   function render(t){
     requestAnimationFrame(render);
@@ -6414,6 +6638,9 @@ restoreKako();
   function actionPress(k,down){
     if(!game||phase!=='playing')return;
     if(game==='snake'){if(down&&k!=='action')snakeDirection(k);return;}
+    if(game==='flappy'){if(down&&k==='action')flap();return;}
+    if(game==='run'){if(down&&k==='action')jumpRun();return;}
+    if(game==='whack')return;
     if(game==='racing'){
       if(k==='action')actionDown=down;
       else if(down)moveRace(k==='left'?-1:1);
@@ -6457,6 +6684,9 @@ restoreKako();
     if(phase!=='playing')return;
     const rect=canvas.getBoundingClientRect();
     pointerStart={x:e.clientX,y:e.clientY};
+    if(game==='whack'){whackAt((e.clientX-rect.left)/rect.width*W,(e.clientY-rect.top)/rect.height*H);}
+    if(game==='flappy')flap();
+    if(game==='run')jumpRun();
     if(game==='invaders'){
       s.px=clamp((e.clientX-rect.left)/rect.width*W,25,295);fire();
     }
