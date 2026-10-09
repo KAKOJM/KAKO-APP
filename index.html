@@ -1644,6 +1644,122 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button:active{
 .arcade-sort-row{position:relative;}
 .arcade-sorting .arcade-sort-row.arcade-dragging{z-index:20;opacity:.93;box-shadow:0 7px 18px rgba(59,36,22,.15);}
 .arcade-sorting .arcade-sort-row.arcade-drop-target{border-top:4px solid #ba862b;}
+
+/* ===================================================================
+   KÁKO 5.8 – oddělený D-pad č. 7 a horní červený návrat
+   Jediné koncové přepsání historických CSS pravidel. Žádné nové
+   intervaly, animace, knihovny ani změny časomíry.
+   =================================================================== */
+body.arcade-game-active #gamesScreen #arcadeGame > .arcade-back {
+  order:-1 !important;
+  display:block;
+  flex:0 0 auto;
+  width:100%;
+  min-height:42px;
+  margin:0 0 2px;
+  padding:9px 14px;
+  border:2px solid #aa302b !important;
+  border-radius:12px;
+  background:#d9473e !important;
+  color:#fffdf8 !important;
+  box-shadow:inset 0 -3px 0 #ad2e28;
+  font-size:14px;
+  font-weight:900;
+  text-align:center;
+  line-height:1.1;
+  touch-action:manipulation;
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+body.arcade-game-active #gamesScreen #arcadeGame > .arcade-back:active {
+  background:#b8342e !important;
+  box-shadow:inset 0 -1px 0 #8c2520;
+}
+/* Ve spodním docku už je jen ovládání aktuální hry. */
+body.arcade-game-active #gamesScreen .arcade-bottom-dock {
+  order:2 !important;
+  margin-top:auto;
+  padding:0;
+}
+/* Sedmička z návrhů:       [ ↑ ]
+                         [ ← ] [ ↓ ] [ → ]
+   Dva řádky, široké tlačítkové plochy, znatelné mezery.
+*/
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  grid-template-rows:repeat(2,clamp(50px,7.0dvh,62px)) !important;
+  column-gap:clamp(9px,2.8vw,14px) !important;
+  row-gap:clamp(9px,1.6dvh,14px) !important;
+  width:min(100%,358px) !important;
+  max-width:358px !important;
+  margin:0 auto !important;
+  align-self:center !important;
+  justify-content:stretch !important;
+  align-content:center !important;
+  isolation:auto;
+}
+#gamesScreen #arcadeSnakeControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeSnakeControls[hidden] {
+  display:none !important;
+}
+#gamesScreen #arcadeSnakeControls::before {
+  content:none !important;
+  display:none !important;
+}
+#gamesScreen #arcadeSnakeControls .arcade-up,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-up {
+  grid-column:2 !important;grid-row:1 !important;
+}
+#gamesScreen #arcadeSnakeControls .arcade-left,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-left {
+  grid-column:1 !important;grid-row:2 !important;
+}
+#gamesScreen #arcadeSnakeControls .arcade-down,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-down {
+  grid-column:2 !important;grid-row:2 !important;
+}
+#gamesScreen #arcadeSnakeControls .arcade-right,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-right {
+  grid-column:3 !important;grid-row:2 !important;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir {
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  border:3px solid #a87a43 !important;
+  border-radius:14px !important;
+  padding:0 !important;
+  background:#3b2416 !important;
+  color:#fff9e8 !important;
+  box-shadow:inset 0 -4px 0 #21120a !important;
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir.pressed,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir:active {
+  background:#ffc72c !important;
+  color:#3b2416 !important;
+  border-color:#b67b24 !important;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
+  width:clamp(30px,5.1dvh,42px) !important;
+  height:clamp(30px,5.1dvh,42px) !important;
+}
+@media(max-height:620px) {
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+    grid-template-rows:repeat(2,48px) !important;
+    row-gap:7px !important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeGame > .arcade-back {
+    min-height:36px;
+    padding:6px 10px;
+  }
+}
 </style>
 </head>
 
@@ -2294,6 +2410,8 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button:active{
       <div class="arcade-info">Rekordy se ukládají do tohoto zařízení. Statistiky a historie KÁKO se nemění.</div>
     </div>
     <div id="arcadeGame" class="arcade-game-panel" hidden>
+      <!-- KÁKO 5.8: návrat mimo herní ovladač, stále nahoře na obrazovce. -->
+      <button type="button" class="arcade-back" onclick="KAKO_ARCADE.back()" aria-label="Zpět do výběru her">‹ ZPĚT DO HER</button>
       <div class="arcade-game-head"><span id="arcadeGameName" class="arcade-game-name">KÁKO HRY</span><button type="button" class="arcade-sound" id="arcadeSound">🔇 Zvuk</button></div>
       <div class="arcade-hud">
         <div class="arcade-hud-item"><small id="arcadeLabelScore">SKÓRE</small><strong id="arcadeScore">0</strong></div>
@@ -2322,7 +2440,6 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button:active{
       </div>
       <!-- Stabilní herní dock na spodním okraji obrazovky. -->
       <div class="arcade-bottom-dock" id="arcadeBottomDock">
-      <button type="button" class="arcade-back" onclick="KAKO_ARCADE.back()">‹ ZPĚT DO HER</button>
       <div id="arcadeSnakeControls" class="arcade-controls arcade-snake-buttons" hidden>
         <button class="arcade-button arcade-dir arcade-up" data-arcade-control="up" aria-label="Nahoru"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
         <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
