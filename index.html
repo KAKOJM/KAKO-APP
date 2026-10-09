@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 5.9 – HRY</title>
+<title>KÁKO 6.0 – HRY</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1766,6 +1766,51 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
     padding:6px 10px;
   }
 }
+
+/* KÁKO 6.0 – čtyři přehledné položky ve spodní navigaci */
+.bottom-nav{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  padding:9px 5px calc(10px + env(safe-area-inset-bottom));
+  gap:2px;
+}
+.bottom-nav .nav-btn{
+  min-width:0;
+  min-height:49px;
+  padding:5px 2px 3px;
+  font-size:11px;
+  white-space:nowrap;
+  border-radius:12px;
+  -webkit-tap-highlight-color:transparent;
+}
+.bottom-nav .nav-icon{font-size:23px;line-height:1.15;margin-bottom:3px;}
+.bottom-nav .nav-btn.active{background:rgba(255,255,255,.075);}
+.overview-title{
+  color:var(--brown);font-size:28px;font-weight:900;
+  text-align:center;margin:4px 0 14px;
+}
+.overview-nav{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:5px;padding:5px;background:var(--cream3);
+  border-radius:17px;margin-bottom:17px;
+}
+.overview-tab{
+  appearance:none;border:0;min-width:0;min-height:48px;
+  border-radius:13px;background:transparent;color:var(--brown);
+  font-size:12px;font-weight:900;padding:7px 2px;
+  -webkit-tap-highlight-color:transparent;
+}
+.overview-tab.active{
+  background:var(--brown);color:#fff;
+  box-shadow:0 2px 0 rgba(0,0,0,.1);
+}
+.overview-screen .page-title{display:none;}
+.about-app{font-size:12px;line-height:1.6;color:var(--muted);}
+.about-app p{margin:6px 0;}
+@media(max-width:360px){
+  .bottom-nav .nav-btn{font-size:10px;}
+  .overview-tab{font-size:11px;}
+}
+
 </style>
 </head>
 
@@ -1977,8 +2022,14 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 </div>
 
 
-<div id="statsScreen" class="screen">
+<div id="statsScreen" class="screen overview-screen">
 <div class="app">
+<div class="overview-title">Přehled</div>
+<div class="overview-nav" role="group" aria-label="Sekce přehledu">
+  <button type="button" class="overview-tab" data-overview-tab="statsScreen" onclick="openOverview('statsScreen')">📊 Statistiky</button>
+  <button type="button" class="overview-tab" data-overview-tab="historyScreen" onclick="openOverview('historyScreen')">📜 Historie</button>
+  <button type="button" class="overview-tab" data-overview-tab="achievementsScreen" onclick="openOverview('achievementsScreen')">🏅 Úspěchy</button>
+</div>
 
 <div class="page-title">
   Statistiky
@@ -2116,8 +2167,14 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 </div>
 
 
-<div id="achievementsScreen" class="screen">
+<div id="achievementsScreen" class="screen overview-screen">
 <div class="app">
+<div class="overview-title">Přehled</div>
+<div class="overview-nav" role="group" aria-label="Sekce přehledu">
+  <button type="button" class="overview-tab" data-overview-tab="statsScreen" onclick="openOverview('statsScreen')">📊 Statistiky</button>
+  <button type="button" class="overview-tab" data-overview-tab="historyScreen" onclick="openOverview('historyScreen')">📜 Historie</button>
+  <button type="button" class="overview-tab" data-overview-tab="achievementsScreen" onclick="openOverview('achievementsScreen')">🏅 Úspěchy</button>
+</div>
 
 <div class="page-title">
   Achievementy
@@ -2141,8 +2198,14 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 </div>
 
 
-<div id="historyScreen" class="screen">
+<div id="historyScreen" class="screen overview-screen">
 <div class="app">
+<div class="overview-title">Přehled</div>
+<div class="overview-nav" role="group" aria-label="Sekce přehledu">
+  <button type="button" class="overview-tab" data-overview-tab="statsScreen" onclick="openOverview('statsScreen')">📊 Statistiky</button>
+  <button type="button" class="overview-tab" data-overview-tab="historyScreen" onclick="openOverview('historyScreen')">📜 Historie</button>
+  <button type="button" class="overview-tab" data-overview-tab="achievementsScreen" onclick="openOverview('achievementsScreen')">🏅 Úspěchy</button>
+</div>
 
 <div class="page-title">
   Historie
@@ -2354,6 +2417,12 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 </div>
 
 
+<div class="settings-card about-app" aria-label="O aplikaci">
+  <h3>O aplikaci</h3>
+  <p><strong>KÁKO 6.0</strong> · Časomíra, statistiky a šest her</p>
+  <p>Autor: Milan Kolařík a Jakub Kotásek</p>
+</div>
+
 <button
   class="save-btn"
   onclick="saveSettings()"
@@ -2506,53 +2575,25 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 </button>
 
 
-<button
-  id="navStats"
-  class="nav-btn"
-  onclick="showScreen('statsScreen')"
->
-  <span class="nav-icon">📊</span>
-  Statistiky
-</button>
-
-
-<button
-  id="navAchievements"
-  class="nav-btn"
-  onclick="showScreen('achievementsScreen')"
->
-  <span class="nav-icon">🏅</span>
-  Úspěchy
-</button>
-
-
-<button
-  id="navHistory"
-  class="nav-btn"
-  onclick="showScreen('historyScreen')"
->
-  <span class="nav-icon">📜</span>
-  Historie
-</button>
-
-
-<button
-  id="navSettings"
-  class="nav-btn"
-  onclick="showScreen('settingsScreen')"
->
-  <span class="nav-icon">⚙️</span>
-  Nastavení
-</button>
-
 <button id="navGames" class="nav-btn" onclick="showScreen('gamesScreen')">
   <span class="nav-icon">🎮</span>
   KÁKO HRY
 </button>
 
-<div class="bottom-author">
-  Autor: Milan Kolařík a Jakub Kotásek
-</div>
+<button
+  id="navOverview"
+  class="nav-btn"
+  onclick="openOverview()"
+  aria-label="Otevřít přehled statistik, historie a úspěchů"
+>
+  <span class="nav-icon">📊</span>
+  Přehled
+</button>
+
+<button id="navSettings" class="nav-btn" onclick="showScreen('settingsScreen')">
+  <span class="nav-icon">⚙️</span>
+  Nastavení
+</button>
 
 </div>
 
@@ -4206,7 +4247,7 @@ function startTimers(){
   timerInterval =
     setInterval(
       updateTimer,
-      250
+      1000
     );
 
 
@@ -5642,6 +5683,21 @@ function finishFromReminder(){
 }
 
 
+/* KÁKO 6.0 – jednotná navigace Přehled */
+let overviewLastScreen = "statsScreen";
+function openOverview(id){
+  const allowed=["statsScreen","historyScreen","achievementsScreen"];
+  if(!allowed.includes(id))id=overviewLastScreen;
+  showScreen(id);
+}
+function updateOverviewTabs(id){
+  for(const button of document.querySelectorAll('.overview-tab')){
+    const active=button.dataset.overviewTab===id;
+    button.classList.toggle('active',active);
+    button.setAttribute('aria-pressed',String(active));
+  }
+}
+
 /* OBRAZOVKY */
 
 function showScreen(id){
@@ -5701,7 +5757,7 @@ function showScreen(id){
   ){
 
     document.getElementById(
-      "navStats"
+      "navOverview"
     ).classList.add(
       "active"
     );
@@ -5717,7 +5773,7 @@ function showScreen(id){
   ){
 
     document.getElementById(
-      "navAchievements"
+      "navOverview"
     ).classList.add(
       "active"
     );
@@ -5733,7 +5789,7 @@ function showScreen(id){
   ){
 
     document.getElementById(
-      "navHistory"
+      "navOverview"
     ).classList.add(
       "active"
     );
@@ -5767,6 +5823,10 @@ function showScreen(id){
     document.getElementById("navGames").classList.add("active");
   }
 
+  if(id === "statsScreen" || id === "historyScreen" || id === "achievementsScreen"){
+    overviewLastScreen=id;
+    updateOverviewTabs(id);
+  }
   updatePrimaryNav();
 
   // Opuštění her herní stav pozastaví, časomíra KÁKO běží dále.
@@ -6145,21 +6205,16 @@ function showToast(text){
 /* UPDATE VŠEHO */
 
 function updateAll(){
-
   updateHome();
-
-  updateStats();
-
-  renderAchievements();
-
-  renderHistory();
-
+  // Reporty jsou generovány až při otevření Přehledu, ne na pozadí při startu.
+  const active=document.querySelector('.screen.active');
+  const id=active ? active.id : '';
+  if(id==='statsScreen')updateStats();
+  else if(id==='achievementsScreen')renderAchievements();
+  else if(id==='historyScreen')renderHistory();
   updatePrimaryNav();
-
   updateSoundUI();
-
   updateReminderUI();
-
 }
 
 
@@ -6355,8 +6410,10 @@ restoreKako();
     $('arcadePause').disabled=false;
     window.scrollTo(0,0);
     requestAnimationFrame(fitCanvas);
+    startArcadeFrame();
   }
   function back(){
+    stopArcadeFrame();
     stopGame();game=null;
     document.body.classList.remove('arcade-game-active');
     $('arcadeGame').hidden=true;$('arcadeLibrary').hidden=false;
@@ -6451,9 +6508,11 @@ restoreKako();
     // Změna hlavní obrazovky nesmí ponechat otevřenou celoplošnou hru.
     if(id!=='gamesScreen' && sorting)setSorting(false);
     if(id!=='gamesScreen' && game)back();
-    if(id==='gamesScreen'){updateCards();updateKakoTime();}
+    if(id==='gamesScreen'){updateCards();updateKakoTime();startArcadeFrame();}
+    else stopArcadeFrame();
   }
   function updateKakoTime(){
+    if(!$('gamesScreen').classList.contains('active'))return;
     const t=$('arcadeTimer');if(!t)return;
     const active=typeof startTime!=='undefined'&&startTime&&Number(startTime)>0;
     t.style.display=active?'block':'none';
@@ -6782,16 +6841,29 @@ restoreKako();
     if(game==='snake')paintSnake();else if(game==='invaders')paintInvaders();else if(game==='racing')paintRacing();
     else if(game==='whack')paintWhack();else if(game==='flappy')paintFlappy();else if(game==='run')paintRun();
   }
+  // Jediný requestAnimationFrame běží POUZE na otevřené a viditelné hře.
+  let arcadeFrameId=0;
+  function stopArcadeFrame(){
+    if(arcadeFrameId)cancelAnimationFrame(arcadeFrameId);
+    arcadeFrameId=0;prev=0;
+  }
+  function startArcadeFrame(){
+    if(arcadeFrameId || !game || document.hidden || $('arcadeGame').hidden || !$('gamesScreen').classList.contains('active'))return;
+    prev=0;lastRender=0;
+    arcadeFrameId=requestAnimationFrame(render);
+  }
   function render(t){
-    requestAnimationFrame(render);
+    arcadeFrameId=0;
     if(!game || document.hidden || $('arcadeGame').hidden || !$('gamesScreen').classList.contains('active')){
-      prev=t;return; // ostatní stránky KÁKO: žádné překreslování her
+      prev=0;return;
     }
-    if(t-lastRender<32)return; // plynulých cca 30 FPS, šetrné k baterii
+    // Nabídka, pauza i konec hry jsou statické: vykreslit jednou, dál neběží rAF.
+    if(phase==='playing')arcadeFrameId=requestAnimationFrame(render);
+    if(phase==='playing' && t-lastRender<32)return; // maximálně ~30 snímků/s
     lastRender=t;
     const dt=Math.min(prev?(t-prev)/1000:0,.065);prev=t;
     update(dt);draw();
-    if(t-lastHudDraw>120){updateHud();lastHudDraw=t;}
+    if(t-lastHudDraw>160){updateHud();lastHudDraw=t;}
   }
   function actionPress(k,down){
     if(!game||phase!=='playing')return;
@@ -6878,7 +6950,10 @@ restoreKako();
   document.addEventListener('keyup',e=>{
     const key=keyboardMap[e.code];if(key)actionPress(key,false);
   });
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){persistBest();if(phase==='playing')pause();}});
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){persistBest();if(phase==='playing')pause();stopArcadeFrame();}
+    else {startArcadeFrame();updateKakoTime();}
+  });
   $('arcadeInviteYes').addEventListener('click',()=>dismissInvite(true));
   $('arcadeInviteNo').addEventListener('click',()=>dismissInvite(false));
   document.addEventListener('keydown',e=>{
@@ -6902,7 +6977,7 @@ restoreKako();
     beep(650,.07);
   });
   $('arcadeSound').textContent=sound?'🔊 Zvuk':'🔇 Zvuk';
-  const dpr=Math.min(window.devicePixelRatio||1,2.5);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+  const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
   // KÁKO 5.7 – reorder games with an accessible drag handle, persisted only on drop.
   const arcadeOrderKey='kakoArcadeGameOrderV1';
   const allowedGames=['snake','invaders','racing','whack','flappy','run'];
@@ -6986,7 +7061,6 @@ restoreKako();
   loadGameOrder();
   window.KAKO_ARCADE={open,back,start,pause,onScreenChange,invite};
   updateCards();updateKakoTime();setInterval(updateKakoTime,1000);
-  requestAnimationFrame(render);
 })();
 
 </script>
