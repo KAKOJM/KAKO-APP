@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.1 – CÍL</title>
+<title>KÁKO 6.2 – ŽIVÝ CÍL</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1831,6 +1831,38 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 .goal-actions button.goal-danger{color:#a32b25;background:#fff5f3;border-color:#ebb2ac}
 .goal-help{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
 @media(max-width:355px){.goal-home{padding:12px}.goal-home-name{font-size:17px}.goal-home-amounts strong{font-size:19px}}
+
+/* KÁKO 6.2: Kompaktní spořicí cíl během aktivní časomíry.
+   Bez dalších intervalů, animací či výpočtů ukládaných na pozadí. */
+.timer-goal{
+  max-width:360px;
+  margin:12px auto 14px;
+  padding:12px 14px 11px;
+  border:1px solid #ac8d50;
+  border-radius:16px;
+  background:#fff0ce;
+  color:var(--brown);
+  text-align:left;
+}
+.timer-goal[hidden]{display:none!important}
+.timer-goal-kicker{color:#75522c;font-size:10px;font-weight:900;letter-spacing:.6px}
+.timer-goal-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:3px}
+.timer-goal-name{font-size:16px;font-weight:900;line-height:1.2;overflow-wrap:anywhere;min-width:0}
+.timer-goal-percent{font-size:16px;font-weight:900;white-space:nowrap;color:#287238;font-variant-numeric:tabular-nums}
+.timer-goal-track{height:9px;border-radius:99px;overflow:hidden;background:#dec8a9;margin:9px 0 8px}
+.timer-goal-fill{height:100%;width:0;background:#328a43;border-radius:99px;transition:none}
+.timer-goal-numbers{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 9px;font-size:12px;line-height:1.3;font-weight:800}
+.timer-goal-numbers strong{color:#247239;font-variant-numeric:tabular-nums}
+.timer-goal-detail{font-size:11px;color:#795b45;font-weight:800;line-height:1.2;margin-top:3px}
+@media(max-height:740px){
+  .timer-goal{padding:9px 12px 8px;margin:8px auto 9px}
+  .timer-goal-track{margin:6px 0}
+  .timer-page .toilet-art{font-size:45px;margin:3px 0}
+  .timer-page .quote-card{padding:9px 12px}
+  .timer-page .quote-text{font-size:16px}
+}
+@media(max-width:355px){.timer-goal-name{font-size:14px}.timer-goal-numbers{font-size:11px}}
+
 </style>
 </head>
 
@@ -1965,6 +1997,23 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 <div id="currentMoney" class="live-money">
   0,00 Kč
 </div>
+
+<!-- KÁKO 6.2: stejný naspořený cíl i při probíhající aktivitě. -->
+<section id="goalTimer" class="timer-goal" aria-label="Postup spoření během KÁKO" hidden>
+  <div class="timer-goal-kicker">🎯 NA CO SI KAKÁM</div>
+  <div class="timer-goal-head">
+    <strong id="goalTimerName" class="timer-goal-name"></strong>
+    <span id="goalTimerPercent" class="timer-goal-percent">0 %</span>
+  </div>
+  <div id="goalTimerTrack" class="timer-goal-track" role="progressbar" aria-label="Postup k cíli" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div id="goalTimerFill" class="timer-goal-fill"></div>
+  </div>
+  <div class="timer-goal-numbers">
+    <span>Naspořeno: <strong id="goalTimerEarned">0 Kč</strong></span>
+    <span id="goalTimerRemaining">Zbývá 0 Kč</span>
+  </div>
+  <div id="goalTimerDetail" class="timer-goal-detail"></div>
+</section>
 
 <div id="quoteCard" class="quote-card">
 
@@ -2746,6 +2795,32 @@ function goalLiveEarned(){
   }
   return Math.max(0,kakoGoal.earned+live);
 }
+
+/* KÁKO 6.2: živý výpis cíle sdílí jediný výpočet s hlavní obrazovkou.
+   DOM se mění jen při zobrazení časomíry; žádný nový timer. */
+function updateGoalTimer(){
+  const card=document.getElementById('goalTimer');
+  if(!card)return;
+  const visible=!!kakoGoal && !!startTime;
+  card.hidden=!visible;
+  if(!visible)return;
+  // Nedělat zbytečné operace při hraní her či jiné otevřené obrazovce.
+  if(!document.getElementById('timerScreen').classList.contains('active'))return;
+  const total=goalLiveEarned();
+  const remaining=Math.max(0,kakoGoal.price-total);
+  const percent=Math.min(100,Math.max(0,total/kakoGoal.price*100));
+  const rounded=Math.floor(percent);
+  document.getElementById('goalTimerName').textContent=kakoGoal.name;
+  document.getElementById('goalTimerPercent').textContent=rounded+' %';
+  document.getElementById('goalTimerEarned').textContent=goalMoney(total);
+  document.getElementById('goalTimerRemaining').textContent=remaining<.005?'CÍL SPLNĚN!':'Zbývá '+goalMoney(remaining);
+  document.getElementById('goalTimerFill').style.width=percent+'%';
+  document.getElementById('goalTimerTrack').setAttribute('aria-valuenow',String(rounded));
+  document.getElementById('goalTimerDetail').textContent=activeLocationMode==='home'
+    ? 'Doma se do cíle nic nepřičítá.'
+    : 'Cíl: '+goalMoney(kakoGoal.price)+' · Průběžný výdělek se započítává.';
+}
+
 function updateGoalCard(){
   const card=document.getElementById('goalHome');
   if(!card)return;
@@ -2754,7 +2829,7 @@ function updateGoalCard(){
   document.getElementById('goalHomeEmpty').hidden=exists;
   document.getElementById('goalHomeName').textContent=exists?kakoGoal.name:'Můj vysněný nákup';
   document.getElementById('goalHomeEdit').textContent=exists?'UPRAVIT':'NASTAVIT';
-  if(!exists)return;
+  if(!exists){updateGoalTimer();return;}
   const total=goalLiveEarned();
   const remaining=Math.max(0,kakoGoal.price-total);
   const percent=Math.min(100,Math.max(0,total/kakoGoal.price*100));
@@ -2764,6 +2839,7 @@ function updateGoalCard(){
   document.getElementById('goalHomePercent').textContent=Math.floor(percent)+' %';
   document.getElementById('goalHomeFill').style.width=percent+'%';
   document.getElementById('goalHomeTrack').setAttribute('aria-valuenow',String(Math.floor(percent)));
+  updateGoalTimer();
 }
 function loadGoalInputs(){
   const n=document.getElementById('goalNameInput'),p=document.getElementById('goalPriceInput');
@@ -4565,6 +4641,7 @@ function updateTimer(){
   }
 
 
+  updateGoalTimer();
   checkReminder();
 
 }
@@ -5888,6 +5965,7 @@ function showScreen(id){
       "active"
     );
 
+  if(id === 'timerScreen')updateGoalTimer();
 
   document
     .querySelectorAll(
