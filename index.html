@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.0 – HRY</title>
+<title>KÁKO 6.0.1 – HRY</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -2419,7 +2419,7 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 
 <div class="settings-card about-app" aria-label="O aplikaci">
   <h3>O aplikaci</h3>
-  <p><strong>KÁKO 6.0</strong> · Časomíra, statistiky a šest her</p>
+  <p><strong>KÁKO 6.0.1</strong> · Časomíra, statistiky a šest her</p>
   <p>Autor: Milan Kolařík a Jakub Kotásek</p>
 </div>
 
@@ -2575,11 +2575,6 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 </button>
 
 
-<button id="navGames" class="nav-btn" onclick="showScreen('gamesScreen')">
-  <span class="nav-icon">🎮</span>
-  KÁKO HRY
-</button>
-
 <button
   id="navOverview"
   class="nav-btn"
@@ -2588,6 +2583,11 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 >
   <span class="nav-icon">📊</span>
   Přehled
+</button>
+
+<button id="navGames" class="nav-btn" onclick="showScreen('gamesScreen')">
+  <span class="nav-icon">🎮</span>
+  KÁKO HRY
 </button>
 
 <button id="navSettings" class="nav-btn" onclick="showScreen('settingsScreen')">
@@ -6422,10 +6422,11 @@ restoreKako();
   function start(){
     if(!game)return;
     clearHeld();initState();phase='playing';prev=performance.now();hideModal();updateHud();beep(640,.12);
+    startArcadeFrame(); // Po startu znovu rozběhnout pozastavenou animační smyčku.
   }
   function finish(reason){
     if(phase!=='playing')return;
-    phase='over';clearHeld();record();persistBest();updateHud();beep(180,.22);
+    phase='over';clearHeld();record();persistBest();updateHud();beep(180,.22);stopArcadeFrame();
     finalShareData={game,points:Math.floor(s.points),best:best[game],level:s.level||1,snakeLength:game==='snake'?s.snake.length:0,speed:snakeSpeed};
     showModal('🏆','KONEC HRY!',reason+' Rekord: '+best[game]+((game==='racing'||game==='run')?' m':'')+'.','HRÁT ZNOVU →',start);
     $('arcadeShareResult').hidden=false;
@@ -6499,8 +6500,9 @@ restoreKako();
     if(!game||phase==='idle'||phase==='over')return;
     if(phase==='paused'){
       phase='playing';hideModal();updateHud();prev=performance.now();
+      startArcadeFrame(); // Pokračování po pauze musí obnovit herní snímky.
     }else{
-      phase='paused';clearHeld();
+      phase='paused';clearHeld();stopArcadeFrame();
       showModal('⏸','PAUZA','Hra čeká. Časomíra KÁKO běží dál.','POKRAČOVAT →',pause);updateHud();
     }
   }
@@ -6968,7 +6970,7 @@ restoreKako();
   $('arcadePause').addEventListener('click',pause);
   $('arcadeRestart').addEventListener('click',()=>{
     if(!game)return;
-    if(phase==='playing'){phase='paused';clearHeld();}
+    if(phase==='playing'){phase='paused';clearHeld();stopArcadeFrame();}
     showModal('↻','NOVÁ HRA?','Předchozí pokus skončí. Můžeš zvolit rychlost a spustit novou hru.','NOVÁ HRA →',start);
   });
   $('arcadeSound').addEventListener('click',()=>{
