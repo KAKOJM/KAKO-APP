@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 5.7 – HRY</title>
+<title>KÁKO 5.9 – HRY</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1024,6 +1024,12 @@ button{
 .arcade-overlay-title{font-size:27px;color:var(--yellow);font-weight:900;margin:10px 0;line-height:1.12;}
 .arcade-overlay-text{font-size:13px;line-height:1.55;color:#e0cfc1;margin:10px 0 18px;}
 .arcade-overlay-button{width:100%;padding:14px 12px;border:0;border-radius:14px;background:var(--yellow);color:var(--brown);font-size:16px;font-weight:900;}
+/* KÁKO 5.9: Sdílení pouze po dokončení hry, žádné herní ovládání navíc. */
+.arcade-share-result{display:block;width:100%;min-height:43px;margin:0 0 9px;padding:10px 9px;border:2px solid #ffe0a0;border-radius:12px;background:#f6e6c9;color:#382316;font-size:13px;font-weight:900;touch-action:manipulation;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;}
+.arcade-share-result[hidden],.arcade-share-status[hidden]{display:none!important;}
+.arcade-share-result:active{background:#ffdf9d;}
+.arcade-share-status{margin:0 0 7px;font-size:11px;color:#ffecbf;line-height:1.35;}
+
 .arcade-controls{margin:12px auto 0;max-width:390px;}
 .arcade-snake-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
 .arcade-button{min-height:61px;border:2px solid #ad8f6e;border-radius:14px;background:var(--cream2);color:var(--brown);font-weight:900;font-size:25px;touch-action:none;}
@@ -2434,6 +2440,8 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
                 <button type="button" data-snake-speed="fast" aria-pressed="false">⚡ Rychlá</button>
               </div>
             </div>
+            <button type="button" id="arcadeShareResult" class="arcade-share-result" hidden>📤 SDÍLET VÝSLEDEK</button>
+            <div id="arcadeShareStatus" class="arcade-share-status" role="status" aria-live="polite" hidden></div>
             <button type="button" id="arcadeOverlayButton" class="arcade-overlay-button">HRÁT →</button>
           </div>
         </div>
@@ -6220,6 +6228,7 @@ restoreKako();
   let snakeSpeed='slow';
   try{const saved=localStorage.getItem('kakoArcadeSnakeSpeed');if(snakeDelays[saved])snakeSpeed=saved;}catch(e){}
   let lastBestWrite=0,recordDirty=false,lastHudDraw=0,lastRender=0;
+  let finalShareData=null; // Uzamčený výsledek poslední dokončené hry.
   const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
   const rnd=(a,b)=>a+Math.random()*(b-a);
   const randInt=n=>Math.floor(Math.random()*n);
@@ -6288,7 +6297,10 @@ restoreKako();
     $('arcadeOverlayTitle').textContent=heading;
     $('arcadeOverlayText').textContent=description;
     $('arcadeOverlayButton').textContent=button;
-    $('arcadeSnakeSpeed').hidden=!(game==='snake'&&heading!=='PAUZA');
+    $('arcadeSnakeSpeed').hidden=!(game==='snake'&&heading===title[game]);
+    $('arcadeShareResult').hidden=true;
+    $('arcadeShareStatus').hidden=true;
+    $('arcadeShareStatus').textContent='';
     $('arcadeOverlay').hidden=false;
     modalFn=fn;
   }
@@ -6324,7 +6336,7 @@ restoreKako();
       showScreen('gamesScreen');
     }
   }
-  function stopGame(){persistBest();clearHeld();phase='idle';s=null;}
+  function stopGame(){persistBest();clearHeld();phase='idle';s=null;finalShareData=null;}
   function open(which){
     if(!title[which])return;
     stopGame();game=which;
@@ -6357,7 +6369,74 @@ restoreKako();
   function finish(reason){
     if(phase!=='playing')return;
     phase='over';clearHeld();record();persistBest();updateHud();beep(180,.22);
+    finalShareData={game,points:Math.floor(s.points),best:best[game],level:s.level||1,snakeLength:game==='snake'?s.snake.length:0,speed:snakeSpeed};
     showModal('🏆','KONEC HRY!',reason+' Rekord: '+best[game]+((game==='racing'||game==='run')?' m':'')+'.','HRÁT ZNOVU →',start);
+    $('arcadeShareResult').hidden=false;
+  }
+  // Sdílení přes nativní sdílecí nabídku (iOS/Android); bez externích knihoven.
+  function makeSharePayload(data){
+    if(!data)return null;
+    let nickname='';
+    try{nickname=(localStorage.getItem('nickname')||'').trim().slice(0,48);}catch(e){}
+    const who=nickname?nickname+' · ':'';
+    const unit=data.game==='racing'||data.game==='run'?'m':'bodů';
+    const scoreText=data.game==='flappy' ? data.points+' průletů' : data.points+' '+unit;
+    const recordText=data.best+' '+(data.game==='flappy'?'průletů':unit);
+    const lines=['💩 KÁKO HRY – '+title[data.game],who+'Můj výsledek: '+scoreText];
+    if(data.game==='snake'){
+      lines.push('🐍 Délka hada: '+data.snakeLength);
+      lines.push('Rychlost: '+({slow:'Pohoda',normal:'Normální',fast:'Rychlá'}[data.speed]||'Pohoda'));
+    }
+    if(data.game==='invaders')lines.push('🌊 Dosažená vlna: '+data.level);
+    if(data.game==='whack')lines.push('⏱ Čas hry: 45 sekund');
+    lines.push('🏆 Osobní rekord: '+recordText,'Zkus mě překonat! 🎮');
+    let url='';
+    if(location.protocol==='https:' || location.protocol==='http:'){
+      url=location.origin+location.pathname;
+    }
+    return {title:'KÁKO HRY – '+title[data.game],text:lines.join('\n'),url};
+  }
+  async function copyShareText(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{await navigator.clipboard.writeText(text);return true;}catch(e){}
+    }
+    // Starší Safari bez Clipboard API: krátký skrytý textarea je kompatibilnější.
+    const el=document.createElement('textarea');
+    el.value=text;
+    el.setAttribute('readonly','');
+    el.style.cssText='position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;';
+    el.style.setProperty('-webkit-user-select','text','important');
+    el.style.setProperty('user-select','text','important');
+    document.body.appendChild(el);
+    el.select();
+    let copied=false;
+    try{copied=document.execCommand('copy');}catch(e){}
+    el.remove();
+    return copied;
+  }
+  function shareArcadeResult(){
+    if(phase!=='over'||!finalShareData)return;
+    const payload=makeSharePayload(finalShareData);
+    if(!payload)return;
+    const target=$('arcadeShareStatus');
+    const updateStatus=message=>{target.hidden=false;target.textContent=message;};
+    const content=payload.text+(payload.url?'\n'+payload.url:'');
+    if(navigator.share){
+      // Musí být voláno přímo z kliknutí: iPhone vyžaduje uživatelské gesto.
+      const data={title:payload.title,text:payload.text};
+      if(payload.url)data.url=payload.url;
+      try{
+        const pending=navigator.share(data);
+        Promise.resolve(pending).catch(err=>{
+          if(err && err.name==='AbortError')return; // Uživatel sdílení zrušil.
+          copyShareText(content).then(ok=>updateStatus(ok?'Výsledek zkopírován do schránky.':'Sdílení není dostupné. Zkus Safari.'));
+        });
+      }catch(e){
+        copyShareText(content).then(ok=>updateStatus(ok?'Výsledek zkopírován do schránky.':'Sdílení není dostupné. Zkus Safari.'));
+      }
+    }else{
+      copyShareText(content).then(ok=>updateStatus(ok?'Výsledek zkopírován do schránky.':'Sdílení není dostupné. Zkus Safari.'));
+    }
   }
   function pause(){
     if(!game||phase==='idle'||phase==='over')return;
@@ -6809,6 +6888,7 @@ restoreKako();
   if(window.ResizeObserver){
     new ResizeObserver(()=>{if(game)fitCanvas();}).observe($('arcadeTouchArea'));
   }
+  $('arcadeShareResult').addEventListener('click',shareArcadeResult);
   $('arcadeOverlayButton').addEventListener('click',()=>{if(typeof modalFn==='function')modalFn();});
   $('arcadePause').addEventListener('click',pause);
   $('arcadeRestart').addEventListener('click',()=>{
