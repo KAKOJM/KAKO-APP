@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.0.1 – HRY</title>
+<title>KÁKO 6.1 – CÍL</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1811,6 +1811,26 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
   .overview-tab{font-size:11px;}
 }
 
+
+/* KÁKO 6.1 – úsporný přehled cíle; bez animací na pozadí */
+.goal-home{background:#fff;border:2px solid #eadbc8;border-radius:20px;padding:15px;margin:0 0 13px;box-shadow:0 2px 0 #edddc7}
+.goal-home-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.goal-home-kicker{color:#876545;font-size:11px;font-weight:900;letter-spacing:.5px}
+.goal-home-name{font-size:19px;font-weight:900;overflow-wrap:anywhere;margin:4px 0 1px;line-height:1.2}
+.goal-home-edit{flex:0 0 auto;color:var(--brown);background:var(--cream2);border:1px solid #dfc5a4;border-radius:11px;padding:10px 12px;font-weight:900;font-size:12px;min-height:42px}
+.goal-home-amounts{display:flex;gap:8px;justify-content:space-between;align-items:baseline;margin-top:11px}
+.goal-home-amounts strong{font-size:21px;font-weight:900;color:var(--green);font-variant-numeric:tabular-nums}
+.goal-home-amounts span{color:#785e4e;font-size:12px;font-weight:800;text-align:right}
+.goal-track{height:13px;width:100%;background:#ebd8bf;border-radius:99px;overflow:hidden;margin:9px 0 8px}
+.goal-track-fill{width:0;height:100%;background:var(--green);border-radius:99px;transition:none}
+.goal-foot{display:flex;justify-content:space-between;align-items:center;gap:6px;font-weight:800;font-size:12px;color:#745741}
+.goal-foot strong{color:var(--brown);font-variant-numeric:tabular-nums}
+.goal-home-empty{font-size:13px;color:#745b48;line-height:1.45;margin-top:4px}
+.goal-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.goal-actions button{flex:1;border:1px solid #d5b999;background:var(--cream2);border-radius:12px;padding:12px 9px;font-weight:900;color:var(--brown);min-height:45px;font-size:12px}
+.goal-actions button.goal-danger{color:#a32b25;background:#fff5f3;border-color:#ebb2ac}
+.goal-help{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+@media(max-width:355px){.goal-home{padding:12px}.goal-home-name{font-size:17px}.goal-home-amounts strong{font-size:19px}}
 </style>
 </head>
 
@@ -1879,6 +1899,28 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 </div>
 
 </div>
+</div>
+
+
+<div class="goal-home" id="goalHome" aria-live="polite">
+  <div class="goal-home-top">
+    <div>
+      <div class="goal-home-kicker">🎯 NA CO SI KAKÁM</div>
+      <div class="goal-home-name" id="goalHomeName">Můj vysněný nákup</div>
+    </div>
+    <button type="button" class="goal-home-edit" onclick="openGoalSettings()" id="goalHomeEdit">NASTAVIT</button>
+  </div>
+  <div id="goalHomeProgress" hidden>
+    <div class="goal-home-amounts">
+      <strong id="goalHomeEarned">0 Kč</strong>
+      <span id="goalHomePrice">z 0 Kč</span>
+    </div>
+    <div class="goal-track" role="progressbar" aria-label="Prokakáno na cíl" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="goalHomeTrack">
+      <div class="goal-track-fill" id="goalHomeFill"></div>
+    </div>
+    <div class="goal-foot"><span id="goalHomeRemaining">Ještě zbývá 0 Kč</span><strong id="goalHomePercent">0 %</strong></div>
+  </div>
+  <p id="goalHomeEmpty" class="goal-home-empty">Na co si chceš našetřit? Nastav si věc a její cenu.</p>
 </div>
 
 <div id="miniRate" class="mini-rate">
@@ -2417,9 +2459,25 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 </div>
 
 
+
+<div class="settings-card" id="goalSettingsCard">
+  <h3>🎯 Na co si kakám</h3>
+  <p class="goal-help">Vyber si, na co chceš našetřit. Do cíle se započítávají jen peníze prokakané v práci od jeho založení. Domácí aktivity se nepočítají.</p>
+  <label for="goalNameInput">Na co si šetříš?</label>
+  <input id="goalNameInput" type="text" maxlength="60" autocomplete="off" placeholder="např. Nový telefon">
+  <label for="goalPriceInput">Kolik to stojí (Kč)?</label>
+  <input id="goalPriceInput" type="text" inputmode="decimal" maxlength="14" autocomplete="off" placeholder="např. 25000">
+  <button type="button" class="save-btn" onclick="saveGoal()" style="width:100%;margin-bottom:10px">🎯 ULOŽIT CÍL</button>
+  <div class="goal-actions" id="goalExistingActions" hidden>
+    <button type="button" onclick="resetGoalProgress()">↻ Začít spořit od nuly</button>
+    <button type="button" class="goal-danger" onclick="deleteGoal()">Smazat cíl</button>
+  </div>
+  <p class="goal-help" style="margin-top:10px;margin-bottom:0">Upravením názvu nebo ceny o naspořenou částku nepřijdeš. Cíl je uložen v tomto telefonu.</p>
+</div>
+
 <div class="settings-card about-app" aria-label="O aplikaci">
   <h3>O aplikaci</h3>
-  <p><strong>KÁKO 6.0.1</strong> · Časomíra, statistiky a šest her</p>
+  <p><strong>KÁKO 6.1</strong> · Časomíra, cíle, statistiky a šest her</p>
   <p>Autor: Milan Kolařík a Jakub Kotásek</p>
 </div>
 
@@ -2655,6 +2713,112 @@ Nezapomněl jsi ho ukončit?
 <script>
 
 const KAKO_MAX_DURATION_MS = 30 * 60 * 1000; // KÁKO 5.7: tvrdý časový limit
+/* KÁKO 6.1 – cíl ukládá pouze dokončené pracovní aktivity.
+   V průběhu rozehraného KÁKO se živě připočítává pouze od jeho založení. */
+const KAKO_GOAL_KEY='kakoSavingGoal_v1';
+let kakoGoal=null;
+try {
+  const raw=localStorage.getItem(KAKO_GOAL_KEY);
+  if(raw){
+    const g=JSON.parse(raw);
+    if(g && typeof g.name==='string' && Number.isFinite(Number(g.price)) && Number(g.price)>0){
+      kakoGoal={name:g.name.slice(0,60),price:Number(g.price),earned:Math.max(0,Number(g.earned)||0),
+        createdAt:Number(g.createdAt)||Date.now(),excludedSessionStart:Number(g.excludedSessionStart)||0,
+        excludedSessionMoney:Math.max(0,Number(g.excludedSessionMoney)||0)};
+    }
+  }
+}catch(error){kakoGoal=null;}
+function persistGoal(){
+  try{
+    if(kakoGoal)localStorage.setItem(KAKO_GOAL_KEY,JSON.stringify(kakoGoal));
+    else localStorage.removeItem(KAKO_GOAL_KEY);
+    return true;
+  }catch(error){showToast('⚠️ Cíl se nepodařilo uložit do telefonu.');return false;}
+}
+function goalMoney(amount){return Math.round(Math.max(0,amount)).toLocaleString('cs-CZ')+' Kč';}
+function goalLiveEarned(){
+  if(!kakoGoal)return 0;
+  let live=0;
+  if(startTime && activeLocationMode==='work' && !isFinishing){
+    const minutes=Math.max(0,Math.min(Date.now(),startTime+KAKO_MAX_DURATION_MS)-startTime)/60000;
+    const gross=minutes*Math.max(0,ratePerMinute);
+    live=Math.max(0,gross-(kakoGoal.excludedSessionStart===startTime?kakoGoal.excludedSessionMoney:0));
+  }
+  return Math.max(0,kakoGoal.earned+live);
+}
+function updateGoalCard(){
+  const card=document.getElementById('goalHome');
+  if(!card)return;
+  const exists=!!kakoGoal;
+  document.getElementById('goalHomeProgress').hidden=!exists;
+  document.getElementById('goalHomeEmpty').hidden=exists;
+  document.getElementById('goalHomeName').textContent=exists?kakoGoal.name:'Můj vysněný nákup';
+  document.getElementById('goalHomeEdit').textContent=exists?'UPRAVIT':'NASTAVIT';
+  if(!exists)return;
+  const total=goalLiveEarned();
+  const remaining=Math.max(0,kakoGoal.price-total);
+  const percent=Math.min(100,Math.max(0,total/kakoGoal.price*100));
+  document.getElementById('goalHomeEarned').textContent=goalMoney(total);
+  document.getElementById('goalHomePrice').textContent='z '+goalMoney(kakoGoal.price);
+  document.getElementById('goalHomeRemaining').textContent=remaining<.005?'🎉 CÍL SPLNĚN!':'Ještě prokakat '+goalMoney(remaining);
+  document.getElementById('goalHomePercent').textContent=Math.floor(percent)+' %';
+  document.getElementById('goalHomeFill').style.width=percent+'%';
+  document.getElementById('goalHomeTrack').setAttribute('aria-valuenow',String(Math.floor(percent)));
+}
+function loadGoalInputs(){
+  const n=document.getElementById('goalNameInput'),p=document.getElementById('goalPriceInput');
+  if(!n||!p)return;
+  n.value=kakoGoal?kakoGoal.name:'';
+  p.value=kakoGoal?String(kakoGoal.price):'';
+  document.getElementById('goalExistingActions').hidden=!kakoGoal;
+}
+function openGoalSettings(){
+  showScreen('settingsScreen');
+  const card=document.getElementById('goalSettingsCard');
+  if(card)card.scrollIntoView({behavior:'auto',block:'start'});
+}
+function goalSessionOffset(){
+  if(!startTime || activeLocationMode!=='work')return {start:0,money:0};
+  const seconds=Math.max(0,Math.min(1800,(Date.now()-startTime)/1000));
+  return {start:startTime,money:seconds/60*Math.max(0,ratePerMinute)};
+}
+function saveGoal(){
+  const name=document.getElementById('goalNameInput').value.trim();
+  const raw=document.getElementById('goalPriceInput').value.trim().replace(/\s/g,'').replace(',','.');
+  const price=Number(raw);
+  if(!name){alert('Napiš, na co chceš šetřit.');return;}
+  if(!raw || !Number.isFinite(price) || price<=0 || price>1000000000){alert('Zadej platnou cenu od 1 Kč do 1 miliardy Kč.');return;}
+  if(kakoGoal){
+    kakoGoal.name=name.slice(0,60);kakoGoal.price=price;
+  }else{
+    const offset=goalSessionOffset();
+    kakoGoal={name:name.slice(0,60),price,earned:0,createdAt:Date.now(),
+      excludedSessionStart:offset.start,excludedSessionMoney:offset.money};
+  }
+  if(persistGoal())showToast('🎯 Cíl uložen! Ať to sype.');
+  updateGoalCard();loadGoalInputs();
+}
+function resetGoalProgress(){
+  if(!kakoGoal || !confirm('Začít spořit na tento cíl znovu od nuly?'))return;
+  const offset=goalSessionOffset();
+  kakoGoal.earned=0;kakoGoal.createdAt=Date.now();
+  kakoGoal.excludedSessionStart=offset.start;kakoGoal.excludedSessionMoney=offset.money;
+  persistGoal();updateGoalCard();showToast('🎯 Spoření začíná znovu od nuly.');
+}
+function deleteGoal(){
+  if(!kakoGoal || !confirm('Smazat tento cíl i jeho naspořený postup?'))return;
+  kakoGoal=null;persistGoal();loadGoalInputs();updateGoalCard();showToast('Cíl odstraněn.');
+}
+function addFinishedKakoToGoal(item){
+  if(!kakoGoal || item.location!=='work' || !Number.isFinite(item.money))return;
+  const offset=kakoGoal.excludedSessionStart===item.start?kakoGoal.excludedSessionMoney:0;
+  const gain=Math.max(0,item.money-offset);
+  kakoGoal.earned+=gain;
+  kakoGoal.excludedSessionStart=0;
+  kakoGoal.excludedSessionMoney=0;
+  persistGoal();
+}
+
 let timerInterval = null;
 let quoteInterval = null;
 
@@ -4469,6 +4633,7 @@ function finalizeKako(automatic = false){
   try {localStorage.removeItem('activeKako');} catch(e) {}
   history.unshift(item);
   saveHistory();
+  addFinishedKakoToGoal(item);
   lastResult = item;
   prepareResult(item);
   updateAll();
@@ -5218,6 +5383,7 @@ function renderAchievements(){
 function updateHome(){
 
   calculateRate();
+  updateGoalCard();
 
 
   updateLocation();
@@ -5815,6 +5981,7 @@ function showScreen(id){
 
 
     updateReminderUI();
+    loadGoalInputs();
 
   }
 
