@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.2 – ŽIVÝ CÍL</title>
+<title>KÁKO 6.4 – 10 HER</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1863,6 +1863,15 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
 }
 @media(max-width:355px){.timer-goal-name{font-size:14px}.timer-goal-numbers{font-size:11px}}
 
+
+/* KÁKO 6.4 — doplnění čtyř her. Ovládání původních šesti her beze změny. */
+#gamesScreen .arcade-card:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;}
+#gamesScreen .arcade-card-icon{background:linear-gradient(145deg,#ffe295,#ffc72c);border:1px solid #e8b232;}
+#gamesScreen .arcade-card-name{color:#3a2217;}
+#gamesScreen .arcade-game-name{letter-spacing:-.4px;}
+#gamesScreen #arcadeWhackTip:not([hidden]){font-weight:900;color:#7b4c25;text-align:center;font-size:12px;padding:4px;}
+body.arcade-game-active #arcadeSnakeControls:not([hidden]) .arcade-button{touch-action:none;}
+
 </style>
 </head>
 
@@ -2586,6 +2595,27 @@ body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
         <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('run')">
           <span class="arcade-card-icon">🏃</span>
           <span class="arcade-card-info"><span class="arcade-card-name">KÁKO RUN</span><span class="arcade-card-desc">Skákej přes překážky, sbírej papír a doběhni co nejdál.</span><span class="arcade-card-best" id="arcBestRun">Rekord: 0 m</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('tetris')">
+          <span class="arcade-card-icon">🧩</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKOTRIS</span><span class="arcade-card-desc">Skládej barevné bobky do celých řad. Ovládání čtyřmi šipkami.</span><span class="arcade-card-best" id="arcBestTetris">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('breaker')">
+          <span class="arcade-card-icon">🎾</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO BREAKER</span><span class="arcade-card-desc">Odpal míček a rozbij záchodové kostky. Prstem posouvej pálku.</span><span class="arcade-card-best" id="arcBestBreaker">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('pipes')">
+          <span class="arcade-card-icon">🚰</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">UCPANÝ HAJZL</span><span class="arcade-card-desc">Otáčej potrubí klepnutím. Spoj přívod vody se záchodem.</span><span class="arcade-card-best" id="arcBestPipes">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('defense')">
+          <span class="arcade-card-icon">🪠</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO DEFENSE</span><span class="arcade-card-desc">Vyber obranu, postav ji na hřiště a zastav nájezd bobků.</span><span class="arcade-card-best" id="arcBestDefense">Rekord: 0</span></span>
           <span class="arcade-card-next">›</span>
         </button>
       </div>
@@ -6518,10 +6548,10 @@ restoreKako();
   if(!canvas || window.KAKO_ARCADE) return;
   const ctx = canvas.getContext('2d');
   const W=320,H=420;
-  const title = {snake:'KÁKOHAD',invaders:'KÁKO INVADERS',racing:'KÁKO RACING',whack:'PRAŠŤ HO-VNO',flappy:'FLAPPY KÁKO',run:'KÁKO RUN'};
-  const keys = {snake:'kakoArcadeRecordSnake',invaders:'kakoArcadeRecordInvaders',racing:'kakoArcadeRecordRacing',whack:'kakoArcadeRecordWhack',flappy:'kakoArcadeRecordFlappy',run:'kakoArcadeRecordRun'};
-  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.',whack:'Klepej prstem na bobky v otvorech. Máš 45 sekund a za každý zásah získáš body.',flappy:'Klepni do hry nebo na SKOK a proleť mezi trubkami. Nespadni na zem!',run:'Klepni nebo stiskni SKOK, přeskoč překážky a sbírej toaletní papír.'};
-  let game=null,phase='idle',s=null,best={snake:0,invaders:0,racing:0,whack:0,flappy:0,run:0},sound=false,audio=null;
+  const title = {snake:'KÁKOHAD',invaders:'KÁKO INVADERS',racing:'KÁKO RACING',whack:'PRAŠŤ HO-VNO',flappy:'FLAPPY KÁKO',run:'KÁKO RUN',tetris:'KÁKOTRIS',breaker:'KÁKO BREAKER',pipes:'UCPANÝ HAJZL',defense:'KÁKO DEFENSE'};
+  const keys = {snake:'kakoArcadeRecordSnake',invaders:'kakoArcadeRecordInvaders',racing:'kakoArcadeRecordRacing',whack:'kakoArcadeRecordWhack',flappy:'kakoArcadeRecordFlappy',run:'kakoArcadeRecordRun',tetris:'kakoArcadeRecordTetris',breaker:'kakoArcadeRecordBreaker',pipes:'kakoArcadeRecordPipes',defense:'kakoArcadeRecordDefense'};
+  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.',whack:'Klepej prstem na bobky v otvorech. Máš 45 sekund a za každý zásah získáš body.',flappy:'Klepni do hry nebo na SKOK a proleť mezi trubkami. Nespadni na zem!',run:'Klepni nebo stiskni SKOK, přeskoč překážky a sbírej toaletní papír.',tetris:'← → posun, ↑ otočit, ↓ rychle položit. Skládej celé řady!',breaker:'← → pálka, ODPAL vypustí míček. Pálku můžeš ovládat i prstem.',pipes:'Klepni na trubku a otoč ji o 90°. Propoj vodu vlevo se záchodem vpravo.',defense:'Dole vyber zbraň, pak klepni na volné pole. Bráň záchod proti bobkům!'};
+  let game=null,phase='idle',s=null,best={snake:0,invaders:0,racing:0,whack:0,flappy:0,run:0,tetris:0,breaker:0,pipes:0,defense:0},sound=false,audio=null;
   let leftDown=false,rightDown=false,actionDown=false,prev=0,modalFn=null,pointerStart=null;
   // Volba zůstane uložená, výchozí obtížnost je schválně klidná.
   const snakeDelays={slow:.34,normal:.25,fast:.18};
@@ -6580,6 +6610,7 @@ restoreKako();
     $('arcBestWhack').textContent='Rekord: '+best.whack;
     $('arcBestFlappy').textContent='Rekord: '+best.flappy;
     $('arcBestRun').textContent='Rekord: '+best.run+' m';
+    for(const id of ['tetris','breaker','pipes','defense']){const name='arcBest'+id[0].toUpperCase()+id.slice(1);const el=$(name);if(el)el.textContent='Rekord: '+best[id];}
   }
   function updateHud(){
     if(!s)return;
@@ -6587,8 +6618,8 @@ restoreKako();
     $('arcadeLabelScore').textContent=meters?'METRY':'SKÓRE';
     $('arcadeScore').textContent=Math.floor(s.points)+(meters?' m':'');
     $('arcadeBest').textContent=best[game]+(meters?' m':'');
-    $('arcadeLabelLives').textContent=game==='snake'?'ÚROVEŇ':game==='whack'?'ČAS':game==='flappy'?'PRŮLETŮ':'ŽIVOTY';
-    $('arcadeLives').textContent=game==='snake'?s.level:game==='whack'?Math.max(0,Math.ceil(s.time))+' s':game==='flappy'?s.points:s.hp;
+    $('arcadeLabelLives').textContent=(game==='snake'||game==='tetris'||game==='breaker')?'ÚROVEŇ':(game==='whack'||game==='pipes')?'ČAS':game==='defense'?'MINCE':game==='flappy'?'PRŮLETŮ':'ŽIVOTY';
+    $('arcadeLives').textContent=(game==='snake'||game==='tetris'||game==='breaker')?s.level:(game==='whack'||game==='pipes')?Math.max(0,Math.ceil(s.time))+' s':game==='defense'?s.money+' 🪙':game==='flappy'?s.points:s.hp;
     $('arcadePause').textContent=phase==='paused'?'▶ Pokračovat':'⏸ Pauza';
   }
   function clearHeld(){leftDown=false;rightDown=false;actionDown=false;document.querySelectorAll('#gamesScreen .arcade-button').forEach(x=>x.classList.remove('pressed'));}
@@ -6644,14 +6675,15 @@ restoreKako();
     $('arcadeGame').hidden=false;
     document.body.classList.add('arcade-game-active');
     $('arcadeGameName').textContent=title[which];
-    $('arcadeSnakeControls').hidden=which!=='snake';
-    $('arcadeSideControls').hidden=which!=='invaders'&&which!=='racing';
+    $('arcadeSnakeControls').hidden=which!=='snake'&&which!=='tetris';
+    $('arcadeSideControls').hidden=which!=='invaders'&&which!=='racing'&&which!=='breaker';
     $('arcadeOneButtonControls').hidden=which!=='flappy'&&which!=='run';
-    $('arcadeWhackTip').hidden=which!=='whack';
+    $('arcadeWhackTip').hidden=which!=='whack'&&which!=='pipes'&&which!=='defense';
+    $('arcadeWhackTip').textContent=which==='pipes'?'🚰 KLEPNI NA TRUBKU = OTOČ':which==='defense'?'🪠 VYBER NÁSTROJ DOLE A KLEPNI NA POLE':'KLEPNI PŘÍMO NA BOBEK! 🪠';
     $('arcadeOneButton').textContent=which==='flappy'?'🪽 MÁVNI!':'⬆ SKOK!';
-    $('arcadeAction').textContent=which==='racing'?'⚡ TURBO':'💦 PALBA';
+    $('arcadeAction').textContent=which==='racing'?'⚡ TURBO':which==='breaker'?'🟡 ODPAL':'💦 PALBA';
     initState();updateHud();
-    showModal(({snake:'💩',invaders:'🚽',racing:'🚽',whack:'🪠',flappy:'🪽',run:'🏃'})[which],title[which],copy[which],'HRÁT →',start);
+    showModal(({snake:'💩',invaders:'🚽',racing:'🚽',whack:'🪠',flappy:'🪽',run:'🏃',tetris:'🧩',breaker:'🎾',pipes:'🚰',defense:'🪠'})[which],title[which],copy[which],'HRÁT →',start);
     $('arcadePause').disabled=false;
     window.scrollTo(0,0);
     requestAnimationFrame(fitCanvas);
@@ -7070,9 +7102,318 @@ restoreKako();
     rrect(9,10,302,31,7,'#39251cdb');text('UBĚHNUTO '+Math.floor(s.points)+' m  •  ♥ '+s.hp,160,25,15,'#ffdda1');
     text('SKÁKEJ PŘES PŘEKÁŽKY',160,70,13,'#5a3826');
   }
+  // KÁKOTRIS – 10 x 18 buněk; klasická rotace, hard drop a řádky.
+  const tetrisShapes=[
+    [[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],
+    [[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]],
+    [[0,1,1],[1,1,0]],[[1,1,0],[0,1,1]]
+  ];
+  const tetrisColors=['#66d4d9','#e9ca54','#be87df','#db934c','#588dde','#6db76f','#d75e68'];
+  function newTetris(){
+    s={points:0,level:1,hp:1,lines:0,board:Array.from({length:18},()=>Array(10).fill(0)),piece:null,fall:0,queue:[],ended:false};
+    tetrisSpawn();
+  }
+  function tetrisNext(){
+    if(!s.queue.length){s.queue=[0,1,2,3,4,5,6].sort(()=>Math.random()-.5);}
+    return s.queue.pop();
+  }
+  function tetrisCollide(shape,x,y){
+    return shape.some((row,ry)=>row.some((cell,rx)=>cell && (x+rx<0||x+rx>=10||y+ry>=18||(y+ry>=0&&s.board[y+ry][x+rx]))));
+  }
+  function tetrisSpawn(){
+    const kind=tetrisNext();const shape=tetrisShapes[kind].map(r=>r.slice());
+    s.piece={kind,shape,x:Math.floor((10-shape[0].length)/2),y:0};
+    if(tetrisCollide(shape,s.piece.x,s.piece.y)){finish('Kostky dosáhly až ke stropu!');}
+  }
+  function tetrisMove(dx){
+    const p=s.piece;if(p&&!tetrisCollide(p.shape,p.x+dx,p.y)){p.x+=dx;beep(240,.025);}
+  }
+  function tetrisRotate(){
+    const p=s.piece;if(!p)return;
+    const rotated=p.shape[0].map((_,x)=>p.shape.map(row=>row[x]).reverse());
+    for(const dx of [0,-1,1,-2,2])if(!tetrisCollide(rotated,p.x+dx,p.y)){p.x+=dx;p.shape=rotated;beep(330,.035);break;}
+  }
+  function tetrisLock(){
+    const p=s.piece;
+    p.shape.forEach((row,y)=>row.forEach((v,x)=>{if(v&&p.y+y>=0)s.board[p.y+y][p.x+x]=p.kind+1;}));
+    const remaining=s.board.filter(row=>!row.every(v=>v!==0));
+    const cleared=18-remaining.length;
+    while(remaining.length<18)remaining.unshift(Array(10).fill(0));
+    s.board=remaining;
+    if(cleared){s.points+=[0,100,300,500,800][cleared]*s.level;s.lines+=cleared;s.level=1+Math.floor(s.lines/8);record();beep(700,.12);}
+    s.fall=0;tetrisSpawn();updateHud();
+  }
+  function tetrisStep(){
+    const p=s.piece;if(!p||phase!=='playing')return;
+    if(tetrisCollide(p.shape,p.x,p.y+1))tetrisLock();else p.y++;
+  }
+  function tetrisHardDrop(){
+    if(!s.piece)return;
+    let moved=0;while(!tetrisCollide(s.piece.shape,s.piece.x,s.piece.y+1)){s.piece.y++;moved++;}
+    s.points+=moved*2;record();tetrisLock();beep(520,.06);
+  }
+  function updateTetris(dt){
+    s.fall+=dt;
+    const delay=Math.max(.12,.62-(s.level-1)*.052);
+    if(s.fall>=delay){s.fall=0;tetrisStep();}
+  }
+  function paintTetris(){
+    rrect(0,0,W,H,0,'#ead2af');
+    rrect(0,0,W,32,0,'#4a2c1d');
+    text('💩  KÁKOTRIS   ·   ŘADY '+s.lines,160,16,13,'#ffe6ad');
+    const ox=12,oy=38,c=20;
+    rrect(8,35,207,367,8,'#26170f');
+    for(let y=0;y<18;y++)for(let x=0;x<10;x++){
+      const color=s.board[y][x] ? tetrisColors[s.board[y][x]-1] : (x+y)%2?'#3d2b21':'#37271e';
+      rrect(ox+x*c,oy+y*c,19,19,3,color);
+      if(s.board[y][x]){rrect(ox+x*c+3,oy+y*c+2,11,4,2,'#ffffff5e');text('•',ox+x*c+10,oy+y*c+11,11,'#38221f');}
+    }
+    const p=s.piece;
+    if(p) p.shape.forEach((row,y)=>row.forEach((v,x)=>{
+      if(!v||p.y+y<0)return;
+      const px=ox+(p.x+x)*c,py=oy+(p.y+y)*c;
+      rrect(px,py,19,19,3,tetrisColors[p.kind]);rrect(px+3,py+2,11,4,2,'#ffffff6b');
+      text('•',px+10,py+11,11,'#38221f');
+    }));
+    rrect(225,35,87,100,9,'#4a2c1d');text('DALŠÍ',268,52,11,'#ffe5af');
+    const nxt=s.queue.length?s.queue[s.queue.length-1]:0;
+    const shape=tetrisShapes[nxt];const bs=17;
+    shape.forEach((row,y)=>row.forEach((v,x)=>{if(v)rrect(268-shape[0].length*bs/2+x*bs,76+y*bs,bs-2,bs-2,3,tetrisColors[nxt]);}));
+    rrect(225,146,87,108,9,'#fff4dc');text('SKÓRE',268,164,12,'#7d5946');
+    text(String(Math.floor(s.points)),268,192,23,'#3c2619');text('LEVEL '+s.level,268,226,12,'#805435');
+    rrect(225,265,87,136,9,'#4a2c1d');text('OVLÁDÁNÍ',268,288,10,'#ffe5af');
+    text('↑ OTOČ',268,314,12,'#fff0cf');text('← →',268,337,15,'#fff0cf');text('↓ POLOŽ',268,363,11,'#fff0cf');
+  }
+
+  // KÁKO BREAKER – reflexní fyzika pálky a míčku, 3 životy.
+  function breakerBricks(level){
+    const blocks=[];
+    for(let row=0;row<Math.min(6,3+level);row++)for(let col=0;col<8;col++)
+      blocks.push({x:12+col*37.5,y:58+row*26,hp:1+(level>=3 && row<2?1:0)});
+    return blocks;
+  }
+  function newBreaker(){
+    s={points:0,hp:3,level:1,paddle:160,ball:{x:160,y:352,vx:118,vy:-175},launched:false,bricks:breakerBricks(1)};
+  }
+  function breakerLaunch(){
+    if(!s.launched){s.launched=true;s.ball.vx=(Math.random()<.5?-1:1)*115;s.ball.vy=-185;beep(620,.07);}
+  }
+  function updateBreaker(dt){
+    s.paddle=clamp(s.paddle+((rightDown?1:0)-(leftDown?1:0))*285*dt,40,280);
+    const b=s.ball;
+    if(!s.launched){b.x=s.paddle;b.y=357;return;}
+    // Omezení subkroků minimalizuje průlety tenkými cihlami.
+    const steps=3,step=dt/steps;
+    for(let n=0;n<steps;n++){
+      b.x+=b.vx*step;b.y+=b.vy*step;
+      if(b.x<9){b.x=9;b.vx=Math.abs(b.vx);}if(b.x>311){b.x=311;b.vx=-Math.abs(b.vx);}
+      if(b.y<34){b.y=34;b.vy=Math.abs(b.vy);}
+      if(b.vy>0&&b.y>=372&&b.y<=386&&Math.abs(b.x-s.paddle)<43){
+        b.y=372;b.vy=-Math.abs(b.vy);b.vx=clamp((b.x-s.paddle)*4.9,-210,210);beep(350,.035);
+      }
+      if(b.y>418){s.hp--;updateHud();beep(140,.14);
+        if(s.hp<=0){finish('Míček skončil v odpadu!');return;}
+        s.launched=false;b.x=s.paddle;b.y=357;break;
+      }
+      const hit=s.bricks.find(z=>b.x+6>z.x&&b.x-6<z.x+33&&b.y+6>z.y&&b.y-6<z.y+20);
+      if(hit){b.vy*=-1;hit.hp--;beep(520,.036);
+        if(hit.hp<=0){s.bricks.splice(s.bricks.indexOf(hit),1);s.points+=10*s.level;record();}
+        break;
+      }
+    }
+    if(!s.bricks.length){s.level++;s.points+=100;record();s.bricks=breakerBricks(s.level);s.launched=false;updateHud();}
+  }
+  function paintBreaker(){
+    rrect(0,0,W,H,0,'#332014');
+    rrect(5,5,310,410,14,'#3c2416');
+    rrect(8,8,304,31,7,'#573923');text('🧻  KÁKO BREAKER  ·  KOLO '+s.level,160,23,13,'#ffe5a4');
+    for(let i=0;i<17;i++){ctx.fillStyle='#ffe4a60d';ctx.beginPath();ctx.arc((i*57+14)%W,(i*91+70)%H,16,0,Math.PI*2);ctx.fill();}
+    for(const brick of s.bricks){
+      rrect(brick.x,brick.y,33,20,4,brick.hp>1?'#dc9164':'#f9c83d');
+      rrect(brick.x+2,brick.y+2,29,5,2,'#ffffff56');
+      text(brick.hp>1?'🚽':'💩',brick.x+16,brick.y+12,13,'#59301b');
+    }
+    rrect(s.paddle-41,376,82,13,7,'#db9c4c');rrect(s.paddle-32,376,64,7,4,'#fff0bb');
+    ctx.fillStyle='#fbfff8';ctx.beginPath();ctx.arc(s.ball.x,s.ball.y,7,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#ecd3a4';ctx.lineWidth=2;ctx.stroke();
+    rrect(9,394,302,23,6,'#5d3b24');text('❤️ '+s.hp+'     ·     KOSTEK '+s.bricks.length,160,406,12,'#ffeaba');
+    if(!s.launched){rrect(38,238,244,52,12,'#2b170ee9');text('STISKNI ODPAL!',160,264,20,'#ffcf53');}
+  }
+
+  // UCPANÝ HAJZL – garantovaná řešitelná cesta, otočné trubky.
+  const pipePaths=[
+    [[0,2],[1,2],[1,1],[2,1],[3,1],[3,2],[4,2]],
+    [[0,2],[0,1],[1,1],[2,1],[2,2],[3,2],[3,3],[4,3],[4,2]],
+    [[0,2],[1,2],[1,3],[2,3],[3,3],[3,2],[3,1],[4,1],[4,2]],
+    [[0,2],[1,2],[2,2],[2,1],[3,1],[4,1],[4,2]]
+  ];
+  const pipeDx=[0,1,0,-1],pipeDy=[-1,0,1,0];
+  const pipeDir=(a,b)=>pipeDx.findIndex((dx,d)=>dx===b[0]-a[0]&&pipeDy[d]===b[1]-a[1]);
+  function pipeHas(cell,dir){return !!(cell.mask&(1<<dir));}
+  function pipesReach(){
+    // Zdroj musí být opravdu připojený zleva, nestačí najít cestu uvnitř desky.
+    if(!pipeHas(s.grid[2][0],3)){s.wet=new Set();return false;}
+    const seen=new Set(['0,2']);const queue=[[0,2]];let solved=false;
+    while(queue.length){
+      const [x,y]=queue.shift(),cell=s.grid[y][x];
+      for(let d=0;d<4;d++)if(pipeHas(cell,d)){
+        if(x===4&&y===2&&d===1){solved=true;continue;}
+        const xx=x+pipeDx[d],yy=y+pipeDy[d];
+        if(xx<0||xx>=5||yy<0||yy>=5)continue;
+        if(!pipeHas(s.grid[yy][xx],(d+2)%4))continue;
+        const k=xx+','+yy;if(!seen.has(k)){seen.add(k);queue.push([xx,yy]);}
+      }
+    }
+    s.wet=seen;
+    return solved;
+  }
+  function newPipeLevel(){
+    const path=pipePaths[(s.level-1)%pipePaths.length];
+    const grid=Array.from({length:5},()=>Array.from({length:5},()=>({mask:Math.random()<.55?5:3})));
+    for(let i=0;i<path.length;i++){
+      const [x,y]=path[i],prev=i===0?[-1,2]:path[i-1],next=i===path.length-1?[5,2]:path[i+1];
+      grid[y][x]={mask:(1<<pipeDir([x,y],prev))|(1<<pipeDir([x,y],next))};
+    }
+    s.grid=grid;s.wet=new Set();s.nextLevel=0;
+    const solvedMasks=grid.map(row=>row.map(c=>c.mask));
+    for(let attempts=0;attempts<12;attempts++){
+      grid.forEach((row,y)=>row.forEach((cell,x)=>{
+        const turns=randInt(4);cell.mask=solvedMasks[y][x];
+        for(let n=0;n<turns;n++)cell.mask=((cell.mask<<1)|(cell.mask>>3))&15;
+      }));
+      if(!pipesReach())break;
+    }
+  }
+  function newPipes(){s={points:0,hp:1,level:1,time:105,grid:[],wet:new Set(),nextLevel:0};newPipeLevel();}
+  function pipeTap(x,y){
+    if(phase!=='playing'||s.nextLevel>0)return;
+    const col=Math.floor((x-30)/52),row=Math.floor((y-79)/52);
+    if(col<0||col>=5||row<0||row>=5)return;
+    const cell=s.grid[row][col];cell.mask=((cell.mask<<1)|(cell.mask>>3))&15;beep(280,.03);
+    if(pipesReach()){
+      s.points+=100+Math.ceil(s.time/10);s.time=Math.min(120,s.time+13);
+      record();s.nextLevel=.95;beep(840,.14);updateHud();
+    }
+  }
+  function updatePipes(dt){
+    if(s.nextLevel>0){s.nextLevel-=dt;if(s.nextLevel<=0){s.level++;newPipeLevel();}return;}
+    s.time=Math.max(0,s.time-dt);if(s.time===0)finish('Voda už dál neproteče.');
+  }
+  function paintPipes(){
+    rrect(0,0,W,H,0,'#ead6b7');
+    rrect(0,0,W,58,0,'#3e2619');text('🚰  UCPANÝ HAJZL',160,19,18,'#ffe7b6');
+    text('LEVEL '+s.level+'  •  ČAS '+Math.ceil(s.time)+' s',160,43,12,'#ffce59');
+    const step=52,ox=30,oy=78;
+    rrect(21,69,279,279,13,'#533623');
+    for(let y=0;y<5;y++)for(let x=0;x<5;x++){
+      const px=ox+x*step,py=oy+y*step,cell=s.grid[y][x],wet=s.wet.has(x+','+y);
+      rrect(px,py,50,50,6,wet?'#91715b':'#75533e');
+      rrect(px+3,py+3,44,44,5,wet?'#76664e':'#67472f');
+      // Tělo kovové trubky a tekoucí voda.
+      for(const pass of [0,1]){
+        ctx.strokeStyle=pass===0?'#cfcac0':wet?'#33b8ef':'#777675';
+        ctx.lineWidth=pass===0?19:pass===1?10:4;
+        ctx.lineCap='butt';ctx.lineJoin='round';
+        for(let d=0;d<4;d++)if(pipeHas(cell,d)){
+          ctx.beginPath();ctx.moveTo(px+25,py+25);ctx.lineTo(px+25+pipeDx[d]*25,py+25+pipeDy[d]*25);ctx.stroke();
+        }
+      }
+      ctx.fillStyle=wet?'#3bcaff':'#8e8e87';ctx.beginPath();ctx.arc(px+25,py+25,9,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle='#e1d6c9';ctx.lineWidth=2;ctx.stroke();
+    }
+    emoji('💧',13,207,20);emoji('🚽',307,207,22);
+    rrect(12,361,296,47,10,'#fff2dc');
+    text('KLEPNI A OTOČ POTRUBÍ',160,375,13,'#51341f');
+    text('VODA VLEVO   →   ZÁCHOD VPRAVO',160,394,11,'#846142');
+    if(s.nextLevel>0){rrect(34,171,252,76,12,'#315842e7');text('💧 PROTEKLO!',160,198,22,'#f3ffed');text('DALŠÍ ÚROVEŇ',160,226,14,'#ffe5a3');}
+  }
+
+  // KÁKO DEFENSE – čtyři skutečně různé typy obrany, vše v jedné herní smyčce.
+  const defY=[123,214,305],defX=[53,102,151,200,249];
+  const defenseTools=[
+    {icon:'🪠',cost:40,speed:.71,damage:1,velocity:215,color:'#f2bf66'},
+    {icon:'🧽',cost:60,speed:1.1,damage:2,velocity:175,color:'#a2cfee'},
+    {icon:'🧴',cost:85,speed:.33,damage:1,velocity:265,color:'#85ebb7'},
+    {icon:'🧻',cost:35,speed:1.5,damage:1,velocity:170,color:'#f8ede0'}
+  ];
+  function newDefense(){
+    s={points:0,hp:8,level:1,money:115,elapsed:0,time:90,towers:[],enemies:[],shots:[],spawn:1.4,coinTimer:3,selected:0};
+  }
+  function defensePlace(x,y){
+    if(phase!=='playing')return;
+    if(y>=359){s.selected=clamp(Math.floor((x-9)/76),0,3);beep(440,.025);return;}
+    const col=defX.findIndex(xx=>Math.abs(x-xx)<24),row=defY.findIndex(yy=>Math.abs(y-yy)<38);
+    if(row<0||col<0)return;
+    const type=s.selected,tool=defenseTools[type];
+    if(s.towers.some(t=>t.col===col&&t.row===row)||s.money<tool.cost){beep(160,.035);return;}
+    s.money-=tool.cost;s.towers.push({col,row,x:defX[col],y:defY[row],type,cool:.15});beep(620,.06);updateHud();
+  }
+  function updateDefense(dt){
+    s.elapsed+=dt;s.time=Math.max(0,90-s.elapsed);s.level=Math.min(6,1+Math.floor(s.elapsed/15));
+    s.coinTimer-=dt;if(s.coinTimer<=0){s.money=Math.min(400,s.money+17);s.coinTimer+=3.8;}
+    s.spawn-=dt;
+    if(s.spawn<=0&&s.enemies.length<26){
+      const row=randInt(3),hp=1+(s.level>=3?1:0)+(s.level>=5&&Math.random()<.45?1:0);
+      s.enemies.push({x:345,y:defY[row],row,hp,max:hp,speed:rnd(21,32)+s.level*2,slow:0});
+      s.spawn=Math.max(.48,1.65-s.level*.17)+rnd(0,.24);
+    }
+    for(const t of s.towers){
+      t.cool-=dt;
+      if(t.cool<=0){
+        const target=s.enemies.filter(e=>e.row===t.row&&e.x>t.x-9).sort((a,b)=>a.x-b.x)[0];
+        if(target){let tool=defenseTools[t.type];s.shots.push({x:t.x+18,y:t.y,row:t.row,speed:tool.velocity,damage:tool.damage,type:t.type});t.cool=tool.speed;}
+      }
+    }
+    for(let i=s.enemies.length-1;i>=0;i--){const e=s.enemies[i];e.slow=Math.max(0,e.slow-dt);e.x-=e.speed*(e.slow>0?.45:1)*dt;
+      if(e.x<13){s.enemies.splice(i,1);s.hp--;beep(130,.07);if(s.hp<=0){finish('Bobci ovládli záchod!');return;}}
+    }
+    for(let i=s.shots.length-1;i>=0;i--){
+      const b=s.shots[i];b.x+=b.speed*dt;
+      if(b.x>334){s.shots.splice(i,1);continue;}
+      const e=s.enemies.find(e=>e.row===b.row&&Math.abs(e.x-b.x)<17);
+      if(e){s.shots.splice(i,1);e.hp-=b.damage;if(b.type===1)e.slow=2.5;
+        if(e.hp<=0){s.enemies.splice(s.enemies.indexOf(e),1);s.money=Math.min(400,s.money+17);s.points+=25;record();updateHud();}}
+    }
+    if(s.time<=0){s.points+=200+s.hp*50;record();finish('Záchod ubráněn! Všechny vlny odraženy.');}
+  }
+  function paintDefense(){
+    rrect(0,0,W,H,0,'#e5d2ac');
+    rrect(0,0,W,53,0,'#432a1a');
+    text('🪠  KÁKO DEFENSE',160,18,17,'#ffe9bd');
+    text('VLNA '+s.level+'/6    🪙 '+s.money+'    ❤️ '+s.hp+'    '+Math.ceil(s.time)+' s',160,40,11,'#ffdf8d');
+    // Trávník a tři cesty jako ve schváleném náhledu.
+    for(let row=0;row<3;row++){
+      const y=defY[row];rrect(9,y-43,302,85,8,row%2?'#abc276':'#bacd83');
+      rrect(10,y-28,300,55,9,'#dec494');
+      for(let col=0;col<5;col++){
+        const x=defX[col];rrect(x-22,y-25,44,51,7,'#f6e1b33d');
+        ctx.strokeStyle='#d0ae7b66';ctx.lineWidth=1;ctx.strokeRect(x-22,y-25,44,51);
+      }
+      emoji('🚽',17,y,25);
+    }
+    for(const t of s.towers){
+      rrect(t.x-12,t.y+12,24,9,4,'#54483b');
+      emoji(defenseTools[t.type].icon,t.x,t.y-3,31);
+    }
+    for(const e of s.enemies){
+      emoji('💩',e.x,e.y,30);
+      if(e.hp<e.max){rrect(e.x-15,e.y-25,30,5,2,'#9f4d3d');rrect(e.x-15,e.y-25,30*e.hp/e.max,5,2,'#5aae52');}
+    }
+    for(const b of s.shots){ctx.fillStyle=defenseTools[b.type].color;ctx.beginPath();ctx.arc(b.x,b.y,5,0,Math.PI*2);ctx.fill();}
+    rrect(3,353,314,65,8,'#fff1db');
+    for(let i=0;i<4;i++){
+      const x=9+i*76,t=defenseTools[i];
+      rrect(x,358,72,56,8,s.selected===i?'#ffce4c':'#e3d1b6');
+      if(s.selected===i){ctx.strokeStyle='#623820';ctx.lineWidth=3;ctx.strokeRect(x+2,360,68,52);}
+      emoji(t.icon,x+36,376,24);
+      text('🪙 '+t.cost,x+36,402,11,'#3e2b1e');
+    }
+  }
+
   function initState(){
     if(game==='snake')newSnake();else if(game==='invaders')newInvaders();else if(game==='racing')newRacing();
     else if(game==='whack')newWhack();else if(game==='flappy')newFlappy();else if(game==='run')newRun();
+    else if(game==='tetris')newTetris();else if(game==='breaker')newBreaker();else if(game==='pipes')newPipes();else if(game==='defense')newDefense();
   }
   function update(dt){
     if(phase!=='playing'||!s)return;
@@ -7082,11 +7423,13 @@ restoreKako();
     else if(game==='whack')updateWhack(dt);
     else if(game==='flappy')updateFlappy(dt);
     else if(game==='run')updateRun(dt);
+    else if(game==='tetris')updateTetris(dt);else if(game==='breaker')updateBreaker(dt);else if(game==='pipes')updatePipes(dt);else if(game==='defense')updateDefense(dt);
   }
   function draw(){
     if(!game||!s)return;
     if(game==='snake')paintSnake();else if(game==='invaders')paintInvaders();else if(game==='racing')paintRacing();
     else if(game==='whack')paintWhack();else if(game==='flappy')paintFlappy();else if(game==='run')paintRun();
+    else if(game==='tetris')paintTetris();else if(game==='breaker')paintBreaker();else if(game==='pipes')paintPipes();else if(game==='defense')paintDefense();
   }
   // Jediný requestAnimationFrame běží POUZE na otevřené a viditelné hře.
   let arcadeFrameId=0;
@@ -7106,7 +7449,7 @@ restoreKako();
     }
     // Nabídka, pauza i konec hry jsou statické: vykreslit jednou, dál neběží rAF.
     if(phase==='playing')arcadeFrameId=requestAnimationFrame(render);
-    if(phase==='playing' && t-lastRender<32)return; // maximálně ~30 snímků/s
+    if(phase==='playing' && t-lastRender<(game==='pipes'?80:32))return; // 12 fps potrubí; ostatní max. 30 fps
     lastRender=t;
     const dt=Math.min(prev?(t-prev)/1000:0,.065);prev=t;
     update(dt);draw();
@@ -7115,6 +7458,9 @@ restoreKako();
   function actionPress(k,down){
     if(!game||phase!=='playing')return;
     if(game==='snake'){if(down&&k!=='action')snakeDirection(k);return;}
+    if(game==='tetris'){if(down){if(k==='left')tetrisMove(-1);else if(k==='right')tetrisMove(1);else if(k==='up')tetrisRotate();else if(k==='down')tetrisHardDrop();}return;}
+    if(game==='pipes'||game==='defense')return;
+    if(game==='breaker'){if(k==='left')leftDown=down;else if(k==='right')rightDown=down;else if(k==='action'&&down)breakerLaunch();return;}
     if(game==='flappy'){if(down&&k==='action')flap();return;}
     if(game==='run'){if(down&&k==='action')jumpRun();return;}
     if(game==='whack')return;
@@ -7164,12 +7510,16 @@ restoreKako();
     if(game==='whack'){whackAt((e.clientX-rect.left)/rect.width*W,(e.clientY-rect.top)/rect.height*H);}
     if(game==='flappy')flap();
     if(game==='run')jumpRun();
+    if(game==='pipes')pipeTap((e.clientX-rect.left)/rect.width*W,(e.clientY-rect.top)/rect.height*H);
+    if(game==='defense')defensePlace((e.clientX-rect.left)/rect.width*W,(e.clientY-rect.top)/rect.height*H);
+    if(game==='breaker'){s.paddle=clamp((e.clientX-rect.left)/rect.width*W,40,280);breakerLaunch();}
     if(game==='invaders'){
       s.px=clamp((e.clientX-rect.left)/rect.width*W,25,295);fire();
     }
     try{canvas.setPointerCapture(e.pointerId);}catch(err){}
   });
   canvas.addEventListener('pointermove',e=>{
+    if(phase==='playing'&&game==='breaker'&&pointerStart){const r=canvas.getBoundingClientRect();s.paddle=clamp((e.clientX-r.left)/r.width*W,40,280);}
     if(phase==='playing'&&game==='invaders'&&pointerStart){
       const r=canvas.getBoundingClientRect();s.px=clamp((e.clientX-r.left)/r.width*W,25,295);
     }
@@ -7180,6 +7530,7 @@ restoreKako();
     if(Math.max(Math.abs(dx),Math.abs(dy))>22){
       if(game==='snake')snakeDirection(Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up');
       if(game==='racing'&&Math.abs(dx)>24)moveRace(dx>0?1:-1);
+      if(game==='tetris'){if(Math.abs(dx)>Math.abs(dy))tetrisMove(dx>0?1:-1);else if(dy<0)tetrisRotate();else tetrisHardDrop();}
     }
     pointerStart=null;
   });
@@ -7227,7 +7578,7 @@ restoreKako();
   const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
   // KÁKO 5.7 – reorder games with an accessible drag handle, persisted only on drop.
   const arcadeOrderKey='kakoArcadeGameOrderV1';
-  const allowedGames=['snake','invaders','racing','whack','flappy','run'];
+  const allowedGames=['snake','invaders','racing','whack','flappy','run','tetris','breaker','pipes','defense'];
   const arcadeCards=$('arcadeCards');
   let sorting=false, dragRow=null, dragPointer=null, dragMoved=false;
   const itemFor=id=>arcadeCards.querySelector('.arcade-sort-row[data-game="'+id+'"]');
