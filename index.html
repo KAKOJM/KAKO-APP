@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.7 – OSM HER</title>
+<title>KÁKO 6.8 – OSM HER</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1916,6 +1916,22 @@ body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls {
 #gamesScreen #arcadeSideControls.breaker-controls .arcade-left { grid-column:1; grid-row:1; }
 #gamesScreen #arcadeSideControls.breaker-controls .arcade-action { grid-column:2; grid-row:1; }
 #gamesScreen #arcadeSideControls.breaker-controls .arcade-right { grid-column:3; grid-row:1; }
+/* KÁKO 6.8 – plná šířka spodní navigace i na větších iPhonech.
+   Žádné omezení na 430px: roztažení se týká jen spodní hnědé lišty. */
+#bottomNav.bottom-nav {
+  left:0;
+  right:0;
+  width:100%;
+  width:100vw;
+  max-width:none;
+  margin:0;
+  transform:none;
+  -webkit-transform:none;
+  box-sizing:border-box;
+  padding-left:max(7px, env(safe-area-inset-left, 0px));
+  padding-right:max(7px, env(safe-area-inset-right, 0px));
+}
+
 </style>
 </head>
 
@@ -2579,7 +2595,7 @@ body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls {
 
 <div class="settings-card about-app" aria-label="O aplikaci">
   <h3>O aplikaci</h3>
-  <p><strong>KÁKO 6.7</strong> · Časomíra, cíle, statistiky a osm her</p>
+  <p><strong>KÁKO 6.8</strong> · Časomíra, cíle, statistiky a osm her</p>
   <p>Autor: Milan Kolařík a Jakub Kotásek</p>
 </div>
 
@@ -6583,7 +6599,7 @@ restoreKako();
   const W=320,H=420;
   const title = {snake:'KÁKOHAD',invaders:'KÁKO INVADERS',racing:'KÁKO RACING',whack:'PRAŠŤ HO-VNO',flappy:'FLAPPY KÁKO',run:'KÁKO RUN',tetris:'KÁKOTRIS',breaker:'KÁKO BREAKER'};
   const keys = {snake:'kakoArcadeRecordSnake',invaders:'kakoArcadeRecordInvaders',racing:'kakoArcadeRecordRacing',whack:'kakoArcadeRecordWhack',flappy:'kakoArcadeRecordFlappy',run:'kakoArcadeRecordRun',tetris:'kakoArcadeRecordTetris',breaker:'kakoArcadeRecordBreaker'};
-  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.',whack:'Klepej prstem na bobky v otvorech. Máš 45 sekund a za každý zásah získáš body.',flappy:'Klepni do hry nebo na SKOK a proleť mezi trubkami. Nespadni na zem!',run:'Klepni nebo stiskni SKOK, přeskoč překážky a sbírej toaletní papír.',tetris:'Šipky vlevo/vpravo přesouvají kostku, tlačítko ↻ ji otáčí a dolů ji položí. Odstraňuj celé řady.',breaker:'Vlevo a vpravo řídíš pálku, ODPAL vypustí míček. Pálkou lze pohybovat i tahem po herním poli.'};
+  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.',whack:'Klepej prstem na bobky v otvorech. Máš 45 sekund a za každý zásah získáš body.',flappy:'Klepni do hry nebo na SKOK a proleť mezi trubkami. Nespadni na zem!',run:'Klepni nebo stiskni SKOK, přeskoč překážky a sbírej toaletní papír.',tetris:'Šipky vlevo/vpravo přesouvají kostku, tlačítko ↻ ji otáčí. Šipka dolů posouvá kostku o řádek; podrž ji pro rychlejší pád. Odstraňuj celé řady.',breaker:'Vlevo a vpravo řídíš pálku, ODPAL vypustí míček. Pálkou lze pohybovat i tahem po herním poli.'};
   let game=null,phase='idle',s=null,best={snake:0,invaders:0,racing:0,whack:0,flappy:0,run:0,tetris:0,breaker:0},sound=false,audio=null;
   let leftDown=false,rightDown=false,actionDown=false,prev=0,modalFn=null,pointerStart=null;
   // Volba zůstane uložená, výchozí obtížnost je schválně klidná.
@@ -6656,7 +6672,7 @@ restoreKako();
     $('arcadeLives').textContent=(game==='snake'||game==='tetris')?s.level:game==='whack'?Math.max(0,Math.ceil(s.time))+' s':game==='flappy'?s.points:s.hp;
     $('arcadePause').textContent=phase==='paused'?'▶ Pokračovat':'⏸ Pauza';
   }
-  function clearHeld(){leftDown=false;rightDown=false;actionDown=false;document.querySelectorAll('#gamesScreen .arcade-button').forEach(x=>x.classList.remove('pressed'));}
+  function clearHeld(){leftDown=false;rightDown=false;actionDown=false;if(game==='tetris'&&s){s.held=null;s.repeat=0;}document.querySelectorAll('#gamesScreen .arcade-button').forEach(x=>x.classList.remove('pressed'));}
   function showModal(icon,heading,description,button,fn){
     $('arcadeOverlayIcon').textContent=icon;
     $('arcadeOverlayTitle').textContent=heading;
@@ -7227,17 +7243,33 @@ restoreKako();
     while(tetrisValid(s.cur.x,s.cur.y+1,s.cur.r)){s.cur.y++;cells++;}
     s.points+=cells*2;beep(330,.09);tetrisLock();
   }
+  // KÁKO 6.8: Jemný sestup: krátký stisk = 1 řádek, podržení = měřené opakování.
+  // Stejná logika funguje s dotykem, klávesnicí i tahem; nikdy neshodí kostku na dno.
   function tetrisPress(k,down){
     if(!down){if(s.held===k)s.held=null;return;}
     if(k==='left'||k==='right'){
       tetrisShift(k==='left'?-1:1);s.held=k;s.repeat=.18;
     }else if(k==='up')tetrisRotate();
-    else if(k==='down')tetrisHardDrop();
+    else if(k==='down'){
+      tetrisDown();            // jen jeden řádek za jedno klepnutí
+      s.fall=0;               // okamžitě nepřičítat další gravitační krok
+      s.held='down';
+      s.repeat=.20;           // nejprve krátká prodleva pro přesné dávkování
+    }
   }
   function updateTetris(dt){
     if(s.held){
       s.repeat-=dt;
-      if(s.repeat<=0){tetrisShift(s.held==='left'?-1:1);s.repeat+=.085;}
+      if(s.repeat<=0){
+        if(s.held==='down'){
+          tetrisDown();
+          s.fall=0;
+          s.repeat+=.12;     // po podržení nejvýše ~8 řádků za sekundu
+        }else{
+          tetrisShift(s.held==='left'?-1:1);
+          s.repeat+=.085;
+        }
+      }
     }
     s.fall+=dt;
     const interval=Math.max(.12,.78*Math.pow(.84,s.level-1));
@@ -7514,7 +7546,11 @@ restoreKako();
     const dx=e.clientX-pointerStart.x,dy=e.clientY-pointerStart.y;
     if(Math.max(Math.abs(dx),Math.abs(dy))>22){
       if(game==='snake')snakeDirection(Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up');
-      if(game==='tetris')tetrisPress(Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up',true);
+      if(game==='tetris'){
+        const dir=Math.abs(dx)>Math.abs(dy)?(dx>0?'right':'left'):(dy>0?'down':'up');
+        tetrisPress(dir,true);
+        tetrisPress(dir,false); // gesto je jednorázové, nesmí zůstat stisknuté
+      }
       if(game==='racing'&&Math.abs(dx)>24)moveRace(dx>0?1:-1);
     }
     pointerStart=null;
