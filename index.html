@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.6.1 – OSM HER</title>
+<title>KÁKO 6.7 – OSM HER</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1886,6 +1886,36 @@ body.arcade-game-active #arcadeCanvas{touch-action:none;}
   display:block !important;
   fill:none !important;
 }
+
+/* KÁKO 6.7 – pevná spodní lišta bez transformovaného umístění.
+   Zachovává čtyři položky a jejich původní barvy.
+   Zajišťuje dostatečný prostor i pro iPhone s dolním indikátorem. */
+#bottomNav.bottom-nav {
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  transform:none;
+  width:100%;
+  max-width:430px;
+  margin-inline:auto;
+  min-height:70px;
+  padding:9px 7px max(12px,env(safe-area-inset-bottom,0px));
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  background:var(--brown);
+  box-shadow:0 -2px 0 rgba(0,0,0,.08);
+  -webkit-transform:none;
+}
+/* Nativní ovládání a hlavní stránka nejsou zavřené do posuvného kontejneru. */
+#bottomNav .nav-btn { min-width:0; min-height:48px; }
+body.arcade-game-active { background:var(--cream); }
+/* ODPAL pouze u BREAKERU ve středu; pro ostatní hry žádná změna. */
+body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls {
+  grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr);
+}
+#gamesScreen #arcadeSideControls.breaker-controls .arcade-left { grid-column:1; grid-row:1; }
+#gamesScreen #arcadeSideControls.breaker-controls .arcade-action { grid-column:2; grid-row:1; }
+#gamesScreen #arcadeSideControls.breaker-controls .arcade-right { grid-column:3; grid-row:1; }
 </style>
 </head>
 
@@ -2549,7 +2579,7 @@ body.arcade-game-active #arcadeCanvas{touch-action:none;}
 
 <div class="settings-card about-app" aria-label="O aplikaci">
   <h3>O aplikaci</h3>
-  <p><strong>KÁKO 6.6.1</strong> · Časomíra, cíle, statistiky a osm her</p>
+  <p><strong>KÁKO 6.7</strong> · Časomíra, cíle, statistiky a osm her</p>
   <p>Autor: Milan Kolařík a Jakub Kotásek</p>
 </div>
 
@@ -6686,6 +6716,9 @@ restoreKako();
     upperControl.setAttribute('aria-label',which==='tetris'?'Otočit kostku':'Nahoru');
     $('arcadeSnakeControls').hidden=which!=='snake'&&which!=='tetris';
     $('arcadeSideControls').hidden=which!=='invaders'&&which!=='racing'&&which!=='breaker';
+    // Pouze BREAKER: šipka vlevo – ODPAL – šipka vpravo.
+    // INVADERS a RACING mají původní rozložení beze změny.
+    $('arcadeSideControls').classList.toggle('breaker-controls',which==='breaker');
     $('arcadeOneButtonControls').hidden=which!=='flappy'&&which!=='run';
     $('arcadeWhackTip').hidden=which!=='whack';
     $('arcadeOneButton').textContent=which==='flappy'?'🪽 MÁVNI!':'⬆ SKOK!';
@@ -6702,6 +6735,7 @@ restoreKako();
     stopGame();game=null;
     document.body.classList.remove('arcade-game-active');
     $('arcadeGame').hidden=true;$('arcadeLibrary').hidden=false;
+    $('arcadeSideControls').classList.remove('breaker-controls');
     updateCards();window.scrollTo(0,0);
   }
   function start(){
