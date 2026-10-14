@@ -1,7 +1,7512 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
+<meta<!DOCTYPE html>
+<html lang="cs">
+<head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#2a170e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KÁKO">
+
+<title>KÁKO 6.5 – 8 HER</title>
+
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="icon.png">
+
+<style>
+:root{
+  --brown:#2a170e;
+  --cream:#fff7e9;
+  --cream2:#f1dfc7;
+  --cream3:#ead8c1;
+  --yellow:#ffc72c;
+  --green:#318b43;
+  --green2:#61c66a;
+  --red:#df392f;
+  --muted:#806b5d;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  min-height:100%;
+  overscroll-behavior:none;
+  touch-action:manipulation;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--brown);
+  color:var(--brown);
+  -webkit-text-size-adjust:100%;
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+.app{
+  max-width:430px;
+  min-height:100vh;
+  margin:auto;
+  background:var(--cream);
+  padding:
+    calc(14px + env(safe-area-inset-top))
+    18px
+    calc(138px + env(safe-area-inset-bottom));
+}
+
+/* LOGO */
+
+.logo-wrap{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.logo-poop{
+  font-size:43px;
+  line-height:1;
+}
+
+.logo{
+  font-size:52px;
+  font-weight:900;
+  letter-spacing:-3px;
+}
+
+.logo-sub{
+  margin-top:4px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+}
+
+/* DOMA / PRÁCE */
+
+.mode-switch{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:5px;
+  background:var(--cream3);
+  padding:5px;
+  border-radius:19px;
+  margin-bottom:8px;
+}
+
+.mode-btn{
+  border:0;
+  border-radius:15px;
+  padding:13px;
+  background:transparent;
+  color:#765d4d;
+  font-size:14px;
+  font-weight:900;
+}
+
+.mode-btn.active{
+  background:var(--brown);
+  color:white;
+}
+
+.mode-info{
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:700;
+  margin:8px 0 16px;
+}
+
+/* DNES */
+
+.today-card{
+  background:var(--cream2);
+  border-radius:24px;
+  padding:18px;
+  margin-bottom:14px;
+}
+
+.today-title{
+  text-align:center;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+  margin-bottom:14px;
+}
+
+.today-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:5px;
+  text-align:center;
+}
+
+.today-box span{
+  display:block;
+  font-size:22px;
+  margin-bottom:5px;
+}
+
+.today-box strong{
+  display:block;
+  font-size:17px;
+}
+
+.today-box small{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:800;
+}
+
+.green{
+  color:var(--green);
+}
+
+.mini-rate{
+  text-align:center;
+  margin-bottom:14px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:800;
+}
+
+.mini-rate strong{
+  color:var(--green);
+}
+
+.main-button{
+  width:100%;
+  border:0;
+  border-radius:24px;
+  padding:21px;
+  background:var(--yellow);
+  color:var(--brown);
+  font-size:26px;
+  font-weight:900;
+  box-shadow:0 5px 0 #d7a218;
+}
+
+.main-button:active{
+  transform:translateY(3px);
+  box-shadow:0 2px 0 #d7a218;
+}
+
+/* TIMER */
+
+.timer-page{
+  max-width:430px;
+  min-height:100vh;
+  margin:auto;
+  background:var(--brown);
+  color:white;
+  text-align:center;
+
+  padding:
+    calc(12px + env(safe-area-inset-top))
+    20px
+    calc(138px + env(safe-area-inset-bottom));
+}
+
+.timer-mode{
+  display:inline-block;
+  background:var(--yellow);
+  color:var(--brown);
+  border-radius:99px;
+  padding:7px 14px;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:7px;
+}
+
+.timer-title{
+  color:var(--yellow);
+  font-size:21px;
+  font-weight:900;
+  margin-bottom:7px;
+}
+
+.timer{
+  font-size:51px;
+  font-weight:900;
+  line-height:1.05;
+}
+
+.toilet-art{
+  font-size:57px;
+  margin:7px 0;
+}
+
+.live-label{
+  color:#dcc6b4;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.live-money{
+  margin-top:4px;
+  color:var(--green2);
+  font-size:39px;
+  font-weight:900;
+}
+
+.live-money.free{
+  color:var(--yellow);
+  font-size:28px;
+}
+
+.quote-card{
+  background:#fff0c6;
+  color:var(--brown);
+  border:3px solid var(--yellow);
+  border-radius:22px;
+  padding:13px 15px;
+  max-width:360px;
+  margin:-4px auto 11px;
+  box-shadow:0 7px 18px rgba(0,0,0,.18);
+}
+
+.quote-card.home{
+  background:#f4e2cd;
+}
+
+.quote-label{
+  display:block;
+  color:#9b6d15;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  margin-bottom:6px;
+}
+
+.quote-text{
+  font-size:18px;
+  line-height:1.27;
+  font-weight:900;
+}
+
+.quote-pop{
+  animation:quotePop .45s ease;
+}
+
+@keyframes quotePop{
+  0%{
+    transform:scale(.9);
+    opacity:.2;
+  }
+
+  55%{
+    transform:scale(1.05);
+    opacity:1;
+  }
+
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.stop-button{
+  width:100%;
+  border:0;
+  border-radius:22px;
+  padding:16px;
+  background:var(--red);
+  color:white;
+  font-size:22px;
+  font-weight:900;
+}
+
+.stop-button:disabled{
+  opacity:.65;
+}
+
+.cancel-button{
+  margin-top:11px;
+  border:0;
+  background:transparent;
+  color:#d7c2af;
+  font-size:12px;
+  font-weight:800;
+}
+
+.page-title{
+  font-size:30px;
+  font-weight:900;
+  margin:10px 0 18px;
+}
+
+/* STATISTIKY */
+
+.tabs{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  margin-bottom:17px;
+}
+
+.tab{
+  border:0;
+  border-radius:13px;
+  padding:11px 5px;
+  background:var(--cream3);
+  color:var(--brown);
+  font-weight:900;
+}
+
+.tab.active{
+  background:var(--brown);
+  color:white;
+}
+
+.stats-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:21px;
+}
+
+.stats-main-card{
+  background:var(--cream2);
+  border-radius:20px;
+  min-height:120px;
+  padding:14px 5px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.stats-main-card .icon{
+  font-size:27px;
+  margin-bottom:8px;
+}
+
+.stats-main-card strong{
+  display:block;
+  font-size:19px;
+  line-height:1.1;
+  overflow-wrap:anywhere;
+}
+
+.stats-main-card small{
+  display:block;
+  margin-top:8px;
+  color:var(--muted);
+  font-size:9px;
+  font-weight:900;
+}
+
+.stats-section{
+  margin-top:22px;
+}
+
+.stats-section-title{
+  font-size:19px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.place-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.place-card{
+  background:var(--cream2);
+  border-radius:21px;
+  padding:17px 12px;
+  text-align:center;
+}
+
+.place-icon{
+  font-size:29px;
+}
+
+.place-card strong{
+  display:block;
+  font-size:23px;
+  margin:8px 0 4px;
+}
+
+.place-card small{
+  color:var(--muted);
+  font-size:11px;
+  font-weight:800;
+}
+
+.record-card{
+  background:var(--cream2);
+  border-radius:18px;
+  padding:15px 16px;
+  margin-bottom:9px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.record-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+}
+
+.record-icon{
+  font-size:22px;
+}
+
+.record-card strong{
+  font-size:18px;
+  text-align:right;
+}
+
+/* ACHIEVEMENTY */
+
+.achievement-progress-card{
+  background:var(--brown);
+  color:white;
+  border-radius:22px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.achievement-progress-card small{
+  color:#d5bfae;
+  font-size:11px;
+  font-weight:900;
+}
+
+.achievement-progress-card strong{
+  display:block;
+  margin-top:6px;
+  color:var(--yellow);
+  font-size:25px;
+}
+
+.achievement{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  background:var(--cream2);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:9px;
+  opacity:.42;
+}
+
+.achievement.unlocked{
+  opacity:1;
+}
+
+.achievement-icon{
+  width:42px;
+  flex:0 0 42px;
+  text-align:center;
+  font-size:29px;
+}
+
+.achievement strong{
+  display:block;
+  font-size:15px;
+}
+
+.achievement small{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  line-height:1.3;
+}
+
+/* HISTORIE */
+
+.history-item{
+  background:var(--cream2);
+  border-radius:19px;
+  padding:15px;
+  margin-bottom:10px;
+}
+
+.history-top,
+.history-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.history-top{
+  font-weight:900;
+  margin-bottom:9px;
+}
+
+.history-bottom{
+  gap:8px;
+}
+
+.history-place{
+  display:inline-block;
+  margin-top:9px;
+  background:#dcc6ad;
+  padding:5px 9px;
+  border-radius:99px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.delete-btn{
+  border:0;
+  background:#dfcbc4;
+  color:#8e2c27;
+  border-radius:10px;
+  padding:7px 9px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.empty{
+  text-align:center;
+  padding:35px 10px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.danger{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:13px;
+  margin-top:20px;
+  background:#ead6d2;
+  color:#9b2d27;
+  font-weight:900;
+}
+
+/* SETTINGS */
+
+.settings-card{
+  background:white;
+  border:2px solid #eadbc8;
+  border-radius:22px;
+  padding:17px;
+  margin-bottom:12px;
+}
+
+.settings-card h3{
+  margin-bottom:15px;
+}
+
+.settings-card label{
+  display:block;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:5px;
+}
+
+.settings-card input,
+.settings-card select{
+  width:100%;
+  border:2px solid #ddc8ae;
+  border-radius:13px;
+  background:#fffaf3;
+  padding:13px;
+  font-size:16px;
+  margin-bottom:13px;
+}
+
+.pay-switch{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+  margin-bottom:14px;
+}
+
+.pay-btn{
+  border:0;
+  border-radius:13px;
+  padding:11px;
+  background:#eadbc8;
+  font-weight:900;
+}
+
+.pay-btn.active{
+  background:var(--brown);
+  color:white;
+}
+
+.setting-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.setting-info{
+  flex:1;
+}
+
+.setting-info strong{
+  display:block;
+  font-size:15px;
+}
+
+.setting-info small{
+  display:block;
+  color:var(--muted);
+  margin-top:4px;
+  line-height:1.3;
+}
+
+.setting-toggle{
+  min-width:78px;
+  border:0;
+  border-radius:99px;
+  padding:11px 12px;
+  background:#d9c9b5;
+  color:#765d4d;
+  font-weight:900;
+}
+
+.setting-toggle.on{
+  background:var(--green);
+  color:white;
+}
+
+.sound-tests{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:16px;
+}
+
+.sound-test-btn{
+  border:0;
+  border-radius:14px;
+  padding:12px 6px;
+  background:var(--cream2);
+  color:var(--brown);
+  font-size:11px;
+  font-weight:900;
+}
+
+.reminder-time{
+  margin-top:16px;
+}
+
+.save-btn{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:14px;
+  background:var(--brown);
+  color:white;
+  font-weight:900;
+}
+
+/* RESULT */
+
+.result-title{
+  font-size:39px;
+  font-weight:900;
+  margin-top:12px;
+}
+
+.result-sub{
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.result-poop{
+  text-align:center;
+  font-size:75px;
+  margin:20px 0;
+}
+
+.rating{
+  background:var(--yellow);
+  border-radius:20px;
+  padding:16px;
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.rating small{
+  font-size:10px;
+  font-weight:900;
+}
+
+.rating strong{
+  display:block;
+  margin-top:5px;
+  font-size:20px;
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.result-box{
+  background:var(--cream2);
+  border-radius:19px;
+  padding:15px 8px;
+  text-align:center;
+}
+
+.result-box small{
+  font-size:10px;
+  font-weight:900;
+}
+
+.result-box strong{
+  display:block;
+  margin-top:6px;
+  font-size:20px;
+}
+
+.action-btn{
+  width:100%;
+  border:0;
+  border-radius:19px;
+  padding:16px;
+  margin-top:12px;
+  background:var(--brown);
+  color:white;
+  font-weight:900;
+  font-size:15px;
+}
+
+.share-btn{
+  background:var(--yellow);
+  color:var(--brown);
+}
+
+/* SPODNÍ MENU */
+
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:min(430px,100%);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  background:var(--brown);
+  padding:
+    9px 2px
+    calc(12px + env(safe-area-inset-bottom));
+  z-index:999;
+}
+
+.nav-btn{
+  position:relative;
+  border:0;
+  background:transparent;
+  color:#cbb39f;
+  font-size:9px;
+  font-weight:900;
+  padding:2px 0;
+}
+
+.nav-icon{
+  display:block;
+  font-size:18px;
+  margin-bottom:2px;
+}
+
+.nav-btn.active,
+.nav-btn.running{
+  color:var(--yellow);
+}
+
+.running-dot{
+  display:none;
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#63d36d;
+  top:-1px;
+  right:18%;
+}
+
+.nav-btn.running .running-dot{
+  display:block;
+  animation:pulseDot 1.2s infinite;
+}
+
+@keyframes pulseDot{
+  0%{
+    transform:scale(.8);
+    opacity:.55;
+  }
+
+  50%{
+    transform:scale(1.35);
+    opacity:1;
+  }
+
+  100%{
+    transform:scale(.8);
+    opacity:.55;
+  }
+}
+
+.bottom-author{
+  grid-column:1 / -1;
+  text-align:center;
+  color:#d8c4b2;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.25;
+  border-top:1px solid rgba(255,255,255,.12);
+  margin-top:7px;
+  padding:8px 8px 0;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:138px;
+  left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 45px);
+  max-width:360px;
+  background:var(--brown);
+  color:white;
+  border:1px solid #765441;
+  border-radius:16px;
+  padding:13px;
+  text-align:center;
+  font-size:13px;
+  font-weight:800;
+  opacity:0;
+  pointer-events:none;
+  transition:.2s;
+  z-index:1200;
+}
+
+.toast.show{
+  opacity:1;
+}
+
+/* REMINDER */
+
+.reminder-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(20,10,5,.78);
+  backdrop-filter:blur(6px);
+  z-index:5000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.reminder-overlay.show{
+  display:flex;
+}
+
+.reminder-modal{
+  width:100%;
+  max-width:390px;
+  background:var(--cream);
+  border-radius:28px;
+  padding:24px 20px 20px;
+  text-align:center;
+}
+
+.reminder-icon{
+  font-size:58px;
+}
+
+.reminder-title{
+  font-size:29px;
+  font-weight:900;
+  margin-top:7px;
+}
+
+.reminder-text{
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.45;
+  margin:10px 0 20px;
+}
+
+.reminder-time-value{
+  display:block;
+  color:var(--brown);
+  font-size:28px;
+  font-weight:900;
+  margin-top:7px;
+}
+
+.reminder-continue,
+.reminder-stop{
+  width:100%;
+  border:0;
+  border-radius:19px;
+  padding:16px;
+  font-size:17px;
+  font-weight:900;
+}
+
+.reminder-continue{
+  background:var(--yellow);
+  color:var(--brown);
+}
+
+.reminder-stop{
+  margin-top:10px;
+  background:var(--red);
+  color:white;
+}
+/* =====================================================
+   KÁKO ARCADE – herní sekce v původním designu KÁKO
+   ===================================================== */
+.bottom-nav{grid-template-columns:repeat(6,minmax(0,1fr));}
+.bottom-nav .nav-btn{font-size:8.5px;min-width:0;white-space:nowrap;}
+.bottom-nav .nav-icon{font-size:18px;}
+.arcade-app{background:var(--cream);}
+.arcade-header{text-align:center;margin:3px 0 19px;}
+.arcade-kicker{display:inline-block;background:var(--yellow);font-size:11px;font-weight:900;letter-spacing:1px;border-radius:30px;padding:7px 13px;}
+.arcade-title{font-size:38px;letter-spacing:-1.4px;font-weight:900;margin:9px 0 4px;}
+.arcade-sub{font-size:13px;font-weight:700;color:var(--muted);line-height:1.5;}
+.arcade-timer{display:none;background:var(--brown);color:#fff3d4;font-size:12px;font-weight:800;padding:12px;margin:0 0 14px;border-radius:15px;text-align:center;}
+.arcade-cards{display:grid;grid-template-columns:1fr;gap:11px;}
+.arcade-card{display:flex;align-items:center;gap:13px;width:100%;border:2px solid #e6ceae;border-radius:20px;padding:15px;background:var(--cream2);color:var(--brown);text-align:left;box-shadow:0 3px 0 #dfc7a5;}
+.arcade-card:active{transform:translateY(2px);box-shadow:0 1px 0 #dfc7a5;}
+.arcade-card-icon{display:grid;place-items:center;flex:0 0 55px;height:55px;border-radius:14px;background:var(--yellow);font-size:32px;}
+.arcade-card-info{flex:1;min-width:0;}
+.arcade-card-name{display:block;font-size:18px;font-weight:900;letter-spacing:-.2px;}
+.arcade-card-desc{display:block;color:var(--muted);font-size:12px;line-height:1.4;margin-top:4px;font-weight:700;}
+.arcade-card-best{display:block;font-size:10px;font-weight:900;margin-top:7px;color:var(--green);}
+.arcade-card-next{font-weight:900;font-size:25px;color:#936a3c;}
+.arcade-info{margin-top:18px;color:var(--muted);font-size:12px;text-align:center;line-height:1.5;font-weight:700;}
+.arcade-game-panel[hidden],.arcade-library[hidden],.arcade-controls[hidden]{display:none!important;}
+.arcade-back{background:transparent;border:0;color:var(--brown);font-weight:900;font-size:13px;padding:8px 2px 11px;}
+.arcade-game-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:9px;}
+.arcade-game-name{font-size:23px;font-weight:900;letter-spacing:-.6px;}
+.arcade-sound{background:var(--cream2);border:0;border-radius:10px;padding:9px 11px;font-size:12px;font-weight:900;color:var(--brown);}
+.arcade-hud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:8px;}
+.arcade-hud-item{background:var(--cream2);padding:8px 4px;border-radius:12px;text-align:center;}
+.arcade-hud-item small{display:block;font-size:9px;color:var(--muted);font-weight:900;}
+.arcade-hud-item strong{display:block;font-size:19px;font-weight:900;margin-top:4px;font-variant-numeric:tabular-nums;}
+.arcade-canvas-shell{position:relative;width:100%;max-width:390px;margin:0 auto;aspect-ratio:320/420;border-radius:15px;overflow:hidden;background:#302014;border:3px solid var(--brown);touch-action:none;}
+#arcadeCanvas{display:block;width:100%;height:100%;touch-action:none;}
+.arcade-overlay{position:absolute;inset:0;z-index:3;background:rgba(31,17,10,.89);display:flex;align-items:center;justify-content:center;text-align:center;color:white;padding:20px;}
+.arcade-overlay[hidden]{display:none!important;}
+.arcade-overlay-inner{width:100%;max-width:270px;}
+.arcade-overlay-icon{font-size:46px;line-height:1.2;}
+.arcade-overlay-title{font-size:27px;color:var(--yellow);font-weight:900;margin:10px 0;line-height:1.12;}
+.arcade-overlay-text{font-size:13px;line-height:1.55;color:#e0cfc1;margin:10px 0 18px;}
+.arcade-overlay-button{width:100%;padding:14px 12px;border:0;border-radius:14px;background:var(--yellow);color:var(--brown);font-size:16px;font-weight:900;}
+/* KÁKO 5.9: Sdílení pouze po dokončení hry, žádné herní ovládání navíc. */
+.arcade-share-result{display:block;width:100%;min-height:43px;margin:0 0 9px;padding:10px 9px;border:2px solid #ffe0a0;border-radius:12px;background:#f6e6c9;color:#382316;font-size:13px;font-weight:900;touch-action:manipulation;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;}
+.arcade-share-result[hidden],.arcade-share-status[hidden]{display:none!important;}
+.arcade-share-result:active{background:#ffdf9d;}
+.arcade-share-status{margin:0 0 7px;font-size:11px;color:#ffecbf;line-height:1.35;}
+
+.arcade-controls{margin:12px auto 0;max-width:390px;}
+.arcade-snake-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+.arcade-button{min-height:61px;border:2px solid #ad8f6e;border-radius:14px;background:var(--cream2);color:var(--brown);font-weight:900;font-size:25px;touch-action:none;}
+.arcade-button:active,.arcade-button.pressed{background:var(--yellow);transform:scale(.98);}
+.arcade-snake-buttons .arcade-up{grid-column:2;}
+.arcade-snake-buttons .arcade-left{grid-column:1;grid-row:2;}
+.arcade-snake-buttons .arcade-down{grid-column:2;grid-row:2;}
+.arcade-snake-buttons .arcade-right{grid-column:3;grid-row:2;}
+.arcade-side-buttons{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:7px;}
+.arcade-side-buttons .arcade-action{font-size:15px;background:var(--yellow);}
+.arcade-control-help{text-align:center;color:var(--muted);font-size:12px;line-height:1.4;margin-top:10px;font-weight:700;}
+.arcade-game-tools{display:flex;justify-content:center;gap:8px;margin:12px auto 4px;}
+.arcade-tool{background:var(--brown);border:0;border-radius:11px;color:white;padding:11px 13px;font-weight:800;font-size:12px;}
+
+
+/* =====================================================
+   KÁKO HRY 5.1: fullscreen hry, viditelné ZPĚT,
+   ovládání vždy na displeji, bez spodní navigace.
+===================================================== */
+body.arcade-game-active{overflow:hidden;overscroll-behavior:none;}
+body.arcade-game-active #bottomNav{display:none!important;}
+body.arcade-game-active #gamesScreen{height:100dvh;overflow:hidden;}
+body.arcade-game-active #gamesScreen .arcade-app{
+  position:fixed;inset:0;z-index:1300;
+  width:100%;max-width:430px;margin:0 auto;
+  height:100dvh;min-height:0;overflow:hidden;
+  display:flex;flex-direction:column;
+  padding:calc(6px + env(safe-area-inset-top)) 10px calc(7px + env(safe-area-inset-bottom));
+  background:var(--cream);
+}
+body.arcade-game-active #gamesScreen .arcade-header,
+body.arcade-game-active #gamesScreen #arcadeTimer{display:none!important;}
+body.arcade-game-active #arcadeGame{
+  flex:1 1 auto;min-height:0;display:flex;flex-direction:column;
+  gap:5px;width:100%;
+}
+body.arcade-game-active .arcade-back{
+  flex:0 0 auto;width:100%;min-height:39px;
+  background:var(--yellow);color:var(--brown);
+  border-radius:12px;padding:8px 13px;
+  text-align:left;font-size:14px;font-weight:900;
+}
+body.arcade-game-active .arcade-game-head{
+  flex:0 0 auto;margin:0;min-height:30px;
+}
+body.arcade-game-active .arcade-game-name{font-size:19px;}
+body.arcade-game-active .arcade-sound{padding:6px 10px;font-size:11px;}
+body.arcade-game-active .arcade-hud{
+  flex:0 0 auto;margin:0;gap:5px;
+}
+body.arcade-game-active .arcade-hud-item{padding:5px 3px;border-radius:9px;}
+body.arcade-game-active .arcade-hud-item small{font-size:8px;}
+body.arcade-game-active .arcade-hud-item strong{font-size:17px;margin-top:1px;}
+body.arcade-game-active .arcade-canvas-shell{
+  flex:1 1 auto;min-height:0;width:100%;max-width:none;
+  aspect-ratio:auto;margin:0;border-width:2px;
+  display:flex;align-items:center;justify-content:center;
+}
+body.arcade-game-active #arcadeCanvas{
+  flex:0 0 auto;max-width:100%;max-height:100%;
+  touch-action:none;
+}
+body.arcade-game-active .arcade-controls{
+  flex:0 0 auto;width:100%;max-width:none;margin:0;
+}
+body.arcade-game-active .arcade-snake-buttons{
+  grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;
+}
+body.arcade-game-active .arcade-snake-buttons .arcade-up,
+body.arcade-game-active .arcade-snake-buttons .arcade-left,
+body.arcade-game-active .arcade-snake-buttons .arcade-down,
+body.arcade-game-active .arcade-snake-buttons .arcade-right{
+  grid-column:auto;grid-row:auto;
+}
+body.arcade-game-active .arcade-side-buttons{gap:5px;}
+body.arcade-game-active .arcade-button{
+  height:48px;min-height:48px;font-size:23px;border-radius:11px;
+}
+body.arcade-game-active .arcade-side-buttons .arcade-action{font-size:14px;}
+body.arcade-game-active .arcade-control-help{display:none;}
+body.arcade-game-active .arcade-game-tools{
+  flex:0 0 auto;display:flex;gap:6px;margin:0;
+}
+body.arcade-game-active .arcade-tool{
+  flex:1;padding:8px 9px;min-height:34px;
+  border-radius:9px;font-size:12px;
+}
+body.arcade-game-active .arcade-overlay{
+  padding:8px;
+}
+body.arcade-game-active .arcade-overlay-icon{font-size:34px;}
+body.arcade-game-active .arcade-overlay-title{font-size:23px;margin:7px 0;}
+body.arcade-game-active .arcade-overlay-text{font-size:12px;line-height:1.35;margin:8px 0;}
+body.arcade-game-active .arcade-overlay-button{padding:11px 10px;}
+@media(max-height:660px){
+  body.arcade-game-active #gamesScreen .arcade-app{
+    padding-top:calc(3px + env(safe-area-inset-top));
+    padding-bottom:calc(3px + env(safe-area-inset-bottom));
+  }
+  body.arcade-game-active #arcadeGame{gap:3px;}
+  body.arcade-game-active .arcade-back{min-height:34px;padding:6px 10px;}
+  body.arcade-game-active .arcade-game-head{min-height:27px;}
+  body.arcade-game-active .arcade-game-name{font-size:17px;}
+  body.arcade-game-active .arcade-hud-item{padding:3px 2px;}
+  body.arcade-game-active .arcade-button{min-height:42px;height:42px;}
+  body.arcade-game-active .arcade-tool{min-height:30px;padding:5px 8px;}
+  body.arcade-game-active .arcade-overlay-icon{font-size:27px;}
+  body.arcade-game-active .arcade-overlay-title{font-size:19px;margin:5px 0;}
+  body.arcade-game-active .arcade-overlay-text{font-size:11px;margin:5px 0;}
+}
+
+/* Dialog po zahájení aktivity: časomíra se už spustila. */
+.arcade-invite[hidden]{display:none!important;}
+.arcade-invite{
+  position:fixed;inset:0;z-index:3100;display:flex;
+  align-items:center;justify-content:center;
+  background:rgba(30,16,8,.77);backdrop-filter:blur(5px);
+  padding:20px;
+}
+.arcade-invite-dialog{
+  width:100%;max-width:370px;
+  background:var(--cream);border-radius:25px;
+  padding:25px 20px;text-align:center;color:var(--brown);
+  box-shadow:0 18px 55px rgba(0,0,0,.35);
+}
+.arcade-invite-icon{font-size:45px;line-height:1.1;}
+.arcade-invite-dialog h2{font-size:25px;font-weight:900;margin:10px 0;line-height:1.2;}
+.arcade-invite-dialog p{font-size:14px;font-weight:700;line-height:1.5;color:var(--muted);margin:6px 0 17px;}
+.arcade-invite-yes,.arcade-invite-no{
+  display:block;width:100%;min-height:51px;border:0;border-radius:15px;
+  font-size:15px;font-weight:900;
+}
+.arcade-invite-yes{background:var(--yellow);color:var(--brown);}
+.arcade-invite-no{background:var(--cream2);color:var(--brown);margin-top:9px;}
+
+
+/* ============================================================
+   KÁKO HRY 5.2 – ergonomické ovládání / iPhone / bez přescrollu
+   ============================================================ */
+.arcade-speed-picker[hidden]{display:none!important;}
+.arcade-speed-picker{margin:6px 0 13px;}
+.arcade-speed-title{font-size:11px;font-weight:900;letter-spacing:.7px;color:#f8e4bf;margin-bottom:8px;}
+.arcade-speed-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+.arcade-speed-options button{min-height:42px;background:#604637;color:#fff1d3;border:2px solid #81644e;border-radius:10px;font-size:11px;font-weight:900;padding:6px 2px;touch-action:manipulation;}
+.arcade-speed-options button[aria-pressed="true"]{background:var(--yellow);color:var(--brown);border-color:#ffe191;}
+body.arcade-game-active #arcadeGame{gap:6px;}
+body.arcade-game-active .arcade-game-head{min-height:26px;}
+body.arcade-game-active .arcade-game-tools{order:0;display:flex;justify-content:center;gap:8px;margin:0;}
+body.arcade-game-active .arcade-tool{flex:1;min-height:35px;padding:6px 10px;border-radius:10px;font-size:12px;background:#624634;}
+body.arcade-game-active .arcade-tool#arcadeRestart{background:#eadac3;color:#3e291a;border:1px solid #c2a588;}
+body.arcade-game-active .arcade-canvas-shell{order:1;}
+body.arcade-game-active .arcade-back{order:2;min-height:45px;width:100%;padding:8px 13px;text-align:center;border:2px solid #e6b323;border-radius:13px;background:var(--yellow);font-size:15px;line-height:1.1;box-shadow:0 2px 0 #bd941e;}
+body.arcade-game-active .arcade-controls{order:3;flex:0 0 auto;margin:0 0 0;width:100%;}
+body.arcade-game-active .arcade-button{height:clamp(64px,11.5dvh,82px);min-height:64px;border-radius:15px;background:#3b2416;color:#fff9e8;border:3px solid #9b6b32;font-size:35px;font-weight:900;line-height:1;box-shadow:inset 0 -4px 0 #22140d;touch-action:none;}
+body.arcade-game-active .arcade-button:active,body.arcade-game-active .arcade-button.pressed{background:var(--yellow);color:var(--brown);border-color:#a76f17;transform:scale(.98);}
+body.arcade-game-active .arcade-snake-buttons{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;}
+body.arcade-game-active .arcade-side-buttons{grid-template-columns:1fr 1.45fr 1fr;gap:7px;}
+body.arcade-game-active .arcade-side-buttons .arcade-action{background:#ffc72c;color:var(--brown);border-color:#db9d22;font-size:17px;line-height:1.15;}
+body.arcade-game-active #gamesScreen .arcade-app{padding-bottom:calc(9px + env(safe-area-inset-bottom));}
+body.arcade-game-active .arcade-control-help{display:none!important;}
+body.arcade-game-active .arcade-overlay-inner{max-width:295px;}
+body.arcade-game-active .arcade-overlay-text{margin:6px 0 9px;}
+@media(max-height:660px){
+  body.arcade-game-active #arcadeGame{gap:4px;}
+  body.arcade-game-active .arcade-tool{min-height:31px;}
+  body.arcade-game-active .arcade-back{min-height:39px;font-size:13px;padding:6px 10px;}
+  body.arcade-game-active .arcade-button{height:64px;min-height:64px;font-size:32px;}
+  body.arcade-game-active .arcade-side-buttons .arcade-action{font-size:15px;}
+  body.arcade-game-active #gamesScreen .arcade-app{padding-bottom:calc(4px + env(safe-area-inset-bottom));}
+  body.arcade-game-active .arcade-speed-options button{min-height:36px;font-size:10px;}
+}
+@media(max-height:540px){
+  body.arcade-game-active .arcade-button{height:56px;min-height:56px;font-size:30px;}
+  body.arcade-game-active .arcade-back{min-height:35px;}
+  body.arcade-game-active .arcade-speed-options button{min-height:32px;}
+}
+
+
+/* ============================================================
+   KÁKO 5.3 – jednotné šipky bez emoji + ergonomický D-PAD
+   Jeden SVG symbol pro všechny směry a hry.
+   ============================================================ */
+#gamesScreen .arcade-button.arcade-dir,
+body.arcade-game-active #gamesScreen .arcade-button.arcade-dir{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  background:#3b2416;
+  border:3px solid #9b6b32;
+  border-radius:15px;
+  color:#fff9e8;
+  box-shadow:inset 0 -4px 0 #22140d;
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+#gamesScreen .arcade-button.arcade-dir:active,
+#gamesScreen .arcade-button.arcade-dir.pressed,
+body.arcade-game-active #gamesScreen .arcade-button.arcade-dir:active,
+body.arcade-game-active #gamesScreen .arcade-button.arcade-dir.pressed{
+  background:var(--yellow);
+  color:var(--brown);
+  border-color:#b67b24;
+  transform:scale(.98);
+}
+#gamesScreen .arcade-arrow-icon{
+  display:block;
+  width:clamp(30px,8.5vw,39px);
+  height:clamp(30px,8.5vw,39px);
+  fill:currentColor;
+  flex:none;
+  pointer-events:none;
+}
+#gamesScreen .arcade-left .arcade-arrow-icon{transform:rotate(-90deg)}
+#gamesScreen .arcade-down .arcade-arrow-icon{transform:rotate(180deg)}
+#gamesScreen .arcade-right .arcade-arrow-icon{transform:rotate(90deg)}
+/* Křížový ovladač hada: nahoru uprostřed, pod tím vlevo/dolů/vpravo. */
+#gamesScreen .arcade-snake-buttons,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(2,clamp(52px,8.6dvh,73px));
+  gap:7px;
+  width:min(100%,344px);
+  max-width:344px;
+  margin:0 auto;
+}
+#gamesScreen .arcade-snake-buttons .arcade-up,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-up{grid-column:2;grid-row:1;}
+#gamesScreen .arcade-snake-buttons .arcade-left,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-left{grid-column:1;grid-row:2;}
+#gamesScreen .arcade-snake-buttons .arcade-down,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-down{grid-column:2;grid-row:2;}
+#gamesScreen .arcade-snake-buttons .arcade-right,
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-right{grid-column:3;grid-row:2;}
+body.arcade-game-active #gamesScreen .arcade-snake-buttons .arcade-button.arcade-dir{
+  width:100%;height:100%;min-height:0;
+}
+/* V Invaders i Racing zcela identické šipky a velikost symbolů. */
+body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-button.arcade-dir{
+  height:clamp(60px,10.5dvh,80px);
+  min-height:60px;
+}
+body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-action{
+  height:clamp(60px,10.5dvh,80px);
+  min-height:60px;
+}
+/* Zpět do her zůstává přímo nad ovládáním, nic pod šipkami. */
+body.arcade-game-active #arcadeGame{gap:4px;}
+body.arcade-game-active #gamesScreen .arcade-controls{order:3;flex:0 0 auto;}
+body.arcade-game-active #gamesScreen .arcade-back{order:2;flex:0 0 auto;}
+@media(max-height:660px){
+  #gamesScreen .arcade-snake-buttons,
+  body.arcade-game-active #gamesScreen .arcade-snake-buttons{
+    grid-template-rows:repeat(2,clamp(48px,8.4dvh,57px));gap:5px;
+  }
+  body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-button.arcade-dir,
+  body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-action{height:58px;min-height:58px;}
+}
+@media(max-height:540px){
+  body.arcade-game-active #gamesScreen .arcade-snake-buttons{
+    grid-template-rows:repeat(2,43px);gap:4px;
+  }
+  body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-button.arcade-dir,
+  body.arcade-game-active #gamesScreen .arcade-side-buttons .arcade-action{height:50px;min-height:50px;}
+  #gamesScreen .arcade-arrow-icon{width:29px;height:29px;}
+}
+
+
+/* ============================================================
+   KÁKO 5.4 – pevný herní dock a ovládání bez označování textu
+   Ovládací prvky se chovají jako herní tlačítka, ne jako text.
+   Platí jen uvnitř her; mimo hry zůstávají textová pole použitelná.
+   ============================================================ */
+body.arcade-game-active #gamesScreen,
+body.arcade-game-active #gamesScreen *,
+#gamesScreen .arcade-bottom-dock,
+#gamesScreen .arcade-bottom-dock * {
+  -webkit-user-select:none !important;
+  user-select:none !important;
+  -webkit-touch-callout:none !important;
+  -webkit-tap-highlight-color:transparent !important;
+  -webkit-user-drag:none;
+}
+body.arcade-game-active #gamesScreen button,
+body.arcade-game-active #gamesScreen svg,
+body.arcade-game-active #gamesScreen .arcade-canvas-shell {
+  -webkit-touch-callout:none !important;
+}
+#gamesScreen .arcade-bottom-dock {
+  flex:0 0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  width:100%;
+  margin-top:auto;
+  padding:2px 0 0;
+  background:var(--cream);
+  position:relative;
+  z-index:6;
+  touch-action:none;
+}
+body.arcade-game-active #gamesScreen #arcadeGame .arcade-canvas-shell{
+  flex:1 1 auto;
+  min-height:0;
+}
+body.arcade-game-active #gamesScreen .arcade-bottom-dock .arcade-back{
+  order:0;
+  width:100%;
+  flex:0 0 auto;
+  touch-action:manipulation;
+}
+body.arcade-game-active #gamesScreen .arcade-bottom-dock .arcade-controls{
+  order:1;
+  width:100%;
+  max-width:100%;
+  margin:0;
+  flex:0 0 auto;
+}
+/* Opravdový kříž: horní, levé a pravé rameno, dolní rameno.
+             [ ↑ ]
+       [ ← ]       [ → ]
+             [ ↓ ]
+ */
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:repeat(3,clamp(44px,6.4dvh,61px));
+  gap:4px;
+  width:min(100%,284px);
+  max-width:284px;
+  align-self:center;
+  justify-content:center;
+  margin:0 auto;
+}
+#gamesScreen #arcadeSnakeControls[hidden]{display:none!important;}
+#gamesScreen #arcadeSnakeControls .arcade-up{grid-column:2;grid-row:1;}
+#gamesScreen #arcadeSnakeControls .arcade-left{grid-column:1;grid-row:2;}
+#gamesScreen #arcadeSnakeControls .arcade-right{grid-column:3;grid-row:2;}
+#gamesScreen #arcadeSnakeControls .arcade-down{grid-column:2;grid-row:3;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button{
+  width:100%;height:100%;min-height:0;
+}
+#gamesScreen #arcadeSideControls .arcade-button,
+#gamesScreen #arcadeSnakeControls .arcade-button{
+  touch-action:none !important;
+  -webkit-user-select:none !important;
+  user-select:none !important;
+  -webkit-touch-callout:none !important;
+  -webkit-tap-highlight-color:transparent !important;
+  -webkit-user-drag:none !important;
+}
+#gamesScreen .arcade-arrow-icon,
+#gamesScreen .arcade-arrow-icon *{
+  pointer-events:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+@media(max-height:660px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+    grid-template-rows:repeat(3,clamp(44px,6.4dvh,52px));
+    gap:3px;
+  }
+}
+@media(max-height:540px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+    grid-template-rows:repeat(3,43px);
+    gap:2px;
+  }
+  body.arcade-game-active #gamesScreen .arcade-bottom-dock{gap:2px;}
+}
+
+
+/* ================================================================
+   KÁKO 5.5 – ergonomické ovládání + stabilní iOS bez výběru textu
+   ================================================================ */
+html, body, body * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+}
+/* Textová pole zůstávají editovatelná: nastavování jména a mzdy. */
+input, textarea, select, option, [contenteditable="true"], [contenteditable="true"] * {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+}
+body.arcade-game-active #gamesScreen button, #gamesScreen [data-arcade-control], #gamesScreen .arcade-arrow-icon {
+  touch-action: none;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+/* Herní plátno nad ovládacím dockem; staré order z 5.1 jinak prohazovalo pořadí. */
+body.arcade-game-active #gamesScreen #arcadeGame .arcade-canvas-shell { order:1 !important; }
+body.arcade-game-active #gamesScreen #arcadeGame .arcade-bottom-dock { order:2 !important; }
+/* Pěkný opravdový kříž s velkými, od sebe oddělenými rameny. */
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+  display:grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-template-rows: repeat(3,clamp(56px,8.55dvh,76px));
+  column-gap: clamp(10px,1.4dvh,14px);
+  row-gap: clamp(9px,1.2dvh,13px);
+  width:min(100%,314px);
+  max-width:314px;
+  margin:0 auto;
+  align-self:center;
+}
+#gamesScreen #arcadeSnakeControls .arcade-up {grid-column:2!important;grid-row:1!important;}
+#gamesScreen #arcadeSnakeControls .arcade-left {grid-column:1!important;grid-row:2!important;}
+#gamesScreen #arcadeSnakeControls .arcade-right {grid-column:3!important;grid-row:2!important;}
+#gamesScreen #arcadeSnakeControls .arcade-down {grid-column:2!important;grid-row:3!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-dir {
+  width:100%;height:100%;min-height:0;
+}
+/* Invaders: [←] [→] [PALBA], Racing: [←] [→] [TURBO]. */
+#gamesScreen #arcadeSideControls,
+body.arcade-game-active #gamesScreen #arcadeSideControls {
+  display:grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,1.38fr);
+  gap:clamp(9px,1.3dvh,13px);
+  width:100%; max-width:100%;
+  margin:0;
+}
+#gamesScreen #arcadeSideControls[hidden] {display:none!important;}
+body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-dir,
+body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {
+  height:clamp(65px,9.6dvh,82px);
+  min-height:65px;
+}
+body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {
+  font-size:clamp(15px,4.6vw,18px);
+  font-weight:900;
+  white-space:nowrap;
+}
+/* Jednotné masivní bílé šipky ve všech hrách. */
+#gamesScreen .arcade-arrow-icon,
+body.arcade-game-active #gamesScreen .arcade-arrow-icon {
+  width:clamp(42px,6.7dvh,55px);
+  height:clamp(42px,6.7dvh,55px);
+  fill:currentColor;
+  pointer-events:none;
+  flex-shrink:0;
+}
+#gamesScreen .arcade-button.arcade-dir,
+body.arcade-game-active #gamesScreen .arcade-button.arcade-dir {
+  color:#fff9e8;
+  background:#3b2416;
+  border:3px solid #a87a43;
+  box-shadow:inset 0 -4px 0 #21120a;
+}
+/* Šipky zůstávají výborně čitelné i v nejmenším mobilním okně. */
+@media(max-height:690px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+    grid-template-rows:repeat(3,clamp(52px,8.2dvh,61px));
+    row-gap:8px;column-gap:10px;
+    width:min(100%,292px);
+  }
+  body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-dir,
+  body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {height:62px;min-height:62px;}
+}
+@media(max-height:560px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+    grid-template-rows: repeat(3,49px);
+    row-gap:6px;column-gap:9px;
+    width:min(100%,264px);
+  }
+  #gamesScreen .arcade-arrow-icon,
+  body.arcade-game-active #gamesScreen .arcade-arrow-icon {width:38px;height:38px;}
+  body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-dir,
+  body.arcade-game-active #gamesScreen #arcadeSideControls .arcade-action {height:55px;min-height:55px;}
+}
+
+
+
+/* ============================================================
+  KÁKO 5.6 – kompaktní čtyřsměrný ovladač a jedním prstem hrané hry
+  Kříž má velké DOTYKOVÉ PLOCHY, ale zabírá jen cca 154 px na výšku.
+============================================================ */
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+  display:grid!important;
+  grid-template-columns:repeat(3,64px)!important;
+  grid-template-rows:repeat(3,48px)!important;
+  column-gap:5px!important;
+  row-gap:4px!important;
+  width:max-content!important;
+  max-width:100%!important;
+  margin:0 auto!important;
+  justify-content:center;
+  align-content:center;
+}
+#gamesScreen #arcadeSnakeControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeSnakeControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeSideControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeOneButtonControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeWhackTip[hidden]{display:none!important}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button{
+  min-height:0!important;height:48px!important;width:64px!important;
+  padding:0!important;border-radius:13px!important;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon{
+  width:33px!important;height:33px!important;
+}
+body.arcade-game-active #gamesScreen .arcade-bottom-dock{
+  margin-top:auto!important;padding-top:0!important;gap:4px!important;
+}
+body.arcade-game-active #gamesScreen #arcadeGame .arcade-canvas-shell{
+  flex:1 1 auto!important;min-height:0!important;
+}
+#gamesScreen #arcadeOneButtonControls[hidden]{display:none!important;}
+#gamesScreen #arcadeOneButtonControls{
+  display:flex;justify-content:center;align-items:center;
+  width:100%;margin:0!important;
+}
+body.arcade-game-active #gamesScreen #arcadeOneButton{
+  display:block;width:min(100%,340px);height:clamp(62px,9dvh,78px);
+  min-height:62px;border-radius:15px;background:var(--yellow);
+  color:var(--brown);border:3px solid #be8b20;
+  font-size:23px;font-weight:900;
+  box-shadow:inset 0 -4px 0 #b98c23;
+  touch-action:none;
+}
+body.arcade-game-active #gamesScreen #arcadeOneButton:active,
+body.arcade-game-active #gamesScreen #arcadeOneButton.pressed{filter:brightness(.92);transform:scale(.985)}
+body.arcade-game-active #gamesScreen #arcadeWhackTip{
+  display:block;font-size:12px;font-weight:900;text-align:center;
+  color:#785437;background:#f1dfc7;border-radius:10px;padding:7px;
+}
+#arcadeWhackTip[hidden]{display:none!important}
+@media(max-height:620px){
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+    grid-template-columns:repeat(3,60px)!important;
+    grid-template-rows:repeat(3,43px)!important;
+    column-gap:4px!important;row-gap:3px!important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button{
+    width:60px!important;height:43px!important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon{
+    width:30px!important;height:30px!important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeOneButton{height:54px;min-height:54px}
+}
+
+
+/* ================================================================
+   KÁKO 5.7 – ovladač hada číslo 13: jeden kompaktní D-pad
+   Velká dotyková ramena, minimální zbytečné okraje, větší hrací plocha.
+   ================================================================ */
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+  display:grid!important;
+  grid-template-columns:repeat(3,60px)!important;
+  grid-template-rows:repeat(3,56px)!important;
+  gap:0!important;
+  width:180px!important;
+  max-width:180px!important;
+  margin:0 auto!important;
+  position:relative;
+  align-self:center!important;
+  isolation:isolate;
+}
+#gamesScreen #arcadeSnakeControls[hidden]{display:none!important;}
+#gamesScreen #arcadeSnakeControls:before{
+  content:"";grid-column:2;grid-row:2;
+  display:block;background:#3b2416;
+  border:2px solid #9b6b32;
+  box-shadow:inset 0 -3px 0 #22140d;
+  z-index:0;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir{
+  width:60px!important;height:56px!important;min-height:56px!important;
+  border:2px solid #9b6b32!important;
+  border-radius:0!important;
+  padding:0!important;z-index:1;box-shadow:inset 0 -3px 0 #22140d;
+  transform:none;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-up{grid-column:2!important;grid-row:1!important;border-radius:16px 16px 0 0!important;border-bottom:0!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-left{grid-column:1!important;grid-row:2!important;border-radius:16px 0 0 16px!important;border-right:0!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-right{grid-column:3!important;grid-row:2!important;border-radius:0 16px 16px 0!important;border-left:0!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-down{grid-column:2!important;grid-row:3!important;border-radius:0 0 16px 16px!important;border-top:0!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon{width:33px!important;height:33px!important;}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.pressed,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button:active{background:var(--yellow)!important;color:var(--brown)!important;}
+@media(max-height:680px){
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls{
+    grid-template-rows:repeat(3,48px)!important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir{
+    height:48px!important;min-height:48px!important;
+  }
+}
+/* Uspořádání her – úchop jen při zapnutém řazení. */
+.arcade-sort-header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:13px;}
+.arcade-sort-header span{font-size:11px;color:var(--muted);font-weight:700;line-height:1.35;flex:1;}
+.arcade-sort-toggle{flex:0 0 auto;border:0;border-radius:12px;background:var(--brown);color:#ffdf87;padding:11px 12px;font-size:11px;font-weight:900;min-height:44px;}
+.arcade-sort-row{display:flex;align-items:stretch;gap:7px;min-width:0;}
+.arcade-sort-row .arcade-card{flex:1;min-width:0;}
+.arcade-sort-handle{display:none;flex:0 0 58px;border:2px solid #a67e53;border-radius:16px;background:var(--yellow);color:var(--brown);font-weight:900;font-size:33px;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+.arcade-sorting .arcade-sort-handle{display:block;}
+.arcade-sorting .arcade-card{pointer-events:none;opacity:.92;}
+.arcade-sorting .arcade-sort-row.arcade-dragging{background:#ffe2a0;border-radius:20px;outline:2px dashed #9b6b32;z-index:10;}
+@media(max-width:350px){.arcade-sort-header{align-items:stretch;flex-direction:column;}.arcade-sort-toggle{align-self:flex-end;}}
+
+
+.arcade-sort-row{position:relative;}
+.arcade-sorting .arcade-sort-row.arcade-dragging{z-index:20;opacity:.93;box-shadow:0 7px 18px rgba(59,36,22,.15);}
+.arcade-sorting .arcade-sort-row.arcade-drop-target{border-top:4px solid #ba862b;}
+
+/* ===================================================================
+   KÁKO 5.8 – oddělený D-pad č. 7 a horní červený návrat
+   Jediné koncové přepsání historických CSS pravidel. Žádné nové
+   intervaly, animace, knihovny ani změny časomíry.
+   =================================================================== */
+body.arcade-game-active #gamesScreen #arcadeGame > .arcade-back {
+  order:-1 !important;
+  display:block;
+  flex:0 0 auto;
+  width:100%;
+  min-height:42px;
+  margin:0 0 2px;
+  padding:9px 14px;
+  border:2px solid #aa302b !important;
+  border-radius:12px;
+  background:#d9473e !important;
+  color:#fffdf8 !important;
+  box-shadow:inset 0 -3px 0 #ad2e28;
+  font-size:14px;
+  font-weight:900;
+  text-align:center;
+  line-height:1.1;
+  touch-action:manipulation;
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+body.arcade-game-active #gamesScreen #arcadeGame > .arcade-back:active {
+  background:#b8342e !important;
+  box-shadow:inset 0 -1px 0 #8c2520;
+}
+/* Ve spodním docku už je jen ovládání aktuální hry. */
+body.arcade-game-active #gamesScreen .arcade-bottom-dock {
+  order:2 !important;
+  margin-top:auto;
+  padding:0;
+}
+/* Sedmička z návrhů:       [ ↑ ]
+                         [ ← ] [ ↓ ] [ → ]
+   Dva řádky, široké tlačítkové plochy, znatelné mezery.
+*/
+#gamesScreen #arcadeSnakeControls,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  grid-template-rows:repeat(2,clamp(50px,7.0dvh,62px)) !important;
+  column-gap:clamp(9px,2.8vw,14px) !important;
+  row-gap:clamp(9px,1.6dvh,14px) !important;
+  width:min(100%,358px) !important;
+  max-width:358px !important;
+  margin:0 auto !important;
+  align-self:center !important;
+  justify-content:stretch !important;
+  align-content:center !important;
+  isolation:auto;
+}
+#gamesScreen #arcadeSnakeControls[hidden],
+body.arcade-game-active #gamesScreen #arcadeSnakeControls[hidden] {
+  display:none !important;
+}
+#gamesScreen #arcadeSnakeControls::before {
+  content:none !important;
+  display:none !important;
+}
+#gamesScreen #arcadeSnakeControls .arcade-up,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-up {
+  grid-column:2 !important;grid-row:1 !important;
+}
+#gamesScreen #arcadeSnakeControls .arcade-left,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-left {
+  grid-column:1 !important;grid-row:2 !important;
+}
+#gamesScreen #arcadeSnakeControls .arcade-down,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-down {
+  grid-column:2 !important;grid-row:2 !important;
+}
+#gamesScreen #arcadeSnakeControls .arcade-right,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-right {
+  grid-column:3 !important;grid-row:2 !important;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir {
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  border:3px solid #a87a43 !important;
+  border-radius:14px !important;
+  padding:0 !important;
+  background:#3b2416 !important;
+  color:#fff9e8 !important;
+  box-shadow:inset 0 -4px 0 #21120a !important;
+  touch-action:none;
+  -webkit-user-select:none;
+  user-select:none;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir.pressed,
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-button.arcade-dir:active {
+  background:#ffc72c !important;
+  color:#3b2416 !important;
+  border-color:#b67b24 !important;
+}
+body.arcade-game-active #gamesScreen #arcadeSnakeControls .arcade-arrow-icon {
+  width:clamp(30px,5.1dvh,42px) !important;
+  height:clamp(30px,5.1dvh,42px) !important;
+}
+@media(max-height:620px) {
+  #gamesScreen #arcadeSnakeControls,
+  body.arcade-game-active #gamesScreen #arcadeSnakeControls {
+    grid-template-rows:repeat(2,48px) !important;
+    row-gap:7px !important;
+  }
+  body.arcade-game-active #gamesScreen #arcadeGame > .arcade-back {
+    min-height:36px;
+    padding:6px 10px;
+  }
+}
+
+/* KÁKO 6.0 – čtyři přehledné položky ve spodní navigaci */
+.bottom-nav{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  padding:9px 5px calc(10px + env(safe-area-inset-bottom));
+  gap:2px;
+}
+.bottom-nav .nav-btn{
+  min-width:0;
+  min-height:49px;
+  padding:5px 2px 3px;
+  font-size:11px;
+  white-space:nowrap;
+  border-radius:12px;
+  -webkit-tap-highlight-color:transparent;
+}
+.bottom-nav .nav-icon{font-size:23px;line-height:1.15;margin-bottom:3px;}
+.bottom-nav .nav-btn.active{background:rgba(255,255,255,.075);}
+.overview-title{
+  color:var(--brown);font-size:28px;font-weight:900;
+  text-align:center;margin:4px 0 14px;
+}
+.overview-nav{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:5px;padding:5px;background:var(--cream3);
+  border-radius:17px;margin-bottom:17px;
+}
+.overview-tab{
+  appearance:none;border:0;min-width:0;min-height:48px;
+  border-radius:13px;background:transparent;color:var(--brown);
+  font-size:12px;font-weight:900;padding:7px 2px;
+  -webkit-tap-highlight-color:transparent;
+}
+.overview-tab.active{
+  background:var(--brown);color:#fff;
+  box-shadow:0 2px 0 rgba(0,0,0,.1);
+}
+.overview-screen .page-title{display:none;}
+.about-app{font-size:12px;line-height:1.6;color:var(--muted);}
+.about-app p{margin:6px 0;}
+@media(max-width:360px){
+  .bottom-nav .nav-btn{font-size:10px;}
+  .overview-tab{font-size:11px;}
+}
+
+
+/* KÁKO 6.1 – úsporný přehled cíle; bez animací na pozadí */
+.goal-home{background:#fff;border:2px solid #eadbc8;border-radius:20px;padding:15px;margin:0 0 13px;box-shadow:0 2px 0 #edddc7}
+.goal-home-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.goal-home-kicker{color:#876545;font-size:11px;font-weight:900;letter-spacing:.5px}
+.goal-home-name{font-size:19px;font-weight:900;overflow-wrap:anywhere;margin:4px 0 1px;line-height:1.2}
+.goal-home-edit{flex:0 0 auto;color:var(--brown);background:var(--cream2);border:1px solid #dfc5a4;border-radius:11px;padding:10px 12px;font-weight:900;font-size:12px;min-height:42px}
+.goal-home-amounts{display:flex;gap:8px;justify-content:space-between;align-items:baseline;margin-top:11px}
+.goal-home-amounts strong{font-size:21px;font-weight:900;color:var(--green);font-variant-numeric:tabular-nums}
+.goal-home-amounts span{color:#785e4e;font-size:12px;font-weight:800;text-align:right}
+.goal-track{height:13px;width:100%;background:#ebd8bf;border-radius:99px;overflow:hidden;margin:9px 0 8px}
+.goal-track-fill{width:0;height:100%;background:var(--green);border-radius:99px;transition:none}
+.goal-foot{display:flex;justify-content:space-between;align-items:center;gap:6px;font-weight:800;font-size:12px;color:#745741}
+.goal-foot strong{color:var(--brown);font-variant-numeric:tabular-nums}
+.goal-home-empty{font-size:13px;color:#745b48;line-height:1.45;margin-top:4px}
+.goal-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.goal-actions button{flex:1;border:1px solid #d5b999;background:var(--cream2);border-radius:12px;padding:12px 9px;font-weight:900;color:var(--brown);min-height:45px;font-size:12px}
+.goal-actions button.goal-danger{color:#a32b25;background:#fff5f3;border-color:#ebb2ac}
+.goal-help{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+@media(max-width:355px){.goal-home{padding:12px}.goal-home-name{font-size:17px}.goal-home-amounts strong{font-size:19px}}
+
+/* KÁKO 6.2: Kompaktní spořicí cíl během aktivní časomíry.
+   Bez dalších intervalů, animací či výpočtů ukládaných na pozadí. */
+.timer-goal{
+  max-width:360px;
+  margin:12px auto 14px;
+  padding:12px 14px 11px;
+  border:1px solid #ac8d50;
+  border-radius:16px;
+  background:#fff0ce;
+  color:var(--brown);
+  text-align:left;
+}
+.timer-goal[hidden]{display:none!important}
+.timer-goal-kicker{color:#75522c;font-size:10px;font-weight:900;letter-spacing:.6px}
+.timer-goal-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:3px}
+.timer-goal-name{font-size:16px;font-weight:900;line-height:1.2;overflow-wrap:anywhere;min-width:0}
+.timer-goal-percent{font-size:16px;font-weight:900;white-space:nowrap;color:#287238;font-variant-numeric:tabular-nums}
+.timer-goal-track{height:9px;border-radius:99px;overflow:hidden;background:#dec8a9;margin:9px 0 8px}
+.timer-goal-fill{height:100%;width:0;background:#328a43;border-radius:99px;transition:none}
+.timer-goal-numbers{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px 9px;font-size:12px;line-height:1.3;font-weight:800}
+.timer-goal-numbers strong{color:#247239;font-variant-numeric:tabular-nums}
+.timer-goal-detail{font-size:11px;color:#795b45;font-weight:800;line-height:1.2;margin-top:3px}
+@media(max-height:740px){
+  .timer-goal{padding:9px 12px 8px;margin:8px auto 9px}
+  .timer-goal-track{margin:6px 0}
+  .timer-page .toilet-art{font-size:45px;margin:3px 0}
+  .timer-page .quote-card{padding:9px 12px}
+  .timer-page .quote-text{font-size:16px}
+}
+@media(max-width:355px){.timer-goal-name{font-size:14px}.timer-goal-numbers{font-size:11px}}
+
+
+/* KÁKO 6.5 — osm her, bez UCPANÉHO HAJZLU a DEFENSE. */
+#gamesScreen .arcade-card:focus-visible{outline:3px solid var(--yellow);outline-offset:2px;}
+#gamesScreen .arcade-card-icon{background:linear-gradient(145deg,#ffe295,#ffc72c);border:1px solid #e8b232;}
+#gamesScreen .arcade-card-name{color:#3a2217;}
+#gamesScreen .arcade-game-name{letter-spacing:-.4px;}
+#gamesScreen #arcadeWhackTip:not([hidden]){font-weight:900;color:#7b4c25;text-align:center;font-size:12px;padding:4px;}
+body.arcade-game-active #arcadeSnakeControls:not([hidden]) .arcade-button{touch-action:none;}
+
+</style>
+</head>
+
+<body>
+
+<div id="homeScreen" class="screen active">
+<div class="app">
+
+<div class="logo-wrap">
+  <div class="logo-poop">💩</div>
+  <div class="logo">KÁKO</div>
+
+  <div id="helloText" class="logo-sub">
+    Každá minuta se počítá.
+  </div>
+</div>
+
+<div class="mode-switch">
+
+<button
+  id="homeModeBtn"
+  class="mode-btn"
+  onclick="setLocationMode('home')"
+>
+  🏠 DOMA
+</button>
+
+<button
+  id="workModeBtn"
+  class="mode-btn active"
+  onclick="setLocationMode('work')"
+>
+  💼 V PRÁCI
+</button>
+
+</div>
+
+<div id="modeInfo" class="mode-info">
+  V práci se každá minuta mění na peníze.
+</div>
+
+<div class="today-card">
+
+<div class="today-title">
+  DNES
+</div>
+
+<div class="today-grid">
+
+<div class="today-box">
+  <span>🚽</span>
+  <strong id="todayVisits">0</strong>
+  <small>NÁVŠTĚV</small>
+</div>
+
+<div class="today-box">
+  <span>⏱</span>
+  <strong id="todayTime">0 min</strong>
+  <small>NA WC</small>
+</div>
+
+<div class="today-box">
+  <span>💰</span>
+  <strong id="todayMoney" class="green">0 Kč</strong>
+  <small>V PRÁCI</small>
+</div>
+
+</div>
+</div>
+
+
+<div class="goal-home" id="goalHome" aria-live="polite">
+  <div class="goal-home-top">
+    <div>
+      <div class="goal-home-kicker">🎯 NA CO SI KAKÁM</div>
+      <div class="goal-home-name" id="goalHomeName">Můj vysněný nákup</div>
+    </div>
+    <button type="button" class="goal-home-edit" onclick="openGoalSettings()" id="goalHomeEdit">NASTAVIT</button>
+  </div>
+  <div id="goalHomeProgress" hidden>
+    <div class="goal-home-amounts">
+      <strong id="goalHomeEarned">0 Kč</strong>
+      <span id="goalHomePrice">z 0 Kč</span>
+    </div>
+    <div class="goal-track" role="progressbar" aria-label="Prokakáno na cíl" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="goalHomeTrack">
+      <div class="goal-track-fill" id="goalHomeFill"></div>
+    </div>
+    <div class="goal-foot"><span id="goalHomeRemaining">Ještě zbývá 0 Kč</span><strong id="goalHomePercent">0 %</strong></div>
+  </div>
+  <p id="goalHomeEmpty" class="goal-home-empty">Na co si chceš našetřit? Nastav si věc a její cenu.</p>
+</div>
+
+<div id="miniRate" class="mini-rate">
+  KÁKO kurz:
+  <strong>0 Kč/min</strong>
+</div>
+
+<button
+  class="main-button"
+  onclick="startKako()"
+>
+  💩 JDU KÁKO
+</button>
+
+</div>
+</div>
+
+
+<div id="timerScreen" class="screen">
+<div class="timer-page">
+
+<div id="timerMode" class="timer-mode">
+  💼 V PRÁCI
+</div>
+
+<div class="timer-title">
+  KÁKO PROBÍHÁ 💩
+</div>
+
+<div id="timer" class="timer">
+  00:00:00
+</div>
+
+<div class="toilet-art">
+  💩🚽
+</div>
+
+<div id="liveLabel" class="live-label">
+  PRÁVĚ JSI PROKADIL
+</div>
+
+<div id="currentMoney" class="live-money">
+  0,00 Kč
+</div>
+
+<!-- KÁKO 6.2: stejný naspořený cíl i při probíhající aktivitě. -->
+<section id="goalTimer" class="timer-goal" aria-label="Postup spoření během KÁKO" hidden>
+  <div class="timer-goal-kicker">🎯 NA CO SI KAKÁM</div>
+  <div class="timer-goal-head">
+    <strong id="goalTimerName" class="timer-goal-name"></strong>
+    <span id="goalTimerPercent" class="timer-goal-percent">0 %</span>
+  </div>
+  <div id="goalTimerTrack" class="timer-goal-track" role="progressbar" aria-label="Postup k cíli" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div id="goalTimerFill" class="timer-goal-fill"></div>
+  </div>
+  <div class="timer-goal-numbers">
+    <span>Naspořeno: <strong id="goalTimerEarned">0 Kč</strong></span>
+    <span id="goalTimerRemaining">Zbývá 0 Kč</span>
+  </div>
+  <div id="goalTimerDetail" class="timer-goal-detail"></div>
+</section>
+
+<div id="quoteCard" class="quote-card">
+
+<span id="quoteLabel" class="quote-label">
+  FIREMNÍ HLÁŠENÍ
+</span>
+
+<div id="quoteText" class="quote-text">
+  Firma právě financuje tvé trávení.
+</div>
+
+</div>
+
+<button
+  id="stopKakoButton"
+  class="stop-button"
+  onclick="stopKako()"
+>
+  💩 DOKAKÁNO
+</button>
+
+<button
+  class="cancel-button"
+  onclick="cancelKako()"
+>
+  ✕ ZRUŠIT BEZ ULOŽENÍ
+</button>
+
+</div>
+</div>
+
+
+<div id="resultScreen" class="screen">
+<div class="app">
+
+<div class="result-title">
+  DOKAKÁNO!
+</div>
+
+<div id="resultSub" class="result-sub">
+  Další úspěšný projekt.
+</div>
+
+<div class="result-poop">
+  😎💩
+</div>
+
+<div class="rating">
+
+<small>
+  HODNOCENÍ
+</small>
+
+<strong id="ratingText">
+  Solidní výkon
+</strong>
+
+</div>
+
+<div class="result-grid">
+
+<div class="result-box">
+  <small>ČAS</small>
+  <strong id="resultTime">00:00</strong>
+</div>
+
+<div class="result-box">
+  <small id="resultMoneyLabel">
+    VYDĚLÁNO
+  </small>
+
+  <strong
+    id="resultMoney"
+    class="green"
+  >
+    0 Kč
+  </strong>
+</div>
+
+</div>
+
+<button
+  class="action-btn share-btn"
+  onclick="shareResult()"
+>
+  📤 SDÍLET
+</button>
+
+<button
+  class="action-btn"
+  onclick="showScreen('homeScreen')"
+>
+  ✓ ZPĚT DOMŮ
+</button>
+
+</div>
+</div>
+
+
+<div id="statsScreen" class="screen overview-screen">
+<div class="app">
+<div class="overview-title">Přehled</div>
+<div class="overview-nav" role="group" aria-label="Sekce přehledu">
+  <button type="button" class="overview-tab" data-overview-tab="statsScreen" onclick="openOverview('statsScreen')">📊 Statistiky</button>
+  <button type="button" class="overview-tab" data-overview-tab="historyScreen" onclick="openOverview('historyScreen')">📜 Historie</button>
+  <button type="button" class="overview-tab" data-overview-tab="achievementsScreen" onclick="openOverview('achievementsScreen')">🏅 Úspěchy</button>
+</div>
+
+<div class="page-title">
+  Statistiky
+</div>
+
+<div class="tabs">
+
+<button
+  id="todayTab"
+  class="tab active"
+  onclick="setStatsMode('today')"
+>
+  Dnes
+</button>
+
+<button
+  id="monthTab"
+  class="tab"
+  onclick="setStatsMode('month')"
+>
+  Měsíc
+</button>
+
+<button
+  id="allTab"
+  class="tab"
+  onclick="setStatsMode('all')"
+>
+  Celkem
+</button>
+
+</div>
+
+<div class="stats-summary">
+
+<div class="stats-main-card">
+  <div class="icon">🚽</div>
+  <strong id="statsVisits">0</strong>
+  <small>NÁVŠTĚV</small>
+</div>
+
+<div class="stats-main-card">
+  <div class="icon">⏱</div>
+  <strong id="statsTime">0 min</strong>
+  <small>ČAS NA WC</small>
+</div>
+
+<div class="stats-main-card">
+  <div class="icon">💰</div>
+  <strong
+    id="statsMoney"
+    class="green"
+  >
+    0 Kč
+  </strong>
+  <small>VYDĚLÁNO</small>
+</div>
+
+</div>
+
+<div class="stats-section">
+
+<div class="stats-section-title">
+  Doma vs. práce
+</div>
+
+<div class="place-grid">
+
+<div class="place-card">
+  <div class="place-icon">🏠</div>
+  <strong id="homeVisits">0×</strong>
+  <small id="homeTime">0 min</small>
+</div>
+
+<div class="place-card">
+  <div class="place-icon">💼</div>
+  <strong id="workVisits">0×</strong>
+  <small id="workTime">0 min</small>
+</div>
+
+</div>
+</div>
+
+<div class="stats-section">
+
+<div class="stats-section-title">
+  🏆 Rekordy
+</div>
+
+<div class="record-card">
+
+<div class="record-left">
+  <span class="record-icon">⏱</span>
+  <span>Nejdelší KÁKO</span>
+</div>
+
+<strong id="longestKako">
+  00:00
+</strong>
+
+</div>
+
+<div class="record-card">
+
+<div class="record-left">
+  <span class="record-icon">💵</span>
+  <span>Nejdražší KÁKO</span>
+</div>
+
+<strong
+  id="mostExpensive"
+  class="green"
+>
+  0 Kč
+</strong>
+
+</div>
+
+<div class="record-card">
+
+<div class="record-left">
+  <span class="record-icon">🚽</span>
+  <span>Nejvíc za den</span>
+</div>
+
+<strong id="mostVisitsDay">
+  0
+</strong>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
+<div id="achievementsScreen" class="screen overview-screen">
+<div class="app">
+<div class="overview-title">Přehled</div>
+<div class="overview-nav" role="group" aria-label="Sekce přehledu">
+  <button type="button" class="overview-tab" data-overview-tab="statsScreen" onclick="openOverview('statsScreen')">📊 Statistiky</button>
+  <button type="button" class="overview-tab" data-overview-tab="historyScreen" onclick="openOverview('historyScreen')">📜 Historie</button>
+  <button type="button" class="overview-tab" data-overview-tab="achievementsScreen" onclick="openOverview('achievementsScreen')">🏅 Úspěchy</button>
+</div>
+
+<div class="page-title">
+  Achievementy
+</div>
+
+<div class="achievement-progress-card">
+
+<small>
+  TVŮJ KÁKO PROGRES
+</small>
+
+<strong id="achievementProgress">
+  0 / 8
+</strong>
+
+</div>
+
+<div id="achievementsList"></div>
+
+</div>
+</div>
+
+
+<div id="historyScreen" class="screen overview-screen">
+<div class="app">
+<div class="overview-title">Přehled</div>
+<div class="overview-nav" role="group" aria-label="Sekce přehledu">
+  <button type="button" class="overview-tab" data-overview-tab="statsScreen" onclick="openOverview('statsScreen')">📊 Statistiky</button>
+  <button type="button" class="overview-tab" data-overview-tab="historyScreen" onclick="openOverview('historyScreen')">📜 Historie</button>
+  <button type="button" class="overview-tab" data-overview-tab="achievementsScreen" onclick="openOverview('achievementsScreen')">🏅 Úspěchy</button>
+</div>
+
+<div class="page-title">
+  Historie
+</div>
+
+<div id="historyList"></div>
+
+<button
+  class="danger"
+  onclick="clearHistory()"
+>
+  SMAZAT CELOU HISTORII
+</button>
+
+</div>
+</div>
+
+
+<div id="settingsScreen" class="screen">
+<div class="app">
+
+<div class="page-title">
+  Nastavení
+</div>
+
+<div class="settings-card">
+
+<h3>Profil</h3>
+
+<label>
+  Přezdívka
+</label>
+
+<input
+  id="nicknameInput"
+  type="text"
+  maxlength="25"
+  placeholder="např. Milan"
+>
+
+</div>
+
+
+<div class="settings-card">
+
+<h3>Výdělek</h3>
+
+<div class="pay-switch">
+
+<button
+  id="monthlyBtn"
+  class="pay-btn active"
+  onclick="setPayMode('monthly')"
+>
+  Měsíční plat
+</button>
+
+<button
+  id="hourlyBtn"
+  class="pay-btn"
+  onclick="setPayMode('hourly')"
+>
+  Hodinovka
+</button>
+
+</div>
+
+<div id="monthlySettings">
+
+<label>
+  Měsíční čistá mzda
+</label>
+
+<input
+  id="salaryInput"
+  type="number"
+  inputmode="decimal"
+  placeholder="např. 50000"
+>
+
+<label>
+  Pracovních hodin za měsíc
+</label>
+
+<input
+  id="hoursInput"
+  type="number"
+  inputmode="decimal"
+  value="160"
+>
+
+</div>
+
+<div
+  id="hourlySettings"
+  style="display:none"
+>
+
+<label>
+  Čistá hodinovka
+</label>
+
+<input
+  id="hourlyInput"
+  type="number"
+  inputmode="decimal"
+  placeholder="např. 250"
+>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<h3>Zvuk</h3>
+
+<div class="setting-row">
+
+<div class="setting-info">
+
+<strong>
+  🔊 Zvuky KÁKO
+</strong>
+
+<small>
+  Gong při zahájení a spláchnutí při ukončení.
+</small>
+
+</div>
+
+<button
+  id="soundToggle"
+  class="setting-toggle"
+  onclick="toggleSound()"
+>
+  ZAP
+</button>
+
+</div>
+
+<div class="sound-tests">
+
+<button
+  class="sound-test-btn"
+  onclick="testStartBell()"
+>
+  🥊 TEST GONG
+</button>
+
+<button
+  class="sound-test-btn"
+  onclick="testFlush()"
+>
+  🚽 TEST SPLÁCHNUTÍ
+</button>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<h3>Hlídání KÁKO</h3>
+
+<div class="setting-row">
+
+<div class="setting-info">
+
+<strong>
+  🚨 Nezapomněl jsem dokakat?
+</strong>
+
+<small>
+  Aplikace tě upozorní, pokud necháš KÁKO běžet příliš dlouho.
+</small>
+
+</div>
+
+<button
+  id="reminderToggle"
+  class="setting-toggle"
+  onclick="toggleReminder()"
+>
+  ZAP
+</button>
+
+</div>
+
+<div
+  id="reminderTimeBox"
+  class="reminder-time"
+>
+
+<label>
+  První upozornění po
+</label>
+
+<select id="reminderMinutesSelect">
+  <option value="15">15 minutách</option>
+  <option value="20">20 minutách</option>
+  <option value="30">30 minutách</option>
+</select>
+
+</div>
+
+</div>
+
+
+
+<div class="settings-card" id="goalSettingsCard">
+  <h3>🎯 Na co si kakám</h3>
+  <p class="goal-help">Vyber si, na co chceš našetřit. Do cíle se započítávají jen peníze prokakané v práci od jeho založení. Domácí aktivity se nepočítají.</p>
+  <label for="goalNameInput">Na co si šetříš?</label>
+  <input id="goalNameInput" type="text" maxlength="60" autocomplete="off" placeholder="např. Nový telefon">
+  <label for="goalPriceInput">Kolik to stojí (Kč)?</label>
+  <input id="goalPriceInput" type="text" inputmode="decimal" maxlength="14" autocomplete="off" placeholder="např. 25000">
+  <button type="button" class="save-btn" onclick="saveGoal()" style="width:100%;margin-bottom:10px">🎯 ULOŽIT CÍL</button>
+  <div class="goal-actions" id="goalExistingActions" hidden>
+    <button type="button" onclick="resetGoalProgress()">↻ Začít spořit od nuly</button>
+    <button type="button" class="goal-danger" onclick="deleteGoal()">Smazat cíl</button>
+  </div>
+  <p class="goal-help" style="margin-top:10px;margin-bottom:0">Upravením názvu nebo ceny o naspořenou částku nepřijdeš. Cíl je uložen v tomto telefonu.</p>
+</div>
+
+<div class="settings-card about-app" aria-label="O aplikaci">
+  <h3>O aplikaci</h3>
+  <p><strong>KÁKO 6.5</strong> · Časomíra, cíle, statistiky a osm her</p>
+  <p>Autor: Milan Kolařík a Jakub Kotásek</p>
+</div>
+
+<button
+  class="save-btn"
+  onclick="saveSettings()"
+>
+  ULOŽIT A ZPĚT
+</button>
+
+</div>
+</div>
+
+
+<!-- =====================================================
+     KÁKO HRY – samostatná sekce, časomíra běží dál
+===================================================== -->
+<div id="gamesScreen" class="screen">
+  <div class="app arcade-app">
+    <div class="arcade-header">
+      <div class="arcade-kicker">💩 EXTRA ZÁBAVA</div>
+      <div class="arcade-title">🎮 KÁKO HRY</div>
+      <div class="arcade-sub">I na záchodě můžeš lámat rekordy!</div>
+    </div>
+    <div id="arcadeTimer" class="arcade-timer"></div>
+    <div id="arcadeLibrary" class="arcade-library">
+      <div class="arcade-sort-header">
+        <span id="arcadeSortHint">Pořadí her si můžeš upravit podle sebe.</span>
+        <button type="button" id="arcadeSortToggle" class="arcade-sort-toggle" aria-pressed="false">↕ SEŘADIT HRY</button>
+      </div>
+      <div class="arcade-cards" id="arcadeCards">
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('snake')">
+          <span class="arcade-card-icon">💩</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKOHAD</span><span class="arcade-card-desc">Sbírej toaletní papír, rosti a nenaraz sám do sebe.</span><span class="arcade-card-best" id="arcBestSnake">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('invaders')">
+          <span class="arcade-card-icon">🚽</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO INVADERS</span><span class="arcade-card-desc">Záchodová štětka střílí čisticí bubliny po létajících bobcích.</span><span class="arcade-card-best" id="arcBestInvaders">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('racing')">
+          <span class="arcade-card-icon">🚽</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO RACING</span><span class="arcade-card-desc">Sólová nekonečná jízda kanalizací. Bez soupeře!</span><span class="arcade-card-best" id="arcBestRacing">Rekord: 0 m</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('whack')">
+          <span class="arcade-card-icon">🪠</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">PRAŠŤ HO-VNO</span><span class="arcade-card-desc">Klepej na bobky, které vyskakují ze záchodů. Postřehová hra na 45 sekund.</span><span class="arcade-card-best" id="arcBestWhack">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('flappy')">
+          <span class="arcade-card-icon">🪽</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">FLAPPY KÁKO</span><span class="arcade-card-desc">Klepnutím leť mezi trubkami. Jednoduché ovládání jedním prstem.</span><span class="arcade-card-best" id="arcBestFlappy">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('run')">
+          <span class="arcade-card-icon">🏃</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO RUN</span><span class="arcade-card-desc">Skákej přes překážky, sbírej papír a doběhni co nejdál.</span><span class="arcade-card-best" id="arcBestRun">Rekord: 0 m</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('tetris')">
+          <span class="arcade-card-icon">🧩</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKOTRIS</span><span class="arcade-card-desc">Skládej barevné bobky do celých řad. Ovládání čtyřmi šipkami.</span><span class="arcade-card-best" id="arcBestTetris">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+        <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('breaker')">
+          <span class="arcade-card-icon">🎾</span>
+          <span class="arcade-card-info"><span class="arcade-card-name">KÁKO BREAKER</span><span class="arcade-card-desc">Odpal míček a rozbij záchodové kostky. Prstem posouvej pálku.</span><span class="arcade-card-best" id="arcBestBreaker">Rekord: 0</span></span>
+          <span class="arcade-card-next">›</span>
+        </button>
+      </div>
+      <div class="arcade-info">Rekordy se ukládají do tohoto zařízení. Statistiky a historie KÁKO se nemění.</div>
+    </div>
+    <div id="arcadeGame" class="arcade-game-panel" hidden>
+      <!-- KÁKO 5.8: návrat mimo herní ovladač, stále nahoře na obrazovce. -->
+      <button type="button" class="arcade-back" onclick="KAKO_ARCADE.back()" aria-label="Zpět do výběru her">‹ ZPĚT DO HER</button>
+      <div class="arcade-game-head"><span id="arcadeGameName" class="arcade-game-name">KÁKO HRY</span><button type="button" class="arcade-sound" id="arcadeSound">🔇 Zvuk</button></div>
+      <div class="arcade-hud">
+        <div class="arcade-hud-item"><small id="arcadeLabelScore">SKÓRE</small><strong id="arcadeScore">0</strong></div>
+        <div class="arcade-hud-item"><small>REKORD</small><strong id="arcadeBest">0</strong></div>
+        <div class="arcade-hud-item"><small id="arcadeLabelLives">ŽIVOTY</small><strong id="arcadeLives">1</strong></div>
+      </div>
+      <div class="arcade-game-tools"><button class="arcade-tool" id="arcadePause" type="button">⏸ Pauza</button><button class="arcade-tool" id="arcadeRestart" type="button">↻ Nová hra</button></div>
+      <div class="arcade-canvas-shell" id="arcadeTouchArea">
+        <canvas id="arcadeCanvas" width="320" height="420" aria-label="Hrací plocha KÁKO ARCADE"></canvas>
+        <div id="arcadeOverlay" class="arcade-overlay">
+          <div class="arcade-overlay-inner">
+            <div id="arcadeOverlayIcon" class="arcade-overlay-icon">💩</div>
+            <div id="arcadeOverlayTitle" class="arcade-overlay-title">PŘIPRAVEN?</div>
+            <div id="arcadeOverlayText" class="arcade-overlay-text">Hra začíná.</div>
+            <div id="arcadeSnakeSpeed" class="arcade-speed-picker" hidden>
+              <div class="arcade-speed-title">RYCHLOST HADA</div>
+              <div class="arcade-speed-options" role="group" aria-label="Rychlost hada">
+                <button type="button" data-snake-speed="slow" aria-pressed="true">🐢 Pohoda</button>
+                <button type="button" data-snake-speed="normal" aria-pressed="false">Normální</button>
+                <button type="button" data-snake-speed="fast" aria-pressed="false">⚡ Rychlá</button>
+              </div>
+            </div>
+            <button type="button" id="arcadeShareResult" class="arcade-share-result" hidden>📤 SDÍLET VÝSLEDEK</button>
+            <div id="arcadeShareStatus" class="arcade-share-status" role="status" aria-live="polite" hidden></div>
+            <button type="button" id="arcadeOverlayButton" class="arcade-overlay-button">HRÁT →</button>
+          </div>
+        </div>
+      </div>
+      <!-- Stabilní herní dock na spodním okraji obrazovky. -->
+      <div class="arcade-bottom-dock" id="arcadeBottomDock">
+      <div id="arcadeSnakeControls" class="arcade-controls arcade-snake-buttons" hidden>
+        <button class="arcade-button arcade-dir arcade-up" data-arcade-control="up" aria-label="Nahoru"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-down" data-arcade-control="down" aria-label="Dolů"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+      </div>
+      <div id="arcadeSideControls" class="arcade-controls arcade-side-buttons" hidden>
+        <button class="arcade-button arcade-dir arcade-left" data-arcade-control="left" aria-label="Vlevo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-dir arcade-right" data-arcade-control="right" aria-label="Vpravo"><svg class="arcade-arrow-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M23 59V33H9L32 5l23 28H41v26Z"/></svg></button>
+        <button class="arcade-button arcade-action" id="arcadeAction" data-arcade-control="action">PALBA!</button>
+      </div>
+      <div id="arcadeOneButtonControls" class="arcade-controls" hidden>
+        <button type="button" class="arcade-button" id="arcadeOneButton" data-arcade-control="action">SKOK!</button>
+      </div>
+      <div id="arcadeWhackTip" hidden>KLEPNI PŘÍMO NA BOBEK! 🪠</div>
+      </div><!-- /arcade-bottom-dock -->
+    </div>
+  </div>
+</div>
+
+
+<!-- Nabídka hry po stisknutí JDU KÁKO -->
+<div id="arcadeInvite" class="arcade-invite" role="dialog" aria-modal="true" aria-labelledby="arcadeInviteTitle" hidden>
+  <div class="arcade-invite-dialog">
+    <div class="arcade-invite-icon">💩🎮</div>
+    <h2 id="arcadeInviteTitle">Chceš si při KÁKO zahrát hru?</h2>
+    <p>Časomíra už běží a počítá výdělek. Hraní ji nepřeruší!</p>
+    <button type="button" id="arcadeInviteYes" class="arcade-invite-yes">🎮 ANO – VYBRAT HRU</button>
+    <button type="button" id="arcadeInviteNo" class="arcade-invite-no">NE – JEN KÁKO</button>
+  </div>
+</div>
+
+<!-- SPOLEČNÉ PEVNÉ MENU -->
+
+<div id="bottomNav" class="bottom-nav">
+
+<button
+  id="navPrimary"
+  class="nav-btn active"
+  onclick="openPrimaryScreen()"
+>
+
+<span class="running-dot"></span>
+
+<span
+  id="navPrimaryIcon"
+  class="nav-icon"
+>
+  🏠
+</span>
+
+<span id="navPrimaryText">
+  Domů
+</span>
+
+</button>
+
+
+<button
+  id="navOverview"
+  class="nav-btn"
+  onclick="openOverview()"
+  aria-label="Otevřít přehled statistik, historie a úspěchů"
+>
+  <span class="nav-icon">📊</span>
+  Přehled
+</button>
+
+<button id="navGames" class="nav-btn" onclick="showScreen('gamesScreen')">
+  <span class="nav-icon">🎮</span>
+  KÁKO HRY
+</button>
+
+<button id="navSettings" class="nav-btn" onclick="showScreen('settingsScreen')">
+  <span class="nav-icon">⚙️</span>
+  Nastavení
+</button>
+
+</div>
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+<div
+  id="reminderOverlay"
+  class="reminder-overlay"
+>
+
+<div class="reminder-modal">
+
+<div class="reminder-icon">
+  🚨💩
+</div>
+
+<div class="reminder-title">
+  JEŠTĚ KAKÁŠ?
+</div>
+
+<div class="reminder-text">
+
+KÁKO už běží nějak podezřele dlouho.
+
+<span
+  id="reminderRunningTime"
+  class="reminder-time-value"
+>
+  20:00
+</span>
+
+Nezapomněl jsi ho ukončit?
+
+</div>
+
+<button
+  class="reminder-continue"
+  onclick="continueKako()"
+>
+  💩 JO, JEŠTĚ KAKÁM
+</button>
+
+<button
+  class="reminder-stop"
+  onclick="finishFromReminder()"
+>
+  🚽 DOKAKÁNO
+</button>
+
+</div>
+</div>
+
+
+<script>
+
+const KAKO_MAX_DURATION_MS = 30 * 60 * 1000; // KÁKO 5.7: tvrdý časový limit
+/* KÁKO 6.1 – cíl ukládá pouze dokončené pracovní aktivity.
+   V průběhu rozehraného KÁKO se živě připočítává pouze od jeho založení. */
+const KAKO_GOAL_KEY='kakoSavingGoal_v1';
+let kakoGoal=null;
+try {
+  const raw=localStorage.getItem(KAKO_GOAL_KEY);
+  if(raw){
+    const g=JSON.parse(raw);
+    if(g && typeof g.name==='string' && Number.isFinite(Number(g.price)) && Number(g.price)>0){
+      kakoGoal={name:g.name.slice(0,60),price:Number(g.price),earned:Math.max(0,Number(g.earned)||0),
+        createdAt:Number(g.createdAt)||Date.now(),excludedSessionStart:Number(g.excludedSessionStart)||0,
+        excludedSessionMoney:Math.max(0,Number(g.excludedSessionMoney)||0)};
+    }
+  }
+}catch(error){kakoGoal=null;}
+function persistGoal(){
+  try{
+    if(kakoGoal)localStorage.setItem(KAKO_GOAL_KEY,JSON.stringify(kakoGoal));
+    else localStorage.removeItem(KAKO_GOAL_KEY);
+    return true;
+  }catch(error){showToast('⚠️ Cíl se nepodařilo uložit do telefonu.');return false;}
+}
+function goalMoney(amount){return Math.round(Math.max(0,amount)).toLocaleString('cs-CZ')+' Kč';}
+function goalLiveEarned(){
+  if(!kakoGoal)return 0;
+  let live=0;
+  if(startTime && activeLocationMode==='work' && !isFinishing){
+    const minutes=Math.max(0,Math.min(Date.now(),startTime+KAKO_MAX_DURATION_MS)-startTime)/60000;
+    const gross=minutes*Math.max(0,ratePerMinute);
+    live=Math.max(0,gross-(kakoGoal.excludedSessionStart===startTime?kakoGoal.excludedSessionMoney:0));
+  }
+  return Math.max(0,kakoGoal.earned+live);
+}
+
+/* KÁKO 6.2: živý výpis cíle sdílí jediný výpočet s hlavní obrazovkou.
+   DOM se mění jen při zobrazení časomíry; žádný nový timer. */
+function updateGoalTimer(){
+  const card=document.getElementById('goalTimer');
+  if(!card)return;
+  const visible=!!kakoGoal && !!startTime;
+  card.hidden=!visible;
+  if(!visible)return;
+  // Nedělat zbytečné operace při hraní her či jiné otevřené obrazovce.
+  if(!document.getElementById('timerScreen').classList.contains('active'))return;
+  const total=goalLiveEarned();
+  const remaining=Math.max(0,kakoGoal.price-total);
+  const percent=Math.min(100,Math.max(0,total/kakoGoal.price*100));
+  const rounded=Math.floor(percent);
+  document.getElementById('goalTimerName').textContent=kakoGoal.name;
+  document.getElementById('goalTimerPercent').textContent=rounded+' %';
+  document.getElementById('goalTimerEarned').textContent=goalMoney(total);
+  document.getElementById('goalTimerRemaining').textContent=remaining<.005?'CÍL SPLNĚN!':'Zbývá '+goalMoney(remaining);
+  document.getElementById('goalTimerFill').style.width=percent+'%';
+  document.getElementById('goalTimerTrack').setAttribute('aria-valuenow',String(rounded));
+  document.getElementById('goalTimerDetail').textContent=activeLocationMode==='home'
+    ? 'Doma se do cíle nic nepřičítá.'
+    : 'Cíl: '+goalMoney(kakoGoal.price)+' · Průběžný výdělek se započítává.';
+}
+
+function updateGoalCard(){
+  const card=document.getElementById('goalHome');
+  if(!card)return;
+  const exists=!!kakoGoal;
+  document.getElementById('goalHomeProgress').hidden=!exists;
+  document.getElementById('goalHomeEmpty').hidden=exists;
+  document.getElementById('goalHomeName').textContent=exists?kakoGoal.name:'Můj vysněný nákup';
+  document.getElementById('goalHomeEdit').textContent=exists?'UPRAVIT':'NASTAVIT';
+  if(!exists){updateGoalTimer();return;}
+  const total=goalLiveEarned();
+  const remaining=Math.max(0,kakoGoal.price-total);
+  const percent=Math.min(100,Math.max(0,total/kakoGoal.price*100));
+  document.getElementById('goalHomeEarned').textContent=goalMoney(total);
+  document.getElementById('goalHomePrice').textContent='z '+goalMoney(kakoGoal.price);
+  document.getElementById('goalHomeRemaining').textContent=remaining<.005?'🎉 CÍL SPLNĚN!':'Ještě prokakat '+goalMoney(remaining);
+  document.getElementById('goalHomePercent').textContent=Math.floor(percent)+' %';
+  document.getElementById('goalHomeFill').style.width=percent+'%';
+  document.getElementById('goalHomeTrack').setAttribute('aria-valuenow',String(Math.floor(percent)));
+  updateGoalTimer();
+}
+function loadGoalInputs(){
+  const n=document.getElementById('goalNameInput'),p=document.getElementById('goalPriceInput');
+  if(!n||!p)return;
+  n.value=kakoGoal?kakoGoal.name:'';
+  p.value=kakoGoal?String(kakoGoal.price):'';
+  document.getElementById('goalExistingActions').hidden=!kakoGoal;
+}
+function openGoalSettings(){
+  showScreen('settingsScreen');
+  const card=document.getElementById('goalSettingsCard');
+  if(card)card.scrollIntoView({behavior:'auto',block:'start'});
+}
+function goalSessionOffset(){
+  if(!startTime || activeLocationMode!=='work')return {start:0,money:0};
+  const seconds=Math.max(0,Math.min(1800,(Date.now()-startTime)/1000));
+  return {start:startTime,money:seconds/60*Math.max(0,ratePerMinute)};
+}
+function saveGoal(){
+  const name=document.getElementById('goalNameInput').value.trim();
+  const raw=document.getElementById('goalPriceInput').value.trim().replace(/\s/g,'').replace(',','.');
+  const price=Number(raw);
+  if(!name){alert('Napiš, na co chceš šetřit.');return;}
+  if(!raw || !Number.isFinite(price) || price<=0 || price>1000000000){alert('Zadej platnou cenu od 1 Kč do 1 miliardy Kč.');return;}
+  if(kakoGoal){
+    kakoGoal.name=name.slice(0,60);kakoGoal.price=price;
+  }else{
+    const offset=goalSessionOffset();
+    kakoGoal={name:name.slice(0,60),price,earned:0,createdAt:Date.now(),
+      excludedSessionStart:offset.start,excludedSessionMoney:offset.money};
+  }
+  if(persistGoal())showToast('🎯 Cíl uložen! Ať to sype.');
+  updateGoalCard();loadGoalInputs();
+}
+function resetGoalProgress(){
+  if(!kakoGoal || !confirm('Začít spořit na tento cíl znovu od nuly?'))return;
+  const offset=goalSessionOffset();
+  kakoGoal.earned=0;kakoGoal.createdAt=Date.now();
+  kakoGoal.excludedSessionStart=offset.start;kakoGoal.excludedSessionMoney=offset.money;
+  persistGoal();updateGoalCard();showToast('🎯 Spoření začíná znovu od nuly.');
+}
+function deleteGoal(){
+  if(!kakoGoal || !confirm('Smazat tento cíl i jeho naspořený postup?'))return;
+  kakoGoal=null;persistGoal();loadGoalInputs();updateGoalCard();showToast('Cíl odstraněn.');
+}
+function addFinishedKakoToGoal(item){
+  if(!kakoGoal || item.location!=='work' || !Number.isFinite(item.money))return;
+  const offset=kakoGoal.excludedSessionStart===item.start?kakoGoal.excludedSessionMoney:0;
+  const gain=Math.max(0,item.money-offset);
+  kakoGoal.earned+=gain;
+  kakoGoal.excludedSessionStart=0;
+  kakoGoal.excludedSessionMoney=0;
+  persistGoal();
+}
+
+let timerInterval = null;
+let quoteInterval = null;
+
+let startTime = null;
+let activeLocationMode = null;
+let nextReminderAt = null;
+
+let lastResult = null;
+let isFinishing = false;
+
+let locationMode =
+  localStorage.getItem("locationMode") || "work";
+
+let payMode =
+  localStorage.getItem("payMode") || "monthly";
+
+let soundEnabled =
+  localStorage.getItem("soundEnabled") !== "false";
+
+let reminderEnabled =
+  localStorage.getItem("reminderEnabled") !== "false";
+
+let reminderMinutes =
+  Number(
+    localStorage.getItem("reminderMinutes")
+  ) || 20;
+
+let ratePerMinute = 0;
+
+let statsMode = "today";
+
+let workDeck = [];
+let homeDeck = [];
+
+let workDeckPosition = 0;
+let homeDeckPosition = 0;
+
+
+/* HISTORIE */
+
+let history = [];
+
+try{
+
+  history =
+    JSON.parse(
+      localStorage.getItem("kakoHistory")
+    ) || [];
+
+}
+catch(error){
+
+  history = [];
+
+}
+
+history =
+  history.map(
+    item => ({
+
+      start:
+        Number(item.start),
+
+      end:
+        Number(item.end)
+        ||
+        (
+          Number(item.start)
+          +
+          (Number(item.seconds) || 0) * 1000
+        ),
+
+      seconds:
+        Number(item.seconds) || 0,
+
+      money:
+        Number(item.money) || 0,
+
+      location:
+        item.location || "work"
+
+    })
+  );
+
+saveHistory();
+
+
+/* HLÁŠKY V PRÁCI */
+
+const workQuotes = [
+
+"Firma právě financuje tvé trávení.",
+
+"Výplata běží. Ty sedíš. Ideální stav.",
+
+"Každá další minuta jde na účet zaměstnavatele.",
+
+"Porada keramického oddělení pokračuje.",
+
+"Šéf netuší, jak tvrdě právě pracuješ.",
+
+"Tohle je skutečný pasivní příjem.",
+
+"Firemní rozpočet dostává zabrat.",
+
+"Ještě chvíli a máš na kafe.",
+
+"Produktivita dnes dostala nový význam.",
+
+"Firma investuje do tvého vnitřního rozvoje.",
+
+"Tahle pracovní schůzka nemohla být e-mail.",
+
+"HR oddělení o tomhle benefitu zatím neví.",
+
+"Dnes pracuje hlavně tlusté střevo.",
+
+"Další minuta. Další peníze.",
+
+"Keramické oddělení hlásí plný provoz.",
+
+"Tvoje pracovní nasazení právě voní úspěchem.",
+
+"Šéf platí. Porcelán drží.",
+
+"Konečně práce, u které můžeš sedět.",
+
+"Právě probíhá interní očista firmy.",
+
+"Nejlepší peníze jsou ty, které vyděláš vsedě.",
+
+"Zaměstnavatel právě sponzoruje biologický proces.",
+
+"Tohle je benefit, který v pracovní smlouvě nenajdeš.",
+
+"Další úspěšný meeting bez PowerPointu.",
+
+"Pracovní morálka sedí pevně na porcelánu.",
+
+"Dnes jde výkon opravdu odspodu.",
+
+"Firma právě platí prémiovou keramickou pauzu.",
+
+"Pozor. Náklady zaměstnavatele právě rostou.",
+
+"Tvé střevo si právě píše přesčas.",
+
+"Finanční oddělení by tenhle graf vidět nechtělo.",
+
+"Účetní právě někde cítí nevysvětlitelný neklid.",
+
+"Zatímco ostatní pracují, ty optimalizuješ cashflow.",
+
+"Tohle je nejlépe placené sezení dne.",
+
+"Pracovní porada probíhá za zavřenými dveřmi.",
+
+"Prosíme nerušit. Probíhá důležitý firemní proces.",
+
+"Další koruny právě mizí v kanalizaci.",
+
+"Keramický management děkuje za nasazení.",
+
+"Firma platí každou sekundu tohoto výkonu.",
+
+"Výkonnostní bonus právě teče správným směrem.",
+
+"Šéf chtěl produktivitu. Dostal produkt.",
+
+"Tahle směna má opravdu silný závěr.",
+
+"Pracovní doba ještě nikdy nebyla tak uspokojivá.",
+
+"Zaměstnavatel právě investuje do pravidelnosti.",
+
+"Další pracovní úkol úspěšně tlačíš kupředu.",
+
+"V kanceláři možná chybíš. Ve statistikách rosteš.",
+
+"Dnešní nejdůležitější projekt právě pokračuje.",
+
+"Prémie nikde, ale KÁKO kurz jede.",
+
+"Tohle je přesně důvod, proč existuje pracovní doba.",
+
+"Čím déle sedíš, tím dražší je výsledek.",
+
+"Firemní kultura právě získává nový význam.",
+
+"Na LinkedIn tohle raději nedávej.",
+
+"Výkon roste. Náklady také.",
+
+"Kolegové možná pracují. Ty vyděláváš strategicky.",
+
+"Ještě pár minut a firma ti zaplatí oběd.",
+
+"Strategická keramická pauza je v plném proudu.",
+
+"Management zatím netuší, kde vznikají skutečné náklady.",
+
+"Dnes máš nejlépe placenou židli ve firmě.",
+
+"Tohle se do timesheetu píše jen velmi těžko.",
+
+"Zaměstnavatel právě dostává svoje peníze zpět. Bohužel jinou cestou.",
+
+"Další firemní investice právě míří do kanalizace.",
+
+"KÁKO oddělení hlásí: mise pokračuje."
+
+];
+
+
+/* HLÁŠKY DOMA */
+
+const homeQuotes = [
+
+"Doma sereš zdarma.",
+
+"Čistě soukromý projekt.",
+
+"Žádné peníze. Jen čest a sláva.",
+
+"Domácí směna bez příplatků.",
+
+"Výkon dobrý. Odměna nulová.",
+
+"Tentokrát náklady neseš ty.",
+
+"Volnočasová aktivita v plném proudu.",
+
+"Keramika pracuje. Peněženka nikoliv.",
+
+"Doma ti za to bohužel nikdo nezaplatí.",
+
+"Soukromá porada byla zahájena.",
+
+"Nula korun. Stoprocentní nasazení.",
+
+"Domácí produktivita bez finančního efektu.",
+
+"Tolik práce a ani koruna.",
+
+"Tady bohužel firemní rozpočet nepomůže.",
+
+"Porcelán ano. Prémie ne.",
+
+"Domácí KÁKO. Čistá práce z lásky.",
+
+"Výdělek nulový. Pocit k nezaplacení.",
+
+"Soukromý sektor dnes neposkytuje žádné benefity.",
+
+"Dnes pracuješ úplně zadarmo.",
+
+"Tohle ti účetní bohužel neproplatí.",
+
+"Výkon běží. Faktura nevzniká.",
+
+"Rodinný rozpočet zůstává beze změny.",
+
+"Domácí směna pokračuje bez nároku na odměnu.",
+
+"Žádný šéf. Žádné peníze. Jen ty a porcelán.",
+
+"Doma jsou všechny minuty tvoje. Bohužel i náklady.",
+
+"Keramické oddělení dnes jede na vlastní účet.",
+
+"Výsledky dobré, finanční návratnost tragická.",
+
+"Soukromé KÁKO právě vstupuje do další fáze.",
+
+"Doma se počítá čas. Peníze ne.",
+
+"Z ekonomického hlediska naprostá katastrofa.",
+
+"Z hygienického hlediska velmi potřebná investice.",
+
+"Tahle pauza se do výplaty opravdu nepočítá.",
+
+"Domácí provoz hlásí nulový zisk.",
+
+"Další minuta zdarma. Gratulujeme.",
+
+"Zaměstnavatel dnes ušetřil. Ty ne.",
+
+"Doma je klid. A nulová hodinovka.",
+
+"Tohle je charitativní práce pro vlastní střevo.",
+
+"Výkon profesionální. Plat amatérský.",
+
+"Kdybys byl v práci, už by z toho něco káplo.",
+
+"Domácí keramika děkuje za návštěvu.",
+
+"Soukromá mise pokračuje bez sponzora.",
+
+"Dnes jsi svým vlastním zaměstnavatelem. A neplatíš dobře.",
+
+"Domácí porcelán právě eviduje další návštěvu.",
+
+"Čas běží. Výplata stojí.",
+
+"Doma je to stejné KÁKO, jen bez firemních peněz.",
+
+"Další neplacená směna právě pokračuje.",
+
+"Keramická domácí kancelář je otevřena.",
+
+"Tady se opravdu pracuje jen pro dobrý pocit.",
+
+"Domácí projekt nemá žádný rozpočet.",
+
+"Žádná faktura. Žádný bonus. Jen výsledek.",
+
+"Soukromé oddělení trávení hlásí provoz.",
+
+"Tohle KÁKO si financuješ úplně sám.",
+
+"Ekonomové by doporučili chodit raději v práci.",
+
+"Domácí produktivita právě dosáhla porcelánového maxima.",
+
+"Tady ti každá minuta vydělává přesně nula korun.",
+
+"Domácí KÁKO je nejdražší tím, že není placené.",
+
+"Pracovní doba nikde. Střevo ale jede.",
+
+"Dnešní soukromá porada stále pokračuje.",
+
+"Porcelán je připraven. Výplata nikoliv.",
+
+"Domácí KÁKO oddělení děkuje za spolupráci."
+
+];
+
+
+/* ACHIEVEMENTY */
+
+const achievementsData = [
+
+{
+  icon:"💩",
+  title:"První hovínko",
+  text:"Dokonči první KÁKO",
+  test:s => s.visits >= 1
+},
+
+{
+  icon:"🔟",
+  title:"Pravidelný zákazník",
+  text:"Dokonči 10 návštěv",
+  test:s => s.visits >= 10
+},
+
+{
+  icon:"⏱",
+  title:"Hodina pravdy",
+  text:"Strav celkem 1 hodinu na WC",
+  test:s => s.seconds >= 3600
+},
+
+{
+  icon:"💵",
+  title:"Firemní investor",
+  text:"Vydělej na WC 500 Kč",
+  test:s => s.money >= 500
+},
+
+{
+  icon:"🤑",
+  title:"Keramický magnát",
+  text:"Vydělej na WC 1 000 Kč",
+  test:s => s.money >= 1000
+},
+
+{
+  icon:"🏆",
+  title:"Dlouhá porada",
+  text:"Jedno KÁKO minimálně 20 minut",
+  test:s => s.longest >= 1200
+},
+
+{
+  icon:"🏠",
+  title:"Domácí patriot",
+  text:"Dokonči 5 návštěv doma",
+  test:s => s.homeVisits >= 5
+},
+
+{
+  icon:"💼",
+  title:"Firemní specialista",
+  text:"Dokonči 5 návštěv v práci",
+  test:s => s.workVisits >= 5
+}
+
+];
+
+
+/* AUDIO */
+
+let audioContext = null;
+let bellBuffer = null;
+let flushBuffer = null;
+let bellBufferPromise = null;
+let flushBufferPromise = null;
+let activeSoundSources = new Set();
+
+
+function clearMediaSession(){
+
+  try{
+
+    if(
+      "mediaSession" in navigator
+    ){
+
+      navigator.mediaSession.metadata = null;
+
+      try{
+        navigator.mediaSession.playbackState = "none";
+      }
+      catch(error){}
+
+    }
+
+  }
+  catch(error){}
+
+}
+
+
+function getAudioContext(){
+
+  if(
+    !audioContext
+  ){
+
+    const AudioContextClass =
+      window.AudioContext
+      ||
+      window.webkitAudioContext;
+
+
+    if(
+      !AudioContextClass
+    ){
+      return null;
+    }
+
+
+    audioContext =
+      new AudioContextClass();
+
+  }
+
+
+  return audioContext;
+
+}
+
+
+async function resumeAudioContext(){
+
+  const context =
+    getAudioContext();
+
+
+  if(
+    !context
+  ){
+    return null;
+  }
+
+
+  try{
+
+    if(
+      context.state === "suspended"
+    ){
+
+      await context.resume();
+
+    }
+
+  }
+  catch(error){
+
+    console.log(
+      "AudioContext se nepodařilo aktivovat:",
+      error
+    );
+
+  }
+
+
+  clearMediaSession();
+
+  return context;
+
+}
+
+
+async function fetchAndDecodeSound(url){
+
+  const context =
+    getAudioContext();
+
+
+  if(
+    !context
+  ){
+    return null;
+  }
+
+
+  const response =
+    await fetch(
+      url,
+      {
+        cache:"force-cache"
+      }
+    );
+
+
+  if(
+    !response.ok
+  ){
+
+    throw new Error(
+      `${url}: HTTP ${response.status}`
+    );
+
+  }
+
+
+  const arrayBuffer =
+    await response.arrayBuffer();
+
+
+  return await context.decodeAudioData(
+    arrayBuffer.slice(0)
+  );
+
+}
+
+
+function loadBellBuffer(){
+
+  if(
+    bellBuffer
+  ){
+    return Promise.resolve(
+      bellBuffer
+    );
+  }
+
+
+  if(
+    !bellBufferPromise
+  ){
+
+    bellBufferPromise =
+      fetchAndDecodeSound(
+        "Boxing-bell-sound-effect.mp3"
+      )
+      .then(buffer => {
+
+        bellBuffer = buffer;
+
+        return buffer;
+
+      })
+      .catch(error => {
+
+        bellBufferPromise = null;
+
+        console.log(
+          "Gong se nepodařilo načíst:",
+          error
+        );
+
+        return null;
+
+      });
+
+  }
+
+
+  return bellBufferPromise;
+
+}
+
+
+function loadFlushBuffer(){
+
+  if(
+    flushBuffer
+  ){
+    return Promise.resolve(
+      flushBuffer
+    );
+  }
+
+
+  if(
+    !flushBufferPromise
+  ){
+
+    flushBufferPromise =
+      fetchAndDecodeSound(
+        "flush.wav"
+      )
+      .then(buffer => {
+
+        flushBuffer = buffer;
+
+        return buffer;
+
+      })
+      .catch(error => {
+
+        flushBufferPromise = null;
+
+        console.log(
+          "Spláchnutí se nepodařilo načíst:",
+          error
+        );
+
+        return null;
+
+      });
+
+  }
+
+
+  return flushBufferPromise;
+
+}
+
+
+function preloadSounds(){
+
+  if(
+    !soundEnabled
+  ){
+    return;
+  }
+
+
+  getAudioContext();
+
+  loadBellBuffer();
+  loadFlushBuffer();
+
+}
+
+
+function stopAllSounds(){
+
+  activeSoundSources.forEach(
+    source => {
+
+      try{
+        source.stop();
+      }
+      catch(error){}
+
+    }
+  );
+
+
+  activeSoundSources.clear();
+
+  clearMediaSession();
+
+}
+
+
+async function playAudioBuffer(bufferPromise){
+
+  if(
+    !soundEnabled
+  ){
+    return false;
+  }
+
+
+  const context =
+    await resumeAudioContext();
+
+
+  if(
+    !context
+  ){
+    return false;
+  }
+
+
+  let buffer = null;
+
+
+  try{
+
+    buffer =
+      await bufferPromise();
+
+  }
+  catch(error){
+
+    console.log(
+      "Zvuk se nepodařilo načíst:",
+      error
+    );
+
+    return false;
+
+  }
+
+
+  if(
+    !buffer
+  ){
+    return false;
+  }
+
+
+  try{
+
+    const source =
+      context.createBufferSource();
+
+
+    const gain =
+      context.createGain();
+
+
+    source.buffer = buffer;
+
+    gain.gain.value = 1;
+
+
+    source.connect(
+      gain
+    );
+
+
+    gain.connect(
+      context.destination
+    );
+
+
+    activeSoundSources.add(
+      source
+    );
+
+
+    source.onended =
+      function(){
+
+        activeSoundSources.delete(
+          source
+        );
+
+        clearMediaSession();
+
+      };
+
+
+    source.start(0);
+
+    clearMediaSession();
+
+    return true;
+
+  }
+  catch(error){
+
+    console.log(
+      "Zvuk se nepodařilo přehrát:",
+      error
+    );
+
+    return false;
+
+  }
+
+}
+
+
+function playStartBell(){
+
+  return playAudioBuffer(
+    loadBellBuffer
+  );
+
+}
+
+
+function playFlushSound(){
+
+  return playAudioBuffer(
+    loadFlushBuffer
+  );
+
+}
+
+
+async function testStartBell(){
+
+  if(
+    !soundEnabled
+  ){
+
+    showToast(
+      "Nejdřív zapni zvuky."
+    );
+
+    return;
+
+  }
+
+
+  await resumeAudioContext();
+  await playStartBell();
+
+}
+
+
+async function testFlush(){
+
+  if(
+    !soundEnabled
+  ){
+
+    showToast(
+      "Nejdřív zapni zvuky."
+    );
+
+    return;
+
+  }
+
+
+  await resumeAudioContext();
+  await playFlushSound();
+
+}
+
+
+/* HLÁŠKY BEZ OPAKOVÁNÍ */
+
+function shuffleArray(array){
+
+  const copy =
+    [...array];
+
+  for(
+    let i = copy.length - 1;
+    i > 0;
+    i--
+  ){
+
+    const j =
+      Math.floor(
+        Math.random() * (i + 1)
+      );
+
+    [
+      copy[i],
+      copy[j]
+    ]
+    =
+    [
+      copy[j],
+      copy[i]
+    ];
+
+  }
+
+  return copy;
+
+}
+
+
+function resetQuoteDecks(){
+
+  workDeck =
+    shuffleArray(
+      workQuotes
+    );
+
+  homeDeck =
+    shuffleArray(
+      homeQuotes
+    );
+
+  workDeckPosition = 0;
+  homeDeckPosition = 0;
+
+}
+
+
+function getNextQuote(){
+
+  if(
+    activeLocationMode === "home"
+  ){
+
+    if(
+      homeDeckPosition >=
+      homeDeck.length
+    ){
+
+      homeDeck =
+        shuffleArray(
+          homeQuotes
+        );
+
+      homeDeckPosition = 0;
+
+    }
+
+    return homeDeck[
+      homeDeckPosition++
+    ];
+
+  }
+
+
+  if(
+    workDeckPosition >=
+    workDeck.length
+  ){
+
+    workDeck =
+      shuffleArray(
+        workQuotes
+      );
+
+    workDeckPosition = 0;
+
+  }
+
+
+  return workDeck[
+    workDeckPosition++
+  ];
+
+}
+
+
+/* SPODNÍ MENU */
+
+function isKakoRunning(){
+
+  return !!startTime;
+
+}
+
+
+function updatePrimaryNav(){
+
+  const button =
+    document.getElementById(
+      "navPrimary"
+    );
+
+
+  if(
+    isKakoRunning()
+  ){
+
+    document.getElementById(
+      "navPrimaryIcon"
+    ).innerText =
+      "💩";
+
+
+    document.getElementById(
+      "navPrimaryText"
+    ).innerText =
+      "KÁKO";
+
+
+    button.classList.add(
+      "running"
+    );
+
+  }
+
+  else{
+
+    document.getElementById(
+      "navPrimaryIcon"
+    ).innerText =
+      "🏠";
+
+
+    document.getElementById(
+      "navPrimaryText"
+    ).innerText =
+      "Domů";
+
+
+    button.classList.remove(
+      "running"
+    );
+
+  }
+
+}
+
+
+function openPrimaryScreen(){
+
+  if(
+    isKakoRunning()
+  ){
+
+    showScreen(
+      "timerScreen"
+    );
+
+  }
+
+  else{
+
+    showScreen(
+      "homeScreen"
+    );
+
+  }
+
+}
+
+
+/* ZVUK */
+
+function updateSoundUI(){
+
+  const button =
+    document.getElementById(
+      "soundToggle"
+    );
+
+  button.innerText =
+    soundEnabled
+    ? "ZAP"
+    : "VYP";
+
+  button.classList.toggle(
+    "on",
+    soundEnabled
+  );
+
+}
+
+
+function toggleSound(){
+
+  soundEnabled =
+    !soundEnabled;
+
+
+  localStorage.setItem(
+    "soundEnabled",
+    String(soundEnabled)
+  );
+
+
+  if(
+    soundEnabled
+  ){
+
+    resumeAudioContext();
+
+    preloadSounds();
+
+  }
+
+  else{
+
+    stopAllSounds();
+
+  }
+
+
+  updateSoundUI();
+
+
+  showToast(
+    soundEnabled
+    ? "🔊 Zvuky zapnuté"
+    : "🔇 Zvuky vypnuté"
+  );
+
+}
+
+
+/* SETTINGS */
+
+function loadSettings(){
+
+  document.getElementById(
+    "nicknameInput"
+  ).value =
+    localStorage.getItem(
+      "nickname"
+    ) || "";
+
+
+  document.getElementById(
+    "salaryInput"
+  ).value =
+    localStorage.getItem(
+      "salary"
+    ) || "";
+
+
+  document.getElementById(
+    "hoursInput"
+  ).value =
+    localStorage.getItem(
+      "hours"
+    ) || 160;
+
+
+  document.getElementById(
+    "hourlyInput"
+  ).value =
+    localStorage.getItem(
+      "hourly"
+    ) || "";
+
+
+  updatePayUI();
+  updateSoundUI();
+  updateReminderUI();
+  calculateRate();
+
+}
+
+
+function setPayMode(mode){
+
+  payMode =
+    mode;
+
+
+  localStorage.setItem(
+    "payMode",
+    mode
+  );
+
+
+  updatePayUI();
+  calculateRate();
+  updateHome();
+
+}
+
+
+function updatePayUI(){
+
+  document
+    .getElementById(
+      "monthlyBtn"
+    )
+    .classList
+    .toggle(
+      "active",
+      payMode === "monthly"
+    );
+
+
+  document
+    .getElementById(
+      "hourlyBtn"
+    )
+    .classList
+    .toggle(
+      "active",
+      payMode === "hourly"
+    );
+
+
+  document.getElementById(
+    "monthlySettings"
+  ).style.display =
+    payMode === "monthly"
+    ? "block"
+    : "none";
+
+
+  document.getElementById(
+    "hourlySettings"
+  ).style.display =
+    payMode === "hourly"
+    ? "block"
+    : "none";
+
+}
+
+
+function saveSettings(){
+
+  const nickname =
+    document
+      .getElementById(
+        "nicknameInput"
+      )
+      .value
+      .trim();
+
+
+  localStorage.setItem(
+    "nickname",
+    nickname
+  );
+
+
+  reminderMinutes =
+    Number(
+      document.getElementById(
+        "reminderMinutesSelect"
+      ).value
+    ) || 20;
+
+
+  localStorage.setItem(
+    "reminderMinutes",
+    String(reminderMinutes)
+  );
+
+
+  if(
+    payMode === "monthly"
+  ){
+
+    const salary =
+      Number(
+        document.getElementById(
+          "salaryInput"
+        ).value
+      );
+
+
+    const hours =
+      Number(
+        document.getElementById(
+          "hoursInput"
+        ).value
+      );
+
+
+    if(
+      !salary ||
+      !hours
+    ){
+
+      alert(
+        "Vyplň měsíční plat a pracovní hodiny."
+      );
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+      "salary",
+      salary
+    );
+
+
+    localStorage.setItem(
+      "hours",
+      hours
+    );
+
+  }
+
+  else{
+
+    const hourly =
+      Number(
+        document.getElementById(
+          "hourlyInput"
+        ).value
+      );
+
+
+    if(
+      !hourly
+    ){
+
+      alert(
+        "Vyplň hodinovku."
+      );
+
+      return;
+
+    }
+
+
+    localStorage.setItem(
+      "hourly",
+      hourly
+    );
+
+  }
+
+
+  calculateRate();
+  updateHome();
+
+
+  showScreen(
+    isKakoRunning()
+    ? "timerScreen"
+    : "homeScreen"
+  );
+
+
+  showToast(
+    "✓ Nastavení uloženo"
+  );
+
+}
+
+
+function calculateRate(){
+
+  if(
+    payMode === "monthly"
+  ){
+
+    const salary =
+      Number(
+        localStorage.getItem(
+          "salary"
+        )
+      ) || 0;
+
+
+    const hours =
+      Number(
+        localStorage.getItem(
+          "hours"
+        )
+      ) || 160;
+
+
+    ratePerMinute =
+      salary > 0 &&
+      hours > 0
+      ?
+      salary /
+      (hours * 60)
+      :
+      0;
+
+  }
+
+  else{
+
+    const hourly =
+      Number(
+        localStorage.getItem(
+          "hourly"
+        )
+      ) || 0;
+
+
+    ratePerMinute =
+      hourly > 0
+      ?
+      hourly / 60
+      :
+      0;
+
+  }
+
+}
+
+
+/* DOMA / PRÁCE */
+
+function setLocationMode(mode){
+
+  locationMode =
+    mode;
+
+
+  localStorage.setItem(
+    "locationMode",
+    mode
+  );
+
+
+  updateHome();
+
+}
+
+
+function updateLocation(){
+
+  const home =
+    locationMode === "home";
+
+
+  document.getElementById(
+    "homeModeBtn"
+  ).classList.toggle(
+    "active",
+    home
+  );
+
+
+  document.getElementById(
+    "workModeBtn"
+  ).classList.toggle(
+    "active",
+    !home
+  );
+
+
+  document.getElementById(
+    "modeInfo"
+  ).innerText =
+    home
+    ?
+    "Doma sereš zdarma."
+    :
+    "V práci se každá minuta mění na peníze.";
+
+
+  document.getElementById(
+    "miniRate"
+  ).innerHTML =
+    home
+    ?
+    "🏠 Domácí KÁKO: <strong>0 Kč</strong>"
+    :
+    `KÁKO kurz: <strong>${moneyFormat(ratePerMinute)}/min</strong>`;
+
+}
+
+
+/* AKTIVNÍ KÁKO */
+
+function saveActiveKako(){
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  localStorage.setItem(
+    "activeKako",
+    JSON.stringify({
+
+      start:
+        startTime,
+
+      location:
+        activeLocationMode,
+
+      nextReminderAt:
+        nextReminderAt
+
+    })
+  );
+
+}
+
+
+/* START */
+
+async function startKako(){
+
+  if(
+    isKakoRunning()
+  ){
+
+    showScreen(
+      "timerScreen"
+    );
+
+    return;
+
+  }
+
+
+  if(
+    locationMode === "work"
+    &&
+    ratePerMinute <= 0
+  ){
+
+    alert(
+      "Nejdřív nastav plat v Nastavení."
+    );
+
+
+    showScreen(
+      "settingsScreen"
+    );
+
+
+    return;
+
+  }
+
+
+  if(
+    soundEnabled
+  ){
+
+    await resumeAudioContext();
+
+    await playStartBell();
+
+  }
+
+
+  startTime =
+    Date.now();
+
+
+  activeLocationMode =
+    locationMode;
+
+
+  if(
+    reminderEnabled
+  ){
+
+    nextReminderAt =
+      startTime
+      +
+      reminderMinutes * 60000;
+
+  }
+
+  else{
+
+    nextReminderAt =
+      null;
+
+  }
+
+
+  resetQuoteDecks();
+  saveActiveKako();
+  prepareTimer();
+  updateTimer();
+  changeQuote();
+  startTimers();
+  updatePrimaryNav();
+
+
+  showScreen(
+    "timerScreen"
+  );
+
+  // V tomto okamžiku už je aktivita i časomíra bezpečně spuštěná.
+  if(window.KAKO_ARCADE){
+    window.KAKO_ARCADE.invite();
+  }
+
+}
+
+
+/* TIMER */
+
+function startTimers(){
+
+  stopTimers();
+
+
+  timerInterval =
+    setInterval(
+      updateTimer,
+      1000
+    );
+
+
+  quoteInterval =
+    setInterval(
+      changeQuote,
+      10000
+    );
+
+}
+
+
+function stopTimers(){
+
+  if(
+    timerInterval
+  ){
+
+    clearInterval(
+      timerInterval
+    );
+
+  }
+
+
+  if(
+    quoteInterval
+  ){
+
+    clearInterval(
+      quoteInterval
+    );
+
+  }
+
+
+  timerInterval = null;
+  quoteInterval = null;
+
+}
+
+
+function prepareTimer(){
+
+  const home =
+    activeLocationMode === "home";
+
+
+  document.getElementById(
+    "timerMode"
+  ).innerText =
+    home
+    ?
+    "🏠 DOMA"
+    :
+    "💼 V PRÁCI";
+
+
+  document.getElementById(
+    "liveLabel"
+  ).innerText =
+    home
+    ?
+    "FINANČNÍ VÝSLEDEK"
+    :
+    "PRÁVĚ JSI PROKADIL";
+
+
+  const money =
+    document.getElementById(
+      "currentMoney"
+    );
+
+
+  money.classList.toggle(
+    "free",
+    home
+  );
+
+
+  money.innerText =
+    home
+    ?
+    "Dnes zadarmo"
+    :
+    "0,00 Kč";
+
+
+  const card =
+    document.getElementById(
+      "quoteCard"
+    );
+
+
+  card.classList.toggle(
+    "home",
+    home
+  );
+
+
+  document.getElementById(
+    "quoteLabel"
+  ).innerText =
+    home
+    ?
+    "DOMÁCÍ HLÁŠENÍ"
+    :
+    "FIREMNÍ HLÁŠENÍ";
+
+}
+
+
+function updateTimer(){
+
+  if(!startTime) return;
+  // Wall-clock based: reliable when Safari throttles/suspends JavaScript in background.
+  if(Date.now() - startTime >= KAKO_MAX_DURATION_MS && !isFinishing){
+    finalizeKako(true);
+    return;
+  }
+
+
+  const seconds =
+    Math.max(
+      0,
+      Math.min(1800,Math.floor((Date.now() - startTime) / 1000))
+    );
+
+
+  document.getElementById(
+    "timer"
+  ).innerText =
+    formatClock(
+      seconds
+    );
+
+
+  if(
+    activeLocationMode === "work"
+  ){
+
+    document.getElementById(
+      "currentMoney"
+    ).innerText =
+      moneyFormat(
+        seconds /
+        60 *
+        ratePerMinute
+      );
+
+  }
+
+
+  updateGoalTimer();
+  checkReminder();
+
+}
+
+
+/* HLÁŠKY */
+
+function changeQuote(){
+
+  if(
+    !activeLocationMode
+  ){
+    return;
+  }
+
+
+  const quote =
+    getNextQuote();
+
+
+  const card =
+    document.getElementById(
+      "quoteCard"
+    );
+
+
+  document.getElementById(
+    "quoteText"
+  ).innerText =
+    quote;
+
+
+  card.classList.remove(
+    "quote-pop"
+  );
+
+
+  void card.offsetWidth;
+
+
+  card.classList.add(
+    "quote-pop"
+  );
+
+}
+
+
+/* STOP – KÁKO 5.7: jediný zápis, nejvýše 30 minut */
+function finalizeKako(automatic = false){
+  if(!startTime) return false;
+  // Manual stop sets isFinishing before playing the flush; auto-stop cannot race it.
+  if(automatic && isFinishing) return false;
+  isFinishing = true;
+  const currentStart = startTime;
+  const currentLocation = activeLocationMode || 'work';
+  const end = Math.min(Date.now(), currentStart + KAKO_MAX_DURATION_MS);
+  const seconds = Math.min(1800, Math.max(1, Math.floor((end-currentStart)/1000)));
+  const money = currentLocation === 'work' ? seconds / 60 * ratePerMinute : 0;
+  const item = {start:currentStart, end, seconds, money, location:currentLocation};
+  // Clear running state before rendering, so another tick/visibility event cannot duplicate the entry.
+  stopTimers();
+  closeReminder();
+  startTime = null;
+  activeLocationMode = null;
+  nextReminderAt = null;
+  try {localStorage.removeItem('activeKako');} catch(e) {}
+  history.unshift(item);
+  saveHistory();
+  addFinishedKakoToGoal(item);
+  lastResult = item;
+  prepareResult(item);
+  updateAll();
+  const button=document.getElementById('stopKakoButton');
+  button.disabled=false;
+  button.innerText='💩 DOKAKÁNO';
+  isFinishing=false;
+  if(automatic){
+    const invite=document.getElementById('arcadeInvite');
+    if(invite) invite.hidden=true;
+    // Never forcibly interrupt an arcade game: let the player finish the level.
+    const inArcade=document.getElementById('gamesScreen').classList.contains('active');
+    if(!inArcade) showScreen('resultScreen');
+    showToast('⏱ KÁKO automaticky ukončeno po 30 minutách. Výsledek uložen.');
+  } else {
+    showScreen('resultScreen');
+  }
+  return true;
+}
+
+async function stopKako(){
+  if(!startTime || isFinishing) return;
+  isFinishing=true;
+  const button=document.getElementById('stopKakoButton');
+  button.disabled=true;
+  button.innerText='🚽 SPLACHUJU...';
+  // No extra timer is created. Absolute start timestamp still limits the saved duration.
+  if(soundEnabled){
+    try{await resumeAudioContext(); await playFlushSound();}catch(e){}
+  }
+  finalizeKako(false);
+}
+
+/* ZRUŠENÍ */
+
+function cancelKako(){
+
+  if(
+    !confirm(
+      "Zrušit KÁKO bez uložení do historie?"
+    )
+  ){
+    return;
+  }
+
+
+  stopTimers();
+  closeReminder();
+
+
+  localStorage.removeItem(
+    "activeKako"
+  );
+
+
+  startTime = null;
+  activeLocationMode = null;
+  nextReminderAt = null;
+
+
+  updatePrimaryNav();
+
+
+  showScreen(
+    "homeScreen"
+  );
+
+
+  showToast(
+    "KÁKO zrušeno. Nikdo se nic nedozví."
+  );
+
+}
+
+
+/* VÝSLEDEK */
+
+function prepareResult(item){
+
+  const home =
+    item.location === "home";
+
+
+  document.getElementById(
+    "resultSub"
+  ).innerText =
+    home
+    ?
+    "Domácí projekt dokončen."
+    :
+    "Firemní projekt dokončen.";
+
+
+  document.getElementById(
+    "resultTime"
+  ).innerText =
+    formatMinutes(
+      item.seconds
+    );
+
+
+  document.getElementById(
+    "resultMoneyLabel"
+  ).innerText =
+    home
+    ?
+    "VYDĚLÁNO"
+    :
+    "PROKAKÁNO";
+
+
+  document.getElementById(
+    "resultMoney"
+  ).innerText =
+    home
+    ?
+    "0 Kč"
+    :
+    moneyFormat(
+      item.money
+    );
+
+
+  document.getElementById(
+    "ratingText"
+  ).innerText =
+    getRating(
+      item.seconds
+    );
+
+}
+
+
+function getRating(seconds){
+
+  const minutes =
+    seconds / 60;
+
+
+  if(
+    minutes < 2
+  ){
+    return "⚡ Rychlovka";
+  }
+
+
+  if(
+    minutes < 5
+  ){
+    return "👌 Efektivní vyprazdňovač";
+  }
+
+
+  if(
+    minutes < 10
+  ){
+    return "💩 Solidní výkon";
+  }
+
+
+  if(
+    minutes < 15
+  ){
+    return "📋 Porada vedení";
+  }
+
+
+  if(
+    minutes < 25
+  ){
+    return "👔 Seniorní KÁKO manažer";
+  }
+
+
+  if(
+    minutes < 40
+  ){
+    return "🏆 Ředitel keramického oddělení";
+  }
+
+
+  return "👑 Generální ředitel porcelánu";
+
+}
+
+
+/* SDÍLENÍ */
+
+async function shareResult(){
+
+  if(
+    !lastResult
+  ){
+    return;
+  }
+
+
+  const nickname =
+    localStorage.getItem(
+      "nickname"
+    ) || "Já";
+
+
+  const home =
+    lastResult.location === "home";
+
+
+  const text =
+    home
+    ?
+`💩 KÁKO
+${nickname} právě dokončil domácí KÁKO.
+⏱ ${formatMinutes(lastResult.seconds)}
+💰 Vyděláno: 0 Kč
+🏠 Doma se sere zdarma.`
+    :
+`💩 KÁKO
+${nickname} právě dokončil pracovní KÁKO.
+⏱ ${formatMinutes(lastResult.seconds)}
+💰 Prokakáno: ${moneyFormat(lastResult.money)}
+💼 Firma děkuje za pracovní nasazení.`;
+
+
+  if(
+    navigator.share
+  ){
+
+    try{
+
+      await navigator.share({
+
+        title:
+          "KÁKO",
+
+        text:
+          text
+
+      });
+
+    }
+    catch(error){}
+
+  }
+
+  else{
+
+    try{
+
+      await navigator.clipboard.writeText(
+        text
+      );
+
+
+      showToast(
+        "Výsledek zkopírován"
+      );
+
+    }
+
+    catch(error){
+
+      alert(
+        text
+      );
+
+    }
+
+  }
+
+}
+
+
+/* STATISTIKY */
+
+function filteredHistory(mode){
+
+  const now =
+    new Date();
+
+
+  return history.filter(
+    item => {
+
+      const date =
+        new Date(
+          item.start
+        );
+
+
+      if(
+        mode === "today"
+      ){
+
+        return (
+
+          date.getDate() ===
+          now.getDate()
+
+          &&
+
+          date.getMonth() ===
+          now.getMonth()
+
+          &&
+
+          date.getFullYear() ===
+          now.getFullYear()
+
+        );
+
+      }
+
+
+      if(
+        mode === "month"
+      ){
+
+        return (
+
+          date.getMonth() ===
+          now.getMonth()
+
+          &&
+
+          date.getFullYear() ===
+          now.getFullYear()
+
+        );
+
+      }
+
+
+      return true;
+
+    }
+  );
+
+}
+
+
+function sumSeconds(array){
+
+  return array.reduce(
+    (sum,item) =>
+      sum +
+      (
+        Number(
+          item.seconds
+        ) || 0
+      ),
+    0
+  );
+
+}
+
+
+function sumMoney(array){
+
+  return array.reduce(
+    (sum,item) =>
+      sum +
+      (
+        Number(
+          item.money
+        ) || 0
+      ),
+    0
+  );
+
+}
+
+
+function maxSeconds(array){
+
+  return array.reduce(
+    (max,item) =>
+      Math.max(
+        max,
+        Number(
+          item.seconds
+        ) || 0
+      ),
+    0
+  );
+
+}
+
+
+function getStats(mode){
+
+  const data =
+    filteredHistory(
+      mode
+    );
+
+
+  const home =
+    data.filter(
+      item =>
+        item.location === "home"
+    );
+
+
+  const work =
+    data.filter(
+      item =>
+        item.location === "work"
+    );
+
+
+  return {
+
+    visits:
+      data.length,
+
+    seconds:
+      sumSeconds(
+        data
+      ),
+
+    money:
+      sumMoney(
+        work
+      ),
+
+    homeVisits:
+      home.length,
+
+    homeSeconds:
+      sumSeconds(
+        home
+      ),
+
+    workVisits:
+      work.length,
+
+    workSeconds:
+      sumSeconds(
+        work
+      ),
+
+    longest:
+      maxSeconds(
+        data
+      ),
+
+    mostExpensive:
+      Math.max(
+        0,
+        ...work.map(
+          item =>
+            Number(
+              item.money
+            ) || 0
+        )
+      )
+
+  };
+
+}
+
+
+function getMostVisitsOneDay(){
+
+  const counts = {};
+
+
+  history.forEach(
+    item => {
+
+      const date =
+        new Date(
+          item.start
+        );
+
+
+      const key =
+        date.getFullYear()
+        +
+        "-"
+        +
+        date.getMonth()
+        +
+        "-"
+        +
+        date.getDate();
+
+
+      counts[key] =
+        (
+          counts[key] || 0
+        ) + 1;
+
+    }
+  );
+
+
+  return Math.max(
+    0,
+    ...Object.values(
+      counts
+    )
+  );
+
+}
+
+
+function setStatsMode(mode){
+
+  statsMode =
+    mode;
+
+
+  document
+    .querySelectorAll(
+      ".tab"
+    )
+    .forEach(
+      tab =>
+        tab.classList.remove(
+          "active"
+        )
+    );
+
+
+  const map = {
+
+    today:
+      "todayTab",
+
+    month:
+      "monthTab",
+
+    all:
+      "allTab"
+
+  };
+
+
+  document
+    .getElementById(
+      map[mode]
+    )
+    .classList.add(
+      "active"
+    );
+
+
+  updateStats();
+
+}
+
+
+function updateStats(){
+
+  const stats =
+    getStats(
+      statsMode
+    );
+
+
+  document.getElementById(
+    "statsVisits"
+  ).innerText =
+    stats.visits;
+
+
+  document.getElementById(
+    "statsTime"
+  ).innerText =
+    formatLongTime(
+      stats.seconds
+    );
+
+
+  document.getElementById(
+    "statsMoney"
+  ).innerText =
+    moneyFormat(
+      stats.money
+    );
+
+
+  document.getElementById(
+    "homeVisits"
+  ).innerText =
+    stats.homeVisits +
+    "×";
+
+
+  document.getElementById(
+    "homeTime"
+  ).innerText =
+    formatLongTime(
+      stats.homeSeconds
+    );
+
+
+  document.getElementById(
+    "workVisits"
+  ).innerText =
+    stats.workVisits +
+    "×";
+
+
+  document.getElementById(
+    "workTime"
+  ).innerText =
+    formatLongTime(
+      stats.workSeconds
+    );
+
+
+  document.getElementById(
+    "longestKako"
+  ).innerText =
+    formatMinutes(
+      stats.longest
+    );
+
+
+  document.getElementById(
+    "mostExpensive"
+  ).innerText =
+    moneyFormat(
+      stats.mostExpensive
+    );
+
+
+  document.getElementById(
+    "mostVisitsDay"
+  ).innerText =
+    getMostVisitsOneDay();
+
+}
+
+
+/* ACHIEVEMENTY */
+
+function renderAchievements(){
+
+  const stats =
+    getStats(
+      "all"
+    );
+
+
+  const box =
+    document.getElementById(
+      "achievementsList"
+    );
+
+
+  box.innerHTML = "";
+
+
+  let unlockedCount = 0;
+
+
+  achievementsData.forEach(
+    achievement => {
+
+      const unlocked =
+        achievement.test(
+          stats
+        );
+
+
+      if(
+        unlocked
+      ){
+
+        unlockedCount++;
+
+      }
+
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.className =
+        "achievement"
+        +
+        (
+          unlocked
+          ?
+          " unlocked"
+          :
+          ""
+        );
+
+
+      div.innerHTML = `
+
+        <div class="achievement-icon">
+
+          ${
+            unlocked
+            ?
+            achievement.icon
+            :
+            "🔒"
+          }
+
+        </div>
+
+        <div>
+
+          <strong>
+            ${achievement.title}
+          </strong>
+
+          <small>
+            ${achievement.text}
+          </small>
+
+        </div>
+
+      `;
+
+
+      box.appendChild(
+        div
+      );
+
+    }
+  );
+
+
+  document.getElementById(
+    "achievementProgress"
+  ).innerText =
+    unlockedCount
+    +
+    " / "
+    +
+    achievementsData.length;
+
+}
+
+
+/* HOME */
+
+function updateHome(){
+
+  calculateRate();
+  updateGoalCard();
+
+
+  updateLocation();
+
+
+  const stats =
+    getStats(
+      "today"
+    );
+
+
+  document.getElementById(
+    "todayVisits"
+  ).innerText =
+    stats.visits;
+
+
+  document.getElementById(
+    "todayTime"
+  ).innerText =
+    formatLongTime(
+      stats.seconds
+    );
+
+
+  document.getElementById(
+    "todayMoney"
+  ).innerText =
+    moneyFormat(
+      stats.money
+    );
+
+
+  const nickname =
+    localStorage.getItem(
+      "nickname"
+    );
+
+
+  document.getElementById(
+    "helloText"
+  ).innerText =
+    nickname
+    ?
+    nickname +
+    ", každá minuta se počítá."
+    :
+    "Každá minuta se počítá.";
+
+}
+
+
+/* HISTORIE */
+
+function renderHistory(){
+
+  const box =
+    document.getElementById(
+      "historyList"
+    );
+
+
+  if(
+    history.length === 0
+  ){
+
+    box.innerHTML = `
+
+      <div class="empty">
+
+        Zatím žádné KÁKO.<br>
+        To chce napravit. 💩
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  box.innerHTML = "";
+
+
+  history.forEach(
+    (item,index) => {
+
+      const date =
+        new Date(
+          item.start
+        );
+
+
+      const dateText =
+        date.toLocaleDateString(
+          "cs-CZ"
+        );
+
+
+      const timeText =
+        date.toLocaleTimeString(
+          "cs-CZ",
+          {
+            hour:"2-digit",
+            minute:"2-digit"
+          }
+        );
+
+
+      const home =
+        item.location === "home";
+
+
+      const div =
+        document.createElement(
+          "div"
+        );
+
+
+      div.className =
+        "history-item";
+
+
+      div.innerHTML = `
+
+        <div class="history-top">
+
+          <span>
+            💩 ${dateText}
+          </span>
+
+          <span>
+            ${timeText}
+          </span>
+
+        </div>
+
+
+        <div class="history-bottom">
+
+          <span>
+            ⏱ ${formatMinutes(item.seconds)}
+          </span>
+
+          <strong class="green">
+
+            ${
+              home
+              ?
+              "0 Kč"
+              :
+              moneyFormat(
+                item.money
+              )
+            }
+
+          </strong>
+
+          <button
+            class="delete-btn"
+            onclick="deleteHistory(${index})"
+          >
+            🗑
+          </button>
+
+        </div>
+
+
+        <div class="history-place">
+
+          ${
+            home
+            ?
+            "🏠 DOMA"
+            :
+            "💼 V PRÁCI"
+          }
+
+        </div>
+
+      `;
+
+
+      box.appendChild(
+        div
+      );
+
+    }
+  );
+
+}
+
+
+function deleteHistory(index){
+
+  if(
+    !confirm(
+      "Smazat tento záznam?"
+    )
+  ){
+    return;
+  }
+
+
+  history.splice(
+    index,
+    1
+  );
+
+
+  saveHistory();
+
+
+  updateAll();
+
+
+  showToast(
+    "Záznam smazán"
+  );
+
+}
+
+
+function clearHistory(){
+
+  if(
+    !confirm(
+      "Opravdu smazat celou historii?"
+    )
+  ){
+    return;
+  }
+
+
+  if(
+    !confirm(
+      "Fakt úplně všechno? Tohle nejde vrátit."
+    )
+  ){
+    return;
+  }
+
+
+  history = [];
+
+
+  saveHistory();
+
+
+  updateAll();
+
+
+  showToast(
+    "Historie byla smazána"
+  );
+
+}
+
+
+function saveHistory(){
+
+  localStorage.setItem(
+    "kakoHistory",
+    JSON.stringify(
+      history
+    )
+  );
+
+}
+
+
+/* REMINDER */
+
+function updateReminderUI(){
+
+  const button =
+    document.getElementById(
+      "reminderToggle"
+    );
+
+
+  button.innerText =
+    reminderEnabled
+    ?
+    "ZAP"
+    :
+    "VYP";
+
+
+  button.classList.toggle(
+    "on",
+    reminderEnabled
+  );
+
+
+  document.getElementById(
+    "reminderTimeBox"
+  ).style.display =
+    reminderEnabled
+    ?
+    "block"
+    :
+    "none";
+
+
+  document.getElementById(
+    "reminderMinutesSelect"
+  ).value =
+    String(
+      reminderMinutes
+    );
+
+}
+
+
+function toggleReminder(){
+
+  reminderEnabled =
+    !reminderEnabled;
+
+
+  localStorage.setItem(
+    "reminderEnabled",
+    String(
+      reminderEnabled
+    )
+  );
+
+
+  updateReminderUI();
+
+
+  if(
+    isKakoRunning()
+  ){
+
+    nextReminderAt =
+      reminderEnabled
+      ?
+      Date.now()
+      +
+      reminderMinutes * 60000
+      :
+      null;
+
+
+    saveActiveKako();
+
+  }
+
+}
+
+
+function checkReminder(){
+
+  if(
+    !startTime
+    ||
+    !reminderEnabled
+    ||
+    !nextReminderAt
+  ){
+    return;
+  }
+
+
+  if(
+    Date.now() >=
+    nextReminderAt
+  ){
+
+    nextReminderAt =
+      null;
+
+
+    saveActiveKako();
+
+
+    showReminder();
+
+  }
+
+}
+
+
+function showReminder(){
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  const seconds =
+    Math.floor(
+      (
+        Date.now()
+        -
+        startTime
+      ) / 1000
+    );
+
+
+  document.getElementById(
+    "reminderRunningTime"
+  ).innerText =
+    formatMinutes(
+      seconds
+    );
+
+
+  document.getElementById(
+    "reminderOverlay"
+  ).classList.add(
+    "show"
+  );
+
+}
+
+
+function closeReminder(){
+
+  document.getElementById(
+    "reminderOverlay"
+  ).classList.remove(
+    "show"
+  );
+
+}
+
+
+function continueKako(){
+
+  closeReminder();
+
+
+  nextReminderAt =
+    Date.now()
+    +
+    15 * 60000;
+
+
+  saveActiveKako();
+
+
+  showToast(
+    "💩 Kontrola zase za 15 minut."
+  );
+
+}
+
+
+function finishFromReminder(){
+
+  closeReminder();
+
+
+  stopKako();
+
+}
+
+
+/* KÁKO 6.0 – jednotná navigace Přehled */
+let overviewLastScreen = "statsScreen";
+function openOverview(id){
+  const allowed=["statsScreen","historyScreen","achievementsScreen"];
+  if(!allowed.includes(id))id=overviewLastScreen;
+  showScreen(id);
+}
+function updateOverviewTabs(id){
+  for(const button of document.querySelectorAll('.overview-tab')){
+    const active=button.dataset.overviewTab===id;
+    button.classList.toggle('active',active);
+    button.setAttribute('aria-pressed',String(active));
+  }
+}
+
+/* OBRAZOVKY */
+
+function showScreen(id){
+
+  document
+    .querySelectorAll(
+      ".screen"
+    )
+    .forEach(
+      screen =>
+        screen.classList.remove(
+          "active"
+        )
+    );
+
+
+  document
+    .getElementById(
+      id
+    )
+    .classList.add(
+      "active"
+    );
+
+  if(id === 'timerScreen')updateGoalTimer();
+
+  document
+    .querySelectorAll(
+      ".nav-btn"
+    )
+    .forEach(
+      button =>
+        button.classList.remove(
+          "active"
+        )
+    );
+
+
+  if(
+    id === "homeScreen"
+    ||
+    id === "timerScreen"
+    ||
+    id === "resultScreen"
+  ){
+
+    document.getElementById(
+      "navPrimary"
+    ).classList.add(
+      "active"
+    );
+
+  }
+
+
+  if(
+    id === "statsScreen"
+  ){
+
+    document.getElementById(
+      "navOverview"
+    ).classList.add(
+      "active"
+    );
+
+
+    updateStats();
+
+  }
+
+
+  if(
+    id === "achievementsScreen"
+  ){
+
+    document.getElementById(
+      "navOverview"
+    ).classList.add(
+      "active"
+    );
+
+
+    renderAchievements();
+
+  }
+
+
+  if(
+    id === "historyScreen"
+  ){
+
+    document.getElementById(
+      "navOverview"
+    ).classList.add(
+      "active"
+    );
+
+
+    renderHistory();
+
+  }
+
+
+  if(
+    id === "settingsScreen"
+  ){
+
+    document.getElementById(
+      "navSettings"
+    ).classList.add(
+      "active"
+    );
+
+
+    updateSoundUI();
+
+
+    updateReminderUI();
+    loadGoalInputs();
+
+  }
+
+
+  if(id === "gamesScreen"){
+    document.getElementById("navGames").classList.add("active");
+  }
+
+  if(id === "statsScreen" || id === "historyScreen" || id === "achievementsScreen"){
+    overviewLastScreen=id;
+    updateOverviewTabs(id);
+  }
+  updatePrimaryNav();
+
+  // Opuštění her herní stav pozastaví, časomíra KÁKO běží dále.
+  if(window.KAKO_ARCADE){
+    window.KAKO_ARCADE.onScreenChange(id);
+  }
+
+}
+
+
+/* OBNOVENÍ ROZJETÉHO KÁKO */
+
+function restoreKako(){
+
+  const raw =
+    localStorage.getItem(
+      "activeKako"
+    );
+
+
+  if(
+    !raw
+  ){
+    return;
+  }
+
+
+  try{
+
+    const saved =
+      JSON.parse(
+        raw
+      );
+
+
+    startTime =
+      Number(
+        saved.start
+      );
+
+
+    activeLocationMode =
+      saved.location || "work";
+
+
+    nextReminderAt =
+      Number(
+        saved.nextReminderAt
+      ) || null;
+
+  }
+
+  catch(error){
+
+    localStorage.removeItem(
+      "activeKako"
+    );
+
+
+    return;
+
+  }
+
+
+  if(
+    !startTime
+  ){
+    return;
+  }
+
+
+  if(
+    reminderEnabled
+    &&
+    !nextReminderAt
+  ){
+
+    nextReminderAt =
+      startTime
+      +
+      reminderMinutes * 60000;
+
+  }
+
+
+  if(Date.now()-startTime >= KAKO_MAX_DURATION_MS){
+    finalizeKako(true);
+    return;
+  }
+  resetQuoteDecks();
+  prepareTimer();
+  updateTimer();
+  changeQuote();
+  startTimers();
+
+  showScreen("timerScreen");
+
+}
+
+
+/* FORMÁTOVÁNÍ */
+
+function moneyFormat(value){
+
+  return Number(
+    value || 0
+  )
+  .toLocaleString(
+    "cs-CZ",
+    {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }
+  )
+  +
+  " Kč";
+
+}
+
+
+function formatClock(seconds){
+
+  seconds =
+    Math.max(
+      0,
+      Number(
+        seconds
+      ) || 0
+    );
+
+
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  return (
+
+    String(
+      hours
+    ).padStart(
+      2,
+      "0"
+    )
+
+    +
+
+    ":"
+
+    +
+
+    String(
+      minutes
+    ).padStart(
+      2,
+      "0"
+    )
+
+    +
+
+    ":"
+
+    +
+
+    String(
+      secs
+    ).padStart(
+      2,
+      "0"
+    )
+
+  );
+
+}
+
+
+function formatMinutes(seconds){
+
+  seconds =
+    Math.max(
+      0,
+      Number(
+        seconds
+      ) || 0
+    );
+
+
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  const secs =
+    Math.floor(
+      seconds % 60
+    );
+
+
+  if(
+    hours > 0
+  ){
+
+    return (
+
+      hours
+
+      +
+
+      ":"
+
+      +
+
+      String(
+        minutes
+      ).padStart(
+        2,
+        "0"
+      )
+
+      +
+
+      ":"
+
+      +
+
+      String(
+        secs
+      ).padStart(
+        2,
+        "0"
+      )
+
+    );
+
+  }
+
+
+  return (
+
+    String(
+      minutes
+    ).padStart(
+      2,
+      "0"
+    )
+
+    +
+
+    ":"
+
+    +
+
+    String(
+      secs
+    ).padStart(
+      2,
+      "0"
+    )
+
+  );
+
+}
+
+
+function formatLongTime(seconds){
+
+  seconds =
+    Number(
+      seconds
+    ) || 0;
+
+
+  const hours =
+    Math.floor(
+      seconds / 3600
+    );
+
+
+  const minutes =
+    Math.floor(
+      (
+        seconds % 3600
+      ) / 60
+    );
+
+
+  if(
+    hours > 0
+  ){
+
+    return (
+      hours
+      +
+      " h "
+      +
+      minutes
+      +
+      " min"
+    );
+
+  }
+
+
+  return (
+    minutes
+    +
+    " min"
+  );
+
+}
+
+
+/* TOAST */
+
+function showToast(text){
+
+  const toast =
+    document.getElementById(
+      "toast"
+    );
+
+
+  toast.innerText =
+    text;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    window.toastTimer
+  );
+
+
+  window.toastTimer =
+    setTimeout(
+      function(){
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },
+      2200
+    );
+
+}
+
+
+/* UPDATE VŠEHO */
+
+function updateAll(){
+  updateHome();
+  // Reporty jsou generovány až při otevření Přehledu, ne na pozadí při startu.
+  const active=document.querySelector('.screen.active');
+  const id=active ? active.id : '';
+  if(id==='statsScreen')updateStats();
+  else if(id==='achievementsScreen')renderAchievements();
+  else if(id==='historyScreen')renderHistory();
+  updatePrimaryNav();
+  updateSoundUI();
+  updateReminderUI();
+}
+
+
+window.addEventListener('pageshow', function(){if(startTime)updateTimer();});
+window.addEventListener('focus', function(){if(startTime)updateTimer();});
+document.addEventListener(
+  "visibilitychange",
+  function(){
+
+    clearMediaSession();
+
+    if(
+      document.visibilityState === "visible"
+      &&
+      startTime
+    ){
+
+      updateTimer();
+
+      checkReminder();
+
+    }
+
+  }
+);
+
+
+/* INIT */
+
+resetQuoteDecks();
+
+loadSettings();
+
+updateAll();
+
+if(
+  soundEnabled
+){
+  preloadSounds();
+}
+
+clearMediaSession();
+
+restoreKako();
+
+</script>
+
+<script>
+/* =============================================================
+   KÁKO HRY – jedna samostatná herní vrstva, oddělená od časomíry
+   ============================================================= */
+(function(){
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const canvas = $('arcadeCanvas');
+  if(!canvas || window.KAKO_ARCADE) return;
+  const ctx = canvas.getContext('2d');
+  const W=320,H=420;
+  const title = {snake:'KÁKOHAD',invaders:'KÁKO INVADERS',racing:'KÁKO RACING',whack:'PRAŠŤ HO-VNO',flappy:'FLAPPY KÁKO',run:'KÁKO RUN',tetris:'KÁKOTRIS',breaker:'KÁKO BREAKER'};
+  const keys = {snake:'kakoArcadeRecordSnake',invaders:'kakoArcadeRecordInvaders',racing:'kakoArcadeRecordRacing',whack:'kakoArcadeRecordWhack',flappy:'kakoArcadeRecordFlappy',run:'kakoArcadeRecordRun',tetris:'kakoArcadeRecordTetris',breaker:'kakoArcadeRecordBreaker'};
+  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.',whack:'Klepej prstem na bobky v otvorech. Máš 45 sekund a za každý zásah získáš body.',flappy:'Klepni do hry nebo na SKOK a proleť mezi trubkami. Nespadni na zem!',run:'Klepni nebo stiskni SKOK, přeskoč překážky a sbírej toaletní papír.',tetris:'← → posun, ↑ otočit, ↓ rychle položit. Skládej celé řady!',breaker:'← → pálka, ODPAL vypustí míček. Pálku můžeš ovládat i prstem.'};
+  let game=null,phase='idle',s=null,best={snake:0,invaders:0,racing:0,whack:0,flappy:0,run:0,tetris:0,breaker:0},sound=false,audio=null;
+  let leftDown=false,rightDown=false,actionDown=false,prev=0,modalFn=null,pointerStart=null;
+  // Volba zůstane uložená, výchozí obtížnost je schválně klidná.
+  const snakeDelays={slow:.34,normal:.25,fast:.18};
+  let snakeSpeed='slow';
+  try{const saved=localStorage.getItem('kakoArcadeSnakeSpeed');if(snakeDelays[saved])snakeSpeed=saved;}catch(e){}
+  let lastBestWrite=0,recordDirty=false,lastHudDraw=0,lastRender=0;
+  let finalShareData=null; // Uzamčený výsledek poslední dokončené hry.
+  const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  const randInt=n=>Math.floor(Math.random()*n);
+  for(const k of Object.keys(best)){
+    try{best[k]=Math.max(0,Number(localStorage.getItem(keys[k]))||0);}catch(e){}
+  }
+  try{sound=localStorage.getItem('kakoArcadeSound')==='true';}catch(e){}
+  function beep(freq=400,length=.08){
+    if(!sound)return;
+    try{
+      const API=window.AudioContext||window.webkitAudioContext;
+      if(!API)return;
+      audio=audio||new API();if(audio.state==='suspended')audio.resume();
+      let oscillator=audio.createOscillator(),gain=audio.createGain();
+      oscillator.type='triangle';oscillator.frequency.setValueAtTime(freq,audio.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(Math.max(80,freq/2),audio.currentTime+length);
+      gain.gain.setValueAtTime(.035,audio.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+length);
+      oscillator.connect(gain);gain.connect(audio.destination);oscillator.start();oscillator.stop(audio.currentTime+length);
+    }catch(e){}
+  }
+  function rrect(x,y,w,h,rad,color){ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,w,h,rad);ctx.fill();}
+  function text(t,x,y,size=20,color='#fff',weight='900'){
+    ctx.fillStyle=color;ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=weight+' '+size+'px Arial, sans-serif';ctx.fillText(t,x,y);
+  }
+  function emoji(t,x,y,size=24){
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=size+'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';ctx.fillText(t,x,y);
+  }
+  function record(){
+    if(!s || !game)return;
+    let v=Math.floor(s.points);
+    if(v>best[game]){
+      best[game]=v;
+      recordDirty=true;
+      // Nezapisovat localStorage 60x za sekundu během jízdy.
+      if(performance.now()-lastBestWrite>1800)persistBest();
+    }
+  }
+  function persistBest(){
+    if(!recordDirty||!game)return;
+    try{localStorage.setItem(keys[game],String(best[game]));}catch(e){}
+    recordDirty=false;lastBestWrite=performance.now();
+    updateCards();
+  }
+  function updateCards(){
+    $('arcBestSnake').textContent='Rekord: '+best.snake;
+    $('arcBestInvaders').textContent='Rekord: '+best.invaders;
+    $('arcBestRacing').textContent='Rekord: '+best.racing+' m';
+    $('arcBestWhack').textContent='Rekord: '+best.whack;
+    $('arcBestFlappy').textContent='Rekord: '+best.flappy;
+    $('arcBestRun').textContent='Rekord: '+best.run+' m';
+    for(const id of ['tetris','breaker']){const name='arcBest'+id[0].toUpperCase()+id.slice(1);const el=$(name);if(el)el.textContent='Rekord: '+best[id];}
+  }
+  function updateHud(){
+    if(!s)return;
+    const meters=(game==='racing'||game==='run');
+    $('arcadeLabelScore').textContent=meters?'METRY':'SKÓRE';
+    $('arcadeScore').textContent=Math.floor(s.points)+(meters?' m':'');
+    $('arcadeBest').textContent=best[game]+(meters?' m':'');
+    $('arcadeLabelLives').textContent=(game==='snake'||game==='tetris'||game==='breaker')?'ÚROVEŇ':game==='whack'?'ČAS':game==='flappy'?'PRŮLETŮ':'ŽIVOTY';
+    $('arcadeLives').textContent=(game==='snake'||game==='tetris'||game==='breaker')?s.level:game==='whack'?Math.max(0,Math.ceil(s.time))+' s':game==='flappy'?s.points:s.hp;
+    $('arcadePause').textContent=phase==='paused'?'▶ Pokračovat':'⏸ Pauza';
+  }
+  function clearHeld(){leftDown=false;rightDown=false;actionDown=false;document.querySelectorAll('#gamesScreen .arcade-button').forEach(x=>x.classList.remove('pressed'));}
+  function showModal(icon,heading,description,button,fn){
+    $('arcadeOverlayIcon').textContent=icon;
+    $('arcadeOverlayTitle').textContent=heading;
+    $('arcadeOverlayText').textContent=description;
+    $('arcadeOverlayButton').textContent=button;
+    $('arcadeSnakeSpeed').hidden=!(game==='snake'&&heading===title[game]);
+    $('arcadeShareResult').hidden=true;
+    $('arcadeShareStatus').hidden=true;
+    $('arcadeShareStatus').textContent='';
+    $('arcadeOverlay').hidden=false;
+    modalFn=fn;
+  }
+  function hideModal(){$('arcadeOverlay').hidden=true;}
+  function setSnakeSpeed(speed){
+    if(!snakeDelays[speed])return;
+    snakeSpeed=speed;
+    document.querySelectorAll('[data-snake-speed]').forEach(button=>{
+      button.setAttribute('aria-pressed',String(button.dataset.snakeSpeed===speed));
+    });
+    try{localStorage.setItem('kakoArcadeSnakeSpeed',speed);}catch(e){}
+  }
+  document.querySelectorAll('[data-snake-speed]').forEach(button=>{
+    button.addEventListener('click',()=>setSnakeSpeed(button.dataset.snakeSpeed));
+  });
+  setSnakeSpeed(snakeSpeed);
+  function fitCanvas(){
+    const shell=$('arcadeTouchArea');
+    if(!shell||!shell.offsetWidth||!shell.offsetHeight)return;
+    const fit=Math.min((shell.clientWidth-4)/W,(shell.clientHeight-4)/H);
+    if(fit>0){canvas.style.width=Math.floor(W*fit)+'px';canvas.style.height=Math.floor(H*fit)+'px';}
+  }
+  function invite(){
+    const el=$('arcadeInvite');
+    if(!el)return;
+    el.hidden=false;
+    $('arcadeInviteYes').focus();
+  }
+  function dismissInvite(play){
+    $('arcadeInvite').hidden=true;
+    if(play){
+      back();
+      showScreen('gamesScreen');
+    }
+  }
+  function stopGame(){persistBest();clearHeld();phase='idle';s=null;finalShareData=null;}
+  function open(which){
+    if(!title[which])return;
+    stopGame();game=which;
+    $('arcadeLibrary').hidden=true;
+    $('arcadeGame').hidden=false;
+    document.body.classList.add('arcade-game-active');
+    $('arcadeGameName').textContent=title[which];
+    $('arcadeSnakeControls').hidden=which!=='snake'&&which!=='tetris';
+    $('arcadeSideControls').hidden=which!=='invaders'&&which!=='racing'&&which!=='breaker';
+    $('arcadeOneButtonControls').hidden=which!=='flappy'&&which!=='run';
+    $('arcadeWhackTip').hidden=which!=='whack';
+    $('arcadeWhackTip').textContent='KLEPNI PŘÍMO NA BOBEK! 🪠';
+    $('arcadeOneButton').textContent=which==='flappy'?'🪽 MÁVNI!':'⬆ SKOK!';
+    $('arcadeAction').textContent=which==='racing'?'⚡ TURBO':which==='breaker'?'🟡 ODPAL':'💦 PALBA';
+    initState();updateHud();
+    showModal(({snake:'💩',invaders:'🚽',racing:'🚽',whack:'🪠',flappy:'🪽',run:'🏃',tetris:'🧩',breaker:'🎾'})[which],title[which],copy[which],'HRÁT →',start);
+    $('arcadePause').disabled=false;
+    window.scrollTo(0,0);
+    requestAnimationFrame(fitCanvas);
+    startArcadeFrame();
+  }
+  function back(){
+    stopArcadeFrame();
+    stopGame();game=null;
+    document.body.classList.remove('arcade-game-active');
+    $('arcadeGame').hidden=true;$('arcadeLibrary').hidden=false;
+    updateCards();window.scrollTo(0,0);
+  }
+  function start(){
+    if(!game)return;
+    clearHeld();initState();phase='playing';prev=performance.now();hideModal();updateHud();beep(640,.12);
+    startArcadeFrame(); // Po startu znovu rozběhnout pozastavenou animační smyčku.
+  }
+  function finish(reason){
+    if(phase!=='playing')return;
+    phase='over';clearHeld();record();persistBest();updateHud();beep(180,.22);stopArcadeFrame();
+    finalShareData={game,points:Math.floor(s.points),best:best[game],level:s.level||1,snakeLength:game==='snake'?s.snake.length:0,speed:snakeSpeed};
+    showModal('🏆','KONEC HRY!',reason+' Rekord: '+best[game]+((game==='racing'||game==='run')?' m':'')+'.','HRÁT ZNOVU →',start);
+    $('arcadeShareResult').hidden=false;
+  }
+  // Sdílení přes nativní sdílecí nabídku (iOS/Android); bez externích knihoven.
+  function makeSharePayload(data){
+    if(!data)return null;
+    let nickname='';
+    try{nickname=(localStorage.getItem('nickname')||'').trim().slice(0,48);}catch(e){}
+    const who=nickname?nickname+' · ':'';
+    const unit=data.game==='racing'||data.game==='run'?'m':'bodů';
+    const scoreText=data.game==='flappy' ? data.points+' průletů' : data.points+' '+unit;
+    const recordText=data.best+' '+(data.game==='flappy'?'průletů':unit);
+    const lines=['💩 KÁKO HRY – '+title[data.game],who+'Můj výsledek: '+scoreText];
+    if(data.game==='snake'){
+      lines.push('🐍 Délka hada: '+data.snakeLength);
+      lines.push('Rychlost: '+({slow:'Pohoda',normal:'Normální',fast:'Rychlá'}[data.speed]||'Pohoda'));
+    }
+    if(data.game==='invaders')lines.push('🌊 Dosažená vlna: '+data.level);
+    if(data.game==='whack')lines.push('⏱ Čas hry: 45 sekund');
+    lines.push('🏆 Osobní rekord: '+recordText,'Zkus mě překonat! 🎮');
+    let url='';
+    if(location.protocol==='https:' || location.protocol==='http:'){
+      url=location.origin+location.pathname;
+    }
+    return {title:'KÁKO HRY – '+title[data.game],text:lines.join('\n'),url};
+  }
+  async function copyShareText(text){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      try{await navigator.clipboard.writeText(text);return true;}catch(e){}
+    }
+    // Starší Safari bez Clipboard API: krátký skrytý textarea je kompatibilnější.
+    const el=document.createElement('textarea');
+    el.value=text;
+    el.setAttribute('readonly','');
+    el.style.cssText='position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;';
+    el.style.setProperty('-webkit-user-select','text','important');
+    el.style.setProperty('user-select','text','important');
+    document.body.appendChild(el);
+    el.select();
+    let copied=false;
+    try{copied=document.execCommand('copy');}catch(e){}
+    el.remove();
+    return copied;
+  }
+  function shareArcadeResult(){
+    if(phase!=='over'||!finalShareData)return;
+    const payload=makeSharePayload(finalShareData);
+    if(!payload)return;
+    const target=$('arcadeShareStatus');
+    const updateStatus=message=>{target.hidden=false;target.textContent=message;};
+    const content=payload.text+(payload.url?'\n'+payload.url:'');
+    if(navigator.share){
+      // Musí být voláno přímo z kliknutí: iPhone vyžaduje uživatelské gesto.
+      const data={title:payload.title,text:payload.text};
+      if(payload.url)data.url=payload.url;
+      try{
+        const pending=navigator.share(data);
+        Promise.resolve(pending).catch(err=>{
+          if(err && err.name==='AbortError')return; // Uživatel sdílení zrušil.
+          copyShareText(content).then(ok=>updateStatus(ok?'Výsledek zkopírován do schránky.':'Sdílení není dostupné. Zkus Safari.'));
+        });
+      }catch(e){
+        copyShareText(content).then(ok=>updateStatus(ok?'Výsledek zkopírován do schránky.':'Sdílení není dostupné. Zkus Safari.'));
+      }
+    }else{
+      copyShareText(content).then(ok=>updateStatus(ok?'Výsledek zkopírován do schránky.':'Sdílení není dostupné. Zkus Safari.'));
+    }
+  }
+  function pause(){
+    if(!game||phase==='idle'||phase==='over')return;
+    if(phase==='paused'){
+      phase='playing';hideModal();updateHud();prev=performance.now();
+      startArcadeFrame(); // Pokračování po pauze musí obnovit herní snímky.
+    }else{
+      phase='paused';clearHeld();stopArcadeFrame();
+      showModal('⏸','PAUZA','Hra čeká. Časomíra KÁKO běží dál.','POKRAČOVAT →',pause);updateHud();
+    }
+  }
+  function onScreenChange(id){
+    // Změna hlavní obrazovky nesmí ponechat otevřenou celoplošnou hru.
+    if(id!=='gamesScreen' && sorting)setSorting(false);
+    if(id!=='gamesScreen' && game)back();
+    if(id==='gamesScreen'){updateCards();updateKakoTime();startArcadeFrame();}
+    else stopArcadeFrame();
+  }
+  function updateKakoTime(){
+    if(!$('gamesScreen').classList.contains('active'))return;
+    const t=$('arcadeTimer');if(!t)return;
+    const active=typeof startTime!=='undefined'&&startTime&&Number(startTime)>0;
+    t.style.display=active?'block':'none';
+    if(active){
+      const sec=Math.max(0,Math.floor((Date.now()-Number(startTime))/1000));
+      const two=n=>String(n).padStart(2,'0');
+      t.textContent='⏱ KÁKO běží: '+two(Math.floor(sec/3600))+':'+two(Math.floor(sec%3600/60))+':'+two(sec%60)+' · Hry nepřerušují aktivitu';
+    }
+  }
+  function newSnake(){
+    s={points:0,level:1,snake:[{x:7,y:10},{x:6,y:10},{x:5,y:10}],direction:{x:1,y:0},next:null,food:null,bonus:null,timer:0,eaten:0};
+    placeFood();
+  }
+  function occupied(x,y){return s.snake.some(p=>p.x===x&&p.y===y);}
+  function randomCell(){
+    for(let i=0;i<400;i++){
+      const x=randInt(16),y=randInt(18);
+      if(!occupied(x,y)&&(!s.food||s.food.x!==x||s.food.y!==y)&&(!s.bonus||s.bonus.x!==x||s.bonus.y!==y))return {x,y};
+    }
+    return null;
+  }
+  function placeFood(){s.food=randomCell();}
+  function snakeDirection(dir){
+    if(phase!=='playing')return;
+    const d={up:{x:0,y:-1},down:{x:0,y:1},left:{x:-1,y:0},right:{x:1,y:0}}[dir];
+    if(d && !(d.x===-s.direction.x && d.y===-s.direction.y)) s.next=d;
+  }
+  function snakeStep(){
+    if(s.next){s.direction=s.next;s.next=null;}
+    const head={x:s.snake[0].x+s.direction.x,y:s.snake[0].y+s.direction.y};
+    const eatFood=s.food&&head.x===s.food.x&&head.y===s.food.y;
+    const eatBonus=s.bonus&&head.x===s.bonus.x&&head.y===s.bonus.y;
+    const body=eatFood||eatBonus?s.snake:s.snake.slice(0,-1);
+    if(head.x<0||head.x>=16||head.y<0||head.y>=18||body.some(p=>p.x===head.x&&p.y===head.y)){
+      finish('Had narazil. Získal jsi '+s.points+' bodů.');return;
+    }
+    s.snake.unshift(head);
+    if(eatFood){
+      s.points+=10;s.eaten++;s.level=1+Math.floor(s.eaten/4);beep(530,.06);
+      s.food=null;placeFood();
+      if(s.eaten%5===0&&!s.bonus)s.bonus=randomCell();
+    }else if(eatBonus){
+      s.points+=30;beep(810,.14);s.bonus=null;
+    }else s.snake.pop();
+    record();updateHud();
+  }
+  function updateSnake(dt){
+    s.timer+=dt;const delay=snakeDelays[snakeSpeed];
+    while(s.timer>=delay&&phase==='playing'){s.timer-=delay;snakeStep();}
+  }
+  function paintSnake(){
+    ctx.fillStyle='#3e291a';ctx.fillRect(0,0,W,H);
+    const Y=29;
+    for(let y=0;y<18;y++)for(let x=0;x<16;x++){
+      ctx.fillStyle=(x+y)%2?'#f3dfc3':'#eed4b1';ctx.fillRect(x*20,Y+y*20,20,20);
+    }
+    text('SBÍREJ 🧻   ·   VYHNI SE OCASU',160,14,11,'#ffe5af');
+    if(s.food)emoji('🧻',s.food.x*20+10,Y+s.food.y*20+10,18);
+    if(s.bonus)emoji('🚽',s.bonus.x*20+10,Y+s.bonus.y*20+10,20);
+    s.snake.slice().reverse().forEach((p,i)=>{
+      emoji('💩',p.x*20+10,Y+p.y*20+10,19);
+    });
+    rrect(0,389,W,31,0,'#3e291a');text('Délka hada: '+s.snake.length,160,403,12,'#ffe9bf');
+  }
+  function newInvaders(){
+    s={points:0,hp:3,level:1,px:160,shots:[],attacks:[],enemies:[],move:1,shotCD:0,enemyCD:1.4,delay:0};
+    spawnWave();
+  }
+  function spawnWave(){
+    s.enemies=[];s.shots=[];s.attacks=[];s.move=1;s.enemyCD=Math.max(.55,1.45-s.level*.04);s.delay=0;
+    if(s.level%3===0){s.enemies.push({x:160,y:80,hp:10+s.level*2,boss:true});return;}
+    const rows=Math.min(4,2+Math.floor(s.level/2));
+    for(let row=0;row<rows;row++)for(let col=0;col<6;col++){
+      s.enemies.push({x:47+col*45,y:68+row*41,hp:1,boss:false});
+    }
+  }
+  function fire(){
+    if(phase!=='playing'||s.shotCD>0)return;
+    s.shots.push({x:s.px,y:327});s.shotCD=.145;beep(550,.035);
+  }
+  function invadersDamage(){
+    s.hp--;beep(120,.16);updateHud();if(s.hp<=0)finish('Bobci obsadili celý záchod! Skóre: '+s.points+'.');
+  }
+  function updateInvaders(dt){
+    const movement=(rightDown?1:0)-(leftDown?1:0);
+    s.px=clamp(s.px+movement*210*dt,25,295);
+    s.shotCD=Math.max(0,s.shotCD-dt);
+    if(actionDown)fire();
+    if(s.delay>0){s.delay-=dt;if(s.delay<=0){s.level++;spawnWave();}return;}
+    const speed=(s.level%3===0?75:31)+s.level*7;
+    let edge=false;
+    for(const e of s.enemies){e.x+=s.move*speed*dt;if(e.x<24||e.x>296)edge=true;}
+    if(edge){s.move*=-1;for(const e of s.enemies){e.x=clamp(e.x,24,296);e.y+=13;}}
+    s.enemyCD-=dt;
+    if(s.enemyCD<=0&&s.enemies.length){
+      const e=s.enemies[randInt(s.enemies.length)];
+      s.attacks.push({x:e.x,y:e.y+17});
+      s.enemyCD=Math.max(.35,rnd(.85,1.5)-s.level*.035);
+    }
+    for(let i=s.shots.length-1;i>=0;i--){
+      const shot=s.shots[i];shot.y-=395*dt;
+      if(shot.y<0){s.shots.splice(i,1);continue;}
+      const hit=s.enemies.find(e=>Math.abs(e.x-shot.x)<(e.boss?32:18)&&Math.abs(e.y-shot.y)<(e.boss?30:18));
+      if(hit){
+        s.shots.splice(i,1);hit.hp--;beep(780,.05);
+        if(hit.hp<=0){s.enemies.splice(s.enemies.indexOf(hit),1);s.points+=hit.boss?500:25;record();updateHud();}
+      }
+    }
+    for(let i=s.attacks.length-1;i>=0;i--){
+      const bullet=s.attacks[i];bullet.y+=(140+s.level*7)*dt;
+      if(bullet.y>420){s.attacks.splice(i,1);continue;}
+      if(Math.abs(bullet.x-s.px)<21&&Math.abs(bullet.y-372)<20){s.attacks.splice(i,1);invadersDamage();if(phase!=='playing')return;}
+    }
+    for(let i=s.enemies.length-1;i>=0;i--){
+      if(s.enemies[i].y>=345){s.enemies.splice(i,1);invadersDamage();if(phase!=='playing')return;}
+    }
+    if(!s.enemies.length && s.delay===0){s.points+=75;record();updateHud();s.delay=1.1;beep(850,.18);}
+  }
+  function paintInvaders(){
+    const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#271c31');bg.addColorStop(1,'#614136');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<15;i++){
+      ctx.fillStyle='rgba(255,217,146,.1)';ctx.fillRect((i*69+11)%320,(i*91+5)%420,3,3);
+    }
+    rrect(0,394,320,26,0,'#2a170e');text('VLNA '+s.level+(s.level%3===0?'  •  BOSS':''),160,406,14,'#fcd774');
+    for(const e of s.enemies){
+      emoji(e.boss?'👾':'💩',e.x,e.y,e.boss?59:29);
+      if(e.boss){rrect(e.x-40,e.y-42,80,6,3,'#573626');rrect(e.x-40,e.y-42,80*(e.hp/(10+s.level*2)),6,3,'#ffd24b');}
+    }
+    for(const shot of s.shots){
+      rrect(shot.x-4,shot.y-11,8,19,4,'#7ee5ff');
+      rrect(shot.x-2,shot.y-7,4,6,2,'#e6ffff');
+    }
+    for(const b of s.attacks)emoji('💧',b.x,b.y,21);
+    // Výslovně záchodová štětka – vykreslená bez závislosti na emoji fontu.
+    // Ocelová rukojeť a husté bílé štětiny jsou nad držákem/toaletou.
+    ctx.save();ctx.translate(s.px,0);
+    rrect(-27,381,54,11,5,'#e0d8c4');
+    rrect(-21,368,42,20,9,'#f8f4e8');
+    rrect(-14,357,28,21,9,'#b6d5d8');
+    rrect(-4,342,8,29,3,'#cfe1e5');
+    rrect(-2,341,4,27,2,'#6a8fa0');
+    rrect(-15,330,30,21,8,'#f5f8ed');
+    for(let i=-12;i<=12;i+=4){rrect(i-1,328,3,20,2,i%8?'#91d0e1':'#ffffff');}
+    rrect(-12,341,24,6,3,'#e8faff');
+    ctx.restore();
+
+    if(s.delay>0){rrect(39,179,242,65,12,'#2a170ee8');text('VLNA HOTOVÁ!',160,210,23,'#ffd461');}
+  }
+  function newRacing(){
+    s={points:0,hp:3,lane:1,carX:160,objects:[],spawn:.7,boost:64,shield:0};
+  }
+  const laneX=[62,160,258];
+  function moveRace(d){if(phase!=='playing')return;s.lane=clamp(s.lane+d,0,2);beep(300,.035);}
+  function updateRacing(dt){
+    const turbo=actionDown&&s.boost>0;
+    const velocity=turbo?210:135;
+    s.boost=clamp(s.boost+(turbo?-40:8)*dt,0,100);
+    s.points+=dt*(turbo?22:12);
+    s.carX+=(laneX[s.lane]-s.carX)*Math.min(1,dt*15);
+    s.shield=Math.max(0,s.shield-dt);
+    s.spawn-=dt;
+    if(s.spawn<=0){
+      s.spawn=clamp(rnd(.5,.9)-s.points/2000,.37,.9);
+      const lane=randInt(3),kind=Math.random()<.27?'paper':Math.random()<.13?'charge':'obstacle';
+      s.objects.push({lane,y:-36,kind,used:false});
+    }
+    for(let i=s.objects.length-1;i>=0;i--){
+      const o=s.objects[i];o.y+=velocity*dt;
+      if(o.y>H+35){s.objects.splice(i,1);continue;}
+      if(!o.used&&o.y>338&&o.y<398&&o.lane===s.lane){
+        o.used=true;s.objects.splice(i,1);
+        if(o.kind==='paper') {s.points+=25;beep(620,.08);}
+        else if(o.kind==='charge'){s.boost=clamp(s.boost+38,0,100);beep(800,.09);}
+        else if(s.shield===0){s.hp--;s.shield=1;beep(150,.17);if(s.hp<=0){record();finish('Ujel jsi '+Math.floor(s.points)+' metrů.');return;}}
+      }
+    }
+    record();
+  }
+  function paintRacing(){
+    const b=ctx.createLinearGradient(0,0,0,H);b.addColorStop(0,'#34433d');b.addColorStop(1,'#142721');ctx.fillStyle=b;ctx.fillRect(0,0,W,H);
+    rrect(14,0,292,H,0,'#73644f');rrect(22,0,276,H,0,'#665743');
+    ctx.setLineDash([17,19]);ctx.lineWidth=2;ctx.strokeStyle='#dfcda263';
+    for(const x of [111,209]){ctx.beginPath();ctx.moveTo(x,(Math.floor(s.points*3)%36)-36);ctx.lineTo(x,H+36);ctx.stroke();}ctx.setLineDash([]);
+    rrect(18,0,6,H,0,'#403522');rrect(296,0,6,H,0,'#403522');
+    for(const o of s.objects)emoji(o.kind==='paper'?'🧻':o.kind==='charge'?'⚡':'🕳️',laneX[o.lane],o.y,33);
+    if(!(s.shield>0&&Math.floor(s.shield*12)%2===0))emoji('🚽',s.carX,370,50);
+    rrect(15,9,290,37,8,'#2a170ee3');
+    text('KANALIZAČNÍ GRAND PRIX',160,20,12,'#ffe1a3');
+    rrect(81,33,158,7,3,'#3c281b');rrect(81,33,158*s.boost/100,7,3,'#ffce2c');
+    rrect(79,397,162,21,7,'#2a170edf');text('⚡ TURBO '+Math.round(s.boost)+' %',160,408,12,'#ffe4ab');
+  }
+
+  // PRAŠŤ HO-VNO: žádné další časovače, celý postřehový režim běží ve společném RAF.
+  function newWhack(){
+    s={points:0,hp:3,time:45,target:-1,expires:0,spawn:.32,combo:0,pops:[],feedback:0};
+  }
+  const whackCells=Array.from({length:9},(_,i)=>({x:61+(i%3)*99,y:105+Math.floor(i/3)*105}));
+  function whackAt(x,y){
+    if(phase!=='playing'||game!=='whack')return;
+    const idx=whackCells.findIndex(p=>Math.hypot(x-p.x,y-p.y)<38);
+    if(idx===s.target){
+      s.points+=10; s.combo++;if(s.combo%5===0)s.points+=25;
+      s.pops.push({x,y,life:.6,good:true});s.target=-1;s.spawn=.1;
+      beep(550,.06);record();updateHud();
+    }else if(idx>=0){
+      s.combo=0;s.pops.push({x,y,life:.45,good:false});beep(175,.07);
+    }
+  }
+  function updateWhack(dt){
+    s.time-=dt;
+    if(s.time<=0){s.time=0;record();finish('Za 45 sekund jsi získal '+s.points+' bodů.');return;}
+    if(s.target>=0){s.expires-=dt;if(s.expires<=0){s.target=-1;s.spawn=.19;s.combo=0;}}
+    else{s.spawn-=dt;if(s.spawn<=0){s.target=randInt(9);s.expires=Math.max(.78,1.38-s.points*.0011);}}
+    for(let i=s.pops.length-1;i>=0;i--){s.pops[i].life-=dt;if(s.pops[i].life<=0)s.pops.splice(i,1);}
+  }
+  function paintWhack(){
+    rrect(0,0,W,H,0,'#f3dec1');
+    rrect(0,0,W,47,0,'#43281a');text('🪠 PRAŠŤ HO-VNO  •  '+Math.ceil(s.time)+' s',160,24,15,'#ffdf78');
+    for(let i=0;i<9;i++){
+      const p=whackCells[i];
+      rrect(p.x-42,p.y-37,84,79,15,'#c7a17a');
+      ctx.fillStyle='#39261d';ctx.beginPath();ctx.ellipse(p.x,p.y+10,34,18,0,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle='#8b674b';ctx.lineWidth=3;ctx.stroke();
+      if(s.target===i){emoji('💩',p.x,p.y-12,49);}
+    }
+    for(const p of s.pops){ctx.globalAlpha=Math.min(1,p.life*3);text(p.good?'PRÁSK!':'VEDLE!',p.x,p.y-41,14,p.good?'#287a3c':'#ac3d35');}
+    ctx.globalAlpha=1;
+    rrect(14,387,292,28,7,'#43281a');text('Klepej na bobky!  Kombo: '+s.combo,160,401,12,'#fce4a7');
+  }
+  // FLAPPY KÁKO: jedna dotyková akce, vyvážená gravitace a mezery.
+  function newFlappy(){
+    s={points:0,hp:1,y:185,vy:0,pipes:[],spawn:1.5,anim:0,started:false};
+  }
+  function flap(){
+    if(phase!=='playing'||game!=='flappy')return;
+    s.started=true;s.vy=-255;beep(520,.055);
+  }
+  function updateFlappy(dt){
+    s.anim+=dt;
+    if(!s.started)return;
+    s.vy=Math.min(420,s.vy+640*dt);
+    s.y+=s.vy*dt;
+    s.spawn-=dt;
+    if(s.spawn<=0){s.spawn=2.0;s.pipes.push({x:350,top:rnd(82,245),gap:145,scored:false});}
+    for(let i=s.pipes.length-1;i>=0;i--){
+      const p=s.pipes[i];p.x-=116*dt;
+      if(p.x<-58){s.pipes.splice(i,1);continue;}
+      if(!p.scored&&p.x+54<86){p.scored=true;s.points++;beep(745,.065);record();updateHud();}
+      if(86+14>p.x&&86-14<p.x+54&&(s.y-14<p.top||s.y+14>p.top+p.gap)){
+        finish('Proletěl jsi '+s.points+' mezer mezi trubkami.');return;
+      }
+    }
+    if(s.y<15||s.y>398){finish('Proletěl jsi '+s.points+' mezer mezi trubkami.');}
+  }
+  function paintFlappy(){
+    const sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#80d4e6');sky.addColorStop(1,'#e9e3b8');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<5;i++){ctx.fillStyle='#ffffff77';ctx.beginPath();ctx.ellipse((i*93+16-s.anim*14)%380,65+(i%3)*67,32,12,0,0,7);ctx.fill();}
+    for(const p of s.pipes){
+      rrect(p.x,0,54,p.top,5,'#3b9966');rrect(p.x-5,p.top-20,64,20,4,'#20794c');
+      rrect(p.x,p.top+p.gap,54,H-p.top-p.gap,5,'#3b9966');rrect(p.x-5,p.top+p.gap,64,20,4,'#20794c');
+      ctx.fillStyle='#9fdeb4';ctx.fillRect(p.x+9,0,6,Math.max(0,p.top-22));
+      ctx.fillRect(p.x+9,p.top+p.gap+20,6,Math.max(0,H-p.top-p.gap-20));
+    }
+    emoji('💩',86,s.y,39);
+    rrect(0,0,320,36,0,'#3a271bcd');text('PROLETĚNO: '+s.points,160,18,17,'#ffebbd');
+    if(!s.started){rrect(35,182,250,57,12,'#382519d9');text('KLEPNI A LEŤ!',160,209,21,'#ffdb76');}
+  }
+  // KÁKO RUN: plynulá časově nezávislá fyzika, omezené množství objektů.
+  function newRun(){
+    s={points:0,hp:3,y:338,vy:0,ground:338,obstacles:[],spawn:1.2,inv:0,anim:0,speed:145};
+  }
+  function jumpRun(){
+    if(phase!=='playing'||game!=='run')return;
+    if(s.y>=s.ground-1){s.vy=-375;beep(460,.07);}
+  }
+  function updateRun(dt){
+    s.anim+=dt;s.points+=dt*12;s.speed=Math.min(205,145+s.points*.07);
+    s.y+=s.vy*dt;s.vy+=900*dt;
+    if(s.y>=s.ground){s.y=s.ground;s.vy=0;}
+    s.inv=Math.max(0,s.inv-dt);
+    s.spawn-=dt;
+    if(s.spawn<=0){
+      s.spawn=rnd(1.35,2.1);
+      const bonus=Math.random()<.28;
+      s.obstacles.push({x:350,kind:bonus?'paper':Math.random()<.5?'plunger':'toilet',y:bonus?rnd(249,289):338,hit:false});
+    }
+    for(let i=s.obstacles.length-1;i>=0;i--){
+      const o=s.obstacles[i];o.x-=s.speed*dt;
+      if(o.x<-45){s.obstacles.splice(i,1);continue;}
+      if(!o.hit&&Math.abs(o.x-76)<25&&Math.abs(o.y-s.y)<(o.kind==='paper'?33:36)){
+        o.hit=true;s.obstacles.splice(i,1);
+        if(o.kind==='paper'){s.points+=35;beep(740,.06);}
+        else if(s.inv<=0){s.hp--;s.inv=1.2;beep(160,.13);if(s.hp<=0){record();finish('Uběhl jsi '+Math.floor(s.points)+' metrů.');return;}}
+      }
+    }
+    record();
+  }
+  function paintRun(){
+    const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#d9c8a9');bg.addColorStop(1,'#988466');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<6;i++){
+      const x=(i*80-s.anim*25)%440;ctx.fillStyle='#8b795b66';ctx.fillRect(x,90,4,265);
+      ctx.fillStyle='#f2dcc080';ctx.fillRect(x+4,92,52,8);
+    }
+    rrect(0,360,W,60,0,'#6b4c32');rrect(0,354,W,7,0,'#3b281c');
+    for(let i=0;i<8;i++)rrect(((i*62-s.anim*s.speed*.6)%400+400)%400-10,392,36,5,2,'#ad8760');
+    for(const o of s.obstacles){emoji(o.kind==='paper'?'🧻':o.kind==='plunger'?'🪠':'🚽',o.x,o.y,o.kind==='paper'?29:41);}
+    if(!(s.inv>0&&Math.floor(s.inv*10)%2===0))emoji('💩',76,s.y,43);
+    rrect(9,10,302,31,7,'#39251cdb');text('UBĚHNUTO '+Math.floor(s.points)+' m  •  ♥ '+s.hp,160,25,15,'#ffdda1');
+    text('SKÁKEJ PŘES PŘEKÁŽKY',160,70,13,'#5a3826');
+  }
+  // KÁKOTRIS – 10 x 18 buněk; klasická rotace, hard drop a řádky.
+  const tetrisShapes=[
+    [[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],
+    [[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]],
+    [[0,1,1],[1,1,0]],[[1,1,0],[0,1,1]]
+  ];
+  const tetrisColors=['#66d4d9','#e9ca54','#be87df','#db934c','#588dde','#6db76f','#d75e68'];
+  function newTetris(){
+    s={points:0,level:1,hp:1,lines:0,board:Array.from({length:18},()=>Array(10).fill(0)),piece:null,fall:0,queue:[],ended:false};
+    tetrisSpawn();
+  }
+  function tetrisNext(){
+    if(!s.queue.length){s.queue=[0,1,2,3,4,5,6].sort(()=>Math.random()-.5);}
+    return s.queue.pop();
+  }
+  function tetrisCollide(shape,x,y){
+    return shape.some((row,ry)=>row.some((cell,rx)=>cell && (x+rx<0||x+rx>=10||y+ry>=18||(y+ry>=0&&s.board[y+ry][x+rx]))));
+  }
+  function tetrisSpawn(){
+    const kind=tetrisNext();const shape=tetrisShapes[kind].map(r=>r.slice());
+    s.piece={kind,shape,x:Math.floor((10-shape[0].length)/2),y:0};
+    if(tetrisCollide(shape,s.piece.x,s.piece.y)){finish('Kostky dosáhly až ke stropu!');}
+  }
+  function tetrisMove(dx){
+    const p=s.piece;if(p&&!tetrisCollide(p.shape,p.x+dx,p.y)){p.x+=dx;beep(240,.025);}
+  }
+  function tetrisRotate(){
+    const p=s.piece;if(!p)return;
+    const rotated=p.shape[0].map((_,x)=>p.shape.map(row=>row[x]).reverse());
+    for(const dx of [0,-1,1,-2,2])if(!tetrisCollide(rotated,p.x+dx,p.y)){p.x+=dx;p.shape=rotated;beep(330,.035);break;}
+  }
+  function tetrisLock(){
+    const p=s.piece;
+    p.shape.forEach((row,y)=>row.forEach((v,x)=>{if(v&&p.y+y>=0)s.board[p.y+y][p.x+x]=p.kind+1;}));
+    const remaining=s.board.filter(row=>!row.every(v=>v!==0));
+    const cleared=18-remaining.length;
+    while(remaining.length<18)remaining.unshift(Array(10).fill(0));
+    s.board=remaining;
+    if(cleared){s.points+=[0,100,300,500,800][cleared]*s.level;s.lines+=cleared;s.level=1+Math.floor(s.lines/8);record();beep(700,.12);}
+    s.fall=0;tetrisSpawn();updateHud();
+  }
+  function tetrisStep(){
+    const p=s.piece;if(!p||phase!=='playing')return;
+    if(tetrisCollide(p.shape,p.x,p.y+1))tetrisLock();else p.y++;
+  }
+  function tetrisHardDrop(){
+    if(!s.piece)return;
+    let moved=0;while(!tetrisCollide(s.piece.shape,s.piece.x,s.piece.y+1)){s.piece.y++;moved++;}
+    s.points+=moved*2;record();tetrisLock();beep(520,.06);
+  }
+  function updateTetris(dt){
+    s.fall+=dt;
+    const delay=Math.max(.12,.62-(s.level-1)*.052);
+    if(s.fall>=delay){s.fall=0;tetrisStep();}
+  }
+  function paintTetris(){
+    rrect(0,0,W,H,0,'#ead2af');
+    rrect(0,0,W,32,0,'#4a2c1d');
+    text('💩  KÁKOTRIS   ·   ŘADY '+s.lines,160,16,13,'#ffe6ad');
+    const ox=12,oy=38,c=20;
+    rrect(8,35,207,367,8,'#26170f');
+    for(let y=0;y<18;y++)for(let x=0;x<10;x++){
+      const color=s.board[y][x] ? tetrisColors[s.board[y][x]-1] : (x+y)%2?'#3d2b21':'#37271e';
+      rrect(ox+x*c,oy+y*c,19,19,3,color);
+      if(s.board[y][x]){rrect(ox+x*c+3,oy+y*c+2,11,4,2,'#ffffff5e');text('•',ox+x*c+10,oy+y*c+11,11,'#38221f');}
+    }
+    const p=s.piece;
+    if(p) p.shape.forEach((row,y)=>row.forEach((v,x)=>{
+      if(!v||p.y+y<0)return;
+      const px=ox+(p.x+x)*c,py=oy+(p.y+y)*c;
+      rrect(px,py,19,19,3,tetrisColors[p.kind]);rrect(px+3,py+2,11,4,2,'#ffffff6b');
+      text('•',px+10,py+11,11,'#38221f');
+    }));
+    rrect(225,35,87,100,9,'#4a2c1d');text('DALŠÍ',268,52,11,'#ffe5af');
+    const nxt=s.queue.length?s.queue[s.queue.length-1]:0;
+    const shape=tetrisShapes[nxt];const bs=17;
+    shape.forEach((row,y)=>row.forEach((v,x)=>{if(v)rrect(268-shape[0].length*bs/2+x*bs,76+y*bs,bs-2,bs-2,3,tetrisColors[nxt]);}));
+    rrect(225,146,87,108,9,'#fff4dc');text('SKÓRE',268,164,12,'#7d5946');
+    text(String(Math.floor(s.points)),268,192,23,'#3c2619');text('LEVEL '+s.level,268,226,12,'#805435');
+    rrect(225,265,87,136,9,'#4a2c1d');text('OVLÁDÁNÍ',268,288,10,'#ffe5af');
+    text('↑ OTOČ',268,314,12,'#fff0cf');text('← →',268,337,15,'#fff0cf');text('↓ POLOŽ',268,363,11,'#fff0cf');
+  }
+
+  // KÁKO BREAKER – reflexní fyzika pálky a míčku, 3 životy.
+  function breakerBricks(level){
+    const blocks=[];
+    for(let row=0;row<Math.min(6,3+level);row++)for(let col=0;col<8;col++)
+      blocks.push({x:12+col*37.5,y:58+row*26,hp:1+(level>=3 && row<2?1:0)});
+    return blocks;
+  }
+  function newBreaker(){
+    s={points:0,hp:3,level:1,paddle:160,ball:{x:160,y:352,vx:118,vy:-175},launched:false,bricks:breakerBricks(1)};
+  }
+  function breakerLaunch(){
+    if(!s.launched){s.launched=true;s.ball.vx=(Math.random()<.5?-1:1)*115;s.ball.vy=-185;beep(620,.07);}
+  }
+  function updateBreaker(dt){
+    s.paddle=clamp(s.paddle+((rightDown?1:0)-(leftDown?1:0))*285*dt,40,280);
+    const b=s.ball;
+    if(!s.launched){b.x=s.paddle;b.y=357;return;}
+    // Omezení subkroků minimalizuje průlety tenkými cihlami.
+    const steps=3,step=dt/steps;
+    for(let n=0;n<steps;n++){
+      b.x+=b.vx*step;b.y+=b.vy*step;
+      if(b.x<9){b.x=9;b.vx=Math.abs(b.vx);}if(b.x>311){b.x=311;b.vx=-Math.abs(b.vx);}
+      if(b.y<34){b.y=34;b.vy=Math.abs(b.vy);}
+      if(b.vy>0&&b.y>=372&&b.y<=386&&Math.abs(b.x-s.paddle)<43){
+        b.y=372;b.vy=-Math.abs(b.vy);b.vx=clamp((b.x-s.paddle)*4.9,-210,210);beep(350,.035);
+      }
+      if(b.y>418){s.hp--;updateHud();beep(140,.14);
+        if(s.hp<=0){finish('Míček skončil v odpadu!');return;}
+        s.launched=false;b.x=s.paddle;b.y=357;break;
+      }
+      const hit=s.bricks.find(z=>b.x+6>z.x&&b.x-6<z.x+33&&b.y+6>z.y&&b.y-6<z.y+20);
+      if(hit){b.vy*=-1;hit.hp--;beep(520,.036);
+        if(hit.hp<=0){s.bricks.splice(s.bricks.indexOf(hit),1);s.points+=10*s.level;record();}
+        break;
+      }
+    }
+    if(!s.bricks.length){s.level++;s.points+=100;record();s.bricks=breakerBricks(s.level);s.launched=false;updateHud();}
+  }
+  function paintBreaker(){
+    rrect(0,0,W,H,0,'#332014');
+    rrect(5,5,310,410,14,'#3c2416');
+    rrect(8,8,304,31,7,'#573923');text('🧻  KÁKO BREAKER  ·  KOLO '+s.level,160,23,13,'#ffe5a4');
+    for(let i=0;i<17;i++){ctx.fillStyle='#ffe4a60d';ctx.beginPath();ctx.arc((i*57+14)%W,(i*91+70)%H,16,0,Math.PI*2);ctx.fill();}
+    for(const brick of s.bricks){
+      rrect(brick.x,brick.y,33,20,4,brick.hp>1?'#dc9164':'#f9c83d');
+      rrect(brick.x+2,brick.y+2,29,5,2,'#ffffff56');
+      text(brick.hp>1?'🚽':'💩',brick.x+16,brick.y+12,13,'#59301b');
+    }
+    rrect(s.paddle-41,376,82,13,7,'#db9c4c');rrect(s.paddle-32,376,64,7,4,'#fff0bb');
+    ctx.fillStyle='#fbfff8';ctx.beginPath();ctx.arc(s.ball.x,s.ball.y,7,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#ecd3a4';ctx.lineWidth=2;ctx.stroke();
+    rrect(9,394,302,23,6,'#5d3b24');text('❤️ '+s.hp+'     ·     KOSTEK '+s.bricks.length,160,406,12,'#ffeaba');
+    if(!s.launched){rrect(38,238,244,52,12,'#2b170ee9');text('STISKNI ODPAL!',160,264,20,'#ffcf53');}
+  }
+
+  function initState(){
+    if(game==='snake')newSnake();else if(game==='invaders')newInvaders();else if(game==='racing')newRacing();
+    else if(game==='whack')newWhack();else if(game==='flappy')newFlappy();else if(game==='run')newRun();
+    else if(game==='tetris')newTetris();else if(game==='breaker')newBreaker();
+  }
+  function update(dt){
+    if(phase!=='playing'||!s)return;
+    if(game==='snake')updateSnake(dt);
+    else if(game==='invaders')updateInvaders(dt);
+    else if(game==='racing')updateRacing(dt);
+    else if(game==='whack')updateWhack(dt);
+    else if(game==='flappy')updateFlappy(dt);
+    else if(game==='run')updateRun(dt);
+    else if(game==='tetris')updateTetris(dt);else if(game==='breaker')updateBreaker(dt);
+  }
+  function draw(){
+    if(!game||!s)return;
+    if(game==='snake')paintSnake();else if(game==='invaders')paintInvaders();else if(game==='racing')paintRacing();
+    else if(game==='whack')paintWhack();else if(game==='flappy')paintFlappy();else if(game==='run')paintRun();
+    else if(game==='tetris')paintTetris();else if(game==='breaker')paintBreaker();
+  }
+  // Jediný requestAnimationFrame běží POUZE na otevřené a viditelné hře.
+  let arcadeFrameId=0;
+  function stopArcadeFrame(){
+    if(arcadeFrameId)cancelAnimationFrame(arcadeFrameId);
+    arcadeFrameId=0;prev=0;
+  }
+  function startArcadeFrame(){
+    if(arcadeFrameId || !game || document.hidden || $('arcadeGame').hidden || !$('gamesScreen').classList.contains('active'))return;
+    prev=0;lastRender=0;
+    arcadeFrameId=requestAnimationFrame(render);
+  }
+  function render(t){
+    arcadeFrameId=0;
+    if(!game || document.hidden || $('arcadeGame').hidden || !$('gamesScreen').classList.contains('active')){
+      prev=0;return;
+    }
+    // Nabídka, pauza i konec hry jsou statické: vykreslit jednou, dál neběží rAF.
+    if(phase==='playing')arcadeFrameId=requestAnimationFrame(render);
+    if(phase==='playing' && t-lastRender<32)return; // 12 fps potrubí; ostatní max. 30 fps
+    lastRender=t;
+    const dt=Math.min(prev?(t-prev)/1000:0,.065);prev=t;
+    update(dt);draw();
+    if(t-lastHudDraw>160){updateHud();lastHudDraw=t;}
+  }
+  function actionPress(k,down){
+    if(!game||phase!=='playing')return;
+    if(game==='snake'){if(down&&k!=='action')snakeDirection(k);return;}
+    if(game==='tetris'){if(down){if(k==='left')tetrisMove(-1);else if(k==='right')tetrisMove(1);else if(k==='up')tetrisRotate();else if(k==='down')tetrisHardDrop();}return;}
+    if(game==='breaker'){if(k==='left')leftDown=down;else if(k==='right')rightDown=down;else if(k==='action'&&down)breakerLaunch();return;}
+    if(game==='flappy'){if(down&&k==='action')flap();return;}
+    if(game==='run'){if(down&&k==='action')jumpRun();return;}
+    if(game==='whack')return;
+    if(game==='racing'){
+      if(k==='action')actionDown=down;
+      else if(down)moveRace(k==='left'?-1:1);
+      return;
+    }
+    if(k==='left')leftDown=down;
+    else if(k==='right')rightDown=down;
+    else if(k==='action'){actionDown=down;if(down)fire();}
+  }
+  // Blokujeme nativní výběr textu, iOS callout, dlouhé podržení a drag jen ve hrách.
+  const arcadeScreen=$('gamesScreen');
+  const avoidNativeTouch=(e)=>{
+    if(document.body.classList.contains('arcade-game-active')) e.preventDefault();
+  };
+  arcadeScreen.addEventListener('contextmenu',avoidNativeTouch);
+  arcadeScreen.addEventListener('selectstart',avoidNativeTouch);
+  arcadeScreen.addEventListener('dragstart',avoidNativeTouch);
+  document.addEventListener('selectionchange',()=>{
+    if(!document.body.classList.contains('arcade-game-active'))return;
+    const selection=window.getSelection();
+    if(selection && !selection.isCollapsed && arcadeScreen.contains(selection.anchorNode)){
+      selection.removeAllRanges();
+    }
+  });
+  document.querySelectorAll('#gamesScreen [data-arcade-control]').forEach(button=>{
+    const k=button.dataset.arcadeControl;
+    // Při držení TURBO/PALBA/šipek zrušíme výchozí dotykové chování Safari.
+    button.addEventListener('touchstart',e=>e.preventDefault(),{passive:false});
+    button.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+    button.addEventListener('pointerdown',e=>{
+      e.preventDefault();button.classList.add('pressed');
+      try{button.setPointerCapture(e.pointerId);}catch(err){}
+      actionPress(k,true);
+    });
+    for(const ev of ['pointerup','pointercancel','lostpointercapture']){
+      button.addEventListener(ev,()=>{button.classList.remove('pressed');actionPress(k,false);});
+    }
+  });
+  canvas.addEventListener('pointerdown',e=>{
+    e.preventDefault();
+    if(phase!=='playing')return;
+    const rect=canvas.getBoundingClientRect();
+    pointerStart={x:e.clientX,y:e.clientY};
+    if(game==='whack'){whackAt((e.clientX-rect.left)/rect.width*W,(e.clientY-rect.top)/rect.height*H);}
+    if(game==='flappy')flap();
+    if(game==='run')jumpRun();
+    if(game==='breaker'){s.paddle=clamp((e.clientX-rect.left)/rect.width*W,40,280);breakerLaunch();}
+    if(game==='invaders'){
+      s.px=clamp((e.clientX-rect.left)/rect.width*W,25,295);fire();
+    }
+    try{canvas.setPointerCapture(e.pointerId);}catch(err){}
+  });
+  canvas.addEventListener('pointermove',e=>{
+    if(phase==='playing'&&game==='breaker'&&pointerStart){const r=canvas.getBoundingClientRect();s.paddle=clamp((e.clientX-r.left)/r.width*W,40,280);}
+    if(phase==='playing'&&game==='invaders'&&pointerStart){
+      const r=canvas.getBoundingClientRect();s.px=clamp((e.clientX-r.left)/r.width*W,25,295);
+    }
+  });
+  canvas.addEventListener('pointerup',e=>{
+    if(!pointerStart)return;
+    const dx=e.clientX-pointerStart.x,dy=e.clientY-pointerStart.y;
+    if(Math.max(Math.abs(dx),Math.abs(dy))>22){
+      if(game==='snake')snakeDirection(Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up');
+      if(game==='racing'&&Math.abs(dx)>24)moveRace(dx>0?1:-1);
+      if(game==='tetris'){if(Math.abs(dx)>Math.abs(dy))tetrisMove(dx>0?1:-1);else if(dy<0)tetrisRotate();else tetrisHardDrop();}
+    }
+    pointerStart=null;
+  });
+  canvas.addEventListener('pointercancel',()=>pointerStart=null);
+  const keyboardMap={ArrowUp:'up',KeyW:'up',ArrowDown:'down',KeyS:'down',ArrowLeft:'left',KeyA:'left',ArrowRight:'right',KeyD:'right',Space:'action'};
+  document.addEventListener('keydown',e=>{
+    if(!game||!$('gamesScreen').classList.contains('active'))return;
+    if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+    const key=keyboardMap[e.code];
+    if(key){e.preventDefault();if(!e.repeat)actionPress(key,true);}
+    if(e.code==='KeyP'&&!e.repeat){e.preventDefault();pause();}
+    if(e.code==='KeyR'&&!e.repeat){e.preventDefault();start();}
+    if(e.code==='Escape'&&!e.repeat){e.preventDefault();back();}
+  });
+  document.addEventListener('keyup',e=>{
+    const key=keyboardMap[e.code];if(key)actionPress(key,false);
+  });
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){persistBest();if(phase==='playing')pause();stopArcadeFrame();}
+    else {startArcadeFrame();updateKakoTime();}
+  });
+  $('arcadeInviteYes').addEventListener('click',()=>dismissInvite(true));
+  $('arcadeInviteNo').addEventListener('click',()=>dismissInvite(false));
+  document.addEventListener('keydown',e=>{
+    if(e.code==='Escape'&&!$('arcadeInvite').hidden){e.preventDefault();dismissInvite(false);}
+  });
+  window.addEventListener('resize',()=>{if(game)fitCanvas();});
+  if(window.ResizeObserver){
+    new ResizeObserver(()=>{if(game)fitCanvas();}).observe($('arcadeTouchArea'));
+  }
+  $('arcadeShareResult').addEventListener('click',shareArcadeResult);
+  $('arcadeOverlayButton').addEventListener('click',()=>{if(typeof modalFn==='function')modalFn();});
+  $('arcadePause').addEventListener('click',pause);
+  $('arcadeRestart').addEventListener('click',()=>{
+    if(!game)return;
+    if(phase==='playing'){phase='paused';clearHeld();stopArcadeFrame();}
+    showModal('↻','NOVÁ HRA?','Předchozí pokus skončí. Můžeš zvolit rychlost a spustit novou hru.','NOVÁ HRA →',start);
+  });
+  $('arcadeSound').addEventListener('click',()=>{
+    sound=!sound;$('arcadeSound').textContent=sound?'🔊 Zvuk':'🔇 Zvuk';
+    try{localStorage.setItem('kakoArcadeSound',String(sound));}catch(e){}
+    beep(650,.07);
+  });
+  $('arcadeSound').textContent=sound?'🔊 Zvuk':'🔇 Zvuk';
+  const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+  // KÁKO 5.7 – reorder games with an accessible drag handle, persisted only on drop.
+  const arcadeOrderKey='kakoArcadeGameOrderV1';
+  const allowedGames=['snake','invaders','racing','whack','flappy','run','tetris','breaker'];
+  const arcadeCards=$('arcadeCards');
+  let sorting=false, dragRow=null, dragPointer=null, dragMoved=false;
+  const itemFor=id=>arcadeCards.querySelector('.arcade-sort-row[data-game="'+id+'"]');
+  for(const card of Array.from(arcadeCards.querySelectorAll(':scope > .arcade-card'))){
+    const found=card.getAttribute('onclick').match(/open\('([^']+)'\)/);
+    if(!found || !allowedGames.includes(found[1]))continue;
+    const row=document.createElement('div');
+    row.className='arcade-sort-row';row.dataset.game=found[1];
+    const handle=document.createElement('button');
+    handle.type='button';handle.className='arcade-sort-handle';
+    handle.setAttribute('aria-label','Podrž a přesuň '+card.querySelector('.arcade-card-name').textContent);
+    handle.textContent='☰';
+    arcadeCards.insertBefore(row,card);
+    row.appendChild(card);row.appendChild(handle);
+  }
+  function loadGameOrder(){
+    try{
+      const saved=JSON.parse(localStorage.getItem(arcadeOrderKey));
+      if(Array.isArray(saved)){
+        for(const id of saved){if(allowedGames.includes(id) && itemFor(id))arcadeCards.appendChild(itemFor(id));}
+      }
+    }catch(e){}
+  }
+  function persistGameOrder(){
+    const order=Array.from(arcadeCards.children).map(row=>row.dataset.game).filter(id=>allowedGames.includes(id));
+    try{localStorage.setItem(arcadeOrderKey,JSON.stringify(order));}catch(e){}
+  }
+  function setSorting(enabled){
+    sorting=!!enabled;
+    dragRow=null;dragPointer=null;
+    $('arcadeLibrary').classList.toggle('arcade-sorting',sorting);
+    $('arcadeSortToggle').textContent=sorting?'✓ HOTOVO':'↕ SEŘADIT HRY';
+    $('arcadeSortToggle').setAttribute('aria-pressed',String(sorting));
+    $('arcadeSortHint').textContent=sorting?'Podrž ☰ a přetáhni hru na nové místo.':'Pořadí her si můžeš upravit podle sebe.';
+    if(!sorting)persistGameOrder();
+  }
+  $('arcadeSortToggle').addEventListener('click',()=>setSorting(!sorting));
+  arcadeCards.addEventListener('click',e=>{
+    if(sorting && e.target.closest('.arcade-card')){e.preventDefault();e.stopPropagation();}
+  },true);
+  let dragStartY=0,dropBefore=null;
+  arcadeCards.addEventListener('pointerdown',e=>{
+    const handle=e.target.closest('.arcade-sort-handle');
+    if(!sorting || !handle || dragRow)return;
+    e.preventDefault();
+    dragRow=handle.closest('.arcade-sort-row');dragPointer=e.pointerId;
+    dragStartY=e.clientY;dropBefore=null;
+    dragRow.classList.add('arcade-dragging');
+    try{handle.setPointerCapture(e.pointerId);}catch(err){}
+  });
+  arcadeCards.addEventListener('pointermove',e=>{
+    if(!dragRow || e.pointerId!==dragPointer)return;
+    e.preventDefault();
+    const dy=e.clientY-dragStartY;
+    dragRow.style.transform='translateY('+dy+'px)';
+    const rows=Array.from(arcadeCards.children).filter(row=>row!==dragRow);
+    dropBefore=rows.find(row=>e.clientY < row.getBoundingClientRect().top+row.getBoundingClientRect().height/2) || null;
+    for(const row of rows)row.classList.toggle('arcade-drop-target',row===dropBefore);
+    // Touch scrolling is disabled on the handle; scroll the list near the screen edges.
+    if(e.clientY<90)window.scrollBy(0,-8);
+    else if(e.clientY>window.innerHeight-90)window.scrollBy(0,8);
+  },{passive:false});
+  function endDrag(e){
+    if(!dragRow || (e && e.pointerId!==dragPointer))return;
+    const moving=dragRow;
+    moving.style.transform='';moving.classList.remove('arcade-dragging');
+    for(const row of arcadeCards.children)row.classList.remove('arcade-drop-target');
+    dragRow=null;dragPointer=null;
+    // Do not alter the DOM during pointer capture: Safari otherwise cancels dragging.
+    if(dropBefore && dropBefore!==moving)arcadeCards.insertBefore(moving,dropBefore);
+    else if(!dropBefore)arcadeCards.appendChild(moving);
+    dropBefore=null;
+    persistGameOrder();
+  }
+  arcadeCards.addEventListener('pointerup',endDrag);
+  arcadeCards.addEventListener('pointercancel',endDrag);
+  arcadeCards.addEventListener('lostpointercapture',endDrag);
+  loadGameOrder();
+  window.KAKO_ARCADE={open,back,start,pause,onScreenChange,invite};
+  updateCards();updateKakoTime();setInterval(updateKakoTime,1000);
+})();
+
+</script>
+
+<script>
+/* KÁKO 5.5: iOS Safari nesmí označovat text ani otevírat Kopírovat.
+   Platí pro celou aplikaci kromě skutečně editovatelných polí. */
+(function(){
+  'use strict';
+  function editable(target){
+    const el=target && (target.nodeType===1?target:target.parentElement);
+    return !!(el && el.closest && el.closest('input,textarea,select,[contenteditable="true"]'));
+  }
+  for(const type of ['selectstart','contextmenu','dragstart']){
+    document.addEventListener(type,function(event){
+      if(!editable(event.target))event.preventDefault();
+    },{capture:true});
+  }
+  document.addEventListener('selectionchange',function(){
+    const selection=window.getSelection && window.getSelection();
+    if(selection && !selection.isCollapsed && !editable(selection.anchorNode))selection.removeAllRanges();
+  },{passive:true});
+})();
+</script>
+
+</body>
+</html>
+ charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#2a170e">
 <meta name="apple-mobile-web-app-capable" content="yes">
