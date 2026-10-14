@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#2a170e">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.8 – OSM HER</title>
+<title>KÁKO 6.8.1 – OSM HER</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -40,9 +40,20 @@ html,body{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--brown);
+  background:var(--cream);
   color:var(--brown);
   -webkit-text-size-adjust:100%;
+}
+
+/* KÁKO 6.8.1 – iPhone Safari: pevná čistá horní plocha bez rozmazaného pásu */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;left:0;right:0;
+  height:calc(env(safe-area-inset-top,0px) + 18px);
+  background:var(--cream);
+  z-index:2;
+  pointer-events:none;
 }
 
 button,input,select{
@@ -60,6 +71,8 @@ button{
 
 .screen.active{
   display:block;
+  position:relative;
+  z-index:3;
 }
 
 .app{
@@ -1911,7 +1924,16 @@ body.arcade-game-active #arcadeCanvas{touch-action:none;}
 body.arcade-game-active { background:var(--cream); }
 /* ODPAL pouze u BREAKERU ve středu; pro ostatní hry žádná změna. */
 body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls {
-  grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr);
+  grid-template-columns:minmax(0,1.35fr) minmax(0,.84fr) minmax(0,1.35fr);
+  gap:12px;
+}
+body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls .arcade-dir {
+  min-width:0;
+}
+body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls .arcade-action {
+  min-width:0;
+  padding-inline:8px;
+  font-size:clamp(13px,3.9vw,15px);
 }
 #gamesScreen #arcadeSideControls.breaker-controls .arcade-left { grid-column:1; grid-row:1; }
 #gamesScreen #arcadeSideControls.breaker-controls .arcade-action { grid-column:2; grid-row:1; }
@@ -7337,7 +7359,7 @@ restoreKako();
     s.stuck=true;s.ball={x:s.paddle,y:355,vx:120,vy:-230};
   }
   function newBreaker(){
-    s={points:0,hp:3,level:1,paddle:160,ball:null,stuck:true,bricks:[],flash:0};
+    s={points:0,hp:3,level:1,paddle:160,ball:null,stuck:true,bricks:[]};
     breakerBricks();breakerResetBall();
   }
   function launchBreaker(){
@@ -7362,7 +7384,6 @@ restoreKako();
       if(m===left||m===right)ball.vx*=-1;else ball.vy*=-1;
       s.bricks.splice(i,1);s.points+=10+(4-b.row)*5;
       record();beep(600+b.row*65,.035);
-      s.flash=.12;
       if(s.bricks.length===0){
         s.points+=150*s.level;s.level++;
         breakerBricks();breakerResetBall();
@@ -7374,7 +7395,6 @@ restoreKako();
   function updateBreaker(dt){
     if(leftDown)s.paddle=clamp(s.paddle-270*dt,42,278);
     if(rightDown)s.paddle=clamp(s.paddle+270*dt,42,278);
-    s.flash=Math.max(0,s.flash-dt);
     if(s.stuck){s.ball.x=s.paddle;return;}
     const b=s.ball;
     const steps=Math.max(1,Math.ceil(dt/.009));
@@ -7414,7 +7434,6 @@ restoreKako();
       rrect(b.x+4,b.y+3,b.w-8,3,2,'#fff5c18c');
       emoji((b.col+b.row)%6===0?'🧻':'💩',b.x+b.w/2,b.y+b.h/2+1,18);
     }
-    if(s.flash>0){ctx.fillStyle='#ffe38c22';ctx.fillRect(0,0,W,H);}
     rrect(0,394,W,26,0,'#26140e');
     rrect(s.paddle-43,367,86,13,6,'#9d541f');
     rrect(s.paddle-40,367,80,9,5,'#e9b068');
