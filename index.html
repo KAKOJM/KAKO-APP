@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.9.3 – OSM HER</title>
+<title>KÁKO 6.9.5 – OSM HER</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1040,6 +1040,55 @@ button{
 /* KÁKO 6.9.3 – čitelné stupně rychlosti FLAPPY, stejné ovládací panely jako had. */
 #arcadeFlappySpeed .arcade-speed-options button{font-size:12px;line-height:1.25;padding:7px 2px;}
 #arcadeFlappySpeed .arcade-speed-options button small{font-size:9px;letter-spacing:.2px;font-weight:900;}
+/* KÁKO 6.9.5 – FLAPPY: volba rychlosti sama spouští hru. */
+.arcade-overlay.flappy-speed-first .arcade-overlay-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  width:100%;
+  max-width:330px;
+}
+.arcade-overlay.flappy-speed-first #arcadeOverlayIcon,
+.arcade-overlay.flappy-speed-first #arcadeOverlayTitle{display:none!important;}
+.arcade-overlay.flappy-speed-first #arcadeFlappySpeed{
+  order:0;
+  display:block;
+  margin:0 0 12px;
+  padding:14px 10px 13px;
+  border:2px solid #9d7851;
+  border-radius:17px;
+  background:#432c1e;
+}
+.arcade-overlay.flappy-speed-first #arcadeFlappySpeed .arcade-speed-title{
+  color:#ffdf97;
+  font-size:clamp(13px,3.6vw,16px);
+  letter-spacing:.25px;
+  margin:0 0 12px;
+}
+.arcade-overlay.flappy-speed-first #arcadeFlappySpeed .arcade-speed-options{gap:7px;}
+.arcade-overlay.flappy-speed-first #arcadeFlappySpeed .arcade-speed-options button{
+  min-height:60px;
+  font-size:clamp(11px,3.2vw,14px);
+  line-height:1.2;
+  padding:8px 2px;
+}
+.arcade-overlay.flappy-speed-first #arcadeFlappySpeed .arcade-speed-options button small{
+  display:inline-block;
+  margin-top:4px;
+  font-size:clamp(9px,2.6vw,11px);
+}
+/* KÁKO 6.9.5 – FLAPPY se spustí přímo volbou rychlosti; žádné druhé HRÁT. */
+.arcade-overlay.flappy-speed-first #arcadeOverlayButton{display:none!important;}
+.arcade-overlay.flappy-speed-first #arcadeOverlayText{
+  order:2;
+  margin:12px 0 0;
+  color:#f2dfcb;
+  font-size:12px;
+  line-height:1.4;
+}
+.arcade-overlay.flappy-speed-first #arcadeSnakeSpeed,
+.arcade-overlay.flappy-speed-first #arcadeShareResult,
+.arcade-overlay.flappy-speed-first #arcadeShareStatus{order:3;}
 /* KÁKO 5.9: Sdílení pouze po dokončení hry, žádné herní ovládání navíc. */
 .arcade-share-result{display:block;width:100%;min-height:43px;margin:0 0 9px;padding:10px 9px;border:2px solid #ffe0a0;border-radius:12px;background:#f6e6c9;color:#382316;font-size:13px;font-weight:900;touch-action:manipulation;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;}
 .arcade-share-result[hidden],.arcade-share-status[hidden]{display:none!important;}
@@ -2647,7 +2696,7 @@ body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls .arcad
 
 <div class="settings-card about-app" aria-label="O aplikaci">
   <h3>O aplikaci</h3>
-  <p><strong>KÁKO 6.9.3</strong> · Časomíra, cíle, statistiky a osm her</p>
+  <p><strong>KÁKO 6.9.5</strong> · Časomíra, cíle, statistiky a osm her</p>
   <p>Autor: Milan Kolařík a Jakub Kotásek</p>
 </div>
 
@@ -6757,13 +6806,16 @@ restoreKako();
     const canChooseSpeed=(heading===title[game]||heading==='NOVÁ HRA?');
     $('arcadeSnakeSpeed').hidden=!(game==='snake'&&canChooseSpeed);
     $('arcadeFlappySpeed').hidden=!(game==='flappy'&&canChooseSpeed);
+    // Flappy: výběr rychlosti sám spustí hru; ostatní modal okna beze změny.
+    $('arcadeOverlay').classList.toggle('flappy-speed-first',game==='flappy'&&canChooseSpeed);
+    if(game==='flappy'&&canChooseSpeed)$('arcadeOverlayText').textContent='Klepni na rychlost a hra hned začne.';
     $('arcadeShareResult').hidden=true;
     $('arcadeShareStatus').hidden=true;
     $('arcadeShareStatus').textContent='';
     $('arcadeOverlay').hidden=false;
     modalFn=fn;
   }
-  function hideModal(){$('arcadeOverlay').hidden=true;}
+  function hideModal(){const overlay=$('arcadeOverlay');overlay.hidden=true;overlay.classList.remove('flappy-speed-first');}
   function setSnakeSpeed(speed){
     if(!snakeDelays[speed])return;
     snakeSpeed=speed;
@@ -6785,7 +6837,11 @@ restoreKako();
     try{localStorage.setItem('kakoArcadeFlappySpeed',speed);}catch(e){}
   }
   document.querySelectorAll('[data-flappy-speed]').forEach(button=>{
-    button.addEventListener('click',()=>setFlappySpeed(button.dataset.flappySpeed));
+    button.addEventListener('click',()=>{
+      if(game!=='flappy'||$('arcadeFlappySpeed').hidden||$('arcadeOverlay').hidden)return;
+      setFlappySpeed(button.dataset.flappySpeed);
+      start(); // Jeden dotyk: zvol rychlost a okamžitě hraj.
+    });
   });
   setFlappySpeed(flappySpeed);
   function fitCanvas(){
