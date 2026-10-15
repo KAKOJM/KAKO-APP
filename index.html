@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.9.2 – OSM HER</title>
+<title>KÁKO 6.9.3 – OSM HER</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -1037,6 +1037,9 @@ button{
 .arcade-overlay-title{font-size:27px;color:var(--yellow);font-weight:900;margin:10px 0;line-height:1.12;}
 .arcade-overlay-text{font-size:13px;line-height:1.55;color:#e0cfc1;margin:10px 0 18px;}
 .arcade-overlay-button{width:100%;padding:14px 12px;border:0;border-radius:14px;background:var(--yellow);color:var(--brown);font-size:16px;font-weight:900;}
+/* KÁKO 6.9.3 – čitelné stupně rychlosti FLAPPY, stejné ovládací panely jako had. */
+#arcadeFlappySpeed .arcade-speed-options button{font-size:12px;line-height:1.25;padding:7px 2px;}
+#arcadeFlappySpeed .arcade-speed-options button small{font-size:9px;letter-spacing:.2px;font-weight:900;}
 /* KÁKO 5.9: Sdílení pouze po dokončení hry, žádné herní ovládání navíc. */
 .arcade-share-result{display:block;width:100%;min-height:43px;margin:0 0 9px;padding:10px 9px;border:2px solid #ffe0a0;border-radius:12px;background:#f6e6c9;color:#382316;font-size:13px;font-weight:900;touch-action:manipulation;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;}
 .arcade-share-result[hidden],.arcade-share-status[hidden]{display:none!important;}
@@ -2644,7 +2647,7 @@ body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls .arcad
 
 <div class="settings-card about-app" aria-label="O aplikaci">
   <h3>O aplikaci</h3>
-  <p><strong>KÁKO 6.9.2</strong> · Časomíra, cíle, statistiky a osm her</p>
+  <p><strong>KÁKO 6.9.3</strong> · Časomíra, cíle, statistiky a osm her</p>
   <p>Autor: Milan Kolařík a Jakub Kotásek</p>
 </div>
 
@@ -2698,7 +2701,7 @@ body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls .arcad
         </button>
         <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('flappy')">
           <span class="arcade-card-icon">🪽</span>
-          <span class="arcade-card-info"><span class="arcade-card-name">FLAPPY KÁKO</span><span class="arcade-card-desc">Klepnutím leť mezi trubkami. Jednoduché ovládání jedním prstem.</span><span class="arcade-card-best" id="arcBestFlappy">Rekord: 0</span></span>
+          <span class="arcade-card-info"><span class="arcade-card-name">FLAPPY KÁKO</span><span class="arcade-card-desc">Klepáním poskakuj mezi trubkami. Vyber si pomalou, normální nebo rychlou hru.</span><span class="arcade-card-best" id="arcBestFlappy">Rekord: 0</span></span>
           <span class="arcade-card-next">›</span>
         </button>
         <button type="button" class="arcade-card" onclick="KAKO_ARCADE.open('run')">
@@ -2742,6 +2745,14 @@ body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls .arcad
                 <button type="button" data-snake-speed="slow" aria-pressed="true">🐢 Pohoda</button>
                 <button type="button" data-snake-speed="normal" aria-pressed="false">Normální</button>
                 <button type="button" data-snake-speed="fast" aria-pressed="false">⚡ Rychlá</button>
+              </div>
+            </div>
+            <div id="arcadeFlappySpeed" class="arcade-speed-picker" hidden>
+              <div class="arcade-speed-title">RYCHLOST FLAPPY KÁKO</div>
+              <div class="arcade-speed-options" role="group" aria-label="Rychlost Flappy Káko">
+                <button type="button" data-flappy-speed="slow" aria-pressed="false">🐌 Zácpa<br><small>POMALÁ</small></button>
+                <button type="button" data-flappy-speed="normal" aria-pressed="true">💩 Normálka<br><small>NORMÁLNÍ</small></button>
+                <button type="button" data-flappy-speed="fast" aria-pressed="false">🚀 Průjem<br><small>RYCHLÁ</small></button>
               </div>
             </div>
             <button type="button" id="arcadeShareResult" class="arcade-share-result" hidden>📤 SDÍLET VÝSLEDEK</button>
@@ -6659,13 +6670,18 @@ restoreKako();
   const W=320,H=420;
   const title = {snake:'KÁKOHAD',invaders:'KÁKO INVADERS',racing:'KÁKO RACING',whack:'PRAŠŤ HO-VNO',flappy:'FLAPPY KÁKO',run:'KÁKO RUN',tetris:'KÁKOTRIS',breaker:'KÁKO BREAKER'};
   const keys = {snake:'kakoArcadeRecordSnake',invaders:'kakoArcadeRecordInvaders',racing:'kakoArcadeRecordRacing',whack:'kakoArcadeRecordWhack',flappy:'kakoArcadeRecordFlappy',run:'kakoArcadeRecordRun',tetris:'kakoArcadeRecordTetris',breaker:'kakoArcadeRecordBreaker'};
-  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.',whack:'Klepej prstem na bobky v otvorech. Máš 45 sekund a za každý zásah získáš body.',flappy:'Klepni do hry nebo na SKOK a proleť mezi trubkami. Nespadni na zem!',run:'Klepni nebo stiskni SKOK, přeskoč překážky a sbírej toaletní papír.',tetris:'Šipky vlevo/vpravo přesouvají kostku, tlačítko ↻ ji otáčí. Šipka dolů posouvá kostku o řádek; podrž ji pro rychlejší pád. Odstraňuj celé řady.',breaker:'Vlevo a vpravo řídíš pálku, ODPAL vypustí míček. Pálkou lze pohybovat i tahem po herním poli.'};
+  const copy = {snake:'Sbírej toaletní papír 🧻. Vyber si rychlost a šipkami veď hada.',invaders:'Střílej čisticí bubliny ze záchodové štětky po létajících bobcích.',racing:'Vyhýbej se překážkám, sbírej 🧻 a drž TURBO. Sólová jízda, bez soupeřů.',whack:'Klepej prstem na bobky v otvorech. Máš 45 sekund a za každý zásah získáš body.',flappy:'Bobek nemává! Klepni na HOP! a proskakuj mezi trubkami. Vyber si rychlost. Pozor na zem!',run:'Klepni nebo stiskni SKOK, přeskoč překážky a sbírej toaletní papír.',tetris:'Šipky vlevo/vpravo přesouvají kostku, tlačítko ↻ ji otáčí. Šipka dolů posouvá kostku o řádek; podrž ji pro rychlejší pád. Odstraňuj celé řady.',breaker:'Vlevo a vpravo řídíš pálku, ODPAL vypustí míček. Pálkou lze pohybovat i tahem po herním poli.'};
   let game=null,phase='idle',s=null,best={snake:0,invaders:0,racing:0,whack:0,flappy:0,run:0,tetris:0,breaker:0},sound=false,audio=null;
   let leftDown=false,rightDown=false,actionDown=false,prev=0,modalFn=null,pointerStart=null;
   // Volba zůstane uložená, výchozí obtížnost je schválně klidná.
   const snakeDelays={slow:.34,normal:.25,fast:.18};
   let snakeSpeed='slow';
   try{const saved=localStorage.getItem('kakoArcadeSnakeSpeed');if(snakeDelays[saved])snakeSpeed=saved;}catch(e){}
+  // Tři rychlosti Flappy: vzdálenost mezi překážkami zůstává stejná.
+  const flappyFactors={slow:.75,normal:1,fast:1.35};
+  const flappyNames={slow:'Zácpa (pomalá)',normal:'Normálka (normální)',fast:'Průjem (rychlá)'};
+  let flappySpeed='normal';
+  try{const saved=localStorage.getItem('kakoArcadeFlappySpeed');if(Object.prototype.hasOwnProperty.call(flappyFactors,saved))flappySpeed=saved;}catch(e){}
   let lastBestWrite=0,recordDirty=false,lastHudDraw=0,lastRender=0;
   let finalShareData=null; // Uzamčený výsledek poslední dokončené hry.
   const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
@@ -6738,7 +6754,9 @@ restoreKako();
     $('arcadeOverlayTitle').textContent=heading;
     $('arcadeOverlayText').textContent=description;
     $('arcadeOverlayButton').textContent=button;
-    $('arcadeSnakeSpeed').hidden=!(game==='snake'&&heading===title[game]);
+    const canChooseSpeed=(heading===title[game]||heading==='NOVÁ HRA?');
+    $('arcadeSnakeSpeed').hidden=!(game==='snake'&&canChooseSpeed);
+    $('arcadeFlappySpeed').hidden=!(game==='flappy'&&canChooseSpeed);
     $('arcadeShareResult').hidden=true;
     $('arcadeShareStatus').hidden=true;
     $('arcadeShareStatus').textContent='';
@@ -6758,6 +6776,18 @@ restoreKako();
     button.addEventListener('click',()=>setSnakeSpeed(button.dataset.snakeSpeed));
   });
   setSnakeSpeed(snakeSpeed);
+  function setFlappySpeed(speed){
+    if(!Object.prototype.hasOwnProperty.call(flappyFactors,speed))return;
+    flappySpeed=speed;
+    document.querySelectorAll('[data-flappy-speed]').forEach(button=>{
+      button.setAttribute('aria-pressed',String(button.dataset.flappySpeed===speed));
+    });
+    try{localStorage.setItem('kakoArcadeFlappySpeed',speed);}catch(e){}
+  }
+  document.querySelectorAll('[data-flappy-speed]').forEach(button=>{
+    button.addEventListener('click',()=>setFlappySpeed(button.dataset.flappySpeed));
+  });
+  setFlappySpeed(flappySpeed);
   function fitCanvas(){
     const shell=$('arcadeTouchArea');
     if(!shell||!shell.offsetWidth||!shell.offsetHeight)return;
@@ -6798,7 +6828,7 @@ restoreKako();
     $('arcadeSideControls').classList.toggle('breaker-controls',which==='breaker');
     $('arcadeOneButtonControls').hidden=which!=='flappy'&&which!=='run';
     $('arcadeWhackTip').hidden=which!=='whack';
-    $('arcadeOneButton').textContent=which==='flappy'?'🪽 MÁVNI!':'⬆ SKOK!';
+    $('arcadeOneButton').textContent=which==='flappy'?'💩 HOP!':'⬆ SKOK!';
     $('arcadeAction').textContent=which==='racing'?'⚡ TURBO':which==='breaker'?'● ODPAL':'💦 PALBA';
     initState();updateHud();
     showModal(({snake:'💩',invaders:'🚽',racing:'🚽',whack:'🪠',flappy:'🪽',run:'🏃',tetris:'🧩',breaker:'💥'})[which],title[which],copy[which],'HRÁT →',start);
@@ -6829,7 +6859,7 @@ restoreKako();
   function finish(reason){
     if(phase!=='playing')return;
     phase='over';clearHeld();record();persistBest();updateHud();beep(180,.22);stopArcadeFrame();
-    finalShareData={game,points:Math.floor(s.points),best:best[game],level:s.level||1,snakeLength:game==='snake'?s.snake.length:0,speed:snakeSpeed};
+    finalShareData={game,points:Math.floor(s.points),best:best[game],level:s.level||1,snakeLength:game==='snake'?s.snake.length:0,speed:snakeSpeed,flappySpeed};
     hideModal();
     $('arcadeFullLossStatus').hidden=true;
     $('arcadeFullLoss').hidden=false;
@@ -6848,6 +6878,7 @@ restoreKako();
       lines.push('🐍 Délka hada: '+data.snakeLength);
       lines.push('Rychlost: '+({slow:'Pohoda',normal:'Normální',fast:'Rychlá'}[data.speed]||'Pohoda'));
     }
+    if(data.game==='flappy')lines.push('🚀 Rychlost: '+(flappyNames[data.flappySpeed]||flappyNames.normal));
     if(data.game==='invaders')lines.push('🌊 Dosažená vlna: '+data.level);
     if(data.game==='whack')lines.push('⏱ Čas hry: 45 sekund');
     if(data.game==='tetris'||data.game==='breaker')lines.push('⭐ Úroveň: '+data.level);
@@ -7150,7 +7181,7 @@ restoreKako();
   }
   // FLAPPY KÁKO: jedna dotyková akce, vyvážená gravitace a mezery.
   function newFlappy(){
-    s={points:0,hp:1,y:185,vy:0,pipes:[],spawn:1.5,anim:0,started:false};
+    s={points:0,hp:1,y:185,vy:0,pipes:[],spawn:1.5/flappyFactors[flappySpeed],anim:0,started:false};
   }
   function flap(){
     if(phase!=='playing'||game!=='flappy')return;
@@ -7162,9 +7193,10 @@ restoreKako();
     s.vy=Math.min(420,s.vy+640*dt);
     s.y+=s.vy*dt;
     s.spawn-=dt;
-    if(s.spawn<=0){s.spawn=2.0;s.pipes.push({x:350,top:rnd(82,245),gap:145,scored:false});}
+    const factor=flappyFactors[flappySpeed];
+    if(s.spawn<=0){s.spawn+=2.0/factor;s.pipes.push({x:350,top:rnd(82,245),gap:145,scored:false});}
     for(let i=s.pipes.length-1;i>=0;i--){
-      const p=s.pipes[i];p.x-=116*dt;
+      const p=s.pipes[i];p.x-=116*factor*dt;
       if(p.x<-58){s.pipes.splice(i,1);continue;}
       if(!p.scored&&p.x+54<86){p.scored=true;s.points++;beep(745,.065);record();updateHud();}
       if(86+14>p.x&&86-14<p.x+54&&(s.y-14<p.top||s.y+14>p.top+p.gap)){
@@ -7184,7 +7216,7 @@ restoreKako();
     }
     emoji('💩',86,s.y,39);
     rrect(0,0,320,36,0,'#3a271bcd');text('PROLETĚNO: '+s.points,160,18,17,'#ffebbd');
-    if(!s.started){rrect(35,182,250,57,12,'#382519d9');text('KLEPNI A LEŤ!',160,209,21,'#ffdb76');}
+    if(!s.started){rrect(35,182,250,57,12,'#382519d9');text('KLEPNI A HOP!',160,209,21,'#ffdb76');}
   }
   // KÁKO RUN: plynulá časově nezávislá fyzika, omezené množství objektů.
   function newRun(){
