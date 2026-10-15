@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="KÁKO">
 
-<title>KÁKO 6.9.5 – OSM HER</title>
+<title>KÁKO 6.9.6 – OSM HER</title>
 
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="icon" href="icon.png">
@@ -2033,6 +2033,32 @@ body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls .arcad
 }
 .arcade-full-loss-status{position:absolute;top:66px;left:10%;right:10%;z-index:2;background:rgba(42,23,14,.93);border:1px solid #f6c852;border-radius:12px;padding:10px;color:#fff7e9;text-align:center;font-size:13px;font-weight:bold}
 
+
+/* KÁKO 6.9.6: karty živě uhýbají při řazení na iPhonu.
+   Duch přetahované karty je mimo list; list si drží jen místo. */
+.arcade-sorting .arcade-sort-row.arcade-dragging {
+  opacity:.28 !important;
+  outline:2px dashed #b48c50;
+  background:#ffe2a0;
+  box-shadow:none;
+}
+.arcade-sort-ghost {
+  position:fixed;
+  z-index:4500;
+  margin:0;
+  display:flex;
+  align-items:stretch;
+  gap:7px;
+  pointer-events:none !important;
+  touch-action:none;
+  box-shadow:0 9px 25px rgba(42,23,14,.27);
+  border-radius:20px;
+  opacity:.97;
+  will-change:transform;
+  transform:translate3d(0,0,0);
+}
+.arcade-sort-ghost .arcade-card {flex:1;min-width:0;}
+.arcade-sort-ghost .arcade-sort-handle {display:block;}
 </style>
 </head>
 
@@ -2696,7 +2722,7 @@ body.arcade-game-active #gamesScreen #arcadeSideControls.breaker-controls .arcad
 
 <div class="settings-card about-app" aria-label="O aplikaci">
   <h3>O aplikaci</h3>
-  <p><strong>KÁKO 6.9.5</strong> · Časomíra, cíle, statistiky a osm her</p>
+  <p><strong>KÁKO 6.9.6</strong> · Časomíra, cíle, statistiky a osm her</p>
   <p>Autor: Milan Kolařík a Jakub Kotásek</p>
 </div>
 
@@ -7753,11 +7779,13 @@ restoreKako();
   });
   $('arcadeSound').textContent=sound?'🔊 Zvuk':'🔇 Zvuk';
   const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
-  // KÁKO 5.7 – reorder games with an accessible drag handle, persisted only on drop.
+  // KÁKO 6.9.6 – živé přerovnávání (se stálým pointer capture na seznamu).
   const arcadeOrderKey='kakoArcadeGameOrderV1';
   const allowedGames=['snake','invaders','racing','whack','flappy','run','tetris','breaker'];
   const arcadeCards=$('arcadeCards');
-  let sorting=false, dragRow=null, dragPointer=null, dragMoved=false;
+  let sorting=false, dragRow=null, dragPointer=null, dragGhost=null, dragOriginY=0, dragOriginTop=0;
+  let dragSavedOrder=null;
+  const sortAnimations=new WeakMap();
   const itemFor=id=>arcadeCards.querySelector('.arcade-sort-row[data-game="'+id+'"]');
   for(const card of Array.from(arcadeCards.querySelectorAll(':scope > .arcade-card'))){
     const found=card.getAttribute('onclick').match(/open\('([^']+)'\)/);
@@ -7786,8 +7814,8 @@ restoreKako();
     try{localStorage.setItem(arcadeOrderKey,JSON.stringify(order));}catch(e){}
   }
   function setSorting(enabled){
+    if(dragRow)endDrag(null);
     sorting=!!enabled;
-    dragRow=null;dragPointer=null;
     $('arcadeLibrary').classList.toggle('arcade-sorting',sorting);
     $('arcadeSortToggle').textContent=sorting?'✓ HOTOVO':'↕ SEŘADIT HRY';
     $('arcadeSortToggle').setAttribute('aria-pressed',String(sorting));
@@ -7798,39 +7826,92 @@ restoreKako();
   arcadeCards.addEventListener('click',e=>{
     if(sorting && e.target.closest('.arcade-card')){e.preventDefault();e.stopPropagation();}
   },true);
-  let dragStartY=0,dropBefore=null;
+  // Nejprve vytvoříme pohyblivou kopii karty. Originál zůstane v seznamu
+  // jako rezervované místo, které se živě přesouvá a ostatní karty mu uhýbají.
+  function makeDragGhost(row){
+    const rect=row.getBoundingClientRect();
+    const ghost=row.cloneNode(true);
+    ghost.classList.remove('arcade-dragging');
+    ghost.classList.add('arcade-sort-ghost');
+    ghost.setAttribute('aria-hidden','true');
+    ghost.querySelectorAll('[id]').forEach(el=>el.removeAttribute('id'));
+    ghost.querySelectorAll('[onclick]').forEach(el=>el.removeAttribute('onclick'));
+    ghost.querySelectorAll('button').forEach(el=>{el.tabIndex=-1;});
+    ghost.style.left=rect.left+'px';
+    ghost.style.top=rect.top+'px';
+    ghost.style.width=rect.width+'px';
+    ghost.style.height=rect.height+'px';
+    document.body.appendChild(ghost);
+    return ghost;
+  }
+  function animateSortShift(oldTops){
+    if(typeof Element.prototype.animate!=='function')return;
+    for(const row of arcadeCards.children){
+      if(row===dragRow)continue;
+      const before=oldTops.get(row);
+      if(before===undefined)continue;
+      const delta=before-row.getBoundingClientRect().top;
+      if(Math.abs(delta)<1)continue;
+      const prev=sortAnimations.get(row);
+      if(prev)prev.cancel();
+      const anim=row.animate([
+        {transform:'translate3d(0,'+delta+'px,0)'},
+        {transform:'translate3d(0,0,0)'}
+      ],{duration:155,easing:'cubic-bezier(.2,.7,.2,1)'});
+      sortAnimations.set(row,anim);
+    }
+  }
+  function liveReorder(pointerY){
+    if(!dragRow)return;
+    const rows=Array.from(arcadeCards.children).filter(row=>row!==dragRow);
+    const next=rows.find(row=>pointerY<row.getBoundingClientRect().top+row.getBoundingClientRect().height/2)||null;
+    // Není nutné měnit pořadí, pokud už místo odpovídá ukazateli.
+    if(next===dragRow.nextElementSibling || (next===null && dragRow===arcadeCards.lastElementChild))return;
+    const oldTops=new Map(rows.map(row=>[row,row.getBoundingClientRect().top]));
+    if(next)arcadeCards.insertBefore(dragRow,next);
+    else arcadeCards.appendChild(dragRow);
+    animateSortShift(oldTops);
+  }
   arcadeCards.addEventListener('pointerdown',e=>{
     const handle=e.target.closest('.arcade-sort-handle');
-    if(!sorting || !handle || dragRow)return;
+    if(!sorting || !handle || dragRow || (e.pointerType==='mouse'&&e.button!==0))return;
     e.preventDefault();
-    dragRow=handle.closest('.arcade-sort-row');dragPointer=e.pointerId;
-    dragStartY=e.clientY;dropBefore=null;
+    dragRow=handle.closest('.arcade-sort-row');
+    dragPointer=e.pointerId;
+    dragSavedOrder=Array.from(arcadeCards.children);
+    dragOriginY=e.clientY;
+    dragOriginTop=dragRow.getBoundingClientRect().top;
+    // Zachytit na neměnném rodiči – během změn pořadí Safari neztratí dotyk.
+    try{arcadeCards.setPointerCapture(e.pointerId);}catch(err){}
+    dragGhost=makeDragGhost(dragRow);
     dragRow.classList.add('arcade-dragging');
-    try{handle.setPointerCapture(e.pointerId);}catch(err){}
   });
   arcadeCards.addEventListener('pointermove',e=>{
     if(!dragRow || e.pointerId!==dragPointer)return;
     e.preventDefault();
-    const dy=e.clientY-dragStartY;
-    dragRow.style.transform='translateY('+dy+'px)';
-    const rows=Array.from(arcadeCards.children).filter(row=>row!==dragRow);
-    dropBefore=rows.find(row=>e.clientY < row.getBoundingClientRect().top+row.getBoundingClientRect().height/2) || null;
-    for(const row of rows)row.classList.toggle('arcade-drop-target',row===dropBefore);
-    // Touch scrolling is disabled on the handle; scroll the list near the screen edges.
-    if(e.clientY<90)window.scrollBy(0,-8);
-    else if(e.clientY>window.innerHeight-90)window.scrollBy(0,8);
+    if(dragGhost){
+      dragGhost.style.transform='translate3d(0,'+(e.clientY-dragOriginY)+'px,0)';
+    }
+    // Uvolňovat místo ihned během táhnutí, ne až po puštění prstu.
+    liveReorder(e.clientY);
+    // Přetahování do vzdálenějších částí seznamu.
+    if(e.clientY<85)window.scrollBy(0,-11);
+    else if(e.clientY>window.innerHeight-90)window.scrollBy(0,11);
   },{passive:false});
   function endDrag(e){
     if(!dragRow || (e && e.pointerId!==dragPointer))return;
-    const moving=dragRow;
-    moving.style.transform='';moving.classList.remove('arcade-dragging');
-    for(const row of arcadeCards.children)row.classList.remove('arcade-drop-target');
-    dragRow=null;dragPointer=null;
-    // Do not alter the DOM during pointer capture: Safari otherwise cancels dragging.
-    if(dropBefore && dropBefore!==moving)arcadeCards.insertBefore(moving,dropBefore);
-    else if(!dropBefore)arcadeCards.appendChild(moving);
-    dropBefore=null;
-    persistGameOrder();
+    const canceled=e && e.type==='pointercancel';
+    if(canceled && dragSavedOrder){
+      // Přerušený dotyk nezmění uživateli uložené pořadí.
+      for(const row of dragSavedOrder)arcadeCards.appendChild(row);
+    }
+    const finished=dragRow;
+    dragRow=null;
+    finished.classList.remove('arcade-dragging');
+    if(dragGhost){dragGhost.remove();dragGhost=null;}
+    dragPointer=null;dragSavedOrder=null;
+    dragOriginY=0;dragOriginTop=0;
+    if(!canceled)persistGameOrder();
   }
   arcadeCards.addEventListener('pointerup',endDrag);
   arcadeCards.addEventListener('pointercancel',endDrag);
